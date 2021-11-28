@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDisplayName</key>
+	<string>Weather</string>
+	<key>CFBundleName</key>
+	<string>Weather</string>
+	<key>OpenWeather API key</key>
+	<string>OpenWeather API key</string>
+	<key>release app number</key>
+	<string>Release App Number</string>
+	<key>version</key>
+	<string>Version</string>
+	<key>build</key>
+	<string>Build</string>
+	<key>temperature</key>
+	<string>Temperature</string>
+	<key>celsius</key>
+	<string>Celsius</string>
+	<key>fahrenheit</key>
+	<string>Fahrenheit</string>
+	<key>metric</key>
+	<string>Metric</string>
+	<key>imperial</key>
+	<string>Imperial</string>
+	<key>optionsButtonInMainScreen</key>
+	<string>Options</string>
+	<key>locationsListButtonInMainScreen</key>
+	<string>Locations</string>
+	<key>closeButtonInLocationsListScreen</key>
+	<string>Close</string>
+	<key>searchLocationInLocationsListScreen</key>
+	<string>Search Location</string>
+	<key>closeButtonInSearchLocationScreen</key>
+	<string>Cancel</string>
+	<key>closeButtonInOptionsScreen</key>
+	<string>Close</string>
+</dict>
+</plist>

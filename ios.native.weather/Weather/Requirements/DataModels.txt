@@ -1,0 +1,104 @@
+//
+//  DataModels.txt
+//  Weather
+//
+//  Created by Mikhail Zhigulin on 05.11.2021.
+//
+
+VI  : Data Models and Rules
+ 
+ DM1. Weather First Impression Parameters
+ 
+ > Description             : Text // Thunderstorm
+ > Description in Detail   : Text // thunderstorm with light rain
+ 
+ DM2. Temperature Parameters
+ 
+ > Temperature             : Number, [C, F] // Metric: Celsius, Imperial: Fahrenheit.
+ > Feels like              : Number, [C, F] // Metric: Celsius, Imperial: Fahrenheit.
+ > Min temperature         : Number, [C, F] // Metric: Celsius, Imperial: Fahrenheit.
+ > Max temperature         : Number, [C, F] // Metric: Celsius, Imperial: Fahrenheit.
+ > Atmospheric temperature : Number, [C, F] // Metric: Celsius, Imperial: Fahrenheit.
+ > Morning temperature     : Number, [C, F] // Metric: Celsius, Imperial: Fahrenheit.
+ > Day temperature         : Number, [C, F] // Metric: Celsius, Imperial: Fahrenheit.
+ > Evening temperature     : Number, [C, F] // Metric: Celsius, Imperial: Fahrenheit.
+ > Night temperature       : Number, [C, F] // Metric: Celsius, Imperial: Fahrenheit.
+ 
+ DM3. Pressure Parameters
+ 
+ > Pressure                : Number, [hPa, inHg]
+ > Atmospheric pressure
+   on the sea level        : Number, hPa
+ > Atmospheric pressure
+   on the ground level     : Number, hPa
+ 
+ DM4. Wind Parameters
+ 
+ > Speed                   : Number, [m/s, km/h, mph] // Metric: meter/sec, Imperial: miles/hour.
+ > Direction               : Number, degrees (meteorological)
+ > Gust                  * : Number, [m/s, km/h, mph] // Metric: meter/sec, Imperial: miles/hour.
+ 
+ DM5. Clouds Parameters
+ 
+ > Cloudiness              : Number, %
+ > Visibility              : Number, metres
+ > UV index                : Number // The maximum value of UV index for the day.
+ > Probability of
+   precipitation           : Number
+ > Humidity                : Number, %
+ 
+ DM6. Rain Parameters
+ 
+ > Rain volume for
+   the last 1 hour       * : Number, mm // Precipitation volume.
+ > Rain volume for
+   the last 3 hour       * : Number, mm // Precipitation volume.
+   
+ DM7. Snow Parameters
+ 
+ > Snow volume for
+   the last 1 hour       * : Number, mm // Snow volume.
+ > Snow volume for
+   the last 1 hour       * : Number, mm // Snow volume.
+ 
+ DM8. Sun Parameters
+ 
+ > Sunrise time            : [24-hour, 12-hour]
+ > Sunset time             : [24-hour, 12-hour]
+ 
+ DM9. Moon Parameters
+ 
+ > Moonrise time           : [24-hour, 12-hour]
+ > Moonset time            : [24-hour, 12-hour]
+ > Moon phase              : Number
+ 
+ DM10. National Weather Alert Parameters
+ 
+ > Name of the alert
+   source                  : Text
+ > Alert event name        : Text
+ > Date and time of the
+   start of the alert      : Number
+ > Date and time of the
+   end of the alert        : Number
+ > Description of the
+   alert                   : Text
+ > Type of severe weather  : Text Array
+ 
+ DM11. Weather Showing Options
+ 
+ > Temperature             : [~C, F]
+ > Wind Speed              : [m/s, ~km/h, mph]
+ > Pressure                : [~hPa, inHg]
+ > Precipitation           : [~mm, in]
+ > Distance                : [~km, mi]
+ > Time Format             : [~24-hour, 12-hour]
+ 
+ DM12. Other Options
+ 
+ > Dark Mode               : [~auto, on, off]
+ 
+ * where available
+ ~ default value
+ 
+ Rule1: If any parameter is out of range use "N/A" and hide parameter representation.

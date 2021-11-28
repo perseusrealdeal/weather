@@ -12,12 +12,17 @@
 		E0C428CC27535BD800E65DFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0C428CA27535BD800E65DFD /* Main.storyboard */; };
 		E0C428CE27535BDD00E65DFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0C428CD27535BDD00E65DFD /* Assets.xcassets */; };
 		E0C428D127535BDD00E65DFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0C428CF27535BDD00E65DFD /* LaunchScreen.storyboard */; };
-		E0C428DB27535DB100E65DFD /* EmptyDiagrams in Resources */ = {isa = PBXBuildFile; fileRef = E0C428DA27535DB100E65DFD /* EmptyDiagrams */; };
 		E0C428E327535E2A00E65DFD /* EmptyLocalization in Resources */ = {isa = PBXBuildFile; fileRef = E0C428E227535E2A00E65DFD /* EmptyLocalization */; };
 		E0C428E827535E7900E65DFD /* EmptyViews in Resources */ = {isa = PBXBuildFile; fileRef = E0C428E727535E7900E65DFD /* EmptyViews */; };
 		E0C428EB27535E8F00E65DFD /* EmptyEntities in Resources */ = {isa = PBXBuildFile; fileRef = E0C428EA27535E8F00E65DFD /* EmptyEntities */; };
 		E0C428EE27535EA100E65DFD /* EmptyServices in Resources */ = {isa = PBXBuildFile; fileRef = E0C428ED27535EA100E65DFD /* EmptyServices */; };
 		E0C428F127535EBC00E65DFD /* EmptyExtentions in Resources */ = {isa = PBXBuildFile; fileRef = E0C428F027535EBC00E65DFD /* EmptyExtentions */; };
+		E0C428F52753636400E65DFD /* activity_diagram.png in Resources */ = {isa = PBXBuildFile; fileRef = E0C428F32753636400E65DFD /* activity_diagram.png */; };
+		E0C428F62753636400E65DFD /* navigation_prototype.png in Resources */ = {isa = PBXBuildFile; fileRef = E0C428F42753636400E65DFD /* navigation_prototype.png */; };
+		E0C428F92753638900E65DFD /* Localization_ru.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0C428F72753638900E65DFD /* Localization_ru.plist */; };
+		E0C428FA2753638900E65DFD /* Localization_en.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0C428F82753638900E65DFD /* Localization_en.plist */; };
+		E0C428FC275363AB00E65DFD /* DataModels.txt in Resources */ = {isa = PBXBuildFile; fileRef = E0C428FB275363AB00E65DFD /* DataModels.txt */; };
+		E0C428FE275363B200E65DFD /* Requirements.txt in Resources */ = {isa = PBXBuildFile; fileRef = E0C428FD275363B200E65DFD /* Requirements.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,13 +33,18 @@
 		E0C428CD27535BDD00E65DFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E0C428D027535BDD00E65DFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E0C428D227535BDD00E65DFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E0C428DA27535DB100E65DFD /* EmptyDiagrams */ = {isa = PBXFileReference; lastKnownFileType = text; path = EmptyDiagrams; sourceTree = "<group>"; };
 		E0C428E227535E2A00E65DFD /* EmptyLocalization */ = {isa = PBXFileReference; lastKnownFileType = text; path = EmptyLocalization; sourceTree = "<group>"; };
 		E0C428E727535E7900E65DFD /* EmptyViews */ = {isa = PBXFileReference; lastKnownFileType = text; path = EmptyViews; sourceTree = "<group>"; };
 		E0C428EA27535E8F00E65DFD /* EmptyEntities */ = {isa = PBXFileReference; lastKnownFileType = text; path = EmptyEntities; sourceTree = "<group>"; };
 		E0C428ED27535EA100E65DFD /* EmptyServices */ = {isa = PBXFileReference; lastKnownFileType = text; path = EmptyServices; sourceTree = "<group>"; };
 		E0C428F027535EBC00E65DFD /* EmptyExtentions */ = {isa = PBXFileReference; lastKnownFileType = text; path = EmptyExtentions; sourceTree = "<group>"; };
 		E0C428F22753607F00E65DFD /* EmptyTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EmptyTestPlan.xctestplan; sourceTree = "<group>"; };
+		E0C428F32753636400E65DFD /* activity_diagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = activity_diagram.png; sourceTree = "<group>"; };
+		E0C428F42753636400E65DFD /* navigation_prototype.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigation_prototype.png; sourceTree = "<group>"; };
+		E0C428F72753638900E65DFD /* Localization_ru.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Localization_ru.plist; sourceTree = "<group>"; };
+		E0C428F82753638900E65DFD /* Localization_en.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Localization_en.plist; sourceTree = "<group>"; };
+		E0C428FB275363AB00E65DFD /* DataModels.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DataModels.txt; sourceTree = "<group>"; };
+		E0C428FD275363B200E65DFD /* Requirements.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Requirements.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +93,10 @@
 		E0C428D827535D8800E65DFD /* Requirements */ = {
 			isa = PBXGroup;
 			children = (
+				E0C428FD275363B200E65DFD /* Requirements.txt */,
+				E0C428FB275363AB00E65DFD /* DataModels.txt */,
+				E0C428F82753638900E65DFD /* Localization_en.plist */,
+				E0C428F72753638900E65DFD /* Localization_ru.plist */,
 				E0C428D927535D9400E65DFD /* Diagrams */,
 			);
 			path = Requirements;
@@ -91,7 +105,8 @@
 		E0C428D927535D9400E65DFD /* Diagrams */ = {
 			isa = PBXGroup;
 			children = (
-				E0C428DA27535DB100E65DFD /* EmptyDiagrams */,
+				E0C428F32753636400E65DFD /* activity_diagram.png */,
+				E0C428F42753636400E65DFD /* navigation_prototype.png */,
 			);
 			path = Diagrams;
 			sourceTree = "<group>";
@@ -237,15 +252,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0C428DB27535DB100E65DFD /* EmptyDiagrams in Resources */,
 				E0C428E327535E2A00E65DFD /* EmptyLocalization in Resources */,
 				E0C428D127535BDD00E65DFD /* LaunchScreen.storyboard in Resources */,
 				E0C428EB27535E8F00E65DFD /* EmptyEntities in Resources */,
+				E0C428F52753636400E65DFD /* activity_diagram.png in Resources */,
 				E0C428CE27535BDD00E65DFD /* Assets.xcassets in Resources */,
 				E0C428F127535EBC00E65DFD /* EmptyExtentions in Resources */,
+				E0C428F62753636400E65DFD /* navigation_prototype.png in Resources */,
 				E0C428E827535E7900E65DFD /* EmptyViews in Resources */,
+				E0C428FE275363B200E65DFD /* Requirements.txt in Resources */,
+				E0C428F92753638900E65DFD /* Localization_ru.plist in Resources */,
 				E0C428CC27535BD800E65DFD /* Main.storyboard in Resources */,
+				E0C428FA2753638900E65DFD /* Localization_en.plist in Resources */,
 				E0C428EE27535EA100E65DFD /* EmptyServices in Resources */,
+				E0C428FC275363AB00E65DFD /* DataModels.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

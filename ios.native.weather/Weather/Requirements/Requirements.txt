@@ -1,0 +1,43 @@
+//
+//  Requirements.txt
+//  Weather
+//
+//  Created by Mikhail Zhigulin on 03.11.2021.
+//
+
+I   : The App's Name : Weather
+
+II  : Business Tasks
+ 
+ BT1. Show Weather for a Period of Time
+ 
+ Required Periods of Time are
+    > Current
+    > Forecast
+        > Hourly for 24 hours from Now
+        > Daily for 7 Days
+ 
+III : User Stories (shortly, only titles)
+
+ US1. Showing Current Weather
+ US2. Showing Hourly Forecast for 24 hours from Now
+ US3. Showing Daily Forecast for 7 Days
+ US4. Showing National Weather Alerts
+ US5. Moderating Locations (CRUD for locations list)
+ 
+ US6. Setting Weather Representation Options Up
+ US7. Showing Information About the App
+ 
+IV  : Features (Specials/Special Requirements)
+ 
+ F1. Location Determining : Auto, Explicitly
+ F2. Page Navigating for Locations
+ F3. iOS Widget
+ F4. Layout Options
+ F5. Dark Appearance
+ F6. Chart
+ 
+V   : Operations   //: None (if only current weather, no data changes are required)
+ 
+ OP1. Add Location (up to N items)
+ OP2. Remove Location
