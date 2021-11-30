@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "C994602F-7B15-4594-B3DF-5659C11EFF9D",
+      "name" : "System Configuration",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "selectedTests" : [
+        "FunctionalTests\/test_zero()"
+      ],
+      "target" : {
+        "containerPath" : "container:Weather.xcodeproj",
+        "identifier" : "E0AAF5CB2755041600093229",
+        "name" : "WeatherTests"
+      }
+    }
+  ],
+  "version" : 1
+}

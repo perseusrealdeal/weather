@@ -1,0 +1,33 @@
+{
+  "configurations" : [
+    {
+      "id" : "45B13A35-3C9E-4BBA-87DE-F44BC3E17E5D",
+      "name" : "English Language",
+      "options" : {
+        "language" : "en",
+        "locationScenario" : {
+          "identifier" : "London, England",
+          "referenceType" : "built-in"
+        },
+        "region" : "GB"
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "selectedTests" : [
+        "LocalizationTests\/test_zero()"
+      ],
+      "target" : {
+        "containerPath" : "container:Weather.xcodeproj",
+        "identifier" : "E0AAF5CB2755041600093229",
+        "name" : "WeatherTests"
+      }
+    }
+  ],
+  "version" : 1
+}
