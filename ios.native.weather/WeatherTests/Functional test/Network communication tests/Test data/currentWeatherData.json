@@ -1,0 +1,30 @@
+{
+  "lon" : 85.621399999999994,
+  "lat" : 55.662500000000001,
+  "timezone_offset" : 25200,
+  "current" : {
+    "sunrise" : 1638671310,
+    "temp" : -4.3300000000000001,
+    "humidity" : 93,
+    "clouds" : 98,
+    "wind_speed" : 4.8600000000000003,
+    "uvi" : 0,
+    "wind_deg" : 226,
+    "dt" : 1638638903,
+    "sunset" : 1638697681,
+    "feels_like" : -10.24,
+    "wind_gust" : 12.210000000000001,
+    "visibility" : 4481,
+    "pressure" : 1029,
+    "dew_point" : -5.1799999999999997,
+    "weather" : [
+      {
+        "description" : "overcast clouds",
+        "icon" : "04n",
+        "main" : "Clouds",
+        "id" : 804
+      }
+    ]
+  },
+  "timezone" : "Asia\/Novokuznetsk"
+}

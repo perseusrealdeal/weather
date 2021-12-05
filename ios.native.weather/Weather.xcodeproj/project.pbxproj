@@ -15,6 +15,7 @@
 		E0AAF5E12755052C00093229 /* FunctionalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AAF5E02755052C00093229 /* FunctionalTests.swift */; };
 		E0AAF5EA2757C49500093229 /* OpenWeatherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AAF5E92757C49500093229 /* OpenWeatherClient.swift */; };
 		E0AAF5EC2757C4B000093229 /* OpenWeatherCommunicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AAF5EB2757C4B000093229 /* OpenWeatherCommunicationTests.swift */; };
+		E0AAF5F0275B987500093229 /* currentWeatherData.json in Resources */ = {isa = PBXBuildFile; fileRef = E0AAF5EF275B987500093229 /* currentWeatherData.json */; };
 		E0C428C527535BD800E65DFD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C428C427535BD800E65DFD /* main.swift */; };
 		E0C428C927535BD800E65DFD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C428C827535BD800E65DFD /* ViewController.swift */; };
 		E0C428CC27535BD800E65DFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0C428CA27535BD800E65DFD /* Main.storyboard */; };
@@ -62,6 +63,7 @@
 		E0AAF5E62755065800093229 /* SnapshotTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SnapshotTests.xctestplan; sourceTree = "<group>"; };
 		E0AAF5E92757C49500093229 /* OpenWeatherClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherClient.swift; sourceTree = "<group>"; };
 		E0AAF5EB2757C4B000093229 /* OpenWeatherCommunicationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherCommunicationTests.swift; sourceTree = "<group>"; };
+		E0AAF5EF275B987500093229 /* currentWeatherData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = currentWeatherData.json; sourceTree = "<group>"; };
 		E0C428C127535BD800E65DFD /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0C428C427535BD800E65DFD /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E0C428C827535BD800E65DFD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -137,8 +139,8 @@
 		E0AAF5D62755042200093229 /* Functional test */ = {
 			isa = PBXGroup;
 			children = (
-				E0AAF5EB2757C4B000093229 /* OpenWeatherCommunicationTests.swift */,
 				E0AAF5E02755052C00093229 /* FunctionalTests.swift */,
+				E0AAF5ED275B976C00093229 /* Network communication tests */,
 				E0AAF5D92755044300093229 /* Localization tests */,
 			);
 			path = "Functional test";
@@ -166,6 +168,23 @@
 				E0AAF5DE2755051900093229 /* LocalizationTests.swift */,
 			);
 			path = "Localization tests";
+			sourceTree = "<group>";
+		};
+		E0AAF5ED275B976C00093229 /* Network communication tests */ = {
+			isa = PBXGroup;
+			children = (
+				E0AAF5EB2757C4B000093229 /* OpenWeatherCommunicationTests.swift */,
+				E0AAF5EE275B978400093229 /* Test data */,
+			);
+			path = "Network communication tests";
+			sourceTree = "<group>";
+		};
+		E0AAF5EE275B978400093229 /* Test data */ = {
+			isa = PBXGroup;
+			children = (
+				E0AAF5EF275B987500093229 /* currentWeatherData.json */,
+			);
+			path = "Test data";
 			sourceTree = "<group>";
 		};
 		E0C428B827535BD800E65DFD = {
@@ -394,6 +413,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0AAF5F0275B987500093229 /* currentWeatherData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
