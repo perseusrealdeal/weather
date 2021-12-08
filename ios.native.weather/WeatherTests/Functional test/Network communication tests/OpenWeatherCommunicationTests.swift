@@ -142,6 +142,8 @@ class OpenWeatherCommunicationTests: XCTestCase
         waitForExpectations(timeout: 0.01)
         
         // assert
+        
+        XCTAssertEqual(sut.weather, Data(), "Causing data update with failure status code!")
         XCTAssertEqual(String(describing: actual_failure), String(describing: expected_failure))
     }
     
