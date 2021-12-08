@@ -27,6 +27,8 @@ extension AppDelegate: UIApplicationDelegate
         print(">> " + #function)
         #endif
         
+        UserPreferences.registerSettingsBundle(with: Settings.bundleParams)
+        
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
         self.window!.rootViewController = WeatherViewController()

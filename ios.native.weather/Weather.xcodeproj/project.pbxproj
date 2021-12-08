@@ -12,6 +12,9 @@
 		E09284CE275E7B090090E267 /* Layout_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = E09284CD275E7B090090E267 /* Layout_1.xib */; };
 		E09284D0275E7B3E0090E267 /* WeatherLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09284CF275E7B3E0090E267 /* WeatherLayoutView.swift */; };
 		E09284D2275E7C900090E267 /* Layout_2.xib in Resources */ = {isa = PBXBuildFile; fileRef = E09284D1275E7C900090E267 /* Layout_2.xib */; };
+		E09284D4275FD9E20090E267 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E09284D3275FD9E20090E267 /* Settings.bundle */; };
+		E09284DA275FE64A0090E267 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09284D9275FE64A0090E267 /* Settings.swift */; };
+		E09284DE275FFC2B0090E267 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09284DD275FFC2B0090E267 /* UserPreferences.swift */; };
 		E0AAF5CF2755041600093229 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AAF5CE2755041600093229 /* TestHelpers.swift */; };
 		E0AAF5DB2755049800093229 /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AAF5DA2755049800093229 /* SnapshotTests.swift */; };
 		E0AAF5DD2755050000093229 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AAF5DC2755050000093229 /* PerformanceTests.swift */; };
@@ -26,7 +29,6 @@
 		E0C428CE27535BDD00E65DFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0C428CD27535BDD00E65DFD /* Assets.xcassets */; };
 		E0C428D127535BDD00E65DFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0C428CF27535BDD00E65DFD /* LaunchScreen.storyboard */; };
 		E0C428E327535E2A00E65DFD /* EmptyLocalization in Resources */ = {isa = PBXBuildFile; fileRef = E0C428E227535E2A00E65DFD /* EmptyLocalization */; };
-		E0C428EB27535E8F00E65DFD /* EmptyEntities in Resources */ = {isa = PBXBuildFile; fileRef = E0C428EA27535E8F00E65DFD /* EmptyEntities */; };
 		E0C428F127535EBC00E65DFD /* EmptyExtentions in Resources */ = {isa = PBXBuildFile; fileRef = E0C428F027535EBC00E65DFD /* EmptyExtentions */; };
 		E0C428F52753636400E65DFD /* activity_diagram.png in Resources */ = {isa = PBXBuildFile; fileRef = E0C428F32753636400E65DFD /* activity_diagram.png */; };
 		E0C428F62753636400E65DFD /* navigation_prototype.png in Resources */ = {isa = PBXBuildFile; fileRef = E0C428F42753636400E65DFD /* navigation_prototype.png */; };
@@ -58,6 +60,9 @@
 		E09284CD275E7B090090E267 /* Layout_1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Layout_1.xib; sourceTree = "<group>"; };
 		E09284CF275E7B3E0090E267 /* WeatherLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLayoutView.swift; sourceTree = "<group>"; };
 		E09284D1275E7C900090E267 /* Layout_2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Layout_2.xib; sourceTree = "<group>"; };
+		E09284D3275FD9E20090E267 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		E09284D9275FE64A0090E267 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		E09284DD275FFC2B0090E267 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		E0AAF5CC2755041600093229 /* WeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0AAF5CE2755041600093229 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		E0AAF5D02755041600093229 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,7 +84,6 @@
 		E0C428D027535BDD00E65DFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E0C428D227535BDD00E65DFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0C428E227535E2A00E65DFD /* EmptyLocalization */ = {isa = PBXFileReference; lastKnownFileType = text; path = EmptyLocalization; sourceTree = "<group>"; };
-		E0C428EA27535E8F00E65DFD /* EmptyEntities */ = {isa = PBXFileReference; lastKnownFileType = text; path = EmptyEntities; sourceTree = "<group>"; };
 		E0C428F027535EBC00E65DFD /* EmptyExtentions */ = {isa = PBXFileReference; lastKnownFileType = text; path = EmptyExtentions; sourceTree = "<group>"; };
 		E0C428F22753607F00E65DFD /* FunctionalTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = FunctionalTests.xctestplan; sourceTree = "<group>"; };
 		E0C428F32753636400E65DFD /* activity_diagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = activity_diagram.png; sourceTree = "<group>"; };
@@ -272,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				E0C428DE27535DDD00E65DFD /* Main */,
+				E09284D3275FD9E20090E267 /* Settings.bundle */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -327,7 +332,7 @@
 		E0C428E927535E7E00E65DFD /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				E0C428EA27535E8F00E65DFD /* EmptyEntities */,
+				E09284D9275FE64A0090E267 /* Settings.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -336,6 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				E0AAF5E92757C49500093229 /* OpenWeatherClient.swift */,
+				E09284DD275FFC2B0090E267 /* UserPreferences.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -440,11 +446,11 @@
 			files = (
 				E0C428E327535E2A00E65DFD /* EmptyLocalization in Resources */,
 				E0C428D127535BDD00E65DFD /* LaunchScreen.storyboard in Resources */,
-				E0C428EB27535E8F00E65DFD /* EmptyEntities in Resources */,
 				E0C428F52753636400E65DFD /* activity_diagram.png in Resources */,
 				E0C428CE27535BDD00E65DFD /* Assets.xcassets in Resources */,
 				E0C428F127535EBC00E65DFD /* EmptyExtentions in Resources */,
 				E0C428F62753636400E65DFD /* navigation_prototype.png in Resources */,
+				E09284D4275FD9E20090E267 /* Settings.bundle in Resources */,
 				E0C428FE275363B200E65DFD /* Requirements.txt in Resources */,
 				E0C428F92753638900E65DFD /* Localization_ru.plist in Resources */,
 				E0C428CC27535BD800E65DFD /* MainViewController.storyboard in Resources */,
@@ -523,8 +529,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E09284D0275E7B3E0090E267 /* WeatherLayoutView.swift in Sources */,
+				E09284DE275FFC2B0090E267 /* UserPreferences.swift in Sources */,
 				E0AAF5EA2757C49500093229 /* OpenWeatherClient.swift in Sources */,
 				E09284C7275DE4450090E267 /* WeatherViewController.swift in Sources */,
+				E09284DA275FE64A0090E267 /* Settings.swift in Sources */,
 				E0C428C927535BD800E65DFD /* MainViewController.swift in Sources */,
 				E0C428C527535BD800E65DFD /* main.swift in Sources */,
 			);
