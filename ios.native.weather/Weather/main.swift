@@ -24,8 +24,15 @@ extension AppDelegate: UIApplicationDelegate
     {
         #if DEBUG
         print(">> Launching with real app delegate")
-        print(#function)
+        print(">> " + #function)
         #endif
+        
+        UserPreferences.registerSettingsBundle(with: Settings.bundleParams)
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        
+        self.window!.rootViewController = WeatherViewController()
+        self.window!.makeKeyAndVisible()
         
         return true
     }

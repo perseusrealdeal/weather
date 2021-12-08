@@ -18,9 +18,11 @@
   },
   "testTargets" : [
     {
-      "parallelizable" : true,
-      "selectedTests" : [
-        "LocalizationTests\/test_zero()"
+      "skippedTests" : [
+        "FunctionalTests",
+        "OpenWeatherCommunicationTests",
+        "PerformanceTests",
+        "SnapshotTests"
       ],
       "target" : {
         "containerPath" : "container:Weather.xcodeproj",

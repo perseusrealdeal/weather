@@ -6,8 +6,9 @@
 //
 
 import XCTest
-
+/* template
 class FunctionalTests: XCTestCase
 {
     func test_zero() { XCTFail("Tests not yet implemented in \(type(of: self)).") }
 }
+*/

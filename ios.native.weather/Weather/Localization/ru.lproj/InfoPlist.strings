@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Weather
+
+  Created by Mikhail Zhigulin on 09.12.2021.
+  
+*/
+
+"CFBundleDisplayName" = "Погода";
+"CFBundleName" = "Погода";
