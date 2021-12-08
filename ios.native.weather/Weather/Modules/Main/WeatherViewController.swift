@@ -21,8 +21,12 @@ class WeatherViewController: UIViewController
         super.init(nibName: nil, bundle: nil)
         self.view = WeatherLayoutView.xibInstance()
         
-        // Make default setup
+        // Do default setup
         
+        #if DEBUG
+        print(">> " + "greetings".localized_value)
+        print(#function)
+        #endif
     }
     
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -32,6 +36,7 @@ class WeatherViewController: UIViewController
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
     }
     
 }

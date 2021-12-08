@@ -22,7 +22,7 @@ class WeatherLayoutView: UIView
                          bundle : nil).instantiate(withOwner: self,
                                                     options : nil)[0] as! WeatherLayoutView
         
-        /// Make default setup; don't set any parameter causing loadView up, breaks unit tests
+        /// Do default setup; don't set any parameter causing loadView up, breaks unit tests
         
         return view
     }
