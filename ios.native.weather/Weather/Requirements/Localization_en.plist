@@ -58,6 +58,14 @@
 	<string>24-hour</string>
 	<key>12-hour</key>
 	<string>12-hour</string>
+	<key>specials</key>
+	<string>Special Options</string>
+	<key>focus on</key>
+	<string>Life Style Focus</string>
+	<key>day</key>
+	<string>Day</string>
+	<key>night</key>
+	<string>Night</string>
 	<key>optionsButtonInMainScreen</key>
 	<string>Options</string>
 	<key>locationsListButtonInMainScreen</key>

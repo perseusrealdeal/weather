@@ -58,6 +58,14 @@
 	<string>24 часа</string>
 	<key>12-hour</key>
 	<string>12 часов</string>
+	<key>specials</key>
+	<string>Особые опции</string>
+	<key>focus on</key>
+	<string>фокус Жизни</string>
+	<key>day</key>
+	<string>день</string>
+	<key>night</key>
+	<string>ночь</string>
 	<key>optionsButtonInMainScreen</key>
 	<string>Опции</string>
 	<key>locationsListButtonInMainScreen</key>

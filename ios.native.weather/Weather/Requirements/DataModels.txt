@@ -97,6 +97,7 @@ VI  : Data Models and Rules
  DM12. Other Options
  
  > Dark Mode               : [~auto, on, off]
+ > Focus On                : [day, ~night]
  
  * where available
  ~ default value

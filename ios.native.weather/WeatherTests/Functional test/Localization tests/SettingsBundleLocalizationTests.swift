@@ -292,6 +292,55 @@ class SettingsBundleLocalizationTests: XCTestCase
         "\"default time format\" is not correct with the actual value.")
     }
     
+    func test_focus_on_default_value_should_be_localized()
+    {
+        UserPreferences.registerSettingsBundle(with: Settings.bundleParams)
+        
+        let actual = defaults.value(forKey: "focus_on_preference") as! String
+        let requirement = "night".localizedFromRequirements
+        
+        XCTAssertEqual(requirement, actual.localizedFromSettings,
+        "\"default focus on\" is not correct with the actual value.")
+    }
+    
+    // MARK: - Specials, Focus on option
+    
+    func test_specials_group_title_should_be_localized()
+    {
+        let expected = "specials".localizedFromSettings
+        let requirement = "specials".localizedFromRequirements
+        
+        XCTAssertEqual(requirement, expected,
+        "\"specials\" group title is not correct with the expected value.")
+    }
+    
+    func test_focus_on_should_be_localized()
+    {
+        let expected = "focus on".localizedFromSettings
+        let requirement = "focus on".localizedFromRequirements
+        
+        XCTAssertEqual(requirement, expected,
+        "\"focus on\" is not correct with the expected value.")
+    }
+    
+    func test_focus_on_day_should_be_localized()
+    {
+        let expected = "day".localizedFromSettings
+        let requirement = "day".localizedFromRequirements
+        
+        XCTAssertEqual(requirement, expected,
+        "\"day\" is not correct with the expected value.")
+    }
+    
+    func test_focus_on_night_should_be_localized()
+    {
+        let expected = "night".localizedFromSettings
+        let requirement = "night".localizedFromRequirements
+        
+        XCTAssertEqual(requirement, expected,
+        "\"night\" is not correct with the expected value.")
+    }
+    
     // MARK: - Version and Build Titles
     
     func test_release_app_number_group_title_should_be_localized()
