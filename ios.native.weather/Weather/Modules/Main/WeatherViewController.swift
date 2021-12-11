@@ -25,7 +25,6 @@ class WeatherViewController: UIViewController
         
         #if DEBUG
         print(">> " + "greetings".localized_value)
-        print(#function)
         #endif
     }
     

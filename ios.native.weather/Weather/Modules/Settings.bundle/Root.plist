@@ -8,53 +8,153 @@
 	<array>
 		<dict>
 			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>temperature</string>
+			<key>Key</key>
+			<string>temperature_preference</string>
+			<key>DefaultValue</key>
+			<string>celsius</string>
+			<key>Values</key>
+			<array>
+				<string>celsius</string>
+				<string>fahrenheit</string>
+			</array>
+			<key>Titles</key>
+			<array>
+				<string>metric</string>
+				<string>imperial</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>wind speed</string>
+			<key>Key</key>
+			<string>wind_speed_preference</string>
+			<key>DefaultValue</key>
+			<string>m/s</string>
+			<key>Values</key>
+			<array>
+				<string>m/s</string>
+				<string>km/h</string>
+				<string>mph</string>
+			</array>
+			<key>Titles</key>
+			<array>
+				<string>m/s</string>
+				<string>km/h</string>
+				<string>mph</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>pressure</string>
+			<key>Key</key>
+			<string>pressure_preference</string>
+			<key>DefaultValue</key>
+			<string>mmHg</string>
+			<key>Values</key>
+			<array>
+				<string>hPa</string>
+				<string>mmHg</string>
+				<string>inHg</string>
+			</array>
+			<key>Titles</key>
+			<array>
+				<string>hPa</string>
+				<string>mmHg</string>
+				<string>inHg</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>precipitation</string>
+			<key>Key</key>
+			<string>precipitation_preference</string>
+			<key>DefaultValue</key>
+			<string>mm</string>
+			<key>Values</key>
+			<array>
+				<string>mm</string>
+				<string>in</string>
+			</array>
+			<key>Titles</key>
+			<array>
+				<string>mm</string>
+				<string>in</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>distance</string>
+			<key>Key</key>
+			<string>distance_preference</string>
+			<key>DefaultValue</key>
+			<string>km</string>
+			<key>Values</key>
+			<array>
+				<string>km</string>
+				<string>mi</string>
+			</array>
+			<key>Titles</key>
+			<array>
+				<string>km</string>
+				<string>mi</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>time format</string>
+			<key>Key</key>
+			<string>time_format_preference</string>
+			<key>DefaultValue</key>
+			<string>24-hour</string>
+			<key>Values</key>
+			<array>
+				<string>24-hour</string>
+				<string>12-hour</string>
+			</array>
+			<key>Titles</key>
+			<array>
+				<string>24-hour</string>
+				<string>12-hour</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
-			<string>Group</string>
+			<string>release app number</string>
 		</dict>
 		<dict>
 			<key>Type</key>
-			<string>PSTextFieldSpecifier</string>
+			<string>PSTitleValueSpecifier</string>
 			<key>Title</key>
-			<string>Name</string>
+			<string>version</string>
 			<key>Key</key>
-			<string>name_preference</string>
+			<string>version_preference</string>
 			<key>DefaultValue</key>
-			<string></string>
-			<key>IsSecure</key>
-			<false/>
-			<key>KeyboardType</key>
-			<string>Alphabet</string>
-			<key>AutocapitalizationType</key>
-			<string>None</string>
-			<key>AutocorrectionType</key>
-			<string>No</string>
+			<string>~</string>
 		</dict>
 		<dict>
 			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
+			<string>PSTitleValueSpecifier</string>
 			<key>Title</key>
-			<string>Enabled</string>
+			<string>build</string>
 			<key>Key</key>
-			<string>enabled_preference</string>
+			<string>build_preference</string>
 			<key>DefaultValue</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSSliderSpecifier</string>
-			<key>Key</key>
-			<string>slider_preference</string>
-			<key>DefaultValue</key>
-			<real>0.5</real>
-			<key>MinimumValue</key>
-			<integer>0</integer>
-			<key>MaximumValue</key>
-			<integer>1</integer>
-			<key>MinimumValueImage</key>
-			<string></string>
-			<key>MaximumValueImage</key>
-			<string></string>
+			<string>~</string>
 		</dict>
 	</array>
 </dict>

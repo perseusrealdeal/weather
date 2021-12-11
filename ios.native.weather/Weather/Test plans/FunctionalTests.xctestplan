@@ -14,9 +14,8 @@
   "testTargets" : [
     {
       "skippedTests" : [
-        "LocalizationTests",
-        "OpenWeatherCommunicationTests\/test_OpenWeather_should_provideNotEmptyData_withHavingNetworkConnection()",
         "PerformanceTests",
+        "SettingsBundleLocalizationTests",
         "SnapshotTests"
       ],
       "target" : {

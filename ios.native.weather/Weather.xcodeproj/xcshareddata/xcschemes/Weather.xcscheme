@@ -32,6 +32,9 @@
             reference = "container:Weather/Test plans/FunctionalTests.xctestplan"
             default = "YES">
          </TestPlanReference>
+         <TestPlanReference
+            reference = "container:Weather/Test plans/LocalizationTests.xctestplan">
+         </TestPlanReference>
       </TestPlans>
       <Testables>
          <TestableReference

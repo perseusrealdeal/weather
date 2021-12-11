@@ -15,11 +15,10 @@
 		E09284D4275FD9E20090E267 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E09284D3275FD9E20090E267 /* Settings.bundle */; };
 		E09284DA275FE64A0090E267 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09284D9275FE64A0090E267 /* Settings.swift */; };
 		E09284DE275FFC2B0090E267 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09284DD275FFC2B0090E267 /* UserPreferences.swift */; };
-		E0AAF5CF2755041600093229 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AAF5CE2755041600093229 /* TestHelpers.swift */; };
+		E0AAF5CF2755041600093229 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AAF5CE2755041600093229 /* TestingAppDelegate.swift */; };
 		E0AAF5DB2755049800093229 /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AAF5DA2755049800093229 /* SnapshotTests.swift */; };
 		E0AAF5DD2755050000093229 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AAF5DC2755050000093229 /* PerformanceTests.swift */; };
-		E0AAF5DF2755051900093229 /* LocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AAF5DE2755051900093229 /* LocalizationTests.swift */; };
-		E0AAF5E12755052C00093229 /* FunctionalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AAF5E02755052C00093229 /* FunctionalTests.swift */; };
+		E0AAF5DF2755051900093229 /* SettingsBundleLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AAF5DE2755051900093229 /* SettingsBundleLocalizationTests.swift */; };
 		E0AAF5EA2757C49500093229 /* OpenWeatherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AAF5E92757C49500093229 /* OpenWeatherClient.swift */; };
 		E0AAF5EC2757C4B000093229 /* OpenWeatherCommunicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AAF5EB2757C4B000093229 /* OpenWeatherCommunicationTests.swift */; };
 		E0AAF5F0275B987500093229 /* currentWeatherData.json in Resources */ = {isa = PBXBuildFile; fileRef = E0AAF5EF275B987500093229 /* currentWeatherData.json */; };
@@ -37,6 +36,9 @@
 		E0C8419F276125B80034E7F2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E0C841A1276125B80034E7F2 /* InfoPlist.strings */; };
 		E0C841A4276128B90034E7F2 /* LocalizationExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C841A3276128B90034E7F2 /* LocalizationExtentions.swift */; };
 		E0C841AD27612A700034E7F2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E0C841AF27612A700034E7F2 /* Localizable.strings */; };
+		E0CCE0862764093500E14D26 /* SettingsBundleFunctionalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CCE0852764093500E14D26 /* SettingsBundleFunctionalTests.swift */; };
+		E0CCE08827640B3A00E14D26 /* SettingsBundleTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CCE08727640B3A00E14D26 /* SettingsBundleTestHelpers.swift */; };
+		E0D9FF5B27632811009F197E /* LocalizationTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D9FF5A27632811009F197E /* LocalizationTestHelpers.swift */; };
 		FBC9093A7DFA40F8C755F680 /* Pods_WeatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BAF201B43CB268F7A7B529A /* Pods_WeatherTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,12 +67,11 @@
 		E09284D9275FE64A0090E267 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		E09284DD275FFC2B0090E267 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		E0AAF5CC2755041600093229 /* WeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E0AAF5CE2755041600093229 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
+		E0AAF5CE2755041600093229 /* TestingAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
 		E0AAF5D02755041600093229 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0AAF5DA2755049800093229 /* SnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
 		E0AAF5DC2755050000093229 /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
-		E0AAF5DE2755051900093229 /* LocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationTests.swift; sourceTree = "<group>"; };
-		E0AAF5E02755052C00093229 /* FunctionalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionalTests.swift; sourceTree = "<group>"; };
+		E0AAF5DE2755051900093229 /* SettingsBundleLocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleLocalizationTests.swift; sourceTree = "<group>"; };
 		E0AAF5E4275505CA00093229 /* LocalizationTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = LocalizationTests.xctestplan; sourceTree = "<group>"; };
 		E0AAF5E52755061600093229 /* PerformanceTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = PerformanceTests.xctestplan; sourceTree = "<group>"; };
 		E0AAF5E62755065800093229 /* SnapshotTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SnapshotTests.xctestplan; sourceTree = "<group>"; };
@@ -96,6 +97,9 @@
 		E0C841A3276128B90034E7F2 /* LocalizationExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationExtentions.swift; sourceTree = "<group>"; };
 		E0C841AE27612A700034E7F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E0C841B027612A750034E7F2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E0CCE0852764093500E14D26 /* SettingsBundleFunctionalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleFunctionalTests.swift; sourceTree = "<group>"; };
+		E0CCE08727640B3A00E14D26 /* SettingsBundleTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleTestHelpers.swift; sourceTree = "<group>"; };
+		E0D9FF5A27632811009F197E /* LocalizationTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationTestHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,7 +157,7 @@
 				E0AAF5D62755042200093229 /* Functional test */,
 				E0AAF5D72755042E00093229 /* Performance tests */,
 				E0AAF5D82755043700093229 /* Snapshot tests */,
-				E0AAF5CE2755041600093229 /* TestHelpers.swift */,
+				E0AAF5CE2755041600093229 /* TestingAppDelegate.swift */,
 				E0AAF5D02755041600093229 /* Info.plist */,
 			);
 			path = WeatherTests;
@@ -162,7 +166,7 @@
 		E0AAF5D62755042200093229 /* Functional test */ = {
 			isa = PBXGroup;
 			children = (
-				E0AAF5E02755052C00093229 /* FunctionalTests.swift */,
+				E0CCE084276408E700E14D26 /* Settings bundle functional tests */,
 				E0AAF5ED275B976C00093229 /* Network communication tests */,
 				E0AAF5D92755044300093229 /* Localization tests */,
 			);
@@ -188,7 +192,8 @@
 		E0AAF5D92755044300093229 /* Localization tests */ = {
 			isa = PBXGroup;
 			children = (
-				E0AAF5DE2755051900093229 /* LocalizationTests.swift */,
+				E0AAF5DE2755051900093229 /* SettingsBundleLocalizationTests.swift */,
+				E0D9FF5A27632811009F197E /* LocalizationTestHelpers.swift */,
 			);
 			path = "Localization tests";
 			sourceTree = "<group>";
@@ -359,6 +364,15 @@
 			path = Extentions;
 			sourceTree = "<group>";
 		};
+		E0CCE084276408E700E14D26 /* Settings bundle functional tests */ = {
+			isa = PBXGroup;
+			children = (
+				E0CCE0852764093500E14D26 /* SettingsBundleFunctionalTests.swift */,
+				E0CCE08727640B3A00E14D26 /* SettingsBundleTestHelpers.swift */,
+			);
+			path = "Settings bundle functional tests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -521,12 +535,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0AAF5E12755052C00093229 /* FunctionalTests.swift in Sources */,
-				E0AAF5CF2755041600093229 /* TestHelpers.swift in Sources */,
+				E0CCE08827640B3A00E14D26 /* SettingsBundleTestHelpers.swift in Sources */,
+				E0AAF5CF2755041600093229 /* TestingAppDelegate.swift in Sources */,
 				E0AAF5DB2755049800093229 /* SnapshotTests.swift in Sources */,
 				E0AAF5EC2757C4B000093229 /* OpenWeatherCommunicationTests.swift in Sources */,
-				E0AAF5DF2755051900093229 /* LocalizationTests.swift in Sources */,
+				E0D9FF5B27632811009F197E /* LocalizationTestHelpers.swift in Sources */,
+				E0AAF5DF2755051900093229 /* SettingsBundleLocalizationTests.swift in Sources */,
 				E0AAF5DD2755050000093229 /* PerformanceTests.swift in Sources */,
+				E0CCE0862764093500E14D26 /* SettingsBundleFunctionalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

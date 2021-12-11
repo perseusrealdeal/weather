@@ -11,6 +11,18 @@
         },
         "region" : "GB"
       }
+    },
+    {
+      "id" : "2DA6B9AA-9AF8-46DD-B4EB-652934347E2C",
+      "name" : "Russian Language",
+      "options" : {
+        "language" : "ru",
+        "locationScenario" : {
+          "identifier" : "Moscow, Russia",
+          "referenceType" : "built-in"
+        },
+        "region" : "RU"
+      }
     }
   ],
   "defaultOptions" : {
@@ -22,6 +34,7 @@
         "FunctionalTests",
         "OpenWeatherCommunicationTests",
         "PerformanceTests",
+        "SettingsBundleFunctionalTests",
         "SnapshotTests"
       ],
       "target" : {

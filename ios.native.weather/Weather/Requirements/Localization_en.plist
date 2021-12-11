@@ -21,9 +21,43 @@
 	<key>fahrenheit</key>
 	<string>Fahrenheit</string>
 	<key>metric</key>
-	<string>Metric</string>
+	<string>(°C) Metric</string>
 	<key>imperial</key>
-	<string>Imperial</string>
+	<string>(°F) Imperial</string>
+	<key>wind speed</key>
+	<string>Wind Speed</string>
+	<key>m/s</key>
+	<string>m/s</string>
+	<key>km/h</key>
+	<string>km/h</string>
+	<key>mph</key>
+	<string>mph</string>
+	<key>pressure</key>
+	<string>Pressure</string>
+	<key>hPa</key>
+	<string>hPa</string>
+	<key>mmHg</key>
+	<string>mmHg</string>
+	<key>inHg</key>
+	<string>inHg</string>
+	<key>precipitation</key>
+	<string>Precipitation</string>
+	<key>mm</key>
+	<string>mm</string>
+	<key>in</key>
+	<string>in</string>
+	<key>distance</key>
+	<string>Distance</string>
+	<key>km</key>
+	<string>km</string>
+	<key>mi</key>
+	<string>mi</string>
+	<key>time format</key>
+	<string>Time Format</string>
+	<key>24-hour</key>
+	<string>24-hour</string>
+	<key>12-hour</key>
+	<string>12-hour</string>
 	<key>optionsButtonInMainScreen</key>
 	<string>Options</string>
 	<key>locationsListButtonInMainScreen</key>

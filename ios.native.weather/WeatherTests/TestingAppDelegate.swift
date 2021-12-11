@@ -1,5 +1,5 @@
 //
-//  TestHelpers.swift
+//  TestingAppDelegate.swift
 //  WeatherTests
 //
 //  Created by Mikhail Zhigulin on 29.11.2021.
@@ -12,7 +12,8 @@ import XCTest
 @objc(TestingAppDelegate)
 class TestingAppDelegate: UIResponder, UIApplicationDelegate
 {
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions
+                        launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
     {
         print("<< Launching with testing app delegate")
         

@@ -21,9 +21,43 @@
 	<key>fahrenheit</key>
 	<string>по форенгейту</string>
 	<key>metric</key>
-	<string>метрическая</string>
+	<string>(°C) метрическая</string>
 	<key>imperial</key>
-	<string>имперская</string>
+	<string>(°F) имперская</string>
+	<key>wind speed</key>
+	<string>ветер</string>
+	<key>m/s</key>
+	<string>м/с</string>
+	<key>km/h</key>
+	<string>км/ч</string>
+	<key>mph</key>
+	<string>мили/ч</string>
+	<key>pressure</key>
+	<string>давление</string>
+	<key>hPa</key>
+	<string>гПа</string>
+	<key>mmHg</key>
+	<string>мм рт. ст.</string>
+	<key>inHg</key>
+	<string>д. рт. ст.</string>
+	<key>precipitation</key>
+	<string>осадки</string>
+	<key>mm</key>
+	<string>мм</string>
+	<key>in</key>
+	<string>д.</string>
+	<key>distance</key>
+	<string>видимость</string>
+	<key>km</key>
+	<string>км</string>
+	<key>mi</key>
+	<string>мили</string>
+	<key>time format</key>
+	<string>время</string>
+	<key>24-hour</key>
+	<string>24 часа</string>
+	<key>12-hour</key>
+	<string>12 часов</string>
 	<key>optionsButtonInMainScreen</key>
 	<string>Опции</string>
 	<key>locationsListButtonInMainScreen</key>

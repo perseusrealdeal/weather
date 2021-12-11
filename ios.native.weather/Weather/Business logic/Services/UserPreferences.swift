@@ -45,5 +45,18 @@ class UserPreferences
         }
         
         Settings.userDefaults.register(defaults: defaultsToRegister)
+        
+    }
+    
+    static func setVersionAndBuildNumberUp()
+    {
+        let version = Bundle.main.object(forInfoDictionaryKey:
+                                            "CFBundleShortVersionString") as! String
+        
+        let build = Bundle.main.object(forInfoDictionaryKey:
+                                            "CFBundleVersion") as! String
+        
+        Settings.userDefaults.setValue(version, forKey: "version_preference")
+        Settings.userDefaults.setValue(build, forKey: "build_preference")
     }
 }

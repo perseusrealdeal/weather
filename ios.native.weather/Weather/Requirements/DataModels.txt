@@ -89,7 +89,7 @@ VI  : Data Models and Rules
  
  > Temperature             : [~C, F]
  > Wind Speed              : [m/s, ~km/h, mph]
- > Pressure                : [~hPa, inHg]
+ > Pressure                : [hPa, ~mmHg, inHg]
  > Precipitation           : [~mm, in]
  > Distance                : [~km, mi]
  > Time Format             : [~24-hour, 12-hour]
