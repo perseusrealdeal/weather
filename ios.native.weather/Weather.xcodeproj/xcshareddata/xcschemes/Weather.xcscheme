@@ -29,11 +29,11 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:Weather/Test plans/FunctionalTests.xctestplan"
-            default = "YES">
+            reference = "container:Weather/Test plans/FunctionalTests.xctestplan">
          </TestPlanReference>
          <TestPlanReference
-            reference = "container:Weather/Test plans/LocalizationTests.xctestplan">
+            reference = "container:Weather/Test plans/LocalizationTests.xctestplan"
+            default = "YES">
          </TestPlanReference>
       </TestPlans>
       <Testables>
@@ -69,6 +69,10 @@
             ReferencedContainer = "container:Weather.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <LocationScenarioReference
+         identifier = "London, England"
+         referenceType = "1">
+      </LocationScenarioReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

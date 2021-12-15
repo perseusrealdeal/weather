@@ -8,3 +8,5 @@
 
 "CFBundleDisplayName" = "Weather";
 "CFBundleName" = "Weather";
+
+"NSLocationWhenInUseUsageDescription" = "We use your location to display local weather forecast";

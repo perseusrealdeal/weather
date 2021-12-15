@@ -8,3 +8,5 @@
 
 "CFBundleDisplayName" = "Погода";
 "CFBundleName" = "Погода";
+
+"NSLocationWhenInUseUsageDescription" = "Данные о Вашем местоположении испольщуются для отображения местного прогноза погоды";

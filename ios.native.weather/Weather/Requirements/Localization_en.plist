@@ -6,6 +6,8 @@
 	<string>Weather</string>
 	<key>CFBundleName</key>
 	<string>Weather</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We use your location to display local weather forecast</string>
 	<key>OpenWeather API key</key>
 	<string>OpenWeather API key</string>
 	<key>release app number</key>

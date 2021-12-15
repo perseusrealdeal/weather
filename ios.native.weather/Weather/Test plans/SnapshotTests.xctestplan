@@ -13,6 +13,7 @@
   },
   "testTargets" : [
     {
+      "enabled" : false,
       "skippedTests" : [
         "FunctionalTests",
         "LocalizationTests",

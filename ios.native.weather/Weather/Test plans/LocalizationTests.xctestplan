@@ -1,7 +1,7 @@
 {
   "configurations" : [
     {
-      "id" : "45B13A35-3C9E-4BBA-87DE-F44BC3E17E5D",
+      "id" : "AE7A133C-AFD3-4FCD-B44C-08D7C42E948E",
       "name" : "English Language",
       "options" : {
         "language" : "en",
@@ -13,7 +13,7 @@
       }
     },
     {
-      "id" : "2DA6B9AA-9AF8-46DD-B4EB-652934347E2C",
+      "id" : "01485C66-34D5-4FC2-81B9-CAD76D157863",
       "name" : "Russian Language",
       "options" : {
         "language" : "ru",
@@ -31,7 +31,8 @@
   "testTargets" : [
     {
       "skippedTests" : [
-        "FunctionalTests",
+        "CommonFunctionalTests",
+        "GeoLocationReceiverTests",
         "OpenWeatherCommunicationTests",
         "PerformanceTests",
         "SettingsBundleFunctionalTests",

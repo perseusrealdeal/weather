@@ -1,8 +1,8 @@
 {
   "configurations" : [
     {
-      "id" : "C994602F-7B15-4594-B3DF-5659C11EFF9D",
-      "name" : "System Configuration",
+      "id" : "8C084408-3CA0-4E8B-B5FB-E8EDAD24CC86",
+      "name" : "Configuration 1",
       "options" : {
 
       }
@@ -14,7 +14,7 @@
   "testTargets" : [
     {
       "skippedTests" : [
-        "OpenWeatherCommunicationTests\/test_OpenWeather_should_provideNotEmptyData_withHavingNetworkConnection()",
+        "CommonLocalizationTests",
         "PerformanceTests",
         "SettingsBundleLocalizationTests",
         "SnapshotTests"
