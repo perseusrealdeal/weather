@@ -39,7 +39,7 @@ class GeoLocationReceiver: NSObject
     
     // MARK: - Singletone access and constructor
     
-    static var shared: GeoLocationReceiver =
+    static let shared: GeoLocationReceiver =
     {
         let instance = GeoLocationReceiver()
         
