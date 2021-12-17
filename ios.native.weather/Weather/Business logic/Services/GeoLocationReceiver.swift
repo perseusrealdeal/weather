@@ -7,7 +7,7 @@
 
 import CoreLocation
 
-// MARK: - Subscribe to be notified as location data received
+// MARK: - Subscribe to be notified about location data as soon as received
 
 extension Notification.Name
 {
@@ -22,6 +22,23 @@ enum LocationReceivedError : Error
     case failedRequest(String)
 }
 
+extension LocationReceivedError: Equatable {}
+
+func ==(lhs: LocationReceivedError, rhs: LocationReceivedError) -> Bool
+{
+    switch (lhs, rhs)
+    {
+    case (.receivedEmptyLocationData, .receivedEmptyLocationData):
+        return true
+        
+    case (let .failedRequest(str1), let .failedRequest(str2)):
+        return str1 == str2
+        
+    default:
+        return false
+    }
+}
+
 // MARK: - Success scenario details
 
 struct LocationReceived
@@ -30,12 +47,40 @@ struct LocationReceived
     let longitude: Double
 }
 
+extension LocationReceived: Equatable {}
+
+func == (lhs: LocationReceived, rhs: LocationReceived) -> Bool
+{
+    lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
+}
+
+// MARK: - Helper abstracts used to make code testable
+
+protocol LocationManagerProtocol
+{
+    var delegate       : CLLocationManagerDelegate? { get set }
+    var desiredAccuracy: CLLocationAccuracy { get set }
+    
+    func requestWhenInUseAuthorization()
+    func requestLocation()
+    func stopUpdatingLocation()
+    
+    static func authorizationStatus() -> CLAuthorizationStatus
+}
+
+extension CLLocationManager : LocationManagerProtocol { }
+
 // MARK: - GeoLocationReceiver used via Singletone
 
 class GeoLocationReceiver: NSObject
 {
     private let APPROPRIATE_ACCURACY = kCLLocationAccuracyThreeKilometers
-    private let locationManager = CLLocationManager()
+    
+    #if DEBUG // locationManager is a difficutlt dependency so that it should be isolated
+    var locationManager        : LocationManagerProtocol // Isolated for unit testing
+    #else
+    private var locationManager: CLLocationManager
+    #endif
     
     // MARK: - Singletone access and constructor
     
@@ -50,6 +95,8 @@ class GeoLocationReceiver: NSObject
     
     private override init()
     {
+        self.locationManager = CLLocationManager()
+        
         super.init()
         
         // Do setup.
@@ -67,7 +114,7 @@ class GeoLocationReceiver: NSObject
     
     func requestLocationUpdateOnce(_ actionIfDenied: (()-> Void)? = nil)
     {
-        let status = CLLocationManager.authorizationStatus()
+        let status = type(of: locationManager).authorizationStatus()
         
         if status == .denied, let takeActionIfDenied = actionIfDenied
         {
@@ -79,14 +126,13 @@ class GeoLocationReceiver: NSObject
     }
 }
 
-// MARK: - CLLocationManagerDelegate methods implementation
+// MARK: - CLLocationManagerDelegate methods
 
 extension GeoLocationReceiver : CLLocationManagerDelegate
 {
-    /// Notify received location data
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
-        guard let value: CLLocationCoordinate2D = manager.location?.coordinate
+        guard let value = locations.first?.coordinate
         else
         {
             let result: Result<LocationReceived, LocationReceivedError> =
@@ -104,7 +150,6 @@ extension GeoLocationReceiver : CLLocationManagerDelegate
         locationManager.stopUpdatingLocation()
     }
     
-    /// Notify reported receiving location data error
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
     {
         let result: Result<LocationReceived, LocationReceivedError> =
@@ -113,13 +158,12 @@ extension GeoLocationReceiver : CLLocationManagerDelegate
         NotificationCenter.default.post(name: .locationReceivedNotification, object: result)
     }
     
-    /// Request location update if status either changed to authorizedWhenInUse or authorizedAlways
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization
                             status: CLAuthorizationStatus)
     {
         if(status == .authorizedWhenInUse || status == .authorizedAlways)
         {
-            manager.requestLocation()
+            locationManager.requestLocation()
         }
     }
 }
