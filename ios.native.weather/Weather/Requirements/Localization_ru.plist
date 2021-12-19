@@ -7,7 +7,7 @@
 	<key>CFBundleName</key>
 	<string>Погода</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Данные о Вашем местоположении испольщуются для отображения местного прогноза погоды</string>
+	<string>Данные о Вашем местоположении используются для отображения местного прогноза погоды</string>
 	<key>OpenWeather API key</key>
 	<string>Ключ взаимодействия с OpenWeather</string>
 	<key>release app number</key>

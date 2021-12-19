@@ -32,6 +32,11 @@ class GeoLocationReceiverTests: XCTestCase
     /// Test method: requestLocationDataAccess()
     func test_requestWhenInUseAuthorization_should_be_called_once()
     {
+        // arrange
+        
+        MockLocationManager.status = .notDetermined
+        MockLocationManager.isLocationServiceEnabled = true
+        
         // act
         
         sut.requestLocationDataAccess()
@@ -41,34 +46,135 @@ class GeoLocationReceiverTests: XCTestCase
         mock.verify_requestWhenInUseAuthorization_CalledOnce()
     }
     
-    /// Test method: requestLocationUpdateOnce(_ actionIfDenied:)
-    func test_requestLocation_with_status_notDenied_should_be_called()
+    /// Test method: requestLocationUpdateOnce(_ actionIfNotAllowed:)
+    func test_requestLocation_withNoCallbackAndStatusNotDeniedOrNotRestricted_shouldBeCalled()
     {
-        // act
+        // arrange
         
         MockLocationManager.status = .authorizedWhenInUse
+        MockLocationManager.isLocationServiceEnabled = true
+        
+        // act
+        
         sut.requestLocationUpdateOnce()
         
         // assert
         
+        /// requestLocation() should be invoked
         mock.verify_requestLocation_CalledOnce()
     }
     
-    /// Test method: requestLocationUpdateOnce(_ actionIfDenied:)
-    func test_requestLocation_with_callback_and_status_denied_should_not_be_called()
+    /// Test method: requestLocationUpdateOnce(_ actionIfNotAllowed:)
+    func test_requestLocation_withCallbackAndStatusNotDeniedOrNotRestricted_shouldBeCalled()
     {
         // arrange
         
-        let callback = { print("bla bla bla") }
+        var isCallbackInvoked = false
+        
+        MockLocationManager.status = .authorizedWhenInUse
+        MockLocationManager.isLocationServiceEnabled = true
         
         // act
         
-        MockLocationManager.status = .denied
-        sut.requestLocationUpdateOnce(callback)
+        sut.requestLocationUpdateOnce() { _ in isCallbackInvoked = true }
         
         // assert
         
+        /// requestLocation() should be invoked but callback not
+        mock.verify_requestLocation_CalledOnce()
+        XCTAssertFalse(isCallbackInvoked, "Callback shouldn't be invoked.")
+    }
+    
+    /// Test method: requestLocationUpdateOnce(_ actionIfNotAllowed:)
+    func test_requestLocation_withStatusDeniedAndLocationServiceEnabled_shouldCallbackCalled()
+    {
+        // arrange
+        
+        var callback : LocationServiceNotAllowed?
+        
+        MockLocationManager.status = .denied
+        MockLocationManager.isLocationServiceEnabled = true
+        
+        // act
+        
+        sut.requestLocationUpdateOnce() { explanation in callback = explanation }
+        
+        // assert
+        
+        /// requestLocation() shouldn't be invoked but callback is
         mock.verify_requestLocation_not_called()
+        
+        XCTAssertNotNil(callback, "Callback should be invoked.")
+        XCTAssertEqual(callback, .deniedForTheApp)
+    }
+    
+    /// Test method: requestLocationUpdateOnce(_ actionIfNotAllowed:)
+    func test_requestLocation_withStatusDeniedAndLocationServiceNotEnabled_shouldCallbackCalled()
+    {
+        // arrange
+        
+        var callback : LocationServiceNotAllowed?
+        
+        MockLocationManager.status = .denied
+        MockLocationManager.isLocationServiceEnabled = false
+        
+        // act
+        
+        sut.requestLocationUpdateOnce() { explanation in callback = explanation }
+        
+        // assert
+        
+        /// requestLocation() shouldn't be invoked but callback is
+        mock.verify_requestLocation_not_called()
+        
+        XCTAssertNotNil(callback, "Callback should be invoked.")
+        XCTAssertEqual(callback, .deniedForAll)
+    }
+    
+    /// Test method: requestLocationUpdateOnce(_ actionIfNotAllowed:)
+    func test_requestLocation_withStatusRestrictedAndLocationServiceEnabled_shouldCallbackCalled()
+    {
+        // arrange
+        
+        var callback : LocationServiceNotAllowed?
+        
+        MockLocationManager.status = .restricted
+        MockLocationManager.isLocationServiceEnabled = true
+        
+        // act
+        
+        sut.requestLocationUpdateOnce() { explanation in callback = explanation }
+        
+        // assert
+        
+        /// requestLocation() shouldn't be invoked but callback is
+        mock.verify_requestLocation_not_called()
+        
+        XCTAssertNotNil(callback, "Callback should be invoked.")
+        XCTAssertEqual(callback, .restricted)
+    }
+    
+    /// Test method: requestLocationUpdateOnce(_ actionIfNotAllowed:)
+    func test_requestLocation_withStatusRestrictedAndLocationServiceNotEnabled_shouldCallbackCalled()
+    {
+        // arrange
+        
+        var callback : LocationServiceNotAllowed?
+        
+        MockLocationManager.status = .restricted
+        MockLocationManager.isLocationServiceEnabled = false
+        
+        // act
+        
+        sut.requestLocationUpdateOnce() { explanation in callback = explanation }
+        
+        // assert
+        
+        /// requestLocation() shouldn't be invoked but callback is
+        mock.verify_requestLocation_not_called()
+        
+        XCTAssertNotNil(callback, "Callback should be invoked.")
+        XCTAssertEqual(callback, .deniedForAllAndRestricted)
     }
     
     // MARK: Testing CLLocationManagerDelegate methods
@@ -187,15 +293,17 @@ class GeoLocationReceiverTests: XCTestCase
 
 fileprivate class MockLocationManager : LocationManagerProtocol
 {
-    var locationDataAccessCallCount   : Int = 0
-    var locationUpdateCallCount       : Int = 0
-    var stopUpdatingLocationCallCount : Int = 0
+    var locationDataAccessCallCount     : Int = 0
+    var locationUpdateCallCount         : Int = 0
+    var stopUpdatingLocationCallCount   : Int = 0
     
     // MARK: - LocationManagerProtocol
     
-    static var status : CLAuthorizationStatus = .notDetermined
+    static var status                   : CLAuthorizationStatus = .notDetermined
+    static var isLocationServiceEnabled : Bool = true
     
     static func authorizationStatus() -> CLAuthorizationStatus { status }
+    static func locationServicesEnabled() -> Bool { isLocationServiceEnabled }
     
     var delegate       : CLLocationManagerDelegate?
     var desiredAccuracy: CLLocationAccuracy = kCLLocationAccuracyThreeKilometers

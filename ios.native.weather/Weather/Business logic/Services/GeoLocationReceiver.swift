@@ -54,6 +54,21 @@ func == (lhs: LocationReceived, rhs: LocationReceived) -> Bool
     lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
 }
 
+// MARK: - Details about why Location service isn't allowed
+
+enum LocationServiceNotAllowed
+{
+    /// provide instructions for changing restrictions options in Settings > General > Restrictions
+    case deniedForAllAndRestricted /// in case if location services turned off
+    case restricted  /// in case if location services turned on
+    
+    /// provide instructions for enabling the Location Services switch in Settings > Privacy
+    case deniedForAll /// in case if location services turned off but not restricted
+    
+    /// provide instructions for enabling services for the app in Settings > The App
+    case deniedForTheApp /// in case if location services turned on but not restricted
+}
+
 // MARK: - Helper abstracts used to make code testable
 
 protocol LocationManagerProtocol
@@ -66,13 +81,14 @@ protocol LocationManagerProtocol
     func stopUpdatingLocation()
     
     static func authorizationStatus() -> CLAuthorizationStatus
+    static func locationServicesEnabled() -> Bool
 }
 
 extension CLLocationManager : LocationManagerProtocol { }
 
 // MARK: - GeoLocationReceiver used via Singletone
 
-class GeoLocationReceiver: NSObject
+class GeoLocationReceiver : NSObject
 {
     private let APPROPRIATE_ACCURACY = kCLLocationAccuracyThreeKilometers
     
@@ -112,17 +128,30 @@ class GeoLocationReceiver: NSObject
         locationManager.requestWhenInUseAuthorization()
     }
     
-    func requestLocationUpdateOnce(_ actionIfDenied: (()-> Void)? = nil)
+    func requestLocationUpdateOnce(_ actionIfNotAllowed:
+                                    ((_ case: LocationServiceNotAllowed) -> Void)? = nil)
     {
         let status = type(of: locationManager).authorizationStatus()
+        let isLocationServiceEnabled = type(of: locationManager).locationServicesEnabled()
         
-        if status == .denied, let takeActionIfDenied = actionIfDenied
+        var locationServiceNotAllowed : LocationServiceNotAllowed?
+        
+        if status == .denied
         {
-            takeActionIfDenied()
-            return
+            locationServiceNotAllowed = isLocationServiceEnabled ?
+                .deniedForTheApp : .deniedForAll
         }
         
-        locationManager.requestLocation()
+        if status == .restricted
+        {
+            locationServiceNotAllowed = isLocationServiceEnabled ?
+                .restricted : .deniedForAllAndRestricted
+        }
+        
+        guard let caseNotAllowed = locationServiceNotAllowed, let takeAction = actionIfNotAllowed
+        else { locationManager.requestLocation(); return }
+        
+        takeAction(caseNotAllowed)
     }
 }
 
