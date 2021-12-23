@@ -167,14 +167,14 @@ extension GeoLocationReceiver : CLLocationManagerDelegate
             let result: Result<LocationReceived, LocationReceivedError> =
                 .failure(.receivedEmptyLocationData)
             
-            NotificationCenter.default.post(name: .locationReceivedNotification, object: result)
+            Settings.notificationCenter.post(name: .locationReceivedNotification, object: result)
             return
         }
         
         let result: Result<LocationReceived, LocationReceivedError> =
             .success(LocationReceived(latitude: value.latitude, longitude: value.longitude))
         
-        NotificationCenter.default.post(name: .locationReceivedNotification, object: result)
+        Settings.notificationCenter.post(name: .locationReceivedNotification, object: result)
         
         locationManager.stopUpdatingLocation()
     }
@@ -184,7 +184,7 @@ extension GeoLocationReceiver : CLLocationManagerDelegate
         let result: Result<LocationReceived, LocationReceivedError> =
             .failure(.failedRequest(error.localizedDescription))
         
-        NotificationCenter.default.post(name: .locationReceivedNotification, object: result)
+        Settings.notificationCenter.post(name: .locationReceivedNotification, object: result)
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization

@@ -16,6 +16,7 @@ class TestingAppDelegate: UIResponder, UIApplicationDelegate
                         launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
     {
         print("<< Launching with testing app delegate")
+        print("<< \(type(of: self)) " + #function)
         
         return true
     }

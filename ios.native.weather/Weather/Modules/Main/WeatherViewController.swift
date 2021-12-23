@@ -9,34 +9,70 @@ import UIKit
 
 class WeatherViewController: UIViewController
 {
-    deinit
-    {
-        #if DEBUG
-        print("\(type(of: self)).deinit")
-        #endif
-    }
+    // MARK: - Business Logic Related Properties
+    
+    
+    
+    // MARK: - View Controller Life Circle Methods
     
     init()
     {
-        super.init(nibName: nil, bundle: nil)
-        self.view = WeatherLayoutView.xibInstance()
-        
-        // Do default setup
-        
         #if DEBUG
-        print(">> " + "greetings".localized_value)
+        print(">> \(type(of: self)) " + #function)
         #endif
+        
+        super.init(nibName: nil, bundle: nil)
     }
     
-    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    override func loadView()
+    {
+        #if DEBUG
+        print(">> \(type(of: self)) " + #function)
+        #endif
+        
+        view = WeatherLayoutView()
+    }
     
     override func viewDidLoad()
     {
+        #if DEBUG
+        print(">> \(type(of: self)) " + #function)
+        #endif
+        
         super.viewDidLoad()
+        
+        #if DEBUG
+        print("greetings".localized_value)
+        #endif
         
         // Do any additional setup after loading the view.
         
-        print(#function)
     }
     
+    override func viewDidLayoutSubviews()
+    {
+        let currentOrientation : NSLayoutConstraint.Axis =
+            UIDevice.current.orientation.isLandscape ? .horizontal : .vertical
+        
+        guard let view = view as? WeatherLayoutView else { return }
+        
+        view.updateLayoutOrientationIfNeeded(for: currentOrientation)
+        
+        print(">> \(type(of: self)) " + #function)
+    }
+    
+    // MARK: - Business Logic Related Methods
+    
+    
+    
+    // MARK: - Other Methods (Not Business Logic Related)
+    
+    deinit
+    {
+        #if DEBUG
+        print(">> \(type(of: self)).deinit")
+        #endif
+    }
+    
+    required init?(coder aDecoder: NSCoder) { fatalError() }
 }
