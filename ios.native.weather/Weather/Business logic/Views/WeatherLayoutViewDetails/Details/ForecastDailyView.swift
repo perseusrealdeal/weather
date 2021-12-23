@@ -1,14 +1,16 @@
 //
-//  WeatherNationalAlertsView.swift
+//  ForecastDailyView.swift
 //  Weather
 //
-//  Created by Mikhail Zhigulin on 22.12.2021.
+//  Created by Mikhail Zhigulin on 23.12.2021.
 //
 
 import UIKit
 
-class WeatherNationalAlertsView: UIView
+class ForecastDailyView: UIView
 {
+    // MARK: - Instance Initialization
+    
     init()
     {
         super.init(frame: CGRect.zero)
@@ -17,7 +19,7 @@ class WeatherNationalAlertsView: UIView
         contentMode = .scaleAspectFill
         clipsToBounds = true
         
-        backgroundColor = .red
+        backgroundColor = .orange
     }
     
     // MARK: - Other Methods (Not Business Logic Related)

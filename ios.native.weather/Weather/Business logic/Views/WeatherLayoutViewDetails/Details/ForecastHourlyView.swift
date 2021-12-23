@@ -1,5 +1,5 @@
 //
-//  CurrentWeatherView.swift
+//  ForecastHourlyView.swift
 //  Weather
 //
 //  Created by Mikhail Zhigulin on 23.12.2021.
@@ -7,8 +7,10 @@
 
 import UIKit
 
-class CurrentWeatherView: UIView
+class ForecastHourlyView: UIView
 {
+    // MARK: - Instance Initialization
+    
     init()
     {
         super.init(frame: CGRect.zero)
@@ -17,7 +19,7 @@ class CurrentWeatherView: UIView
         contentMode = .scaleAspectFill
         clipsToBounds = true
         
-        backgroundColor = .green
+        backgroundColor = .yellow
     }
     
     // MARK: - Other Methods (Not Business Logic Related)

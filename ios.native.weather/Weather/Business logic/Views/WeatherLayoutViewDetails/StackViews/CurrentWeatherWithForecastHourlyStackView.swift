@@ -9,6 +9,8 @@ import UIKit
 
 class CurrentWeatherWithForecastHourlyStackView: UIStackView
 {
+    // MARK: - View Layout Related Properties
+    
     private var constraintVerticalAxis1   : NSLayoutConstraint!
     private var constraintVerticalAxis2   : NSLayoutConstraint!
     
@@ -16,6 +18,8 @@ class CurrentWeatherWithForecastHourlyStackView: UIStackView
     private var constraintHorizontalAxis2 : NSLayoutConstraint!
     
     private var configuredForOrientation  : NSLayoutConstraint.Axis!
+    
+    // MARK: - Business Matter Data View Containers
     
     private let forecastHourlyView : ForecastHourlyView =
     {
@@ -30,6 +34,8 @@ class CurrentWeatherWithForecastHourlyStackView: UIStackView
         
         return view
     }()
+    
+    // MARK: - Instance Initialization
     
     init()
     {
@@ -96,6 +102,8 @@ class CurrentWeatherWithForecastHourlyStackView: UIStackView
             NSLayoutConstraint.deactivate([constraintHorizontalAxis1, constraintHorizontalAxis2])
         }
     }
+    
+    // MARK: - Business Logic Related Methods
     
     public func updateLayoutOrientationIfNeeded(for currentOrientation: NSLayoutConstraint.Axis)
     {
