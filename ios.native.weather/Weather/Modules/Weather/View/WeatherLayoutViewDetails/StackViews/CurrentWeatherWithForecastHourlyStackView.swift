@@ -21,24 +21,17 @@ class CurrentWeatherWithForecastHourlyStackView: UIStackView
     
     // MARK: - Business Matter Data View Containers
     
-    private let forecastHourlyView : ForecastHourlyView =
-    {
-        let view = ForecastHourlyView()
-        
-        return view
-    }()
-    
-    private let currentWeatherView : CurrentWeatherView =
-    {
-        let view = CurrentWeatherView()
-        
-        return view
-    }()
+    private let forecastHourlyView        : ForecastHourlyView
+    private let currentWeatherView        : CurrentWeatherView
     
     // MARK: - Instance Initialization
     
-    init()
+    init(hourly : ForecastHourlyView,
+         current: CurrentWeatherView)
     {
+        forecastHourlyView = hourly
+        currentWeatherView = current
+        
         super.init(frame: CGRect.zero)
         
         translatesAutoresizingMaskIntoConstraints = false

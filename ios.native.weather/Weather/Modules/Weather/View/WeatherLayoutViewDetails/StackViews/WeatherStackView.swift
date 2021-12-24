@@ -18,27 +18,24 @@ class WeatherStackView: UIStackView
     private var constraintHorizontalOrientation2 : NSLayoutConstraint!
     
     private var configuredForOrientation         : NSLayoutConstraint.Axis!
+    private let stackView                        : CurrentWeatherWithForecastDailyStackView
     
     // MARK: - Business Matter Data View Containers
     
-    private let weatherNationalAlertsView : WeatherNationalAlertsView =
-    {
-        let view = WeatherNationalAlertsView()
-        
-        return view
-    }()
-    
-    private let stackView : CurrentWeatherWithForecastDailyStackView =
-    {
-        let view = CurrentWeatherWithForecastDailyStackView()
-        
-        return view
-    }()
+    private let weatherNationalAlertsView        : WeatherNationalAlertsView
     
     // MARK: - Instance Initialization
     
-    init(with layoutNumber: WeatherLayoutVariation = .allDetails)
+    init(alerts : WeatherNationalAlertsView,
+         hourly : ForecastHourlyView,
+         daily  : ForecastDailyView,
+         current: CurrentWeatherView)
     {
+        weatherNationalAlertsView = alerts
+        stackView = CurrentWeatherWithForecastDailyStackView(hourly : hourly,
+                                                             daily  : daily,
+                                                             current: current)
+        
         super.init(frame: CGRect.zero)
         
         translatesAutoresizingMaskIntoConstraints = false

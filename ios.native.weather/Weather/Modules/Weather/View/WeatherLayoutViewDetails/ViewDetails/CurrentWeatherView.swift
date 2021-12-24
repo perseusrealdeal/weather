@@ -1,14 +1,24 @@
 //
-//  WeatherNationalAlertsView.swift
+//  CurrentWeatherView.swift
 //  Weather
 //
-//  Created by Mikhail Zhigulin on 22.12.2021.
+//  Created by Mikhail Zhigulin on 23.12.2021.
 //
 
 import UIKit
 
-class WeatherNationalAlertsView: UIView
+class CurrentWeatherView: UIView
 {
+    // MARK: - Business Matter Data to View
+    
+    var data : CurrentWeather?
+    {
+        didSet
+        {
+            reloadData()
+        }
+    }
+    
     // MARK: - Instance Initialization
     
     init()
@@ -19,7 +29,14 @@ class WeatherNationalAlertsView: UIView
         contentMode = .scaleAspectFill
         clipsToBounds = true
         
-        backgroundColor = .red
+        backgroundColor = .green
+    }
+    
+    // MARK: - Business Logic Related Methods
+    
+    private func reloadData()
+    {
+        
     }
     
     // MARK: - Other Methods (Not Business Logic Related)

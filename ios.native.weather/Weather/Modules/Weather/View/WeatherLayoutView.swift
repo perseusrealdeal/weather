@@ -16,30 +16,40 @@ class WeatherLayoutView: UIView
 {
     // MARK: - View Layout Related Properties
     
-    private var configuredForOrientation : NSLayoutConstraint.Axis!
+    private var configuredForOrientation : NSLayoutConstraint.Axis?
+    private let stackView                : WeatherStackView
     
     // MARK: - Business Matter Data View Containers
     
-    private let stackView : WeatherStackView =
-    {
-        let view = WeatherStackView()
-        
-        return view
-    }()
+    private let viewModel                : WeatherViewModel
+    
+    let alertsView               : WeatherNationalAlertsView
+    let forecastHourlyView       : ForecastHourlyView
+    let forecastDailyView        : ForecastDailyView
+    let currentWeatherView       : CurrentWeatherView
     
     // MARK: - Instance Initialization
     
     init(with layoutNumber: WeatherLayoutVariation = .allDetails)
     {
+        viewModel = WeatherViewModel()
+        
+        alertsView = WeatherNationalAlertsView()
+        forecastHourlyView = ForecastHourlyView()
+        forecastDailyView = ForecastDailyView()
+        currentWeatherView = CurrentWeatherView()
+        
+        stackView = WeatherStackView(alerts : alertsView,
+                                     hourly : forecastHourlyView,
+                                     daily  : forecastDailyView,
+                                     current: currentWeatherView)
+        
         super.init(frame: CGRect.zero)
+        
+        viewModel.host = self
         
         translatesAutoresizingMaskIntoConstraints = false
         
-        initialize()
-    }
-    
-    private func initialize()
-    {
         addSubview(stackView)
         
         NSLayoutConstraint.activate([
@@ -56,9 +66,8 @@ class WeatherLayoutView: UIView
     {
         if configuredForOrientation == currentOrientation { return }
         
-        configuredForOrientation = currentOrientation
-        
         stackView.updateLayoutOrientationIfNeeded(for: currentOrientation)
+        configuredForOrientation = currentOrientation
     }
     
     // MARK: - Other Methods (Not Business Logic Related)

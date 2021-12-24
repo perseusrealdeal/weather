@@ -9,6 +9,16 @@ import UIKit
 
 class ForecastHourlyView: UIView
 {
+    // MARK: - Business Matter Data to View
+    
+    var data : [ForecastHour]?
+    {
+        didSet
+        {
+            reloadData()
+        }
+    }
+    
     // MARK: - Instance Initialization
     
     init()
@@ -20,6 +30,13 @@ class ForecastHourlyView: UIView
         clipsToBounds = true
         
         backgroundColor = .yellow
+    }
+    
+    // MARK: - Business Logic Related Methods
+    
+    private func reloadData()
+    {
+        
     }
     
     // MARK: - Other Methods (Not Business Logic Related)

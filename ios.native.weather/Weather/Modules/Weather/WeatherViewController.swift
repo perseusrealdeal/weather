@@ -11,8 +11,6 @@ class WeatherViewController: UIViewController
 {
     // MARK: - Business Logic Related Properties
     
-    
-    
     // MARK: - View Controller Life Circle Methods
     
     init()

@@ -1,14 +1,24 @@
 //
-//  ForecastDailyView.swift
+//  WeatherNationalAlertsView.swift
 //  Weather
 //
-//  Created by Mikhail Zhigulin on 23.12.2021.
+//  Created by Mikhail Zhigulin on 22.12.2021.
 //
 
 import UIKit
 
-class ForecastDailyView: UIView
+class WeatherNationalAlertsView: UIView
 {
+    // MARK: - Business Matter Data to View
+    
+    var data : [NationalAlert]?
+    {
+        didSet
+        {
+            reloadData()
+        }
+    }
+    
     // MARK: - Instance Initialization
     
     init()
@@ -19,7 +29,14 @@ class ForecastDailyView: UIView
         contentMode = .scaleAspectFill
         clipsToBounds = true
         
-        backgroundColor = .orange
+        backgroundColor = .red
+    }
+    
+    // MARK: - Business Logic Related Methods
+    
+    private func reloadData()
+    {
+        
     }
     
     // MARK: - Other Methods (Not Business Logic Related)
