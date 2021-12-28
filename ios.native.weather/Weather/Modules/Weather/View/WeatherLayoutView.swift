@@ -16,6 +16,7 @@ class WeatherLayoutView: UIView
 {
     // MARK: - View Layout Related Properties
     
+    /// configuredForOrientation is initialized when updateLayoutOrientationIfNeeded method called
     private var configuredForOrientation : NSLayoutConstraint.Axis?
     private let stackView                : WeatherStackView
     
@@ -23,14 +24,14 @@ class WeatherLayoutView: UIView
     
     private let viewModel                : WeatherViewModel
     
-    let alertsView               : WeatherNationalAlertsView
-    let forecastHourlyView       : ForecastHourlyView
-    let forecastDailyView        : ForecastDailyView
-    let currentWeatherView       : CurrentWeatherView
+    private let alertsView               : WeatherNationalAlertsView
+    private let forecastHourlyView       : ForecastHourlyView
+    private let forecastDailyView        : ForecastDailyView
+    private let currentWeatherView       : CurrentWeatherView
     
     // MARK: - Instance Initialization
     
-    init(with layoutNumber: WeatherLayoutVariation = .allDetails)
+    init(with layoutNumber  : WeatherLayoutVariation = .allDetails)
     {
         viewModel = WeatherViewModel()
         
@@ -46,7 +47,7 @@ class WeatherLayoutView: UIView
         
         super.init(frame: CGRect.zero)
         
-        viewModel.host = self
+        viewModel.weatherView = self
         
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -62,7 +63,7 @@ class WeatherLayoutView: UIView
     
     // MARK: - Business Logic Related Methods
     
-    public func updateLayoutOrientationIfNeeded(for currentOrientation: NSLayoutConstraint.Axis)
+    func updateLayoutOrientationIfNeeded(for currentOrientation: NSLayoutConstraint.Axis)
     {
         if configuredForOrientation == currentOrientation { return }
         
@@ -70,12 +71,22 @@ class WeatherLayoutView: UIView
         configuredForOrientation = currentOrientation
     }
     
+    func startActivities()
+    {
+        viewModel.startAutoUpdatingWeatherData()
+    }
+    
+    func stopActivities()
+    {
+        viewModel.stopAutoUpdatingWeatherData()
+    }
+    
     // MARK: - Other Methods (Not Business Logic Related)
     
     deinit
     {
         #if DEBUG
-        print(">> \(type(of: self)).deinit")
+        print(">> [\(type(of: self))].deinit")
         #endif
     }
     

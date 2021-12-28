@@ -111,7 +111,7 @@ class CurrentWeatherWithForecastHourlyStackView: UIStackView
     deinit
     {
         #if DEBUG
-        print(">> \(type(of: self)).deinit")
+        print(">> [\(type(of: self))].deinit")
         #endif
     }
     

@@ -36,7 +36,12 @@ class CurrentWeatherView: UIView
     
     private func reloadData()
     {
+        print(">> \(type(of: self)) " + #function)
         
+        if let data = data
+        {
+            print(data)
+        }
     }
     
     // MARK: - Other Methods (Not Business Logic Related)
@@ -44,7 +49,7 @@ class CurrentWeatherView: UIView
     deinit
     {
         #if DEBUG
-        print(">> \(type(of: self)).deinit")
+        print(">> [\(type(of: self))].deinit")
         #endif
     }
     

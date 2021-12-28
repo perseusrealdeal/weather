@@ -24,7 +24,7 @@ extension AppDelegate: UIApplicationDelegate
     {
         #if DEBUG
         print(">> Launching with real app delegate")
-        print(">> \(type(of: self)) " + #function)
+        print(">> [\(type(of: self))]." + #function)
         #endif
         
         UserPreferences.setVersionAndBuildNumberUp()

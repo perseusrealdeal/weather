@@ -16,16 +16,23 @@ class WeatherViewController: UIViewController
     init()
     {
         #if DEBUG
-        print(">> \(type(of: self)) " + #function)
+        print(">> [\(type(of: self))]." + #function)
         #endif
         
         super.init(nibName: nil, bundle: nil)
+        
+        let nCenter = Settings.notificationCenter
+        
+        nCenter.addObserver(self,
+                            selector: #selector(theAppDidFinishLaunching),
+                            name: UIApplication.didFinishLaunchingNotification,
+                            object: nil)
     }
     
     override func loadView()
     {
         #if DEBUG
-        print(">> \(type(of: self)) " + #function)
+        print(">> [\(type(of: self))]." + #function)
         #endif
         
         view = WeatherLayoutView()
@@ -34,7 +41,7 @@ class WeatherViewController: UIViewController
     override func viewDidLoad()
     {
         #if DEBUG
-        print(">> \(type(of: self)) " + #function)
+        print(">> [\(type(of: self))]." + #function)
         #endif
         
         super.viewDidLoad()
@@ -56,19 +63,82 @@ class WeatherViewController: UIViewController
         
         view.updateLayoutOrientationIfNeeded(for: currentOrientation)
         
-        print(">> \(type(of: self)) " + #function)
+        #if DEBUG
+        print(">> [\(type(of: self))]." + #function)
+        #endif
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        #if DEBUG
+        print(">> [\(type(of: self))]." + #function)
+        #endif
+        
+        let nCenter = Settings.notificationCenter
+        
+        nCenter.addObserver(self,
+                            selector: #selector(theAppDidBecomeActive),
+                            name: UIApplication.didBecomeActiveNotification,
+                            object: nil)
+        
+        nCenter.addObserver(self,
+                            selector: #selector(theAppDidEnterBackground),
+                            name: UIApplication.didEnterBackgroundNotification,
+                            object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool)
+    {
+        let notificationCenter = Settings.notificationCenter
+        
+        notificationCenter.removeObserver(self,
+                                          name: UIApplication.didBecomeActiveNotification,
+                                          object: nil)
+        
+        notificationCenter.removeObserver(self,
+                                          name: UIApplication.didEnterBackgroundNotification,
+                                          object: nil)
     }
     
     // MARK: - Business Logic Related Methods
     
+    @objc func theAppDidBecomeActive()
+    {
+        #if DEBUG
+        print(">> [\(type(of: self))]." + #function)
+        #endif
+        
+        guard let view = view as? WeatherLayoutView else { return }
+        
+        view.startActivities()
+    }
     
+    @objc func theAppDidEnterBackground()
+    {
+        #if DEBUG
+        print(">> [\(type(of: self))]." + #function)
+        #endif
+        
+        guard let view = view as? WeatherLayoutView else { return }
+        
+        view.stopActivities()
+    }
+    
+    @objc func theAppDidFinishLaunching()
+    {
+        #if DEBUG
+        print(">> [\(type(of: self))]." + #function)
+        #endif
+        
+        GeoLocationReceiver.shared.requestLocationDataAccess()
+    }
     
     // MARK: - Other Methods (Not Business Logic Related)
     
     deinit
     {
         #if DEBUG
-        print(">> \(type(of: self)).deinit")
+        print(">> [\(type(of: self))].deinit")
         #endif
     }
     

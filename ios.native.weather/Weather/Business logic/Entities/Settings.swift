@@ -23,4 +23,6 @@ public struct Settings
     static let userDefaults = UserDefaults.standard
     
     static let notificationCenter = NotificationCenter.default
+    
+    static let geoService = GeoLocationReceiver.shared
 }
