@@ -105,6 +105,7 @@ class WeatherViewController: UIViewController
     @objc func theAppDidBecomeActive()
     {
         #if DEBUG
+        print("-----------------------------------")
         print(">> [\(type(of: self))]." + #function)
         #endif
         

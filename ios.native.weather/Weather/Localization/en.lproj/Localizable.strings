@@ -7,3 +7,4 @@
 */
 
 "greetings" = "Hi dude";
+"defaultLocation" = "{ \"lat\" : 52.186648327996274,  \"lon\" : -1.7075733650987568 }";

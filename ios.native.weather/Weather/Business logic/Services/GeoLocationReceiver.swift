@@ -41,23 +41,45 @@ func ==(lhs: LocationReceivedError, rhs: LocationReceivedError) -> Bool
 
 // MARK: - Success scenario details
 
-struct LocationReceived
+struct Сoordinate : CustomStringConvertible
 {
-    let latitude : Double
-    let longitude: Double
+    // Neither rounding nor cutting off, just as is from core location
+    let _latitude  : Double
+    let _longitude : Double
+    
+    // Cutting off to hundredths (2 decimal places)
+    var latitude   : Double { (_latitude * 100.0).rounded(_latitude > 0 ? .down : .up) / 100.0 }
+    var longitude  : Double { (_longitude * 100.0).rounded(_longitude > 0 ? .down : .up) / 100.0 }
+    
+    init(latitude: Double, longitude: Double)
+    {
+        _latitude = latitude
+        _longitude = longitude
+    }
+    
+    var description : String
+    {
+        let latitude = (_latitude * 10000.0).rounded(_latitude > 0 ? .down : .up) / 10000.0
+        let longitude = (_longitude * 10000.0).rounded(_longitude > 0 ? .down : .up) / 10000.0
+        
+        return "[\(latitude), \(longitude)]: latitude = \(latitude), longitude = \(longitude)"
+    }
 }
 
-extension LocationReceived: Equatable {}
+extension Сoordinate: Equatable {}
 
-func == (lhs: LocationReceived, rhs: LocationReceived) -> Bool
+func == (lhs: Сoordinate, rhs: Сoordinate) -> Bool
 {
     lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
 }
 
 // MARK: - Details about why Location service isn't allowed
 
-enum LocationServiceNotAllowed
+enum LocationServiceNotAllowed : CustomStringConvertible
 {
+    /// Location service is neither restricted nor the app denided
+    case notDetermined
+    
     /// provide instructions for changing restrictions options in Settings > General > Restrictions
     case deniedForAllAndRestricted /// in case if location services turned off
     case restricted  /// in case if location services turned on
@@ -67,6 +89,23 @@ enum LocationServiceNotAllowed
     
     /// provide instructions for enabling services for the app in Settings > The App
     case deniedForTheApp /// in case if location services turned on but not restricted
+    
+    var description : String
+    {
+        switch self
+        {
+        case .notDetermined:
+            return "notDetermined"
+        case .deniedForAllAndRestricted:
+            return "deniedForAllAndRestricted"
+        case .restricted:
+            return "restricted"
+        case .deniedForAll:
+            return "deniedForAll"
+        case .deniedForTheApp:
+            return "deniedForTheApp"
+        }
+    }
 }
 
 // MARK: - Helper abstracts used to make code testable
@@ -131,10 +170,19 @@ class GeoLocationReceiver : NSObject
     func requestLocationUpdateOnce(_ actionIfNotAllowed:
                                     ((_ case: LocationServiceNotAllowed) -> Void)? = nil)
     {
+        #if DEBUG
+        print(">> [\(type(of: self))]." + #function)
+        #endif
+        
         let status = type(of: locationManager).authorizationStatus()
         let isLocationServiceEnabled = type(of: locationManager).locationServicesEnabled()
         
         var locationServiceNotAllowed : LocationServiceNotAllowed?
+        
+        if status == .notDetermined
+        {
+            locationServiceNotAllowed = .notDetermined
+        }
         
         if status == .denied
         {
@@ -164,15 +212,19 @@ extension GeoLocationReceiver : CLLocationManagerDelegate
         guard let value = locations.first?.coordinate
         else
         {
-            let result: Result<LocationReceived, LocationReceivedError> =
+            let result: Result<Сoordinate, LocationReceivedError> =
                 .failure(.receivedEmptyLocationData)
             
             Settings.notificationCenter.post(name: .locationReceivedNotification, object: result)
             return
         }
         
-        let result: Result<LocationReceived, LocationReceivedError> =
-            .success(LocationReceived(latitude: value.latitude, longitude: value.longitude))
+        let result: Result<Сoordinate, LocationReceivedError> =
+            .success(Сoordinate(latitude: value.latitude, longitude: value.longitude))
+        
+        #if DEBUG
+        print("RECEIVER: [\(value.latitude), \(value.longitude)]")
+        #endif
         
         Settings.notificationCenter.post(name: .locationReceivedNotification, object: result)
         
@@ -181,7 +233,7 @@ extension GeoLocationReceiver : CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
     {
-        let result: Result<LocationReceived, LocationReceivedError> =
+        let result: Result<Сoordinate, LocationReceivedError> =
             .failure(.failedRequest(error.localizedDescription))
         
         Settings.notificationCenter.post(name: .locationReceivedNotification, object: result)
@@ -190,7 +242,7 @@ extension GeoLocationReceiver : CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization
                             status: CLAuthorizationStatus)
     {
-        if(status == .authorizedWhenInUse || status == .authorizedAlways)
+        if status == .authorizedWhenInUse
         {
             locationManager.requestLocation()
         }

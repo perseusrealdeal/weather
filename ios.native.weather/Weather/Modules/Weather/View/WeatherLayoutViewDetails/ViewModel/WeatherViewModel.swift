@@ -11,16 +11,17 @@ class WeatherViewModel : WeatherDataAutoUpdaterDelegate
 {
     // MARK: - Servants
     
-    /// It's responsible for keeping weather data always actual
+    /// It's responsible for keeping weather data in actual state
     private let dataKeeper : WeatherDataAutoUpdater
     
     // MARK: - Operational Data
     
-    /// Actual data for passing to views to be shown on screen
+    /// The reference to the data
     private let dataModel  : WeatherDataModel
     
     // MARK: - Host View
     
+    /// The reference to the view representing the actual data
     var weatherView        : WeatherLayoutView?
     
     // MARK: - Init
@@ -33,26 +34,53 @@ class WeatherViewModel : WeatherDataAutoUpdaterDelegate
         dataKeeper.delegate = self
     }
     
-    // MARK: - Business Logic Related Methods
+    // MARK: - Business Logic Methods
     
     func startAutoUpdatingWeatherData()
     {
+        guard dataKeeper.isUpdaterActivated else { return }
+         
         dataKeeper.activateAutoUpdating()
     }
     
-    func stopAutoUpdatingWeatherData()
-    {
-        dataKeeper.disactivateAutoUpdating()
-    }
+    func stopAutoUpdatingWeatherData() { dataKeeper.disactivateAutoUpdating() }
     
     // MARK: - WeatherActualDataKeeperDelegate
     
-    func weatherDataChanged(_ event: WeatherUpdated)
+    func weatherDataUpdated()
+    {
+        #if DEBUG
+        print(">> [\(type(of: self))]." + #function)
+        print("-----------------------------------")
+        #endif
+        
+        guard let _ = weatherView else { return }
+        
+        // Do reload of the weaather view
+    }
+    
+    func locationServiceNotAllowed(_ reason: LocationServiceNotAllowed)
+    {
+        #if DEBUG
+        print(">> [\(type(of: self))]." + #function)
+        print("reason  : \(reason)")
+        #endif
+        
+        guard let _ = weatherView else { return }
+        
+        // Do inform user that location service not allowed
+    }
+    
+    func failedToGetCurrentLocation(_ error: LocationReceivedError)
     {
         guard let _ = weatherView else { return }
         
-        /// TODO: Handle weather data changed event
+        // Do inform user that something went wrong
         
+        #if DEBUG
+        print(">> [\(type(of: self))]." + #function)
+        print("error: \(error)")
+        #endif
     }
     
     // MARK: - Other Methods (Not Business Logic Related)
@@ -60,7 +88,7 @@ class WeatherViewModel : WeatherDataAutoUpdaterDelegate
     deinit
     {
         #if DEBUG
-        print(">> \(type(of: self)).deinit")
+        print(">> [\(type(of: self))].deinit")
         #endif
     }
 }
