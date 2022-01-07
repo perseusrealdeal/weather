@@ -48,11 +48,11 @@ class OpenWeatherCommunicationTests: XCTestCase
         let sut = OpenWeatherClient(session: mock)
         
         let happiness = loadDataFromFile("currentWeatherData", "json")
-        let expected_data: Result<Data, RequestError> = .success(happiness)
-        var actual_data: Result<Data, RequestError> = .success(Data())
+        let expected_data: Result<Data, WeatherDataDeliveryError> = .success(happiness)
+        var actual_data: Result<Data, WeatherDataDeliveryError> = .success(Data())
         
         let onResultUpdateCalled = expectation(description: "onResultUpdate called")
-        sut.onResultUpdate =
+        sut.onResultDelivered =
             { result in
                 
                 actual_data = result
@@ -82,11 +82,11 @@ class OpenWeatherCommunicationTests: XCTestCase
         let mock = MockURLSession()
         let sut = OpenWeatherClient(session: mock)
         
-        let expected_failure: Result<Data, RequestError> = .failure(.failedRequest("No data!"))
-        var actual_failure: Result<Data, RequestError> = .success(Data())
+        let expected_failure: Result<Data, WeatherDataDeliveryError> = .failure(.failedRequest("No data!"))
+        var actual_failure: Result<Data, WeatherDataDeliveryError> = .success(Data())
         
         let onResultUpdateCalled = expectation(description: "onResultUpdate called")
-        sut.onResultUpdate =
+        sut.onResultDelivered =
             { result in
                 
                 actual_failure = result
@@ -118,13 +118,13 @@ class OpenWeatherCommunicationTests: XCTestCase
         let status_code = 404
         let message = HTTPURLResponse.localizedString(forStatusCode: status_code)
         
-        let expected_failure: Result<Data, RequestError> = .failure(.failedRequest(message))
-        var actual_failure: Result<Data, RequestError> = .success(Data())
+        let expected_failure: Result<Data, WeatherDataDeliveryError> = .failure(.failedRequest(message))
+        var actual_failure: Result<Data, WeatherDataDeliveryError> = .success(Data())
         
         let happiness = loadDataFromFile("currentWeatherData", "json")
         
         let onResultUpdateCalled = expectation(description: "onResultUpdate called")
-        sut.onResultUpdate =
+        sut.onResultDelivered =
             { result in
                 
                 actual_failure = result
@@ -202,7 +202,7 @@ extension OpenWeatherCommunicationTests
         let sut = OpenWeatherClient()
         let onResultUpdateCalled = expectation(description: "onResultUpdate called")
         
-        sut.onResultUpdate =
+        sut.onResultDelivered =
             { result in
                 
                 switch result

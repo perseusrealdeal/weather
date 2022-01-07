@@ -223,7 +223,7 @@ extension GeoLocationReceiver : CLLocationManagerDelegate
             .success(Сoordinate(latitude: value.latitude, longitude: value.longitude))
         
         #if DEBUG
-        print("RECEIVER: [\(value.latitude), \(value.longitude)]")
+        print("RECEIVER     : [\(value.latitude), \(value.longitude)]")
         #endif
         
         Settings.notificationCenter.post(name: .locationReceivedNotification, object: result)

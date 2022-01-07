@@ -52,6 +52,7 @@
 		E0CCE0862764093500E14D26 /* SettingsBundleFunctionalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CCE0852764093500E14D26 /* SettingsBundleFunctionalTests.swift */; };
 		E0CCE08827640B3A00E14D26 /* SettingsBundleTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CCE08727640B3A00E14D26 /* SettingsBundleTestHelpers.swift */; };
 		E0D9FF5B27632811009F197E /* LocalizationTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D9FF5A27632811009F197E /* LocalizationTestHelpers.swift */; };
+		E0EAD3CA278899E60019FCD7 /* DataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAD3C9278899E60019FCD7 /* DataStructures.swift */; };
 		FBC9093A7DFA40F8C755F680 /* Pods_WeatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BAF201B43CB268F7A7B529A /* Pods_WeatherTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -126,6 +127,7 @@
 		E0CCE0852764093500E14D26 /* SettingsBundleFunctionalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleFunctionalTests.swift; sourceTree = "<group>"; };
 		E0CCE08727640B3A00E14D26 /* SettingsBundleTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleTestHelpers.swift; sourceTree = "<group>"; };
 		E0D9FF5A27632811009F197E /* LocalizationTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationTestHelpers.swift; sourceTree = "<group>"; };
+		E0EAD3C9278899E60019FCD7 /* DataStructures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructures.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +233,7 @@
 			children = (
 				E05E0E3C2775C11900C3E1E0 /* WeatherModel.swift */,
 				E05E0E3A2775AEEB00C3E1E0 /* WeatherViewModel.swift */,
+				E0EAD3C9278899E60019FCD7 /* DataStructures.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E09284D0275E7B3E0090E267 /* WeatherLayoutView.swift in Sources */,
+				E0EAD3CA278899E60019FCD7 /* DataStructures.swift in Sources */,
 				E05E0E302773B80900C3E1E0 /* ForecastHourlyView.swift in Sources */,
 				E05E0E362774878200C3E1E0 /* WeatherStackView.swift in Sources */,
 				E0C841A4276128B90034E7F2 /* LocalizationExtentions.swift in Sources */,

@@ -38,19 +38,21 @@ class WeatherViewModel : WeatherDataAutoUpdaterDelegate
     
     func startAutoUpdatingWeatherData()
     {
-        guard dataKeeper.isUpdaterActivated else { return }
-         
-        dataKeeper.activateAutoUpdating()
+        if !dataKeeper.activated { dataKeeper.activateAutoUpdating() }
     }
     
-    func stopAutoUpdatingWeatherData() { dataKeeper.disactivateAutoUpdating() }
+    func stopAutoUpdatingWeatherData()
+    {
+        dataKeeper.disactivateAutoUpdating()
+    }
     
     // MARK: - WeatherActualDataKeeperDelegate
     
-    func weatherDataUpdated()
+    func weatherDataUpdated(onlyAlerts: Bool)
     {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
+        print("Only Alerts Received: \(onlyAlerts)")
         print("-----------------------------------")
         #endif
         
@@ -68,14 +70,26 @@ class WeatherViewModel : WeatherDataAutoUpdaterDelegate
         
         guard let _ = weatherView else { return }
         
-        // Do inform user that location service not allowed
+        // Do inform user about location service not allowed
     }
     
     func failedToGetCurrentLocation(_ error: LocationReceivedError)
     {
         guard let _ = weatherView else { return }
         
-        // Do inform user that something went wrong
+        // Do inform user about something went wrong
+        
+        #if DEBUG
+        print(">> [\(type(of: self))]." + #function)
+        print("error: \(error)")
+        #endif
+    }
+    
+    func failedToDeliverWeatherData(_ error : WeatherDataDeliveryError)
+    {
+        guard let _ = weatherView else { return }
+        
+        // Do inform user about something went wrong
         
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)

@@ -19,7 +19,7 @@ extension URLSession : URLSessionProtocol { }
 
 // MARK: - Failure scenario details
 
-enum RequestError : Error
+enum WeatherDataDeliveryError : Error
 {
     case invalidExclude
     case invalidUrl
@@ -35,14 +35,14 @@ class OpenWeatherClient
     private var dataTask: URLSessionDataTask?
     private let session : URLSessionProtocol // Isolated for unit testing
     
-    var onResultUpdate  : (Result<Data, RequestError>) -> Void = { print($0) }
+    var onResultDelivered  : (Result<Data, WeatherDataDeliveryError>) -> Void = { print($0) }
     var weather         : Data { givenData }
     
     private(set) var givenData: Data = Data()
     {
         didSet
         {
-            onResultUpdate(.success(givenData))
+            onResultDelivered(.success(givenData))
         }
     }
     
@@ -61,7 +61,7 @@ class OpenWeatherClient
         
         guard let encodedExclude
                 = exclude.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        else { onResultUpdate(.failure(.invalidExclude)); return }
+        else { onResultDelivered(.failure(.invalidExclude)); return }
         
         guard let url
                 = URL(string:
@@ -71,7 +71,7 @@ class OpenWeatherClient
                         "&units=\(units)" +
                         "&exclude=\(encodedExclude)" +
                         "&appid=\(api_key)")
-        else { onResultUpdate(.failure(.invalidUrl)); return }
+        else { onResultDelivered(.failure(.invalidUrl)); return }
         
         let request = URLRequest(url: url)
         
@@ -109,7 +109,7 @@ class OpenWeatherClient
                 }
                 else if let error = answer_error
                 {
-                    onResultUpdate(.failure(.failedRequest(error)))
+                    onResultDelivered(.failure(.failedRequest(error)))
                 }
                 
                 self.dataTask = nil

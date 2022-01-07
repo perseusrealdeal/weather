@@ -184,7 +184,7 @@ class GeoLocationReceiverTests: XCTestCase
     {
         // arrange
         
-        let expected = LocationReceived(latitude: 87.90, longitude: 34.83)
+        let expected = Сoordinate(latitude: 87.90, longitude: 34.83)
         let locations =
             [
                 CLLocation(latitude: expected.latitude, longitude: expected.longitude),
@@ -261,20 +261,6 @@ class GeoLocationReceiverTests: XCTestCase
         
         XCTAssertEqual(mock.locationUpdateCallCount, 1,
                     "Method requestLocation() should be invoked with status authorizedWhenInUse.")
-    }
-    
-    /// Test method: locationManager(_ manager: , didChangeAuthorization status: )
-    func test_didChangeAuthorization_with_status_authorizedAlways_should_call_requestLocation()
-    {
-        // act
-        
-        mock.delegate?.locationManager?(CLLocationManager(),
-                                        didChangeAuthorization: .authorizedAlways)
-        
-        // assert
-        
-        XCTAssertEqual(mock.locationUpdateCallCount, 1,
-                    "Method requestLocation() should be invoked with status authorizedAlways.")
     }
     
     /// Test method: locationManager(_ manager: , didChangeAuthorization status: )
@@ -370,7 +356,7 @@ fileprivate class MockLocationManager : LocationManagerProtocol
     
     // MARK: Subscribing to be notified with receiving location data
     
-    var givenLocationData     : LocationReceived?
+    var givenLocationData     : Сoordinate?
     var givenLocationDataError: LocationReceivedError?
     
     fileprivate func subscribeAndBeNotifiedWithLocationDataUpdate()
@@ -382,7 +368,7 @@ fileprivate class MockLocationManager : LocationManagerProtocol
     
     @objc private func locationReceivedNotificationHandler(_ notification: Notification)
     {
-        guard let result = notification.object as? Result<LocationReceived, LocationReceivedError>
+        guard let result = notification.object as? Result<Сoordinate, LocationReceivedError>
         else { return }
         
         switch result

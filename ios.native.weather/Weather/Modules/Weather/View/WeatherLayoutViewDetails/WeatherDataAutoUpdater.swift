@@ -10,42 +10,49 @@ import Foundation
 fileprivate let UPDATE_INTERVALS         : [Double] = [1, 5, 10, 20, 30] // Per 1 minute, per 5...
 
 // Used for reloading alerts and conditional updating current, forecasts hourly, and daily
-fileprivate let UPDATE_JOB_INTERVAL      : Double = UPDATE_INTERVALS[1] // Given in minutes
+fileprivate let UPDATE_JOB_INTERVAL      : Double = UPDATE_INTERVALS[0] // Given in minutes
 
-// Used for forcibly updating all weather data.
-// It works in UPDATE_JOB_INTERVAL time circle and should be meant as not early then
-fileprivate let FORCIBLY_UPDATE_INTERVAL : Double = UPDATE_INTERVALS[4] // Given in minutes
+// Used for forcibly updating all weather data parts.
+// It works in the UPDATE_JOB_INTERVAL time circle and should be meant as <not early then>
+fileprivate let FORCIBLY_UPDATE_INTERVAL : Double = UPDATE_INTERVALS[1] // Given in minutes
 
 protocol WeatherDataAutoUpdaterDelegate
 {
-    func weatherDataUpdated()
+    /// Delegate view reloading activities
+    func weatherDataUpdated(onlyAlerts: Bool)
     
+    /// Let delegate know that location services not allowed
     func locationServiceNotAllowed(_ reason: LocationServiceNotAllowed)
+    
+    /// Inform delegate if something went wrong
     func failedToGetCurrentLocation(_ error: LocationReceivedError)
+    func failedToDeliverWeatherData(_ error: WeatherDataDeliveryError)
 }
 
 class WeatherDataAutoUpdater
 {
-    var delegate                   : WeatherDataAutoUpdaterDelegate?
+    var delegate                    : WeatherDataAutoUpdaterDelegate?
     
-    private var timer              : Timer?
+    private var timer               : Timer?
     
-    private let data               : WeatherDataModel
+    private let data                : WeatherDataModel
     
-    private let weatherDataService : OpenWeatherClient
-    private let geoLocationService : GeoLocationReceiver
+    private let weatherDataService  : OpenWeatherClient
+    private let geoLocationService  : GeoLocationReceiver
     
-    private var _isUpdaterActivated : Bool = false
-    var isUpdaterActivated          : Bool { _isUpdaterActivated }
+    private var _activated          : Bool = false
+    var activated                   : Bool { _activated }
     
     // MARK: - Init
     
     init(with model: WeatherDataModel)
     {
-        self.data = model
+        data = model
         
-        self.weatherDataService = OpenWeatherClient()
-        self.geoLocationService = Settings.geoService
+        weatherDataService = OpenWeatherClient()
+        geoLocationService = Settings.geoService
+        
+        weatherDataService.onResultDelivered = weatherDataDeliveredHandler(_:)
     }
     
     // MARK: - Business contruct
@@ -56,7 +63,7 @@ class WeatherDataAutoUpdater
         print(">> [\(type(of: self))]." + #function)
         #endif
         
-        guard _isUpdaterActivated == false else
+        if activated
         {
             #if DEBUG
             print("UPDATER : I'm already activated, there's no need to make it twice :)")
@@ -75,7 +82,7 @@ class WeatherDataAutoUpdater
         
         // DONE: Note auto updating is already activated
         
-        _isUpdaterActivated = true
+        _activated = true
     }
     
     func disactivateAutoUpdating()
@@ -93,7 +100,7 @@ class WeatherDataAutoUpdater
         timer?.invalidate()
         timer = nil
         
-        _isUpdaterActivated = false
+        _activated = false
     }
     
     // MARK: - Сontract performance
@@ -138,7 +145,7 @@ class WeatherDataAutoUpdater
         print(">> [\(type(of: self))]." + #function)
         #endif
         
-        print("time    : \(Date())")
+        print("time         : \(Date())")
         
         // DONE: Request current location and wait to be notified
         
@@ -147,13 +154,58 @@ class WeatherDataAutoUpdater
             
             // DONE: Let user know what becouse when location service not allowed
             
-            if let delegate = self.delegate { delegate.locationServiceNotAllowed(reason) }
+            self.delegate?.locationServiceNotAllowed(reason)
             
             // DONE: Update with presetted options
             
             self.updateIfNeeded()
         }
     }
+    
+    /// Non-conditional update
+    private func updateForcibly(for location: Сoordinate)
+    {
+        #if DEBUG
+        print(">> [\(type(of: self))]." + #function)
+        #endif
+        
+        updateWeatherData(exclude: "minutely", location)
+    }
+    
+    /// Conditional update
+    private func updateIfNeeded()
+    {
+        #if DEBUG
+        print(">> [\(type(of: self))]." + #function)
+        #endif
+        
+        // Is there no update done yet at all?
+        
+        guard let target = self.data.target else
+        {
+            // If there no data: forcibly update for the default location
+            
+            updateWeatherData(exclude: "minutely", Settings.defaultLocation)
+            
+            return
+        }
+        
+        // otherwise: the time of the last update should be taken into account
+        
+        // Is a whole update should be done?
+        
+        calculateForciblyUpdateCondition() ?
+            
+            // It's time to make a whole update
+            
+            updateWeatherData(exclude: "minutely", target.location) :
+            
+            // Make a partial update
+            
+            updateWeatherData(exclude: calculateExclude(), target.location)
+    }
+    
+    // MARK: - Contruct data inputs
     
     @objc private func locationReceivedNotificationHandler(_ notification: Notification)
     {
@@ -177,7 +229,7 @@ class WeatherDataAutoUpdater
         // Here we are, whatta happy case?
         case .success(let location):
             locationReceived = location
-         
+        
         // What if something really went wrong?
         case .failure(let error):
             locationError = error
@@ -197,7 +249,7 @@ class WeatherDataAutoUpdater
         
         if let error = locationError
         {
-            if let delegate = self.delegate { delegate.failedToGetCurrentLocation(error) }
+            delegate?.failedToGetCurrentLocation(error)
         }
         else if let locationChanged = isLocationChanged, locationChanged
         {
@@ -208,70 +260,58 @@ class WeatherDataAutoUpdater
         updateIfNeeded()
     }
     
-    /// Non-conditional update
-    private func updateForcibly(for location: Сoordinate)
+    private func weatherDataDeliveredHandler(_ result: Result<Data, WeatherDataDeliveryError>)
     {
-        #if DEBUG
-        print(">> [\(type(of: self))]." + #function)
-        #endif
+        var dataDeliveried    : Data?
+        var dataDeliveryError : WeatherDataDeliveryError?
         
-        makeUpdate(exclude: "minutely", location)
-    }
-    
-    /// Conditional update
-    private func updateIfNeeded()
-    {
-        // Is there no update done yet at all?
-        
-        guard let target = self.data.target else
+        switch result
         {
-            // If there no data: forcibly update for the default location
+        case .success(let data):
+            dataDeliveried = data
             
-            makeUpdate(exclude: "minutely", Settings.defaultLocation)
-            
-            return
+        case .failure(let error):
+            dataDeliveryError = error
         }
         
-        // otherwise: the time of the last update should be taken into account
+        if let error = dataDeliveryError
+        {
+            delegate?.failedToDeliverWeatherData(error)
+        }
+        else if let freshData = dataDeliveried
+        {
+            data.update(received: freshData)
+            { onlyAlerts in
+                weatherDataDeliverySucceeded(onlyAlerts: onlyAlerts)
+            }
+        }
+    }
+    
+    // MARK: - Contruct data outputs
+    
+    private func weatherDataDeliverySucceeded(onlyAlerts: Bool = false)
+    {
+        // DONE: Inform delegate that data was updated successfully
         
-        // Is a whole update should be done?
-        
-        calculateForciblyUpdateCondition() ?
-            
-            // It's time to make a whole update
-            
-            makeUpdate(exclude: "minutely", target.location) :
-            
-            // Make a partial update
-            
-            makeUpdate(exclude: calculateExclude(), target.location)
+        delegate?.weatherDataUpdated(onlyAlerts: onlyAlerts)
     }
     
     // MARK: - Contruct business operations
     
-    private func makeUpdate(exclude: String, _ location: Сoordinate)
+    private func updateWeatherData(exclude: String, _ location: Сoordinate)
     {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
+        
+        print("exclude      : \(exclude)")
+        print("location     : \(location)")
         #endif
         
-        // Do weather data update here, request and parse weather data
+        // Request weather data
         
-        print("exclude : \(exclude)")
-        print("for     : \(location)")
-        
-        // Save the time of the last whole weather data update
-        
-        if exclude == "minutely"
-        {
-            data.timeFromLastFullUpdate = Date().timeIntervalSince1970
-            data.target = CurrentLocationDescription(latitude        : location._latitude,
-                                                    longitude       : location._longitude,
-                                                    locationTitle   : "",
-                                                    timezone_offset : 0.0)
-        }
-        
-        delegate?.weatherDataUpdated()
+        weatherDataService.updateWeatherData(exclude  : exclude,
+                                             latitude : location.latitude.description,
+                                             longitude: location.longitude.description)
     }
     
     private func registerCurrentLocationObserver()
@@ -311,44 +351,50 @@ class WeatherDataAutoUpdater
         
         // Calculate the closest interval
         
-        let minuts : Double = Double(Calendar.current.component(.minute, from: Date()))
-        let seconds: Double = Double(Calendar.current.component(.second, from: Date()))
+        let minuts          : Double = Double(Calendar.current.component(.minute, from: Date()))
+        let seconds         : Double = Double(Calendar.current.component(.second, from: Date()))
         
         let intervalsPassed : Double = (minuts / interval).rounded(.down)
+        let closestInterval : Double = intervalsPassed + 1
         
-        let delay : Double = (intervalsPassed + 1) * interval * 60 - (minuts * 60 + seconds)
+        // Calculate the delay
+        
+        let period          : Double = interval * 60
+        let delay           : Double = closestInterval * period - (minuts * 60 + seconds)
         
         return delay
     }
     
-    /// If forcibly is true then forecasts Daily and Current
-    private func calculateExclude(notForciblyForecastHourly : Bool = true,
-                                  notForciblyForecastDaily  : Bool = true,
-                                  notForciblyCurrent        : Bool = true) -> String
+    private func calculateExclude() -> String
     {
-        var exlude : String = "minutely"
+        #if DEBUG
+        print(">> [\(type(of: self))]." + #function)
+        #endif
         
-        if data.isForecastHourlyUpToDate, notForciblyForecastHourly
-        { exlude.append(",hourly") }
+        var exclude : String = "minutely"
         
-        if data.isForecastDailyUpToDate, notForciblyForecastDaily
-        { exlude.append(",daily") }
+        if data.isForecastHourlyUpToDate { exclude.append(",hourly") }
+        if data.isForecastDailyUpToDate { exclude.append(",daily") }
+        if data.isForecastCurrentUpToDate{ exclude.append(",current") }
         
-        if data.isForecastCurrentUpToDate, notForciblyCurrent
-        { exlude.append(",current") }
+        #if DEBUG
+        print("calculated   : \(exclude)")
+        #endif
         
         /// Alerts should be reloaded anyway, so alerts not in exlude
-        return exlude
+        return exclude
     }
     
     private func calculateForciblyUpdateCondition() -> Bool
     {
-        guard let lastUpdate = data.timeFromLastFullUpdate else { return false }
+        guard let lastUpdate = data.lastFullUpdateTime else { return false }
         
-        let now = Date().timeIntervalSince1970
-        let timeToUpdate = lastUpdate + FORCIBLY_UPDATE_INTERVAL * 60
+        let now          : Double = Date().timeIntervalSince1970
+        let timeToUpdate : Double = lastUpdate.dt + FORCIBLY_UPDATE_INTERVAL * 60
         
-        return now >= timeToUpdate
+        let result       : Bool = now >= timeToUpdate
+        
+        return result
     }
     
     // MARK: - Other Methods (Not Business Logic Related)
