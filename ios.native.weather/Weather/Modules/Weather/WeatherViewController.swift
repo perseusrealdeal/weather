@@ -7,26 +7,75 @@
 
 import UIKit
 
+// MARK: - Abstracts used to make code testable
+
+/// Extructed Protocols from all used Difficult Dependencies in WeatherViewController Class
+
+protocol NotificationCenterProtocol
+{
+    func addObserver(_ observer         : Any,
+                     selector aSelector : Selector,
+                     name aName         : NSNotification.Name?,
+                     object anObject    : Any?)
+    
+    func removeObserver(_ observer      : Any,
+                        name aName      : NSNotification.Name?,
+                        object anObject : Any?)
+}
+
+protocol GeoLocationReceiverProtocol
+{
+    func requestLocationDataAccess()
+}
+
+protocol WeatherLayoutViewProtocol
+{
+    func updateLayoutOrientationIfNeeded(for currentOrientation: NSLayoutConstraint.Axis)
+    func startActivities()
+    func stopActivities()
+}
+
+extension NotificationCenter  : NotificationCenterProtocol { }
+extension GeoLocationReceiver : GeoLocationReceiverProtocol { }
+extension WeatherLayoutView   : WeatherLayoutViewProtocol { }
+
+// MARK: - WeatherViewController Class
+
 class WeatherViewController: UIViewController
 {
-    // MARK: - Business Logic Related Properties
+    // MARK: - Difficult Dependencies
+    
+    private let notificationCenter  : NotificationCenterProtocol
+    private let geoService          : GeoLocationReceiverProtocol
+    
+    #if DEBUG
+    var mockView                    : WeatherLayoutViewProtocol
+    #endif
     
     // MARK: - View Controller Life Circle Methods
     
-    init()
+    required init?(coder aDecoder: NSCoder) { fatalError() }
+    
+    init(_ notificationCenter : NotificationCenterProtocol = Settings.notificationCenter,
+         _ geoService         : GeoLocationReceiverProtocol = GeoLocationReceiver.shared)
     {
         #if DEBUG
-        print(">> [\(type(of: self))]." + #function)
+        print(">> [\(type(of: self))].init")
+        #endif
+        
+        self.notificationCenter = notificationCenter
+        self.geoService = geoService
+        
+        #if DEBUG
+        self.mockView = WeatherLayoutView()
         #endif
         
         super.init(nibName: nil, bundle: nil)
         
-        let nCenter = Settings.notificationCenter
-        
-        nCenter.addObserver(self,
-                            selector: #selector(theAppDidFinishLaunching),
-                            name: UIApplication.didFinishLaunchingNotification,
-                            object: nil)
+        self.notificationCenter.addObserver(self,
+                                            selector : #selector(theAppDidFinishLaunching),
+                                            name     : UIApplication.didFinishLaunchingNotification,
+                                            object   : nil)
     }
     
     override func loadView()
@@ -35,7 +84,11 @@ class WeatherViewController: UIViewController
         print(">> [\(type(of: self))]." + #function)
         #endif
         
+        #if DEBUG
+        view = mockView as? UIView
+        #else
         view = WeatherLayoutView()
+        #endif
     }
     
     override func viewDidLoad()
@@ -44,14 +97,9 @@ class WeatherViewController: UIViewController
         print(">> [\(type(of: self))]." + #function)
         #endif
         
-        super.viewDidLoad()
-        
-        #if DEBUG
-        print("greetings".localized_value)
-        #endif
-        
         // Do any additional setup after loading the view.
         
+        print("greetings".localized_value)
     }
     
     override func viewDidLayoutSubviews()
@@ -59,7 +107,7 @@ class WeatherViewController: UIViewController
         let currentOrientation : NSLayoutConstraint.Axis =
             UIDevice.current.orientation.isLandscape ? .horizontal : .vertical
         
-        guard let view = view as? WeatherLayoutView else { return }
+        guard let view = view as? WeatherLayoutViewProtocol else { return }
         
         view.updateLayoutOrientationIfNeeded(for: currentOrientation)
         
@@ -74,33 +122,37 @@ class WeatherViewController: UIViewController
         print(">> [\(type(of: self))]." + #function)
         #endif
         
-        let nCenter = Settings.notificationCenter
+        super.viewWillAppear(animated)
         
-        nCenter.addObserver(self,
-                            selector: #selector(theAppDidBecomeActive),
-                            name: UIApplication.didBecomeActiveNotification,
-                            object: nil)
+        notificationCenter.addObserver(self,
+                                       selector : #selector(theAppDidBecomeActive),
+                                       name     : UIApplication.didBecomeActiveNotification,
+                                       object   : nil)
         
-        nCenter.addObserver(self,
-                            selector: #selector(theAppDidEnterBackground),
-                            name: UIApplication.didEnterBackgroundNotification,
-                            object: nil)
+        notificationCenter.addObserver(self,
+                                       selector : #selector(theAppDidEnterBackground),
+                                       name     : UIApplication.didEnterBackgroundNotification,
+                                       object   : nil)
     }
     
     override func viewWillDisappear(_ animated: Bool)
     {
-        let notificationCenter = Settings.notificationCenter
+        #if DEBUG
+        print(">> [\(type(of: self))]." + #function)
+        #endif
+        
+        super.viewWillDisappear(animated)
         
         notificationCenter.removeObserver(self,
-                                          name: UIApplication.didBecomeActiveNotification,
-                                          object: nil)
+                                          name   : UIApplication.didBecomeActiveNotification,
+                                          object : nil)
         
         notificationCenter.removeObserver(self,
-                                          name: UIApplication.didEnterBackgroundNotification,
-                                          object: nil)
+                                          name   : UIApplication.didEnterBackgroundNotification,
+                                          object : nil)
     }
     
-    // MARK: - Business Logic Related Methods
+    // MARK: - The App's Major Life Time Events
     
     @objc func theAppDidBecomeActive()
     {
@@ -109,7 +161,7 @@ class WeatherViewController: UIViewController
         print(">> [\(type(of: self))]." + #function)
         #endif
         
-        guard let view = view as? WeatherLayoutView else { return }
+        guard let view = view as? WeatherLayoutViewProtocol else { return }
         
         view.startActivities()
     }
@@ -120,7 +172,7 @@ class WeatherViewController: UIViewController
         print(">> [\(type(of: self))]." + #function)
         #endif
         
-        guard let view = view as? WeatherLayoutView else { return }
+        guard let view = view as? WeatherLayoutViewProtocol else { return }
         
         view.stopActivities()
     }
@@ -131,7 +183,7 @@ class WeatherViewController: UIViewController
         print(">> [\(type(of: self))]." + #function)
         #endif
         
-        GeoLocationReceiver.shared.requestLocationDataAccess()
+        geoService.requestLocationDataAccess()
     }
     
     // MARK: - Other Methods (Not Business Logic Related)
@@ -142,6 +194,4 @@ class WeatherViewController: UIViewController
         print(">> [\(type(of: self))].deinit")
         #endif
     }
-    
-    required init?(coder aDecoder: NSCoder) { fatalError() }
 }

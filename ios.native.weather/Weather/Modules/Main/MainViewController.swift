@@ -9,6 +9,8 @@ import UIKit
 
 class MainViewController: UIViewController
 {
+    @IBOutlet weak var label: UILabel!
+    
     deinit
     {
         #if DEBUG
@@ -34,6 +36,8 @@ class MainViewController: UIViewController
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        label.text = "greetings".localized_value
     }
 }
 

@@ -31,6 +31,8 @@ class WeatherLayoutView: UIView
     
     // MARK: - Instance Initialization
     
+    required init(coder aDecoder: NSCoder) { fatalError() }
+    
     init(with layoutNumber  : WeatherLayoutVariation = .allDetails)
     {
         viewModel = WeatherViewModel()
@@ -46,6 +48,10 @@ class WeatherLayoutView: UIView
                                      current: currentWeatherView)
         
         super.init(frame: CGRect.zero)
+        
+        #if DEBUG
+        print(">> [\(type(of: self))]." + #function)
+        #endif
         
         viewModel.weatherView = self
         
@@ -80,15 +86,4 @@ class WeatherLayoutView: UIView
     {
         viewModel.stopAutoUpdatingWeatherData()
     }
-    
-    // MARK: - Other Methods (Not Business Logic Related)
-    
-    deinit
-    {
-        #if DEBUG
-        print(">> [\(type(of: self))].deinit")
-        #endif
-    }
-    
-    required init(coder aDecoder: NSCoder) { fatalError() }
 }

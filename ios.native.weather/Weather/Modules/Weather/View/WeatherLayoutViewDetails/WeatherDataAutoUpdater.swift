@@ -47,6 +47,10 @@ class WeatherDataAutoUpdater
     
     init(with model: WeatherDataModel)
     {
+        #if DEBUG
+        print(">> [\(type(of: self))]." + #function)
+        #endif
+        
         data = model
         
         weatherDataService = OpenWeatherClient()
@@ -359,10 +363,10 @@ class WeatherDataAutoUpdater
         
         // Calculate the delay
         
-        let period          : Double = interval * 60
+        let period          : Double = interval * 60 // now in seconds
         let delay           : Double = closestInterval * period - (minuts * 60 + seconds)
         
-        return delay
+        return delay // in seconds
     }
     
     private func calculateExclude() -> String
@@ -381,7 +385,7 @@ class WeatherDataAutoUpdater
         print("calculated   : \(exclude)")
         #endif
         
-        /// Alerts should be reloaded anyway, so alerts not in exlude
+        /// Alerts should be reloaded anyway, so alerts not in exclude
         return exclude
     }
     
@@ -395,14 +399,5 @@ class WeatherDataAutoUpdater
         let result       : Bool = now >= timeToUpdate
         
         return result
-    }
-    
-    // MARK: - Other Methods (Not Business Logic Related)
-    
-    deinit
-    {
-        #if DEBUG
-        print(">> [\(type(of: self))].deinit")
-        #endif
     }
 }

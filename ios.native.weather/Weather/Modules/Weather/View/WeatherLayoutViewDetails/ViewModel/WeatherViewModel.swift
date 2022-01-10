@@ -5,7 +5,7 @@
 //  Created by Mikhail Zhigulin on 24.12.2021.
 //
 
-import UIKit
+import Foundation
 
 class WeatherViewModel : WeatherDataAutoUpdaterDelegate
 {
@@ -28,6 +28,10 @@ class WeatherViewModel : WeatherDataAutoUpdaterDelegate
     
     init()
     {
+        #if DEBUG
+        print(">> [\(type(of: self))].init")
+        #endif
+        
         dataModel = WeatherDataModel()
         dataKeeper = WeatherDataAutoUpdater(with: dataModel)
         
@@ -94,15 +98,6 @@ class WeatherViewModel : WeatherDataAutoUpdaterDelegate
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         print("error: \(error)")
-        #endif
-    }
-    
-    // MARK: - Other Methods (Not Business Logic Related)
-    
-    deinit
-    {
-        #if DEBUG
-        print(">> [\(type(of: self))].deinit")
         #endif
     }
 }

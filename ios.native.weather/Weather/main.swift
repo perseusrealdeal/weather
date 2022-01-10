@@ -30,12 +30,16 @@ extension AppDelegate: UIApplicationDelegate
         UserPreferences.setVersionAndBuildNumberUp()
         UserPreferences.registerSettingsBundle(with: Settings.bundleParams)
         
-        self.window = UIWindow(frame: UIScreen.main.bounds)
+        window = UIWindow(frame: UIScreen.main.bounds)
         
-        self.window!.rootViewController = WeatherViewController()
-        self.window!.makeKeyAndVisible()
+        #if true
+        window!.rootViewController = WeatherViewController()
+        #else
+        window!.rootViewController = MainViewController.storyboardInstance()
+        #endif
+        
+        window!.makeKeyAndVisible()
         
         return true
     }
-    
 }

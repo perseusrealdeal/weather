@@ -11,10 +11,10 @@ import Foundation
 struct NationalAlert
 {
     /// Date and time of the start of the alert, Unix, UTC
-    let start      : Double
+    let start           : Double
     
     /// Date and time of the end of the alert, Unix, UTC
-    let end        : Double
+    let end             : Double
     
     /// Other Fields
 }
@@ -23,7 +23,7 @@ struct NationalAlert
 struct ForecastHour
 {
     /// Time of the forecasted data, Unix, UTC
-    let dt        : Double
+    let dt              : Double
     
     /// Other Fields
 }
@@ -32,7 +32,7 @@ struct ForecastHour
 struct ForecastDay
 {
     /// Time of the forecasted data, Unix, UTC
-    let dt        : Double
+    let dt              : Double
     
     /// Other Fields
 }
@@ -40,7 +40,7 @@ struct ForecastDay
 struct CurrentWeather
 {
     /// Time of the forecasted data, Unix, UTC
-    let dt        : Double
+    let dt              : Double
     
     /// Other Fields
 }
@@ -57,7 +57,7 @@ struct CurrentLocationDescription
 
 struct LastFullUpdateTime
 {
-    /// Time of the forecasted data, Unix, UTC
+    /// Time of the last full data update, Unix, UTC
     let dt              : Double
 }
 

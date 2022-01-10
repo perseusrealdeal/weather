@@ -14,7 +14,7 @@ class MainModuleFunctionalTests: XCTestCase
     
     func test_viewController_loadView_called()
     {
-        let sut = WeatherViewController()
+        let sut = MainViewController.storyboardInstance()
         
         sut.loadViewIfNeeded()
     }

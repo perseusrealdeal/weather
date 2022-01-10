@@ -26,6 +26,8 @@ class WeatherStackView: UIStackView
     
     // MARK: - Instance Initialization
     
+    required init(coder aDecoder: NSCoder) { fatalError() }
+    
     init(alerts : WeatherNationalAlertsView,
          hourly : ForecastHourlyView,
          daily  : ForecastDailyView,
@@ -104,16 +106,4 @@ class WeatherStackView: UIStackView
         changeLayout(for: currentOrientation)
         stackView.updateLayoutOrientationIfNeeded(for: currentOrientation)
     }
-    
-    // MARK: - Other Methods (Not Business Logic Related)
-    
-    deinit
-    {
-        #if DEBUG
-        print(">> [\(type(of: self))].deinit")
-        #endif
-    }
-    
-    required init(coder aDecoder: NSCoder) { fatalError() }
-    
 }

@@ -33,10 +33,12 @@
       "skippedTests" : [
         "CommonFunctionalTests",
         "GeoLocationReceiverTests",
+        "MainModuleFunctionalTests",
         "OpenWeatherCommunicationTests",
         "PerformanceTests",
         "SettingsBundleFunctionalTests",
-        "SnapshotTests"
+        "SnapshotTests",
+        "WeatherViewControllerTests"
       ],
       "target" : {
         "containerPath" : "container:Weather.xcodeproj",

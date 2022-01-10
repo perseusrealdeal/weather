@@ -21,6 +21,8 @@ class WeatherNationalAlertsView: UIView
     
     // MARK: - Instance Initialization
     
+    required init(coder aDecoder: NSCoder) { fatalError() }
+    
     init()
     {
         super.init(frame: CGRect.zero)
@@ -43,15 +45,4 @@ class WeatherNationalAlertsView: UIView
             print(data)
         }
     }
-    
-    // MARK: - Other Methods (Not Business Logic Related)
-    
-    deinit
-    {
-        #if DEBUG
-        print(">> [\(type(of: self))].deinit")
-        #endif
-    }
-    
-    required init(coder aDecoder: NSCoder) { fatalError() }
 }

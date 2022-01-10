@@ -27,7 +27,7 @@ class WeatherDataModel
     init()
     {
         #if DEBUG
-        print(">> [\(type(of: self))]." + #function)
+        print(">> [\(type(of: self))].init")
         #endif
         
         jsonData = loadData()
@@ -37,8 +37,15 @@ class WeatherDataModel
         #endif
         
         #if DEBUG
-        let time = jsonData["lastFullUpdate"].doubleValue
-        print("fullUpdate   : \(Date(timeIntervalSince1970: time))")
+        if target != nil
+        {
+            let time = jsonData["lastFullUpdate"].doubleValue
+            print("fullUpdate   : \(Date(timeIntervalSince1970: time))")
+        }
+        else
+        {
+            print("fullUpdate   : —")
+        }
         #endif
     }
     
@@ -225,6 +232,8 @@ class WeatherDataModel
     }
 }
 
+// MARK: - Parser Produces Weather Data
+
 extension WeatherDataModel
 {
     private func parser() -> CurrentLocationDescription?
@@ -303,15 +312,13 @@ extension WeatherDataModel
     }
 }
 
-
+// MARK: - Service Matter Helper Methods
 
 extension WeatherDataModel
 {
     private func printAlerts()
     {
-        #if DEBUG
         print("alerts       : begin")
-        #endif
         
         for (index,subJson):(String, JSON) in jsonData["alerts"]
         {
@@ -325,17 +332,12 @@ extension WeatherDataModel
             print("end time     : \(timeEnd)")
         }
         
-        #if DEBUG
         print("alerts       : end")
-        #endif
     }
     
     func printHourly()
     {
-        #if DEBUG
         print("hourly       : begin")
-        #endif
-        
         print("time now     : \(Date())")
         
         for (index,subJson):(String, JSON) in jsonData["hourly"]
@@ -347,8 +349,6 @@ extension WeatherDataModel
             print("time         : \(time)")
         }
         
-        #if DEBUG
         print("hourly       : end")
-        #endif
     }
 }
