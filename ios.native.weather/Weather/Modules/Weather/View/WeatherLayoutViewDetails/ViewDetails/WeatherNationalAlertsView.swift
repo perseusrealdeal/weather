@@ -11,7 +11,7 @@ class WeatherNationalAlertsView: UIView
 {
     // MARK: - Business Matter Data to View
     
-    var data : [NationalAlert]?
+    var data: [NationalAlert]?
     {
         didSet
         {

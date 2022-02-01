@@ -11,18 +11,18 @@ class WeatherStackView: UIStackView
 {
     // MARK: - View Layout Related Properties
     
-    private var constraintVerticalOrientation1   : NSLayoutConstraint!
-    private var constraintVerticalOrientation2   : NSLayoutConstraint!
+    private var constraintVerticalOrientation1  : NSLayoutConstraint!
+    private var constraintVerticalOrientation2  : NSLayoutConstraint!
     
-    private var constraintHorizontalOrientation1 : NSLayoutConstraint!
-    private var constraintHorizontalOrientation2 : NSLayoutConstraint!
+    private var constraintHorizontalOrientation1: NSLayoutConstraint!
+    private var constraintHorizontalOrientation2: NSLayoutConstraint!
     
-    private var configuredForOrientation         : NSLayoutConstraint.Axis!
-    private let stackView                        : CurrentWeatherWithForecastDailyStackView
+    private var configuredForOrientation        : NSLayoutConstraint.Axis!
+    private let stackView                       : CurrentWeatherWithForecastDailyStackView
     
     // MARK: - Business Matter Data View Containers
     
-    private let weatherNationalAlertsView        : WeatherNationalAlertsView
+    private let weatherNationalAlertsView       : WeatherNationalAlertsView
     
     // MARK: - Instance Initialization
     

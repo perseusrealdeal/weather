@@ -38,6 +38,7 @@
         "PerformanceTests",
         "SettingsBundleFunctionalTests",
         "SnapshotTests",
+        "WeatherDataAutoUpdaterTests",
         "WeatherViewControllerTests"
       ],
       "target" : {

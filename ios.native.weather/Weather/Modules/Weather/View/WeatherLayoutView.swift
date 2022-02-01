@@ -17,17 +17,17 @@ class WeatherLayoutView: UIView
     // MARK: - View Layout Related Properties
     
     /// configuredForOrientation is initialized when updateLayoutOrientationIfNeeded method called
-    private var configuredForOrientation : NSLayoutConstraint.Axis?
-    private let stackView                : WeatherStackView
+    private var configuredForOrientation: NSLayoutConstraint.Axis?
+    private let stackView               : WeatherStackView
     
     // MARK: - Business Matter Data View Containers
     
-    private let viewModel                : WeatherViewModel
+    private let viewModel               : WeatherViewModel
     
-    private let alertsView               : WeatherNationalAlertsView
-    private let forecastHourlyView       : ForecastHourlyView
-    private let forecastDailyView        : ForecastDailyView
-    private let currentWeatherView       : CurrentWeatherView
+    private let alertsView              : WeatherNationalAlertsView
+    private let forecastHourlyView      : ForecastHourlyView
+    private let forecastDailyView       : ForecastDailyView
+    private let currentWeatherView      : CurrentWeatherView
     
     // MARK: - Instance Initialization
     

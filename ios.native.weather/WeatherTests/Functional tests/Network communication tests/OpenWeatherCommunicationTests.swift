@@ -31,7 +31,7 @@ class OpenWeatherCommunicationTests: XCTestCase
         
         // act
         
-        sut.updateWeatherData()
+        sut.requestWeatherData()
         
         // assert
         
@@ -62,7 +62,7 @@ class OpenWeatherCommunicationTests: XCTestCase
         // act
         
         /// simulate request
-        sut.updateWeatherData()
+        sut.requestWeatherData()
         
         /// simulate response
         mock.dataTaskArgsCompletionHandler.first?(happiness, response(statusCode: 200), nil)
@@ -82,8 +82,11 @@ class OpenWeatherCommunicationTests: XCTestCase
         let mock = MockURLSession()
         let sut = OpenWeatherClient(session: mock)
         
-        let expected_failure: Result<Data, WeatherDataDeliveryError> = .failure(.failedRequest("No data!"))
-        var actual_failure: Result<Data, WeatherDataDeliveryError> = .success(Data())
+        let expected_failure: Result<Data, WeatherDataDeliveryError> =
+            .failure(.failedRequest("No data!"))
+        
+        var actual_failure: Result<Data, WeatherDataDeliveryError> =
+            .success(Data())
         
         let onResultUpdateCalled = expectation(description: "onResultUpdate called")
         sut.onResultDelivered =
@@ -96,7 +99,7 @@ class OpenWeatherCommunicationTests: XCTestCase
         // act
         
         /// simulate request
-        sut.updateWeatherData()
+        sut.requestWeatherData()
         
         /// simulate response
         mock.dataTaskArgsCompletionHandler.first?(nil, nil, TestError(message: "No data!"))
@@ -118,8 +121,11 @@ class OpenWeatherCommunicationTests: XCTestCase
         let status_code = 404
         let message = HTTPURLResponse.localizedString(forStatusCode: status_code)
         
-        let expected_failure: Result<Data, WeatherDataDeliveryError> = .failure(.failedRequest(message))
-        var actual_failure: Result<Data, WeatherDataDeliveryError> = .success(Data())
+        let expected_failure: Result<Data, WeatherDataDeliveryError> =
+            .failure(.failedRequest(message))
+        
+        var actual_failure: Result<Data, WeatherDataDeliveryError> =
+            .success(Data())
         
         let happiness = loadDataFromFile("currentWeatherData", "json")
         
@@ -134,7 +140,7 @@ class OpenWeatherCommunicationTests: XCTestCase
         // act
         
         /// simulate request
-        sut.updateWeatherData()
+        sut.requestWeatherData()
         
         /// simulate response
         mock.dataTaskArgsCompletionHandler.first?(happiness, response(statusCode: status_code), nil)
@@ -159,7 +165,7 @@ class OpenWeatherCommunicationTests: XCTestCase
         // act
         
         /// simulate request
-        sut.updateWeatherData()
+        sut.requestWeatherData()
         
         /// simulate response
         mock.dataTaskArgsCompletionHandler.first?(happy, response(statusCode: 200), nil)
@@ -179,7 +185,7 @@ class OpenWeatherCommunicationTests: XCTestCase
         // act
         
         /// simulate request
-        sut.updateWeatherData()
+        sut.requestWeatherData()
         
         /// simulate response
         mock.dataTaskArgsCompletionHandler.first?(nil, nil, TestError(message: "DUMMY"))
@@ -240,9 +246,14 @@ extension OpenWeatherCommunicationTests
                 onResultUpdateCalled.fulfill()
             }
         
+        /// "current,hourly,minutely,daily,alerts"
+        let exclude  : String = "current,hourly,minutely,daily"
+        let latitude : String = "55.662546456740564"
+        let longitude: String = "85.62138369331707"
+        
         // act
         
-        sut.updateWeatherData()
+        sut.requestWeatherData(exclude: exclude, latitude: latitude, longitude: longitude)
         waitForExpectations(timeout: 3)
         
         // assert
@@ -258,7 +269,7 @@ extension OpenWeatherCommunicationTests
 fileprivate class DummyURLSessionDataTask: URLSessionDataTask { override func resume() { } }
 
 /// Used instead of URLSession.shared to make it isolated via constructor injection in OpenWeatherClient.
-fileprivate class MockURLSession : URLSessionProtocol
+fileprivate class MockURLSession: URLSessionProtocol
 {
     /// for network request testing
     var dataTaskCallCount            : Int = 0
@@ -267,8 +278,9 @@ fileprivate class MockURLSession : URLSessionProtocol
     /// for network response testing
     var dataTaskArgsCompletionHandler: [(Data?, URLResponse?, Error?) -> Void] = []
     
-    func dataTask(with request: URLRequest, completionHandler:
-                    @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
+    func dataTask(with request     : URLRequest,
+                  completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void)
+    -> URLSessionDataTask
     {
         dataTaskCallCount += 1
         dataTaskArgsRequest.append(request)
@@ -280,7 +292,8 @@ fileprivate class MockURLSession : URLSessionProtocol
     }
     
     fileprivate func verifyDataTask(with request: URLRequest,
-                                    file: StaticString = #file, line: UInt = #line)
+                                    file        : StaticString = #file,
+                                    line        : UInt = #line)
     {
         guard dataTaskWasCalledOnce(file: file, line: line) else { return }
         
@@ -289,16 +302,19 @@ fileprivate class MockURLSession : URLSessionProtocol
     
     private func dataTaskWasCalledOnce(file: StaticString = #file, line: UInt = #line) -> Bool
     {
-        verifyMethodCalledOnce(methodName: "dataTask(with:completionHandler:)",
-                               callCount: dataTaskCallCount,
+        verifyMethodCalledOnce(methodName       : "dataTask(with:completionHandler:)",
+                               callCount        : dataTaskCallCount,
                                describeArguments: "request: \(dataTaskArgsRequest)",
-                               file: file, line: line)
+                               file             : file,
+                               line             : line)
     }
 }
 
-fileprivate func verifyMethodCalledOnce(methodName: String, callCount: Int,
+fileprivate func verifyMethodCalledOnce(methodName       : String,
+                                        callCount        : Int,
                                         describeArguments: @autoclosure () -> String,
-                                        file: StaticString = #file, line: UInt = #line) -> Bool
+                                        file             : StaticString = #file,
+                                        line             : UInt = #line) -> Bool
 {
     if callCount == 0
     {
@@ -317,7 +333,7 @@ fileprivate func verifyMethodCalledOnce(methodName: String, callCount: Int,
 
 struct TestError: LocalizedError
 {
-    let message: String
+    let message         : String
     var errorDescription: String? { message }
 }
 
@@ -326,7 +342,7 @@ struct TestError: LocalizedError
 fileprivate func loadDataFromFile(_ fileName: String, _ fileExtension: String) -> Data
 {
     guard let url = Bundle(for: OpenWeatherCommunicationTests.self).url(forResource: fileName,
-                                                                        withExtension: fileExtension),
+                                                                withExtension: fileExtension),
           let data = try? Data(contentsOf: url)
     else { return Data() }
     
@@ -335,8 +351,8 @@ fileprivate func loadDataFromFile(_ fileName: String, _ fileExtension: String) -
 
 fileprivate func response(statusCode: Int) -> HTTPURLResponse?
 {
-    HTTPURLResponse(url: URL(string: "http://DUMMY")!,
-                    statusCode: statusCode,
-                    httpVersion: nil,
+    HTTPURLResponse(url         : URL(string: "http://DUMMY")!,
+                    statusCode  : statusCode,
+                    httpVersion : nil,
                     headerFields: nil)
 }

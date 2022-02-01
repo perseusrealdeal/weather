@@ -11,7 +11,7 @@ class ForecastDailyView: UIView
 {
     // MARK: - Business Matter Data to View
     
-    var data : [ForecastDay]?
+    var data: [ForecastDay]?
     {
         didSet
         {

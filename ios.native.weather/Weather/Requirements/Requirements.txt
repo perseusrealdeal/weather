@@ -37,7 +37,7 @@ IV  : Features (Specials/Special Requirements)
  F5. Dark Appearance
  F6. Chart
  
-V   : Operations   //: None (if only current weather, no data changes are required)
+V   : Operations   //: None (if weather only for current location)
  
  OP1. Add Location (up to N items)
  OP2. Remove Location

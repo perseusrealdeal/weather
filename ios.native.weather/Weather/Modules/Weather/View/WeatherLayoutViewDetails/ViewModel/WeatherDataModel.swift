@@ -5,57 +5,42 @@
 //  Created by Mikhail Zhigulin on 24.12.2021.
 //
 
-import Foundation
 import SwiftyJSON
-
-fileprivate let WEATHER_CURRENT_LOCATION_KEY = "weather_forecast_for_current_location"
 
 class WeatherDataModel
 {
     // MARK: - Business Matter Data
     
-    var alerts             : [NationalAlert]? { parser() }
+    var alerts          : [NationalAlert]? { parser() }
     
-    var forecastHourly     : [ForecastHour]? { parser() }
-    var forecastDaily      : [ForecastDay]? { parser() }
-    var currentWeather     : CurrentWeather? { parser() }
+    var forecastHourly  : [ForecastHour]? { parser() }
+    var forecastDaily   : [ForecastDay]? { parser() }
+    var currentWeather  : CurrentWeather? { parser() }
     
-    private var jsonData   : JSON!
+    private var jsonData: JSON!
     
     // MARK: - Init
     
-    init()
+    init(saver: LocalDataSaverProtocol = LocalDataSaver())
     {
         #if DEBUG
         print(">> [\(type(of: self))].init")
         #endif
         
-        jsonData = loadData()
+        self.saver = saver
         
-        #if DEBUG
-        print("loaded       : \(target == nil ? "nothing" : target!.location.description)")
-        #endif
-        
-        #if DEBUG
-        if target != nil
-        {
-            let time = jsonData["lastFullUpdate"].doubleValue
-            print("fullUpdate   : \(Date(timeIntervalSince1970: time))")
-        }
-        else
-        {
-            print("fullUpdate   : —")
-        }
-        #endif
+        loadFromLocal()
     }
     
     // MARK: - Service Matter Data
     
-    var target                     : CurrentLocationDescription? { parser() }
+    var saver                   : LocalDataSaverProtocol
     
-    var lastFullUpdateTime         : LastFullUpdateTime? { parser() }
+    var target                  : CurrentLocationDescription? { parser() }
     
-    var isForecastHourlyUpToDate   : Bool
+    var lastFullUpdateTime      : LastFullUpdateTime? { parser() }
+    
+    var isForecastHourlyUpToDate: Bool
     {
         guard let timeToUpdate = forecastHourly?[1].dt else { return false }
         
@@ -65,7 +50,7 @@ class WeatherDataModel
         return result
     }
     
-    var isForecastDailyUpToDate    : Bool
+    var isForecastDailyUpToDate  : Bool
     {
         if let today = forecastDaily?.first?.dt
         {
@@ -75,7 +60,7 @@ class WeatherDataModel
         return false
     }
     
-    var isForecastCurrentUpToDate  : Bool
+    var isForecastCurrentUpToDate: Bool
     {
         if let today = currentWeather?.dt
         {
@@ -172,7 +157,11 @@ class WeatherDataModel
             self.jsonData["timezone"] = json["timezone"]
             self.jsonData["timezone_offset"] = json["timezone_offset"]
             
-            saveData()
+            saver.save(jsonData)
+            
+            #if DEBUG
+            print("saved        : \(target == nil ? "nothing" : target!.location.description)")
+            #endif
             
             let onlyAlerts = ((weatherDataCountChanges == 0) && alertsChanged) ? true : false
             
@@ -183,35 +172,32 @@ class WeatherDataModel
     
     // MARK: - Service matter operations
     
-    private func loadData() -> JSON
+    func loadFromLocal()
     {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif
         
-        guard
-            Settings.userDefaults.valueExists(forKey: WEATHER_CURRENT_LOCATION_KEY),
-            let object = Settings.userDefaults.object(forKey: WEATHER_CURRENT_LOCATION_KEY),
-            let result = JSON(rawValue: object)
-        else { return JSON() }
+        jsonData = saver.loadData()
         
-        return result
+        #if DEBUG
+        print("loaded       : \(target == nil ? "nothing" : target!.location.description)")
+        #endif
+        
+        #if DEBUG
+        if target != nil
+        {
+            let time = jsonData["lastFullUpdate"].doubleValue
+            print("fullUpdate   : \(Date(timeIntervalSince1970: time))")
+        }
+        else
+        {
+            print("fullUpdate   : —")
+        }
+        #endif
     }
     
-    private func saveData()
-    {
-        #if DEBUG
-        print(">> [\(type(of: self))]." + #function)
-        #endif
-        
-        guard let json = jsonData, !json.isEmpty, json["current"].exists() else { return }
-        
-        Settings.userDefaults.setValue(json.rawValue, forKey: WEATHER_CURRENT_LOCATION_KEY)
-        
-        #if DEBUG
-        print("saved        : \(target == nil ? "nothing" : target!.location.description)")
-        #endif
-    }
+    
     
     // MARK: - Other calculations
     
@@ -243,9 +229,9 @@ extension WeatherDataModel
             json["lon"].exists(), json["timezone_offset"].exists()
         else { return nil }
         
-        return CurrentLocationDescription(latitude        : json["lat"].doubleValue,
-                                          longitude       : json["lon"].doubleValue,
-                                          timezone_offset : json["timezone_offset"].doubleValue)
+        return CurrentLocationDescription(latitude       : json["lat"].doubleValue,
+                                          longitude      : json["lon"].doubleValue,
+                                          timezone_offset: json["timezone_offset"].doubleValue)
     }
     
     private func parser() -> LastFullUpdateTime?

@@ -7,22 +7,22 @@
 
 import Foundation
 
-class WeatherViewModel : WeatherDataAutoUpdaterDelegate
+class WeatherViewModel: WeatherDataAutoUpdaterDelegate
 {
     // MARK: - Servants
     
     /// It's responsible for keeping weather data in actual state
-    private let dataKeeper : WeatherDataAutoUpdater
+    private let dataKeeper: WeatherDataAutoUpdater
     
     // MARK: - Operational Data
     
     /// The reference to the data
-    private let dataModel  : WeatherDataModel
+    private let dataModel : WeatherDataModel
     
     // MARK: - Host View
     
     /// The reference to the view representing the actual data
-    var weatherView        : WeatherLayoutView?
+    var weatherView       : WeatherLayoutView?
     
     // MARK: - Init
     
@@ -33,7 +33,7 @@ class WeatherViewModel : WeatherDataAutoUpdaterDelegate
         #endif
         
         dataModel = WeatherDataModel()
-        dataKeeper = WeatherDataAutoUpdater(with: dataModel)
+        dataKeeper = WeatherDataAutoUpdater(data: dataModel)
         
         dataKeeper.delegate = self
     }
@@ -52,17 +52,26 @@ class WeatherViewModel : WeatherDataAutoUpdaterDelegate
     
     // MARK: - WeatherActualDataKeeperDelegate
     
-    func weatherDataUpdated(onlyAlerts: Bool)
+    func weatherDataUpdated()
     {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
-        print("Only Alerts Received: \(onlyAlerts)")
-        print("-----------------------------------")
         #endif
         
         guard let _ = weatherView else { return }
         
-        // Do reload of the weaather view
+        // Do the weaather view reload from here
+    }
+    
+    func weatherAlertsUpdated()
+    {
+        #if DEBUG
+        print(">> [\(type(of: self))]." + #function)
+        #endif
+        
+        guard let _ = weatherView else { return }
+        
+        // Do the weaather view reload from here
     }
     
     func locationServiceNotAllowed(_ reason: LocationServiceNotAllowed)

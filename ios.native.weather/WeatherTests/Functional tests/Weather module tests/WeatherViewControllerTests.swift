@@ -12,11 +12,11 @@ class WeatherViewControllerTests: XCTestCase
 {
     // func test_zero() { XCTFail("Tests not yet implemented in \(type(of: self)).") }
     
-    private var sut                    : WeatherViewController!
+    private var sut                   : WeatherViewController!
     
-    private var mockView               : MockWeatherLayoutView!
-    private var mockLocationReceiver   : MockGeoLocationReceiver!
-    private var mockNotificationCenter : MockNotificationCenter!
+    private var mockView              : MockWeatherLayoutView!
+    private var mockLocationReceiver  : MockGeoLocationReceiver!
+    private var mockNotificationCenter: MockNotificationCenter!
     
     override func setUp()
     {
@@ -58,10 +58,10 @@ class WeatherViewControllerTests: XCTestCase
     {
         // arrange
         
-        let orientation : NSLayoutConstraint.Axis =
+        let orientation: NSLayoutConstraint.Axis =
             UIDevice.current.orientation.isLandscape ? .horizontal : .vertical
         
-        sut.mockView = mockView
+        sut.stubbedView = mockView
         
         // act
         
@@ -79,7 +79,7 @@ class WeatherViewControllerTests: XCTestCase
     {
         // arrange
         
-        sut.mockView = mockView
+        sut.stubbedView = mockView
         
         // act
         
@@ -97,7 +97,7 @@ class WeatherViewControllerTests: XCTestCase
     {
         // arrange
         
-        sut.mockView = mockView
+        sut.stubbedView = mockView
         
         // act
         
@@ -117,7 +117,7 @@ class WeatherViewControllerTests: XCTestCase
     {
         // arange
         
-        sut.mockView = mockView
+        sut.stubbedView = mockView
         
         // act
         
@@ -139,9 +139,9 @@ class WeatherViewControllerTests: XCTestCase
         
         mockNotificationCenter.verifyAddObserver(
             sut,
-            selector : #selector(sut.theAppDidFinishLaunching),
-            name     : UIApplication.didFinishLaunchingNotification,
-            object   : nil)
+            selector: #selector(sut.theAppDidFinishLaunching),
+            name    : UIApplication.didFinishLaunchingNotification,
+            object  : nil)
     }
     
     func test_VC_should_call_addObserver_three_times_when_viewWillAppear()
@@ -174,9 +174,9 @@ class WeatherViewControllerTests: XCTestCase
         // assert
         
         mockNotificationCenter.verifyAddObserversShouldCalledThreeTimes(observers,
-                                                                        selector  : selectors,
-                                                                        name      : names,
-                                                                        object    : objects)
+                                                                        selector: selectors,
+                                                                        name    : names,
+                                                                        object  : objects)
     }
     
     func test_VC_should_call_removeObserver_twice_when_viewWillDisappear()
@@ -199,7 +199,7 @@ class WeatherViewControllerTests: XCTestCase
         // assert
         
         mockNotificationCenter.verifyRemoveObserverCalledTwice(observers,
-                                                               name      : names,
-                                                               object    : objects)
+                                                               name  : names,
+                                                               object: objects)
     }
 }

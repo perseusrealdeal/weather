@@ -11,18 +11,18 @@ class CurrentWeatherWithForecastDailyStackView: UIStackView
 {
     // MARK: - View Layout Related Properties
     
-    private var constraintVerticalAxis1   : NSLayoutConstraint!
-    private var constraintVerticalAxis2   : NSLayoutConstraint!
+    private var constraintVerticalAxis1  : NSLayoutConstraint!
+    private var constraintVerticalAxis2  : NSLayoutConstraint!
     
-    private var constraintHorizontalAxis1 : NSLayoutConstraint!
-    private var constraintHorizontalAxis2 : NSLayoutConstraint!
+    private var constraintHorizontalAxis1: NSLayoutConstraint!
+    private var constraintHorizontalAxis2: NSLayoutConstraint!
     
-    private var configuredForOrientation  : NSLayoutConstraint.Axis!
-    private let stackView                 : CurrentWeatherWithForecastHourlyStackView
+    private var configuredForOrientation : NSLayoutConstraint.Axis!
+    private let stackView                : CurrentWeatherWithForecastHourlyStackView
     
     // MARK: - Business Matter Data View Containers
     
-    private let forecastDailyView         : ForecastDailyView
+    private let forecastDailyView        : ForecastDailyView
     
     // MARK: - Instance Initialization
     

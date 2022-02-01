@@ -15,11 +15,11 @@ protocol URLSessionProtocol
                     @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
 }
 
-extension URLSession : URLSessionProtocol { }
+extension URLSession: URLSessionProtocol { }
 
 // MARK: - Failure scenario details
 
-enum WeatherDataDeliveryError : Error
+enum WeatherDataDeliveryError: Error
 {
     case invalidExclude
     case invalidUrl
@@ -30,13 +30,14 @@ enum WeatherDataDeliveryError : Error
 
 class OpenWeatherClient
 {
-    private var api_key : String { "79eefe16f6e4714470502074369fc77b" }
+    private var api_key  : String { "79eefe16f6e4714470502074369fc77b" }
+    private var units    : String { "metric" }
     
-    private var dataTask: URLSessionDataTask?
-    private let session : URLSessionProtocol // Isolated for unit testing
+    private var dataTask : URLSessionDataTask?
+    private let session  : URLSessionProtocol // Isolated for unit testing
     
-    var onResultDelivered  : (Result<Data, WeatherDataDeliveryError>) -> Void = { print($0) }
-    var weather         : Data { givenData }
+    var onResultDelivered: (Result<Data, WeatherDataDeliveryError>) -> Void = { print($0) }
+    var weather          : Data { givenData }
     
     private(set) var givenData: Data = Data()
     {
@@ -52,10 +53,9 @@ class OpenWeatherClient
         self.session = session
     }
     
-    func updateWeatherData(exclude  : String = "hourly,minutely,daily,alerts",
-                           latitude : String = "55.662546456740564",
-                           longitude: String = "85.62138369331707",
-                           units    : String = "metric")
+    func requestWeatherData(exclude  : String = "hourly,minutely,daily,alerts",
+                            latitude : String = "55.662546456740564",
+                            longitude: String = "85.62138369331707")
     {
         // Validate parameters
         

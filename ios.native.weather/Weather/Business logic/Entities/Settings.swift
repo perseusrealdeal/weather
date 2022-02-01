@@ -10,18 +10,18 @@ import SwiftyJSON
 
 public struct Settings
 {
-    static let bundleParams          : [String: String] =
+    static let bundleParams         : [String: String] =
         [
-            "Name"                   : "Settings",
-            "Extension"              : "bundle",
-            "RootPlist"              : "Root.plist",
-            "PreferencesItems"       : "PreferenceSpecifiers",
-            "PreferenceKey"          : "Key",
-            "PreferenceValues"       : "Values",
-            "PreferenceDefaultValue" : "DefaultValue"
+            "Name"                  : "Settings",
+            "Extension"             : "bundle",
+            "RootPlist"             : "Root.plist",
+            "PreferencesItems"      : "PreferenceSpecifiers",
+            "PreferenceKey"         : "Key",
+            "PreferenceValues"      : "Values",
+            "PreferenceDefaultValue": "DefaultValue"
         ]
     
-    static var defaultLocation : Сoordinate
+    static var defaultLocation: Сoordinate
     {
         let json = JSON(parseJSON: "defaultLocation".localized_value)
         

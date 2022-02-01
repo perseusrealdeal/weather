@@ -11,7 +11,7 @@ class CurrentWeatherView: UIView
 {
     // MARK: - Business Matter Data to View
     
-    var data : CurrentWeather?
+    var data: CurrentWeather?
     {
         didSet
         {

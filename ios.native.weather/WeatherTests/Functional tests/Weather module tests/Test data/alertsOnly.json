@@ -1,0 +1,50 @@
+{
+  "timezone_offset" : 25200,
+  "lon" : 85.621399999999994,
+  "lat" : 55.662500000000001,
+  "timezone" : "Asia\/Novokuznetsk",
+  "alerts" : [
+    {
+      "end" : 1643688000,
+      "start" : 1643605200,
+      "sender_name" : "",
+      "description" : "",
+      "tags" : [
+        "Extreme temperature value",
+        "Rain",
+        "Black ice"
+      ],
+      "event" : "Freezing rain, icing"
+    },
+    {
+      "end" : 1643688000,
+      "start" : 1643605200,
+      "sender_name" : "",
+      "description" : "местами изморозь",
+      "tags" : [
+        "Black ice"
+      ],
+      "event" : "Гололедно - изморозевое отложение"
+    },
+    {
+      "end" : 1643688000,
+      "start" : 1643605200,
+      "sender_name" : "",
+      "description" : "",
+      "tags" : [
+
+      ],
+      "event" : "Other dangers"
+    },
+    {
+      "end" : 1643688000,
+      "start" : 1643605200,
+      "sender_name" : "",
+      "description" : "местами дым, дымка,на дорогах гололедица",
+      "tags" : [
+
+      ],
+      "event" : "Прочие опасности"
+    }
+  ]
+}

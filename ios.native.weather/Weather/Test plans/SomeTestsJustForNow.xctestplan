@@ -1,0 +1,49 @@
+{
+  "configurations" : [
+    {
+      "id" : "5FAFCCD4-AD6D-4BA7-A78F-C26E805724CA",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "CommonFunctionalTests",
+        "CommonLocalizationTests",
+        "GeoLocationReceiverTests",
+        "MainModuleFunctionalTests",
+        "OpenWeatherCommunicationTests",
+        "OpenWeatherCommunicationTests\/test_OpenWeatherClient_should_makeDataTaskAskForWeatherData()",
+        "OpenWeatherCommunicationTests\/test_updateWeatherNetworkCall_withErrorPreAsync_shouldNotSaveDataByClient()",
+        "OpenWeatherCommunicationTests\/test_updateWeatherNetworkCall_withError_shouldReportFailure()",
+        "OpenWeatherCommunicationTests\/test_updateWeatherNetworkCall_withResponse_withStatusCodeNot200_shouldReportFailure()",
+        "OpenWeatherCommunicationTests\/test_updateWeatherNetworkCall_withSuccessBeforeAsync_shouldNotSaveDataByClient()",
+        "OpenWeatherCommunicationTests\/test_updateWeatherNetworkCall_withSuccessResponse_shouldSaveDataAndInformByClient()",
+        "PerformanceTests",
+        "SettingsBundleFunctionalTests",
+        "SettingsBundleLocalizationTests",
+        "SnapshotTests",
+        "UpdaterHelperTests",
+        "WeatherDataAutoUpdaterTests\/test_updateWeatherDataIfNeeded_should_failed_if_WeatherDataDeliveryError()",
+        "WeatherDataAutoUpdaterTests\/test_updateWeatherDataIfNeeded_should_succeeded_even_if_LocationReceivedError()",
+        "WeatherDataAutoUpdaterTests\/test_updateWeatherDataIfNeeded_should_succeeded_if_LocationReceivedChanged()",
+        "WeatherDataAutoUpdaterTests\/test_updateWeatherDataIfNeeded_should_succeeded_if_LocationReceivedNotChanged()",
+        "WeatherDataAutoUpdaterTests\/test_updateWeatherDataIfNeeded_should_succeeded_if_NotDefaultLocation_with_onlyAlerts()",
+        "WeatherDataAutoUpdaterTests\/test_updateWeatherDataIfNeeded_should_succeeded_if_WeatherDataDeliverySucceeded()",
+        "WeatherViewControllerTests"
+      ],
+      "target" : {
+        "containerPath" : "container:Weather.xcodeproj",
+        "identifier" : "E0AAF5CB2755041600093229",
+        "name" : "WeatherTests"
+      }
+    }
+  ],
+  "version" : 1
+}

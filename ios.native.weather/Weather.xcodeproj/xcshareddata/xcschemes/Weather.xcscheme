@@ -35,6 +35,9 @@
          <TestPlanReference
             reference = "container:Weather/Test plans/LocalizationTests.xctestplan">
          </TestPlanReference>
+         <TestPlanReference
+            reference = "container:Weather/Test plans/SomeTestsJustForNow.xctestplan">
+         </TestPlanReference>
       </TestPlans>
       <Testables>
          <TestableReference

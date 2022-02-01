@@ -11,7 +11,7 @@ class ForecastHourlyView: UIView
 {
     // MARK: - Business Matter Data to View
     
-    var data : [ForecastHour]?
+    var data: [ForecastHour]?
     {
         didSet
         {

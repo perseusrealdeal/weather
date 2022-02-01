@@ -16,7 +16,7 @@ extension Notification.Name
 
 // MARK: - Failure scenario details
 
-enum LocationReceivedError : Error
+enum LocationReceivedError: Error
 {
     case receivedEmptyLocationData
     case failedRequest(String)
@@ -41,15 +41,15 @@ func ==(lhs: LocationReceivedError, rhs: LocationReceivedError) -> Bool
 
 // MARK: - Success scenario details
 
-struct Сoordinate : CustomStringConvertible
+struct Сoordinate: CustomStringConvertible
 {
     // Neither rounding nor cutting off, just as is from core location
-    let _latitude  : Double
-    let _longitude : Double
+    let _latitude : Double
+    let _longitude: Double
     
     // Cutting off to hundredths (2 decimal places)
-    var latitude   : Double { (_latitude * 100.0).rounded(_latitude > 0 ? .down : .up) / 100.0 }
-    var longitude  : Double { (_longitude * 100.0).rounded(_longitude > 0 ? .down : .up) / 100.0 }
+    var latitude  : Double { (_latitude * 100.0).rounded(_latitude > 0 ? .down : .up) / 100.0 }
+    var longitude : Double { (_longitude * 100.0).rounded(_longitude > 0 ? .down : .up) / 100.0 }
     
     init(latitude: Double, longitude: Double)
     {
@@ -57,7 +57,7 @@ struct Сoordinate : CustomStringConvertible
         _longitude = longitude
     }
     
-    var description : String
+    var description: String
     {
         let latitude = (_latitude * 10000.0).rounded(_latitude > 0 ? .down : .up) / 10000.0
         let longitude = (_longitude * 10000.0).rounded(_longitude > 0 ? .down : .up) / 10000.0
@@ -75,7 +75,7 @@ func == (lhs: Сoordinate, rhs: Сoordinate) -> Bool
 
 // MARK: - Details about why Location service isn't allowed
 
-enum LocationServiceNotAllowed : CustomStringConvertible
+enum LocationServiceNotAllowed: CustomStringConvertible
 {
     /// Location service is neither restricted nor the app denided
     case notDetermined
@@ -90,7 +90,7 @@ enum LocationServiceNotAllowed : CustomStringConvertible
     /// provide instructions for enabling services for the app in Settings > The App
     case deniedForTheApp /// in case if location services turned on but not restricted
     
-    var description : String
+    var description: String
     {
         switch self
         {
@@ -123,11 +123,11 @@ protocol LocationManagerProtocol
     static func locationServicesEnabled() -> Bool
 }
 
-extension CLLocationManager : LocationManagerProtocol { }
+extension CLLocationManager: LocationManagerProtocol { }
 
 // MARK: - GeoLocationReceiver used via Singletone
 
-class GeoLocationReceiver : NSObject
+class GeoLocationReceiver: NSObject
 {
     private let APPROPRIATE_ACCURACY = kCLLocationAccuracyThreeKilometers
     
@@ -205,7 +205,7 @@ class GeoLocationReceiver : NSObject
 
 // MARK: - CLLocationManagerDelegate methods
 
-extension GeoLocationReceiver : CLLocationManagerDelegate
+extension GeoLocationReceiver: CLLocationManagerDelegate
 {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
