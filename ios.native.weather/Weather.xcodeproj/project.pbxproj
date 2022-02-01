@@ -469,7 +469,6 @@
 		E0C428DF27535DF200E65DFD /* Business logic */ = {
 			isa = PBXGroup;
 			children = (
-				E0C428E627535E5E00E65DFD /* Views */,
 				E0C428E927535E7E00E65DFD /* Entities */,
 				E0C428EC27535E9300E65DFD /* Services */,
 				E0C428EF27535EA600E65DFD /* Extentions */,
@@ -496,13 +495,6 @@
 				E0D8253727A4179600C710F8 /* SomeTestsJustForNow.xctestplan */,
 			);
 			path = "Test plans";
-			sourceTree = "<group>";
-		};
-		E0C428E627535E5E00E65DFD /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		E0C428E927535E7E00E65DFD /* Entities */ = {

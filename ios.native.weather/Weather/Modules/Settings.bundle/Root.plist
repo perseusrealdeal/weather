@@ -158,6 +158,28 @@
 		</dict>
 		<dict>
 			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>dark mode</string>
+			<key>Key</key>
+			<string>dark_mode_preference</string>
+			<key>DefaultValue</key>
+			<string>Auto</string>
+			<key>Values</key>
+			<array>
+				<string>Auto</string>
+				<string>On</string>
+				<string>Off</string>
+			</array>
+			<key>Titles</key>
+			<array>
+				<string>Auto</string>
+				<string>On</string>
+				<string>Off</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
 			<string>release app number</string>

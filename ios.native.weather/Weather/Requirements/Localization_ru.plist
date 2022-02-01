@@ -65,11 +65,19 @@
 	<key>specials</key>
 	<string>Особые опции</string>
 	<key>focus on</key>
-	<string>фокус Жизни</string>
+	<string>стиль Жизни</string>
 	<key>day</key>
-	<string>день</string>
+	<string>дневной</string>
 	<key>night</key>
-	<string>ночь</string>
+	<string>ночной</string>
+	<key>dark mode</key>
+	<string>тёмный режим</string>
+	<key>dark mode auto</key>
+	<string>автоматически</string>
+	<key>dark mode on</key>
+	<string>тёмный постоянно</string>
+	<key>dark mode off</key>
+	<string>отключен</string>
 	<key>optionsButtonInMainScreen</key>
 	<string>Опции</string>
 	<key>locationsListButtonInMainScreen</key>

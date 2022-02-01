@@ -303,7 +303,7 @@ class SettingsBundleLocalizationTests: XCTestCase
         "\"default focus on\" is not correct with the actual value.")
     }
     
-    // MARK: - Specials, Focus on option
+    // MARK: - Specials, Focus on Option
     
     func test_specials_group_title_should_be_localized()
     {
@@ -339,6 +339,44 @@ class SettingsBundleLocalizationTests: XCTestCase
         
         XCTAssertEqual(requirement, expected,
         "\"night\" is not correct with the expected value.")
+    }
+    
+    // MARK: - Specials, Dark Mode Option
+    
+    func test_dark_mode_should_be_localized()
+    {
+        let expected = "dark mode".localizedFromSettings
+        let requirement = "dark mode".localizedFromRequirements
+        
+        XCTAssertEqual(requirement, expected,
+        "\"dark mode\" is not correct with the expected value.")
+    }
+    
+    func test_dark_mode_auto_should_be_localized()
+    {
+        let expected = "dark mode auto".localizedFromSettings
+        let requirement = "dark mode auto".localizedFromRequirements
+        
+        XCTAssertEqual(requirement, expected,
+        "\"dark mode auto\" is not correct with the expected value.")
+    }
+    
+    func test_dark_mode_on_should_be_localized()
+    {
+        let expected = "dark mode on".localizedFromSettings
+        let requirement = "dark mode on".localizedFromRequirements
+        
+        XCTAssertEqual(requirement, expected,
+        "\"dark mode on\" is not correct with the expected value.")
+    }
+    
+    func test_dark_mode_off_should_be_localized()
+    {
+        let expected = "dark mode off".localizedFromSettings
+        let requirement = "dark mode off".localizedFromRequirements
+        
+        XCTAssertEqual(requirement, expected,
+        "\"dark mode off\" is not correct with the expected value.")
     }
     
     // MARK: - Version and Build Titles

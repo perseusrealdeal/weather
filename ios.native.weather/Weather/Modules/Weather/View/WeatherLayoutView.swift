@@ -20,9 +20,11 @@ class WeatherLayoutView: UIView
     private var configuredForOrientation: NSLayoutConstraint.Axis?
     private let stackView               : WeatherStackView
     
-    // MARK: - Business Matter Data View Containers
+    // MARK: - Business Matter Data Container
     
     private let viewModel               : WeatherViewModel
+    
+    // MARK: - Business Matter Data View Containers
     
     private let alertsView              : WeatherNationalAlertsView
     private let forecastHourlyView      : ForecastHourlyView
