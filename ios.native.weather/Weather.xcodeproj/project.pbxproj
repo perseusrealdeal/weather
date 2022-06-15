@@ -216,14 +216,14 @@
 			path = Configuration;
 			sourceTree = "<group>";
 		};
-		E04A129B2859F17400F6F679 /* Business Content */ = {
+		E04A129B2859F17400F6F679 /* Business content */ = {
 			isa = PBXGroup;
 			children = (
 				E0C428DD27535DD800E65DFD /* Modules */,
 				E0C428DC27535DBF00E65DFD /* Storyboards */,
-				E0C428DF27535DF200E65DFD /* Business Logic */,
+				E0C428DF27535DF200E65DFD /* Business logic */,
 			);
-			path = "Business Content";
+			path = "Business content";
 			sourceTree = "<group>";
 		};
 		E05E0E252770623300C3E1E0 /* Main module tests */ = {
@@ -431,7 +431,7 @@
 			children = (
 				E0C428D827535D8800E65DFD /* Requirements */,
 				E04A129A2859F16500F6F679 /* Configuration */,
-				E04A129B2859F17400F6F679 /* Business Content */,
+				E04A129B2859F17400F6F679 /* Business content */,
 				E0C428E127535E1300E65DFD /* Test plans */,
 			);
 			path = Weather;
@@ -485,14 +485,14 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		E0C428DF27535DF200E65DFD /* Business Logic */ = {
+		E0C428DF27535DF200E65DFD /* Business logic */ = {
 			isa = PBXGroup;
 			children = (
 				E0C428E927535E7E00E65DFD /* Entities */,
 				E0C428EC27535E9300E65DFD /* Services */,
 				E0C428EF27535EA600E65DFD /* Extentions */,
 			);
-			path = "Business Logic";
+			path = "Business logic";
 			sourceTree = "<group>";
 		};
 		E0C428E027535E0500E65DFD /* Localization */ = {
