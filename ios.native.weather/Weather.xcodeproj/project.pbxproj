@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2AA6B0B5AEEDC7540463E32C /* Pods_Weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A0DECB2F2697F868D6AC15C /* Pods_Weather.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		E04A129D2859F20800F6F679 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E04A129C2859F20800F6F679 /* README.md */; };
 		E05E0E272770692300C3E1E0 /* MainModuleFunctionalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E0E262770692300C3E1E0 /* MainModuleFunctionalTests.swift */; };
 		E05E0E2A27738AFB00C3E1E0 /* CurrentWeatherWithForecastDailyStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E0E2927738AFA00C3E1E0 /* CurrentWeatherWithForecastDailyStackView.swift */; };
 		E05E0E2C27738B4D00C3E1E0 /* WeatherNationalAlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E0E2B27738B4D00C3E1E0 /* WeatherNationalAlertsView.swift */; };
@@ -89,6 +90,7 @@
 		9950AD8345E4DE3D72D6166D /* Pods-Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.debug.xcconfig"; path = "Target Support Files/Pods-Weather/Pods-Weather.debug.xcconfig"; sourceTree = "<group>"; };
 		D80B61D6DEDC5785F52F69EC /* Pods-Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.release.xcconfig"; path = "Target Support Files/Pods-Weather/Pods-Weather.release.xcconfig"; sourceTree = "<group>"; };
 		DB04A34D7ED2673D76A85A4C /* Pods-WeatherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTests.release.xcconfig"; path = "Target Support Files/Pods-WeatherTests/Pods-WeatherTests.release.xcconfig"; sourceTree = "<group>"; };
+		E04A129C2859F20800F6F679 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		E05E0E262770692300C3E1E0 /* MainModuleFunctionalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleFunctionalTests.swift; sourceTree = "<group>"; };
 		E05E0E2927738AFA00C3E1E0 /* CurrentWeatherWithForecastDailyStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherWithForecastDailyStackView.swift; sourceTree = "<group>"; };
 		E05E0E2B27738B4D00C3E1E0 /* WeatherNationalAlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherNationalAlertsView.swift; sourceTree = "<group>"; };
@@ -201,6 +203,27 @@
 				7BAF201B43CB268F7A7B529A /* Pods_WeatherTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E04A129A2859F16500F6F679 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				E0C428C427535BD800E65DFD /* main.swift */,
+				E0C428CD27535BDD00E65DFD /* Assets.xcassets */,
+				E0C428D227535BDD00E65DFD /* Info.plist */,
+				E0C428E027535E0500E65DFD /* Localization */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		E04A129B2859F17400F6F679 /* Business Content */ = {
+			isa = PBXGroup;
+			children = (
+				E0C428DD27535DD800E65DFD /* Modules */,
+				E0C428DC27535DBF00E65DFD /* Storyboards */,
+				E0C428DF27535DF200E65DFD /* Business Logic */,
+			);
+			path = "Business Content";
 			sourceTree = "<group>";
 		};
 		E05E0E252770623300C3E1E0 /* Main module tests */ = {
@@ -385,6 +408,7 @@
 		E0C428B827535BD800E65DFD = {
 			isa = PBXGroup;
 			children = (
+				E04A129C2859F20800F6F679 /* README.md */,
 				E0C428C327535BD800E65DFD /* Weather */,
 				E0AAF5CD2755041600093229 /* WeatherTests */,
 				E0C428C227535BD800E65DFD /* Products */,
@@ -406,14 +430,9 @@
 			isa = PBXGroup;
 			children = (
 				E0C428D827535D8800E65DFD /* Requirements */,
-				E0C428DC27535DBF00E65DFD /* Storyboards */,
-				E0C428DD27535DD800E65DFD /* Modules */,
-				E0C428DF27535DF200E65DFD /* Business logic */,
-				E0C428E027535E0500E65DFD /* Localization */,
+				E04A129A2859F16500F6F679 /* Configuration */,
+				E04A129B2859F17400F6F679 /* Business Content */,
 				E0C428E127535E1300E65DFD /* Test plans */,
-				E0C428C427535BD800E65DFD /* main.swift */,
-				E0C428CD27535BDD00E65DFD /* Assets.xcassets */,
-				E0C428D227535BDD00E65DFD /* Info.plist */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -466,14 +485,14 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		E0C428DF27535DF200E65DFD /* Business logic */ = {
+		E0C428DF27535DF200E65DFD /* Business Logic */ = {
 			isa = PBXGroup;
 			children = (
 				E0C428E927535E7E00E65DFD /* Entities */,
 				E0C428EC27535E9300E65DFD /* Services */,
 				E0C428EF27535EA600E65DFD /* Extentions */,
 			);
-			path = "Business logic";
+			path = "Business Logic";
 			sourceTree = "<group>";
 		};
 		E0C428E027535E0500E65DFD /* Localization */ = {
@@ -650,6 +669,7 @@
 				E0C428F52753636400E65DFD /* activity_diagram.png in Resources */,
 				E0C428CE27535BDD00E65DFD /* Assets.xcassets in Resources */,
 				E0C841AD27612A700034E7F2 /* Localizable.strings in Resources */,
+				E04A129D2859F20800F6F679 /* README.md in Resources */,
 				E0C8419F276125B80034E7F2 /* InfoPlist.strings in Resources */,
 				E0C428F62753636400E65DFD /* navigation_prototype.png in Resources */,
 				E09284D4275FD9E20090E267 /* Settings.bundle in Resources */,
@@ -989,7 +1009,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6DRVN4F88C;
-				INFOPLIST_FILE = Weather/Info.plist;
+				INFOPLIST_FILE = Weather/Configuration/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1009,7 +1029,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6DRVN4F88C;
-				INFOPLIST_FILE = Weather/Info.plist;
+				INFOPLIST_FILE = Weather/Configuration/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -109,7 +109,7 @@ class OpenWeatherClient
                 }
                 else if let error = answer_error
                 {
-                    onResultDelivered(.failure(.failedRequest(error)))
+                    self.onResultDelivered(.failure(.failedRequest(error)))
                 }
                 
                 self.dataTask = nil
