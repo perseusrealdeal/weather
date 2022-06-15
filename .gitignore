@@ -5,14 +5,11 @@
 ## User settings
 xcuserdata/
 
-## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
-*.xcscmblueprint
-*.xccheckout
-
-## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
+## Build generated
 build/
 DerivedData/
-*.moved-aside
+
+## Various settings
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -21,6 +18,13 @@ DerivedData/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
+xcuserdata/
+
+## Other
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+*.DS_Store
 
 ## Obj-C/Swift specific
 *.hmap
@@ -66,10 +70,6 @@ playground.xcworkspace
 
 Carthage/Build/
 
-# Accio dependency management
-Dependencies/
-.accio/
-
 # fastlane
 #
 # It is recommended to not store the screenshots in the git repo.
@@ -82,9 +82,5 @@ fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
 
-# Code Injection
-#
-# After new code Injection tools there's a generated folder /iOSInjectionProject
-# https://github.com/johnno1962/injectionforxcode
-
-iOSInjectionProject/
+# Resolves conflict between swift package manager versions in Xcode 13
+DiscoveryProject/DarkModeDiscovery.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
