@@ -212,6 +212,7 @@
 				E0C428CD27535BDD00E65DFD /* Assets.xcassets */,
 				E0C428D227535BDD00E65DFD /* Info.plist */,
 				E0C428E027535E0500E65DFD /* Localization */,
+				E09284D3275FD9E20090E267 /* Settings.bundle */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -470,9 +471,8 @@
 		E0C428DD27535DD800E65DFD /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				E05E0E3E2775E3F400C3E1E0 /* Weather */,
 				E0C428DE27535DDD00E65DFD /* Main */,
-				E09284D3275FD9E20090E267 /* Settings.bundle */,
+				E05E0E3E2775E3F400C3E1E0 /* Weather */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
