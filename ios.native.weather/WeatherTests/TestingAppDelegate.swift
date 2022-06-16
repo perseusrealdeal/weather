@@ -17,7 +17,7 @@ class TestingAppDelegate: UIResponder, UIApplicationDelegate
     {
         print("<< Launching with testing app delegate")
         print("<< \(type(of: self)) " + #function)
-        
+
         return true
     }
 }

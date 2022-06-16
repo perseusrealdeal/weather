@@ -11,11 +11,11 @@ import XCTest
 class MainModuleFunctionalTests: XCTestCase
 {
     // func test_zero() { XCTFail("Tests not yet implemented in \(type(of: self)).") }
-    
+
     func test_viewController_loadView_called()
     {
         let sut = MainViewController.storyboardInstance()
-        
+
         sut.loadViewIfNeeded()
     }
 }

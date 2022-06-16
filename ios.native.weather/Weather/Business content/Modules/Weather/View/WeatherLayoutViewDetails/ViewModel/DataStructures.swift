@@ -12,10 +12,10 @@ struct NationalAlert
 {
     /// Date and time of the start of the alert, Unix, UTC
     let start           : Double
-    
+
     /// Date and time of the end of the alert, Unix, UTC
     let end             : Double
-    
+
     /// Other Fields
 }
 
@@ -24,7 +24,7 @@ struct ForecastHour
 {
     /// Time of the forecasted data, Unix, UTC
     let dt              : Double
-    
+
     /// Other Fields
 }
 
@@ -33,7 +33,7 @@ struct ForecastDay
 {
     /// Time of the forecasted data, Unix, UTC
     let dt              : Double
-    
+
     /// Other Fields
 }
 
@@ -41,7 +41,7 @@ struct CurrentWeather
 {
     /// Time of the forecasted data, Unix, UTC
     let dt              : Double
-    
+
     /// Other Fields
 }
 
@@ -50,7 +50,7 @@ struct CurrentLocationDescription
     /// Current Location
     let latitude        : Double
     let longitude       : Double
-    
+
     /// Shift in seconds from UTC
     let timezone_offset : Double
 }

@@ -16,7 +16,7 @@ protocol NotificationCenterProtocol
                      selector aSelector: Selector,
                      name aName        : NSNotification.Name?,
                      object anObject   : Any?)
-    
+
     func removeObserver(_ observer     : Any,
                         name aName     : NSNotification.Name?,
                         object anObject: Any?)
@@ -40,18 +40,18 @@ protocol WeatherDataModelProtocol
 {
     var target                   : CurrentLocationDescription? { get }
     var lastFullUpdateTime       : LastFullUpdateTime? { get }
-    
+
     var isForecastHourlyUpToDate : Bool { get }
     var isForecastDailyUpToDate  : Bool { get }
     var isForecastCurrentUpToDate: Bool { get }
-    
+
     func update(received data: Data, _ completed:((_ onlyAlerts: Bool) -> Void))
 }
 
 protocol WeatherClientProtocol
 {
     var onResultDelivered: (Result<Data, WeatherDataDeliveryError>) -> Void { get set }
-    
+
     func requestWeatherData(exclude: String, latitude: String, longitude: String)
 }
 

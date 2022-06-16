@@ -26,20 +26,20 @@ extension AppDelegate: UIApplicationDelegate
         print(">> Launching with real app delegate")
         print(">> [\(type(of: self))]." + #function)
         #endif
-        
+
         UserPreferences.setVersionAndBuildNumberUp()
         UserPreferences.registerSettingsBundle(with: Settings.bundleParams)
-        
+
         window = UIWindow(frame: UIScreen.main.bounds)
-        
+
         #if true
         window!.rootViewController = WeatherViewController()
         #else
         window!.rootViewController = MainViewController.storyboardInstance()
         #endif
-        
+
         window!.makeKeyAndVisible()
-        
+
         return true
     }
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2AA6B0B5AEEDC7540463E32C /* Pods_Weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A0DECB2F2697F868D6AC15C /* Pods_Weather.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		E04A129D2859F20800F6F679 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E04A129C2859F20800F6F679 /* README.md */; };
+		E04A12A0285AFD1000F6F679 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E04A129F285AFD1000F6F679 /* .swiftlint.yml */; };
 		E05E0E272770692300C3E1E0 /* MainModuleFunctionalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E0E262770692300C3E1E0 /* MainModuleFunctionalTests.swift */; };
 		E05E0E2A27738AFB00C3E1E0 /* CurrentWeatherWithForecastDailyStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E0E2927738AFA00C3E1E0 /* CurrentWeatherWithForecastDailyStackView.swift */; };
 		E05E0E2C27738B4D00C3E1E0 /* WeatherNationalAlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05E0E2B27738B4D00C3E1E0 /* WeatherNationalAlertsView.swift */; };
@@ -91,6 +92,7 @@
 		D80B61D6DEDC5785F52F69EC /* Pods-Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.release.xcconfig"; path = "Target Support Files/Pods-Weather/Pods-Weather.release.xcconfig"; sourceTree = "<group>"; };
 		DB04A34D7ED2673D76A85A4C /* Pods-WeatherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTests.release.xcconfig"; path = "Target Support Files/Pods-WeatherTests/Pods-WeatherTests.release.xcconfig"; sourceTree = "<group>"; };
 		E04A129C2859F20800F6F679 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		E04A129F285AFD1000F6F679 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E05E0E262770692300C3E1E0 /* MainModuleFunctionalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleFunctionalTests.swift; sourceTree = "<group>"; };
 		E05E0E2927738AFA00C3E1E0 /* CurrentWeatherWithForecastDailyStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherWithForecastDailyStackView.swift; sourceTree = "<group>"; };
 		E05E0E2B27738B4D00C3E1E0 /* WeatherNationalAlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherNationalAlertsView.swift; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 		E0C428B827535BD800E65DFD = {
 			isa = PBXGroup;
 			children = (
+				E04A129F285AFD1000F6F679 /* .swiftlint.yml */,
 				E04A129C2859F20800F6F679 /* README.md */,
 				E0C428C327535BD800E65DFD /* Weather */,
 				E0AAF5CD2755041600093229 /* WeatherTests */,
@@ -602,6 +605,7 @@
 				E0C428BD27535BD800E65DFD /* Sources */,
 				E0C428BE27535BD800E65DFD /* Frameworks */,
 				E0C428BF27535BD800E65DFD /* Resources */,
+				E04A129E285AF6AA00F6F679 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -620,6 +624,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1340;
+				ORGANIZATIONNAME = Perseusrealdeal;
 				TargetAttributes = {
 					E0AAF5CB2755041600093229 = {
 						CreatedOnToolsVersion = 12.5;
@@ -675,6 +680,7 @@
 				E09284D4275FD9E20090E267 /* Settings.bundle in Resources */,
 				E0C428FE275363B200E65DFD /* Requirements.txt in Resources */,
 				E0C428F92753638900E65DFD /* Localization_ru.plist in Resources */,
+				E04A12A0285AFD1000F6F679 /* .swiftlint.yml in Resources */,
 				E0C428CC27535BD800E65DFD /* MainViewController.storyboard in Resources */,
 				E0C428FA2753638900E65DFD /* Localization_en.plist in Resources */,
 				E0C428FC275363AB00E65DFD /* DataModels.txt in Resources */,
@@ -727,6 +733,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		E04A129E285AF6AA00F6F679 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

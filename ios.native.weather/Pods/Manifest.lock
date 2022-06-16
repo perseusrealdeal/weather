@@ -1,16 +1,20 @@
 PODS:
+  - SwiftLint (0.47.1)
   - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
+  - SwiftLint
   - SwiftyJSON
 
 SPEC REPOS:
   trunk:
+    - SwiftLint
     - SwiftyJSON
 
 SPEC CHECKSUMS:
+  SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: b9b3b511757118778f0f8c81f302bef868f9305e
+PODFILE CHECKSUM: b4d641dcd3de441663f5f7d9a223464e32193dcb
 
 COCOAPODS: 1.10.0

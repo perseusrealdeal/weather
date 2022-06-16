@@ -13,23 +13,23 @@ import SwiftyJSON
 class LocalDataSaverStubbed: LocalDataSaverProtocol
 {
     var isDataEmpty = true
-    
+
     func loadData() -> JSON
     {
         isDataEmpty ? JSON() : JSON(loadDataFromFile("defaultLocationRU", "json"))
     }
-    
+
     func save(_ jsonData: JSON?)
     {
     }
 }
 
-fileprivate func loadDataFromFile(_ fileName: String, _ fileExtension: String) -> Data
+private func loadDataFromFile(_ fileName: String, _ fileExtension: String) -> Data
 {
     guard let url = Bundle(for: LocalDataSaverStubbed.self).url(forResource  : fileName,
                                                                 withExtension: fileExtension),
           let data = try? Data(contentsOf: url)
     else { return Data() }
-    
+
     return data
 }

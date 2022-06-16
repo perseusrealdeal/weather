@@ -20,21 +20,21 @@ public struct Settings
             "PreferenceValues"      : "Values",
             "PreferenceDefaultValue": "DefaultValue"
         ]
-    
+
     static var defaultLocation: Сoordinate
     {
         let json = JSON(parseJSON: "defaultLocation".localized_value)
-        
+
         let lat = json["lat"].doubleValue
         let lon = json["lon"].doubleValue
-        
+
         return Сoordinate(latitude: lat, longitude: lon)
     }
-    
+
     static let userDefaults = UserDefaults.standard
-    
+
     static let notificationCenter = NotificationCenter.default
-    
+
     static let geoService = GeoLocationReceiver.shared
 }
 

@@ -4,6 +4,7 @@ use_frameworks! :linkage => :static
 
 def shared_pods
   pod 'SwiftyJSON'
+  pod 'SwiftLint'
 end
 
 target 'Weather' do
@@ -12,7 +13,7 @@ target 'Weather' do
   
   target 'WeatherTests' do
     inherit! :search_paths
-    # Pods for testing
+    # Pods for testing only
     
   end
 end
