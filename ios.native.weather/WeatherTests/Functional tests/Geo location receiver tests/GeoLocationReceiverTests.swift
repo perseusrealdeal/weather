@@ -77,7 +77,7 @@ class GeoLocationReceiverTests: XCTestCase
 
         // act
 
-        sut.requestLocationUpdateOnce() { _ in isCallbackInvoked = true }
+        sut.requestLocationUpdateOnce { _ in isCallbackInvoked = true }
 
         // assert
 
@@ -98,7 +98,7 @@ class GeoLocationReceiverTests: XCTestCase
 
         // act
 
-        sut.requestLocationUpdateOnce() { explanation in callback = explanation }
+        sut.requestLocationUpdateOnce { explanation in callback = explanation }
 
         // assert
 
@@ -121,7 +121,7 @@ class GeoLocationReceiverTests: XCTestCase
 
         // act
 
-        sut.requestLocationUpdateOnce() { explanation in callback = explanation }
+        sut.requestLocationUpdateOnce { explanation in callback = explanation }
 
         // assert
 
@@ -144,7 +144,7 @@ class GeoLocationReceiverTests: XCTestCase
 
         // act
 
-        sut.requestLocationUpdateOnce() { explanation in callback = explanation }
+        sut.requestLocationUpdateOnce { explanation in callback = explanation }
 
         // assert
 
@@ -167,7 +167,7 @@ class GeoLocationReceiverTests: XCTestCase
 
         // act
 
-        sut.requestLocationUpdateOnce() { explanation in callback = explanation }
+        sut.requestLocationUpdateOnce { explanation in callback = explanation }
 
         // assert
 
