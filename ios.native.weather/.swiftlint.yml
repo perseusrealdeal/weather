@@ -4,7 +4,6 @@ disabled_rules: # rule identifiers turned on by default to exclude from running
   - colon
   - syntactic_sugar
   - statement_position
-  - orphaned_doc_comment
   - empty_parentheses_with_trailing_closure
   - unused_optional_binding
   - class_delegate_protocol

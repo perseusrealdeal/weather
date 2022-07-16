@@ -151,11 +151,11 @@ class WeatherViewControllerTests: XCTestCase
         let observers = [sut, sut, sut]
         let selectors =
             [
-                /// The first one called when .init
+                // The first one called when .init
                 #selector(sut.theAppDidFinishLaunching),
-                /// The next one called when viewWillAppear()
+                // The next one called when viewWillAppear()
                 #selector(sut.theAppDidBecomeActive),
-                /// The last one called also when viewWillAppear()
+                // The last one called also when viewWillAppear()
                 #selector(sut.theAppDidEnterBackground)
             ]
         let names =

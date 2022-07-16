@@ -96,7 +96,7 @@ class UpdaterHelper: UpdaterHelperProtocol
         print("calculated   : \(exclude)")
         #endif
 
-        /// Alerts should be reloaded anyway, so alerts not in exclude
+        // Alerts should be reloaded anyway, so alerts not in exclude
         return exclude
     }
 
