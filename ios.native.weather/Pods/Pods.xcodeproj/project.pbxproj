@@ -15,6 +15,7 @@
 			dependencies = (
 			);
 			name = SwiftLint;
+			productName = SwiftLint;
 		};
 /* End PBXAggregateTarget section */
 
@@ -138,7 +139,7 @@
 		8A9B8C780DF6BF87F5763CDB2E8508DA /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Sources/PerseusDarkMode/DarkMode/Constants.swift; sourceTree = "<group>"; };
 		96300DD134ABE4A4A1C18B1135EB20EB /* PerseusDarkMode-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "PerseusDarkMode-Info.plist"; sourceTree = "<group>"; };
 		96F4FBE185890EC41B74A24B3C1BCE68 /* AppearanceStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppearanceStyle.swift; path = Sources/PerseusDarkMode/AppearanceService/AppearanceStyle.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A4DF84F55038B581A4E1BA831D586927 /* Pods-WeatherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WeatherTests.release.xcconfig"; sourceTree = "<group>"; };
 		B33840AC2765A5B6BF3909D9266B9A5C /* Pods-Weather-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Weather-acknowledgements.markdown"; sourceTree = "<group>"; };
 		B63FF430977C532D5A97331C9C735347 /* SystemColorProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SystemColorProtocol.swift; path = Sources/PerseusUISystemKit/Protocols/SystemColorProtocol.swift; sourceTree = "<group>"; };
@@ -208,7 +209,6 @@
 				73EDFBBEB39CA8D5B06391023A2E5ECA /* SwiftyJSON.swift */,
 				FAA367E6B7BE231A5191067532366126 /* Support Files */,
 			);
-			name = SwiftyJSON;
 			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
@@ -266,7 +266,6 @@
 				7D3C1FF1FB5FB999F35B6C930A8BB8B7 /* DarkModeOption.swift */,
 				324AF30A69A11697D57FBA3EFA7CF245 /* Support Files */,
 			);
-			name = PerseusDarkMode;
 			path = PerseusDarkMode;
 			sourceTree = "<group>";
 		};
@@ -275,7 +274,6 @@
 			children = (
 				76E8904160841368CC4D9C286E439EDB /* Support Files */,
 			);
-			name = SwiftLint;
 			path = SwiftLint;
 			sourceTree = "<group>";
 		};
@@ -317,7 +315,6 @@
 				E1F5C43778B0574E1CA5EB7EEA692EBB /* SystemColorsAdapted.swift */,
 				1EE90E6C90BF11F090A035C135FC14B5 /* Support Files */,
 			);
-			name = PerseusUISystemKit;
 			path = PerseusUISystemKit;
 			sourceTree = "<group>";
 		};
@@ -547,7 +544,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1300;
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1400;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 12.0";
