@@ -38,7 +38,10 @@ extension String
         guard let data = try? Data(contentsOf: path)
         else { print("Not possible to exctract data from property list."); return "?" }
 
-        guard let result = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [String:String]
+        guard let result = try? PropertyListSerialization.propertyList(from: data,
+                                                                       options: [],
+                                                                       format: nil)
+                as? [String:String]
         else { print("Not possible to serialize the property list."); return "?" }
 
         guard let value = result[self]
