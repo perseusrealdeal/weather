@@ -5,6 +5,7 @@ use_frameworks! :linkage => :static
 def shared_pods
   pod 'SwiftyJSON'
   pod 'SwiftLint'
+  pod 'PerseusUISystemKit'
 end
 
 target 'Weather' do

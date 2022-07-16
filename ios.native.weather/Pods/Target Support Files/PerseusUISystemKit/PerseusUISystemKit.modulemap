@@ -1,0 +1,6 @@
+framework module PerseusUISystemKit {
+  umbrella header "PerseusUISystemKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

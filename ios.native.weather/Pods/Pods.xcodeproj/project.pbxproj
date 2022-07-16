@@ -19,130 +19,264 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		122075CCC2FED28C2A57563E490AA264 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		1942F7D3B7722A5637C3FC0BE44B1E6C /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A56C422D89DE95548EF2C1E16C94597F /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2BF6FBC0A64BF107C5D64C61F1397770 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C147774CC441F391B4D7CA698F3C2BC0 /* SwiftyJSON-dummy.m */; };
-		468AF67AB89551CD7BAA73BFF5428F49 /* Pods-Weather-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 301B28E168B5D2DF6A4A6D00505086FB /* Pods-Weather-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		579212D20D8BD11CD5276B7EB8C8B069 /* Pods-Weather-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A6072A0BA6B2CE96B84B1DDE5565E9 /* Pods-Weather-dummy.m */; };
-		7B4CE5C84161E2BFE477F42DFD634382 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558352FECE95FE65E1A7A412F1AB9104 /* SwiftyJSON.swift */; };
-		8F2A2AC7E81144807CB77DD5ACD847D8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		C005D28B75FAEC153E3F40AB9FAD0231 /* Pods-WeatherTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B596976DF7A285254E182AC2BDD137 /* Pods-WeatherTests-dummy.m */; };
-		C297AC9431379391C114794AFD4F9778 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		E24F91EF2E7072BB4556B5CDF36278F0 /* Pods-WeatherTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DF00802E20C335215E6526C7304AF12A /* Pods-WeatherTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0B072C97BC47CE65651D1B1FB5AED0F0 /* DarkModeDecision.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FBC57C0F1208450011A565EF5348B /* DarkModeDecision.swift */; };
+		19B46EBE484272DAE4D00588B93E507E /* AppearanceStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F4FBE185890EC41B74A24B3C1BCE68 /* AppearanceStyle.swift */; };
+		1D2524B79372961A06AF86FE12E1D6BF /* SystemColorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63FF430977C532D5A97331C9C735347 /* SystemColorProtocol.swift */; };
+		20CE963FB45101257602A5621F160BB0 /* PerseusUISystemKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 12C5A9534E719332FEE94341B8764EAF /* PerseusUISystemKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		244379F5E4786B79D2F8B129881A94DF /* DarkModeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FA27DA202177621E28DB057135D50D /* DarkModeImageView.swift */; };
+		27FCF68F604FD1F48D121D4663BED44D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		2AB8491D2BEB543693DDFECFD1240DB7 /* Pods-WeatherTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DF00802E20C335215E6526C7304AF12A /* Pods-WeatherTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		31FF96E6EF17EA589E97F69E1A2DF4A5 /* Pods-WeatherTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B596976DF7A285254E182AC2BDD137 /* Pods-WeatherTests-dummy.m */; };
+		325CCDB295FFA016638075B5D2CEDD5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		3A14D83B3926EB421F6B8A316A5D8D98 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B8C780DF6BF87F5763CDB2E8508DA /* Constants.swift */; };
+		3C21A2D28F0BDD89C0632FF687F8DAFF /* SystemColorsAdapted.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F5C43778B0574E1CA5EB7EEA692EBB /* SystemColorsAdapted.swift */; };
+		4FB82FFECEAC377975C35B61433FA50E /* SemanticColorsAdapted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A74FE50C2F23C6BD1CBDE1B3AD2A0 /* SemanticColorsAdapted.swift */; };
+		5445916CCC3B6A2C4976783C813625B4 /* Pods-Weather-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 301B28E168B5D2DF6A4A6D00505086FB /* Pods-Weather-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5E7225E2D1C4DAB584B9B9CC70EEE41D /* SemanticColorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DB15ED6FCA4B03A4726EBC12AB5A91 /* SemanticColorProtocol.swift */; };
+		5FA526557719FDBE81B1974B113CF600 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BA8BAEF02BF18B6C1C53F28F268A3C65 /* SwiftyJSON-dummy.m */; };
+		7CA7DDB69A51D2EDB6C25D5E92A28C73 /* PerseusDarkMode-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E5D855CB2FA651DD4FE637EA8635505 /* PerseusDarkMode-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A18BD1EAAD09A76842C9167ECF7CC0E /* AppearanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0694EC867C6FD6D336D1DD9455DB6393 /* AppearanceService.swift */; };
+		91D62A92EA9364DE66DFF55B8D3148D6 /* Pods-Weather-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A6072A0BA6B2CE96B84B1DDE5565E9 /* Pods-Weather-dummy.m */; };
+		9BD184F86060E281286EFECDC4211FEB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		A115142039C23F91827E6961CC479F05 /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6361C95B9D30559F54A05E0C25012972 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A3CEE8324948497036C4E123B21CBC59 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EDFBBEB39CA8D5B06391023A2E5ECA /* SwiftyJSON.swift */; };
+		A497B9933C815A444EFABC480B8893C2 /* DarkModeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3C1FF1FB5FB999F35B6C930A8BB8B7 /* DarkModeOption.swift */; };
+		AE29F1826A167CE68FB0740BC49DCAD4 /* DarkModeObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612FF44DE3643ABD8128DC647231B67E /* DarkModeObserver.swift */; };
+		B9400E26591EBCD26DBA87F731835FF7 /* PerseusUISystemKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F08EBEE4D53C5A81DF662DD9841D0B /* PerseusUISystemKit-dummy.m */; };
+		C15A4E27D6798325A8B22C35512347B2 /* PerseusDarkMode-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 14323C6DCE978FA2B44C376923573198 /* PerseusDarkMode-dummy.m */; };
+		DC8E520ED087CC19AF591371CF9E6100 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		E9742786C1308E424943B5A661CD34CC /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B8CAA318B39D93F5D40542767AFD11 /* ColorHelper.swift */; };
+		F7E4C8F0CEDE1571E99D661C2173B5D1 /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04418893FC950219FC38C41F787AA1AA /* DarkMode.swift */; };
+		FC10427FA1842748F95F9E1CBE5DBDC0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1FB41E12AFFB60B179B2F03D4F0BFF0F /* PBXContainerItemProxy */ = {
+		2F1EDD9E6E32A16ED090C92E03E171A0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
-			remoteInfo = SwiftLint;
+			remoteGlobalIDString = B4AD1F02397F5C0DC7B0E22A08BE94A7;
+			remoteInfo = PerseusDarkMode;
 		};
-		50BA502395134456D69A99B6AC5D781A /* PBXContainerItemProxy */ = {
+		75044D9888A852CFB6AB44E8032282FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B4AD1F02397F5C0DC7B0E22A08BE94A7;
+			remoteInfo = PerseusDarkMode;
+		};
+		88590A3AF91B6FF4041AA6ABE12EBE30 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 10B99686003B4D8467D8513296D055FE;
 			remoteInfo = "Pods-Weather";
 		};
-		8D688F02B296D7F1D1466366A77F797F /* PBXContainerItemProxy */ = {
+		AB0106EF01B047BD8C14BC992F31AA35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87ED9BFCDB7FD248073374FF2E25FA5D;
+			remoteInfo = PerseusUISystemKit;
+		};
+		DA4ED112D9E30045264FA950BEAF94F1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D118A6A04828FD3CDA8640CD2B6796D2;
 			remoteInfo = SwiftyJSON;
 		};
+		E98F187A80035F3524A8549B707E79F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
+			remoteInfo = SwiftLint;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02D367B9F5A70286912FABEFB663E379 /* PerseusUISystemKit */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PerseusUISystemKit; path = PerseusUISystemKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		04418893FC950219FC38C41F787AA1AA /* DarkMode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DarkMode.swift; path = Sources/PerseusDarkMode/DarkMode/DarkMode.swift; sourceTree = "<group>"; };
+		05FA27DA202177621E28DB057135D50D /* DarkModeImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DarkModeImageView.swift; path = Sources/PerseusUISystemKit/Classes/DarkModeImageView.swift; sourceTree = "<group>"; };
+		0694EC867C6FD6D336D1DD9455DB6393 /* AppearanceService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppearanceService.swift; path = Sources/PerseusDarkMode/AppearanceService/AppearanceService.swift; sourceTree = "<group>"; };
 		0DBD8CA5898845A0100363E1531505AD /* Pods-WeatherTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WeatherTests-Info.plist"; sourceTree = "<group>"; };
+		12C5A9534E719332FEE94341B8764EAF /* PerseusUISystemKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PerseusUISystemKit-umbrella.h"; sourceTree = "<group>"; };
+		14323C6DCE978FA2B44C376923573198 /* PerseusDarkMode-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PerseusDarkMode-dummy.m"; sourceTree = "<group>"; };
+		14F7853F84BBC699A8044DF17EC18144 /* PerseusUISystemKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PerseusUISystemKit-prefix.pch"; sourceTree = "<group>"; };
 		1C3A2060C4C58491D8776105208DC374 /* Pods-WeatherTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WeatherTests.modulemap"; sourceTree = "<group>"; };
+		2404AE0CADCF258694E95E97442BBB92 /* PerseusUISystemKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PerseusUISystemKit.debug.xcconfig; sourceTree = "<group>"; };
 		28B596976DF7A285254E182AC2BDD137 /* Pods-WeatherTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WeatherTests-dummy.m"; sourceTree = "<group>"; };
+		2A6A74FE50C2F23C6BD1CBDE1B3AD2A0 /* SemanticColorsAdapted.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SemanticColorsAdapted.swift; path = Sources/PerseusUISystemKit/Classes/SemanticColorsAdapted.swift; sourceTree = "<group>"; };
 		301B28E168B5D2DF6A4A6D00505086FB /* Pods-Weather-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Weather-umbrella.h"; sourceTree = "<group>"; };
 		33DEED6D5EC5033474F7435E7668B50C /* Pods-WeatherTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WeatherTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		3C065DA9D9A63637EA13FBCF4D1E0C72 /* SwiftyJSON.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.release.xcconfig; sourceTree = "<group>"; };
 		3C88D531CC188B7726FBF9028A8CA571 /* Pods-WeatherTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WeatherTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		433F16A09A694BB8A02E49B097CABE18 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
-		4B3261413DC2EDE895C277DBA1A877C9 /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
-		4CECED3294E401E6F6355B401144109A /* Pods_Weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Weather.framework; path = "Pods-Weather.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CECED3294E401E6F6355B401144109A /* Pods-Weather */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Weather"; path = Pods_Weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E5D855CB2FA651DD4FE637EA8635505 /* PerseusDarkMode-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PerseusDarkMode-umbrella.h"; sourceTree = "<group>"; };
+		4EA3AC8FE60B3E8BA5504E39024D10CA /* SwiftyJSON.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.debug.xcconfig; sourceTree = "<group>"; };
+		4EDD825FA1D6338404BC9830A103A7CB /* PerseusUISystemKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "PerseusUISystemKit-Info.plist"; sourceTree = "<group>"; };
 		50FF9F78FFD6FDC56F58F0E088827DB9 /* Pods-Weather.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Weather.modulemap"; sourceTree = "<group>"; };
-		558352FECE95FE65E1A7A412F1AB9104 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON/SwiftyJSON.swift; sourceTree = "<group>"; };
+		54854993DFE48C2240C68A21D61A3360 /* SwiftyJSON.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.release.xcconfig; sourceTree = "<group>"; };
+		56943A1F76CD9C4619EF207E771A2DAC /* SwiftLint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.release.xcconfig; sourceTree = "<group>"; };
 		57792E2B6FB5D40DE36CB21EA1943D1A /* Pods-WeatherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WeatherTests.debug.xcconfig"; sourceTree = "<group>"; };
+		590AE21E28AE8C119C5DD71AA140CE9F /* PerseusUISystemKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PerseusUISystemKit.release.xcconfig; sourceTree = "<group>"; };
+		612FF44DE3643ABD8128DC647231B67E /* DarkModeObserver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DarkModeObserver.swift; path = Sources/PerseusDarkMode/DarkMode/DarkModeObserver.swift; sourceTree = "<group>"; };
+		6361C95B9D30559F54A05E0C25012972 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
 		64A6072A0BA6B2CE96B84B1DDE5565E9 /* Pods-Weather-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Weather-dummy.m"; sourceTree = "<group>"; };
+		69B293B0A13A320BEC1A0B82844BC5BF /* PerseusDarkMode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PerseusDarkMode.release.xcconfig; sourceTree = "<group>"; };
+		6F82F1ACFB835984E54BE3229EF9FEB4 /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
+		701BC1A38F29EAFAD7360888A3C3290C /* SwiftyJSON-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftyJSON-Info.plist"; sourceTree = "<group>"; };
+		70F08EBEE4D53C5A81DF662DD9841D0B /* PerseusUISystemKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PerseusUISystemKit-dummy.m"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		749832EA9BC1033509CB404B01AF4F1A /* Pods_WeatherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WeatherTests.framework; path = "Pods-WeatherTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		73EDFBBEB39CA8D5B06391023A2E5ECA /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON/SwiftyJSON.swift; sourceTree = "<group>"; };
+		749832EA9BC1033509CB404B01AF4F1A /* Pods-WeatherTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-WeatherTests"; path = Pods_WeatherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		779B7E0D363CD59D2E719E5BE39986F2 /* SwiftLint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.debug.xcconfig; sourceTree = "<group>"; };
+		78CA4DB8FC206CB33ADF3A5D1FA737F5 /* PerseusDarkMode-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PerseusDarkMode-prefix.pch"; sourceTree = "<group>"; };
 		7C4961E9EF71BA2F04970FAC14A9AAF3 /* Pods-Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Weather.debug.xcconfig"; sourceTree = "<group>"; };
-		9A42E1DA99C2CEDCC74D8411318BBD63 /* SwiftyJSON.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.debug.xcconfig; sourceTree = "<group>"; };
+		7D3C1FF1FB5FB999F35B6C930A8BB8B7 /* DarkModeOption.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DarkModeOption.swift; path = Sources/PerseusDarkMode/DarkMode/DarkModeOption.swift; sourceTree = "<group>"; };
+		836077FA14C60210510DBF983373DB98 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
+		8A9B8C780DF6BF87F5763CDB2E8508DA /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Sources/PerseusDarkMode/DarkMode/Constants.swift; sourceTree = "<group>"; };
+		96300DD134ABE4A4A1C18B1135EB20EB /* PerseusDarkMode-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "PerseusDarkMode-Info.plist"; sourceTree = "<group>"; };
+		96F4FBE185890EC41B74A24B3C1BCE68 /* AppearanceStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppearanceStyle.swift; path = Sources/PerseusDarkMode/AppearanceService/AppearanceStyle.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A4DF84F55038B581A4E1BA831D586927 /* Pods-WeatherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WeatherTests.release.xcconfig"; sourceTree = "<group>"; };
-		A56C422D89DE95548EF2C1E16C94597F /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
 		B33840AC2765A5B6BF3909D9266B9A5C /* Pods-Weather-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Weather-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B63FF430977C532D5A97331C9C735347 /* SystemColorProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SystemColorProtocol.swift; path = Sources/PerseusUISystemKit/Protocols/SystemColorProtocol.swift; sourceTree = "<group>"; };
 		B7409D361251A044CED002E453157698 /* Pods-Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Weather.release.xcconfig"; sourceTree = "<group>"; };
-		C147774CC441F391B4D7CA698F3C2BC0 /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
+		B751FA5AD2B0C5D192D369994999BC69 /* PerseusDarkMode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PerseusDarkMode.debug.xcconfig; sourceTree = "<group>"; };
+		BA8BAEF02BF18B6C1C53F28F268A3C65 /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
+		C3DB15ED6FCA4B03A4726EBC12AB5A91 /* SemanticColorProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SemanticColorProtocol.swift; path = Sources/PerseusUISystemKit/Protocols/SemanticColorProtocol.swift; sourceTree = "<group>"; };
 		C77F56A687EC121C24F7B0270A4D54B2 /* Pods-Weather-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Weather-Info.plist"; sourceTree = "<group>"; };
+		C7B8CAA318B39D93F5D40542767AFD11 /* ColorHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorHelper.swift; path = Sources/PerseusUISystemKit/Classes/ColorHelper.swift; sourceTree = "<group>"; };
+		DA88A8D4ABAACC3511A47F8E44B50F48 /* PerseusUISystemKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PerseusUISystemKit.modulemap; sourceTree = "<group>"; };
+		DCA81F0A5244308CAF6AFFA9CF6EB7EA /* PerseusDarkMode.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PerseusDarkMode.modulemap; sourceTree = "<group>"; };
 		DF00802E20C335215E6526C7304AF12A /* Pods-WeatherTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WeatherTests-umbrella.h"; sourceTree = "<group>"; };
-		E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyJSON.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E626D7C56EE66E6BF6F07E078526C930 /* SwiftLint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.debug.xcconfig; sourceTree = "<group>"; };
+		E08DF1666F4B668DA8F1CEDC44FFBBA8 /* PerseusDarkMode */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PerseusDarkMode; path = PerseusDarkMode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1F5C43778B0574E1CA5EB7EEA692EBB /* SystemColorsAdapted.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SystemColorsAdapted.swift; path = Sources/PerseusUISystemKit/Classes/SystemColorsAdapted.swift; sourceTree = "<group>"; };
+		E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyJSON; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3669546FE7AC6BBE952C53B33475360 /* Pods-Weather-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Weather-acknowledgements.plist"; sourceTree = "<group>"; };
-		F6B181FBF512EE69EF4756F8FCADC734 /* SwiftyJSON-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftyJSON-Info.plist"; sourceTree = "<group>"; };
-		FD297EF8A80425DD4D8D92A32763BBF3 /* SwiftLint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.release.xcconfig; sourceTree = "<group>"; };
+		FB0FBC57C0F1208450011A565EF5348B /* DarkModeDecision.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DarkModeDecision.swift; path = Sources/PerseusDarkMode/DarkMode/DarkModeDecision.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4391888C801FC3662B0733B47EC47DF1 /* Frameworks */ = {
+		3402B4999E141EFA2EC406A97F1C5428 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F2A2AC7E81144807CB77DD5ACD847D8 /* Foundation.framework in Frameworks */,
+				27FCF68F604FD1F48D121D4663BED44D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9F81027374218ADF92007575F9CC95F7 /* Frameworks */ = {
+		3977393A21672F0FBC6F1193739E0D15 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				122075CCC2FED28C2A57563E490AA264 /* Foundation.framework in Frameworks */,
+				325CCDB295FFA016638075B5D2CEDD5C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AD9C5A8DAF4334B670E91B2EC08DBE2C /* Frameworks */ = {
+		46999AFEFB460CD5AF6556FEADF07A3D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C297AC9431379391C114794AFD4F9778 /* Foundation.framework in Frameworks */,
+				FC10427FA1842748F95F9E1CBE5DBDC0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C6155F7EA8E86C629EE740A26E995F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BD184F86060E281286EFECDC4211FEB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C71FC1006E30C15B37817CA511DF5D2F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC8E520ED087CC19AF591371CF9E6100 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0D2045EB053B30E37A4E0596F49FA42D /* Pods */ = {
+		01E322C234CB3D47A921AFEB4B9A5DDE /* SwiftyJSON */ = {
 			isa = PBXGroup;
 			children = (
-				12BD34C8FA8ECA4BEBD61BE05691F032 /* SwiftLint */,
-				7E31E8F208AC35C16618C261913BA19D /* SwiftyJSON */,
+				73EDFBBEB39CA8D5B06391023A2E5ECA /* SwiftyJSON.swift */,
+				FAA367E6B7BE231A5191067532366126 /* Support Files */,
 			);
-			name = Pods;
+			name = SwiftyJSON;
+			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
-		12BD34C8FA8ECA4BEBD61BE05691F032 /* SwiftLint */ = {
+		1EE90E6C90BF11F090A035C135FC14B5 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				2C10E9B1AD22FE2688C778F702008A86 /* Support Files */,
+				DA88A8D4ABAACC3511A47F8E44B50F48 /* PerseusUISystemKit.modulemap */,
+				70F08EBEE4D53C5A81DF662DD9841D0B /* PerseusUISystemKit-dummy.m */,
+				4EDD825FA1D6338404BC9830A103A7CB /* PerseusUISystemKit-Info.plist */,
+				14F7853F84BBC699A8044DF17EC18144 /* PerseusUISystemKit-prefix.pch */,
+				12C5A9534E719332FEE94341B8764EAF /* PerseusUISystemKit-umbrella.h */,
+				2404AE0CADCF258694E95E97442BBB92 /* PerseusUISystemKit.debug.xcconfig */,
+				590AE21E28AE8C119C5DD71AA140CE9F /* PerseusUISystemKit.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/PerseusUISystemKit";
+			sourceTree = "<group>";
+		};
+		252648AA4D2430CB6249AEB3BD958F6D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E08DF1666F4B668DA8F1CEDC44FFBBA8 /* PerseusDarkMode */,
+				02D367B9F5A70286912FABEFB663E379 /* PerseusUISystemKit */,
+				4CECED3294E401E6F6355B401144109A /* Pods-Weather */,
+				749832EA9BC1033509CB404B01AF4F1A /* Pods-WeatherTests */,
+				E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		324AF30A69A11697D57FBA3EFA7CF245 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				DCA81F0A5244308CAF6AFFA9CF6EB7EA /* PerseusDarkMode.modulemap */,
+				14323C6DCE978FA2B44C376923573198 /* PerseusDarkMode-dummy.m */,
+				96300DD134ABE4A4A1C18B1135EB20EB /* PerseusDarkMode-Info.plist */,
+				78CA4DB8FC206CB33ADF3A5D1FA737F5 /* PerseusDarkMode-prefix.pch */,
+				4E5D855CB2FA651DD4FE637EA8635505 /* PerseusDarkMode-umbrella.h */,
+				B751FA5AD2B0C5D192D369994999BC69 /* PerseusDarkMode.debug.xcconfig */,
+				69B293B0A13A320BEC1A0B82844BC5BF /* PerseusDarkMode.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/PerseusDarkMode";
+			sourceTree = "<group>";
+		};
+		502546B8D6660F7CB41C11590BEFC3C4 /* PerseusDarkMode */ = {
+			isa = PBXGroup;
+			children = (
+				0694EC867C6FD6D336D1DD9455DB6393 /* AppearanceService.swift */,
+				96F4FBE185890EC41B74A24B3C1BCE68 /* AppearanceStyle.swift */,
+				8A9B8C780DF6BF87F5763CDB2E8508DA /* Constants.swift */,
+				04418893FC950219FC38C41F787AA1AA /* DarkMode.swift */,
+				FB0FBC57C0F1208450011A565EF5348B /* DarkModeDecision.swift */,
+				612FF44DE3643ABD8128DC647231B67E /* DarkModeObserver.swift */,
+				7D3C1FF1FB5FB999F35B6C930A8BB8B7 /* DarkModeOption.swift */,
+				324AF30A69A11697D57FBA3EFA7CF245 /* Support Files */,
+			);
+			name = PerseusDarkMode;
+			path = PerseusDarkMode;
+			sourceTree = "<group>";
+		};
+		52AA0F0EC2FAAE9AF135E7685BB6C3D2 /* SwiftLint */ = {
+			isa = PBXGroup;
+			children = (
+				76E8904160841368CC4D9C286E439EDB /* Support Files */,
 			);
 			name = SwiftLint;
 			path = SwiftLint;
-			sourceTree = "<group>";
-		};
-		2C10E9B1AD22FE2688C778F702008A86 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				E626D7C56EE66E6BF6F07E078526C930 /* SwiftLint.debug.xcconfig */,
-				FD297EF8A80425DD4D8D92A32763BBF3 /* SwiftLint.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftLint";
 			sourceTree = "<group>";
 		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
@@ -162,29 +296,29 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		79F1613DE9C7A9C99D287368DDAE881B /* Support Files */ = {
+		76E8904160841368CC4D9C286E439EDB /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				4B3261413DC2EDE895C277DBA1A877C9 /* SwiftyJSON.modulemap */,
-				C147774CC441F391B4D7CA698F3C2BC0 /* SwiftyJSON-dummy.m */,
-				F6B181FBF512EE69EF4756F8FCADC734 /* SwiftyJSON-Info.plist */,
-				433F16A09A694BB8A02E49B097CABE18 /* SwiftyJSON-prefix.pch */,
-				A56C422D89DE95548EF2C1E16C94597F /* SwiftyJSON-umbrella.h */,
-				9A42E1DA99C2CEDCC74D8411318BBD63 /* SwiftyJSON.debug.xcconfig */,
-				3C065DA9D9A63637EA13FBCF4D1E0C72 /* SwiftyJSON.release.xcconfig */,
+				779B7E0D363CD59D2E719E5BE39986F2 /* SwiftLint.debug.xcconfig */,
+				56943A1F76CD9C4619EF207E771A2DAC /* SwiftLint.release.xcconfig */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/SwiftyJSON";
+			path = "../Target Support Files/SwiftLint";
 			sourceTree = "<group>";
 		};
-		7E31E8F208AC35C16618C261913BA19D /* SwiftyJSON */ = {
+		88C3D4C5B857028E2EC79EF3DFE2B0F3 /* PerseusUISystemKit */ = {
 			isa = PBXGroup;
 			children = (
-				558352FECE95FE65E1A7A412F1AB9104 /* SwiftyJSON.swift */,
-				79F1613DE9C7A9C99D287368DDAE881B /* Support Files */,
+				C7B8CAA318B39D93F5D40542767AFD11 /* ColorHelper.swift */,
+				05FA27DA202177621E28DB057135D50D /* DarkModeImageView.swift */,
+				C3DB15ED6FCA4B03A4726EBC12AB5A91 /* SemanticColorProtocol.swift */,
+				2A6A74FE50C2F23C6BD1CBDE1B3AD2A0 /* SemanticColorsAdapted.swift */,
+				B63FF430977C532D5A97331C9C735347 /* SystemColorProtocol.swift */,
+				E1F5C43778B0574E1CA5EB7EEA692EBB /* SystemColorsAdapted.swift */,
+				1EE90E6C90BF11F090A035C135FC14B5 /* Support Files */,
 			);
-			name = SwiftyJSON;
-			path = SwiftyJSON;
+			name = PerseusUISystemKit;
+			path = PerseusUISystemKit;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -192,10 +326,21 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				0D2045EB053B30E37A4E0596F49FA42D /* Pods */,
-				F93F3E1AD0F163F5771015D42AB119A8 /* Products */,
+				CF4179F6E179AC99DD36B235881EB13E /* Pods */,
+				252648AA4D2430CB6249AEB3BD958F6D /* Products */,
 				71E7F43DF066A9D9768103188B7E1B88 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		CF4179F6E179AC99DD36B235881EB13E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				502546B8D6660F7CB41C11590BEFC3C4 /* PerseusDarkMode */,
+				88C3D4C5B857028E2EC79EF3DFE2B0F3 /* PerseusUISystemKit */,
+				52AA0F0EC2FAAE9AF135E7685BB6C3D2 /* SwiftLint */,
+				01E322C234CB3D47A921AFEB4B9A5DDE /* SwiftyJSON */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
@@ -238,40 +383,61 @@
 			path = "Target Support Files/Pods-Weather";
 			sourceTree = "<group>";
 		};
-		F93F3E1AD0F163F5771015D42AB119A8 /* Products */ = {
+		FAA367E6B7BE231A5191067532366126 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				4CECED3294E401E6F6355B401144109A /* Pods_Weather.framework */,
-				749832EA9BC1033509CB404B01AF4F1A /* Pods_WeatherTests.framework */,
-				E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON.framework */,
+				6F82F1ACFB835984E54BE3229EF9FEB4 /* SwiftyJSON.modulemap */,
+				BA8BAEF02BF18B6C1C53F28F268A3C65 /* SwiftyJSON-dummy.m */,
+				701BC1A38F29EAFAD7360888A3C3290C /* SwiftyJSON-Info.plist */,
+				836077FA14C60210510DBF983373DB98 /* SwiftyJSON-prefix.pch */,
+				6361C95B9D30559F54A05E0C25012972 /* SwiftyJSON-umbrella.h */,
+				4EA3AC8FE60B3E8BA5504E39024D10CA /* SwiftyJSON.debug.xcconfig */,
+				54854993DFE48C2240C68A21D61A3360 /* SwiftyJSON.release.xcconfig */,
 			);
-			name = Products;
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyJSON";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		3D7DD627DB5C5AD636646E57B685AFB2 /* Headers */ = {
+		1D06A2238B24E55E016C131FEDC3E0CA /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1942F7D3B7722A5637C3FC0BE44B1E6C /* SwiftyJSON-umbrella.h in Headers */,
+				20CE963FB45101257602A5621F160BB0 /* PerseusUISystemKit-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E229433456E7DCDB895DFE552E903770 /* Headers */ = {
+		41145698F7DF35B05606D01197454CFC /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				468AF67AB89551CD7BAA73BFF5428F49 /* Pods-Weather-umbrella.h in Headers */,
+				A115142039C23F91827E6961CC479F05 /* SwiftyJSON-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F0B9A082C74B4B9AB064F92F396BFAA1 /* Headers */ = {
+		8821FC305DB6A17FD959CE9354B9B0C5 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E24F91EF2E7072BB4556B5CDF36278F0 /* Pods-WeatherTests-umbrella.h in Headers */,
+				2AB8491D2BEB543693DDFECFD1240DB7 /* Pods-WeatherTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95BEE369C395A76E4F50670BAD743BD3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5445916CCC3B6A2C4976783C813625B4 /* Pods-Weather-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB6F6C8BCB4C7CB5DD9A18A71FD862DB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CA7DDB69A51D2EDB6C25D5E92A28C73 /* PerseusDarkMode-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,51 +446,90 @@
 /* Begin PBXNativeTarget section */
 		10B99686003B4D8467D8513296D055FE /* Pods-Weather */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9570EE850D5E04079F9F6EB5A526D768 /* Build configuration list for PBXNativeTarget "Pods-Weather" */;
+			buildConfigurationList = 11F79E34E7A36A525F27DACBAD0FE65E /* Build configuration list for PBXNativeTarget "Pods-Weather" */;
 			buildPhases = (
-				E229433456E7DCDB895DFE552E903770 /* Headers */,
-				5F9DB64B7A847B15869033400686CC53 /* Sources */,
-				9F81027374218ADF92007575F9CC95F7 /* Frameworks */,
-				7AA8222F242238F85903A244C81258AC /* Resources */,
+				95BEE369C395A76E4F50670BAD743BD3 /* Headers */,
+				C66155AD8F22F08986592375999504C7 /* Sources */,
+				3402B4999E141EFA2EC406A97F1C5428 /* Frameworks */,
+				6BF4D90F3A3EA05D3F520F4411BF76D0 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				33FBEA5D4F2A52BD6F8AA38B327F2DDA /* PBXTargetDependency */,
-				CEE032D166477AFAD802C2D54DD474F0 /* PBXTargetDependency */,
+				6EFF4A6A8854A55BD67AA54C94206D6D /* PBXTargetDependency */,
+				FBCAF68241F7357148BD2B3103643412 /* PBXTargetDependency */,
+				158165D76CDB17A78ADC2FC879684B5A /* PBXTargetDependency */,
+				75EE676ADCEBEFC6A0BCBD962309A501 /* PBXTargetDependency */,
 			);
 			name = "Pods-Weather";
-			productName = "Pods-Weather";
-			productReference = 4CECED3294E401E6F6355B401144109A /* Pods_Weather.framework */;
+			productName = Pods_Weather;
+			productReference = 4CECED3294E401E6F6355B401144109A /* Pods-Weather */;
+			productType = "com.apple.product-type.framework";
+		};
+		87ED9BFCDB7FD248073374FF2E25FA5D /* PerseusUISystemKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCCAC82623C5FA4601B6BAD3BA8F0286 /* Build configuration list for PBXNativeTarget "PerseusUISystemKit" */;
+			buildPhases = (
+				1D06A2238B24E55E016C131FEDC3E0CA /* Headers */,
+				9D863CD71D812650AFA85D5ACF6E08C4 /* Sources */,
+				5C6155F7EA8E86C629EE740A26E995F9 /* Frameworks */,
+				5DB1178220402750FF891DB3097B3F00 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF45D07EAA553D35D56276B601EEED9A /* PBXTargetDependency */,
+			);
+			name = PerseusUISystemKit;
+			productName = PerseusUISystemKit;
+			productReference = 02D367B9F5A70286912FABEFB663E379 /* PerseusUISystemKit */;
+			productType = "com.apple.product-type.framework";
+		};
+		B4AD1F02397F5C0DC7B0E22A08BE94A7 /* PerseusDarkMode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 872FFB571FE49B7F0083365724383CA9 /* Build configuration list for PBXNativeTarget "PerseusDarkMode" */;
+			buildPhases = (
+				FB6F6C8BCB4C7CB5DD9A18A71FD862DB /* Headers */,
+				8F4552BE29F6E055A8284F1AA80AAB33 /* Sources */,
+				C71FC1006E30C15B37817CA511DF5D2F /* Frameworks */,
+				452EA666F939CF06327C58C0CF181BCD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PerseusDarkMode;
+			productName = PerseusDarkMode;
+			productReference = E08DF1666F4B668DA8F1CEDC44FFBBA8 /* PerseusDarkMode */;
 			productType = "com.apple.product-type.framework";
 		};
 		BB310F9D2A14C2524E05866166ACC225 /* Pods-WeatherTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2DCFE76741D01F7817A0B0478DC74282 /* Build configuration list for PBXNativeTarget "Pods-WeatherTests" */;
+			buildConfigurationList = 7EB904B785415749961E9F265F94EF3F /* Build configuration list for PBXNativeTarget "Pods-WeatherTests" */;
 			buildPhases = (
-				F0B9A082C74B4B9AB064F92F396BFAA1 /* Headers */,
-				90138BB4688CCDF5CB21F4D7163A0B46 /* Sources */,
-				4391888C801FC3662B0733B47EC47DF1 /* Frameworks */,
-				1FB907F6C6710C9214442FC340E8CAA1 /* Resources */,
+				8821FC305DB6A17FD959CE9354B9B0C5 /* Headers */,
+				7FF721B9DB7335BF8A38184F217B80C2 /* Sources */,
+				46999AFEFB460CD5AF6556FEADF07A3D /* Frameworks */,
+				7522C9E3CC13C8D6A8D7DF92D1BF471F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				FF3E39BF1292C6A1677A0172EC3E916F /* PBXTargetDependency */,
+				454D2B4309E490A96D10DFA19ACFC3ED /* PBXTargetDependency */,
 			);
 			name = "Pods-WeatherTests";
-			productName = "Pods-WeatherTests";
-			productReference = 749832EA9BC1033509CB404B01AF4F1A /* Pods_WeatherTests.framework */;
+			productName = Pods_WeatherTests;
+			productReference = 749832EA9BC1033509CB404B01AF4F1A /* Pods-WeatherTests */;
 			productType = "com.apple.product-type.framework";
 		};
 		D118A6A04828FD3CDA8640CD2B6796D2 /* SwiftyJSON */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 62468BF9C7EDA172E951A24083C3ECA7 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
+			buildConfigurationList = 2490E828D479276A7E0AFBA515DD77FA /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
 			buildPhases = (
-				3D7DD627DB5C5AD636646E57B685AFB2 /* Headers */,
-				1700C451C98D9DCECBEDFC5E351C5A9E /* Sources */,
-				AD9C5A8DAF4334B670E91B2EC08DBE2C /* Frameworks */,
-				D098F7F0080A87A1F472C81FC2F85528 /* Resources */,
+				41145698F7DF35B05606D01197454CFC /* Headers */,
+				7B5BEB32F210EFE38F7D58FF8A1CC2DE /* Sources */,
+				3977393A21672F0FBC6F1193739E0D15 /* Frameworks */,
+				B05597C458D738E12F170EAC515F8483 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -332,7 +537,7 @@
 			);
 			name = SwiftyJSON;
 			productName = SwiftyJSON;
-			productReference = E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON.framework */;
+			productReference = E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -341,22 +546,24 @@
 		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = F93F3E1AD0F163F5771015D42AB119A8 /* Products */;
+			productRefGroup = 252648AA4D2430CB6249AEB3BD958F6D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				B4AD1F02397F5C0DC7B0E22A08BE94A7 /* PerseusDarkMode */,
+				87ED9BFCDB7FD248073374FF2E25FA5D /* PerseusUISystemKit */,
 				10B99686003B4D8467D8513296D055FE /* Pods-Weather */,
 				BB310F9D2A14C2524E05866166ACC225 /* Pods-WeatherTests */,
 				52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */,
@@ -366,21 +573,35 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1FB907F6C6710C9214442FC340E8CAA1 /* Resources */ = {
+		452EA666F939CF06327C58C0CF181BCD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7AA8222F242238F85903A244C81258AC /* Resources */ = {
+		5DB1178220402750FF891DB3097B3F00 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D098F7F0080A87A1F472C81FC2F85528 /* Resources */ = {
+		6BF4D90F3A3EA05D3F520F4411BF76D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7522C9E3CC13C8D6A8D7DF92D1BF471F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B05597C458D738E12F170EAC515F8483 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -390,55 +611,208 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1700C451C98D9DCECBEDFC5E351C5A9E /* Sources */ = {
+		7B5BEB32F210EFE38F7D58FF8A1CC2DE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BF6FBC0A64BF107C5D64C61F1397770 /* SwiftyJSON-dummy.m in Sources */,
-				7B4CE5C84161E2BFE477F42DFD634382 /* SwiftyJSON.swift in Sources */,
+				A3CEE8324948497036C4E123B21CBC59 /* SwiftyJSON.swift in Sources */,
+				5FA526557719FDBE81B1974B113CF600 /* SwiftyJSON-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5F9DB64B7A847B15869033400686CC53 /* Sources */ = {
+		7FF721B9DB7335BF8A38184F217B80C2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				579212D20D8BD11CD5276B7EB8C8B069 /* Pods-Weather-dummy.m in Sources */,
+				31FF96E6EF17EA589E97F69E1A2DF4A5 /* Pods-WeatherTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		90138BB4688CCDF5CB21F4D7163A0B46 /* Sources */ = {
+		8F4552BE29F6E055A8284F1AA80AAB33 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C005D28B75FAEC153E3F40AB9FAD0231 /* Pods-WeatherTests-dummy.m in Sources */,
+				8A18BD1EAAD09A76842C9167ECF7CC0E /* AppearanceService.swift in Sources */,
+				19B46EBE484272DAE4D00588B93E507E /* AppearanceStyle.swift in Sources */,
+				3A14D83B3926EB421F6B8A316A5D8D98 /* Constants.swift in Sources */,
+				F7E4C8F0CEDE1571E99D661C2173B5D1 /* DarkMode.swift in Sources */,
+				0B072C97BC47CE65651D1B1FB5AED0F0 /* DarkModeDecision.swift in Sources */,
+				AE29F1826A167CE68FB0740BC49DCAD4 /* DarkModeObserver.swift in Sources */,
+				A497B9933C815A444EFABC480B8893C2 /* DarkModeOption.swift in Sources */,
+				C15A4E27D6798325A8B22C35512347B2 /* PerseusDarkMode-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D863CD71D812650AFA85D5ACF6E08C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9742786C1308E424943B5A661CD34CC /* ColorHelper.swift in Sources */,
+				244379F5E4786B79D2F8B129881A94DF /* DarkModeImageView.swift in Sources */,
+				B9400E26591EBCD26DBA87F731835FF7 /* PerseusUISystemKit-dummy.m in Sources */,
+				5E7225E2D1C4DAB584B9B9CC70EEE41D /* SemanticColorProtocol.swift in Sources */,
+				4FB82FFECEAC377975C35B61433FA50E /* SemanticColorsAdapted.swift in Sources */,
+				1D2524B79372961A06AF86FE12E1D6BF /* SystemColorProtocol.swift in Sources */,
+				3C21A2D28F0BDD89C0632FF687F8DAFF /* SystemColorsAdapted.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C66155AD8F22F08986592375999504C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91D62A92EA9364DE66DFF55B8D3148D6 /* Pods-Weather-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		33FBEA5D4F2A52BD6F8AA38B327F2DDA /* PBXTargetDependency */ = {
+		158165D76CDB17A78ADC2FC879684B5A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftLint;
 			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
-			targetProxy = 1FB41E12AFFB60B179B2F03D4F0BFF0F /* PBXContainerItemProxy */;
+			targetProxy = E98F187A80035F3524A8549B707E79F5 /* PBXContainerItemProxy */;
 		};
-		CEE032D166477AFAD802C2D54DD474F0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftyJSON;
-			target = D118A6A04828FD3CDA8640CD2B6796D2 /* SwiftyJSON */;
-			targetProxy = 8D688F02B296D7F1D1466366A77F797F /* PBXContainerItemProxy */;
-		};
-		FF3E39BF1292C6A1677A0172EC3E916F /* PBXTargetDependency */ = {
+		454D2B4309E490A96D10DFA19ACFC3ED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-Weather";
 			target = 10B99686003B4D8467D8513296D055FE /* Pods-Weather */;
-			targetProxy = 50BA502395134456D69A99B6AC5D781A /* PBXContainerItemProxy */;
+			targetProxy = 88590A3AF91B6FF4041AA6ABE12EBE30 /* PBXContainerItemProxy */;
+		};
+		6EFF4A6A8854A55BD67AA54C94206D6D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PerseusDarkMode;
+			target = B4AD1F02397F5C0DC7B0E22A08BE94A7 /* PerseusDarkMode */;
+			targetProxy = 75044D9888A852CFB6AB44E8032282FB /* PBXContainerItemProxy */;
+		};
+		75EE676ADCEBEFC6A0BCBD962309A501 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyJSON;
+			target = D118A6A04828FD3CDA8640CD2B6796D2 /* SwiftyJSON */;
+			targetProxy = DA4ED112D9E30045264FA950BEAF94F1 /* PBXContainerItemProxy */;
+		};
+		FBCAF68241F7357148BD2B3103643412 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PerseusUISystemKit;
+			target = 87ED9BFCDB7FD248073374FF2E25FA5D /* PerseusUISystemKit */;
+			targetProxy = AB0106EF01B047BD8C14BC992F31AA35 /* PBXContainerItemProxy */;
+		};
+		FF45D07EAA553D35D56276B601EEED9A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PerseusDarkMode;
+			target = B4AD1F02397F5C0DC7B0E22A08BE94A7 /* PerseusDarkMode */;
+			targetProxy = 2F1EDD9E6E32A16ED090C92E03E171A0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		0C02A414E05A9DA68A9A1955FE567996 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2404AE0CADCF258694E95E97442BBB92 /* PerseusUISystemKit.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/PerseusUISystemKit/PerseusUISystemKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PerseusUISystemKit/PerseusUISystemKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/PerseusUISystemKit/PerseusUISystemKit.modulemap";
+				PRODUCT_MODULE_NAME = PerseusUISystemKit;
+				PRODUCT_NAME = PerseusUISystemKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		10F29FE816F485E673829C67B2869E4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69B293B0A13A320BEC1A0B82844BC5BF /* PerseusDarkMode.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/PerseusDarkMode/PerseusDarkMode-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PerseusDarkMode/PerseusDarkMode-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/PerseusDarkMode/PerseusDarkMode.modulemap";
+				PRODUCT_MODULE_NAME = PerseusDarkMode;
+				PRODUCT_NAME = PerseusDarkMode;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		24F7C7AEE9769D357530672DF88D5736 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B751FA5AD2B0C5D192D369994999BC69 /* PerseusDarkMode.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/PerseusDarkMode/PerseusDarkMode-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PerseusDarkMode/PerseusDarkMode-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/PerseusDarkMode/PerseusDarkMode.modulemap";
+				PRODUCT_MODULE_NAME = PerseusDarkMode;
+				PRODUCT_NAME = PerseusDarkMode;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -505,9 +879,81 @@
 			};
 			name = Debug;
 		};
-		3F4BB97B7D33F5DFA7367708405390BE /* Release */ = {
+		31135CAABFC4859D1A639FBDEC5DB382 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3C065DA9D9A63637EA13FBCF4D1E0C72 /* SwiftyJSON.release.xcconfig */;
+			baseConfigurationReference = 590AE21E28AE8C119C5DD71AA140CE9F /* PerseusUISystemKit.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/PerseusUISystemKit/PerseusUISystemKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PerseusUISystemKit/PerseusUISystemKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/PerseusUISystemKit/PerseusUISystemKit.modulemap";
+				PRODUCT_MODULE_NAME = PerseusUISystemKit;
+				PRODUCT_NAME = PerseusUISystemKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		394726AAD23477246B8A0A07D663ACD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57792E2B6FB5D40DE36CB21EA1943D1A /* Pods-WeatherTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WeatherTests/Pods-WeatherTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WeatherTests/Pods-WeatherTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		48563BACFCFA11081ADB26E2B016E19B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4EA3AC8FE60B3E8BA5504E39024D10CA /* SwiftyJSON.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -535,13 +981,49 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6002DB0BB256EF32BE8797D7712621DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7409D361251A044CED002E453157698 /* Pods-Weather.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Weather/Pods-Weather-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Weather/Pods-Weather.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		5F016C077324AEECAFB1E96F7BA0031D /* Release */ = {
+		65A7FB2AFABB6E56375B05F46F217F1F /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A4DF84F55038B581A4E1BA831D586927 /* Pods-WeatherTests.release.xcconfig */;
 			buildSettings = {
@@ -578,116 +1060,9 @@
 			};
 			name = Release;
 		};
-		6D25671B555761CFBA3111A25D85FDDC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9A42E1DA99C2CEDCC74D8411318BBD63 /* SwiftyJSON.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
-				PRODUCT_MODULE_NAME = SwiftyJSON;
-				PRODUCT_NAME = SwiftyJSON;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		8295F29AE26FBE239344DACCF0AC0690 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57792E2B6FB5D40DE36CB21EA1943D1A /* Pods-WeatherTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-WeatherTests/Pods-WeatherTests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-WeatherTests/Pods-WeatherTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		8B4003ABF6138963D01F43614E7EF370 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7C4961E9EF71BA2F04970FAC14A9AAF3 /* Pods-Weather.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Weather/Pods-Weather-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Weather/Pods-Weather.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		AD81E62ACCB0B7A923FC8AA288F9921E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FD297EF8A80425DD4D8D92A32763BBF3 /* SwiftLint.release.xcconfig */;
+			baseConfigurationReference = 56943A1F76CD9C4619EF207E771A2DAC /* SwiftLint.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -699,43 +1074,6 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		C32CF41872EA4170BE056D62701D3F25 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B7409D361251A044CED002E453157698 /* Pods-Weather.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Weather/Pods-Weather-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Weather/Pods-Weather.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -801,9 +1139,81 @@
 			};
 			name = Release;
 		};
+		CF9B5763100FE5D352E8A2756E598672 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C4961E9EF71BA2F04970FAC14A9AAF3 /* Pods-Weather.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Weather/Pods-Weather-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Weather/Pods-Weather.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E21BBD6E700328FA6A136592254F9EA5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54854993DFE48C2240C68A21D61A3360 /* SwiftyJSON.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				PRODUCT_MODULE_NAME = SwiftyJSON;
+				PRODUCT_NAME = SwiftyJSON;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		EADD1F50ABC8096A0D6CB18822BB4EE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E626D7C56EE66E6BF6F07E078526C930 /* SwiftLint.debug.xcconfig */;
+			baseConfigurationReference = 779B7E0D363CD59D2E719E5BE39986F2 /* SwiftLint.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -820,11 +1230,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2DCFE76741D01F7817A0B0478DC74282 /* Build configuration list for PBXNativeTarget "Pods-WeatherTests" */ = {
+		11F79E34E7A36A525F27DACBAD0FE65E /* Build configuration list for PBXNativeTarget "Pods-Weather" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8295F29AE26FBE239344DACCF0AC0690 /* Debug */,
-				5F016C077324AEECAFB1E96F7BA0031D /* Release */,
+				CF9B5763100FE5D352E8A2756E598672 /* Debug */,
+				6002DB0BB256EF32BE8797D7712621DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2490E828D479276A7E0AFBA515DD77FA /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48563BACFCFA11081ADB26E2B016E19B /* Debug */,
+				E21BBD6E700328FA6A136592254F9EA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -838,20 +1257,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		62468BF9C7EDA172E951A24083C3ECA7 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
+		7EB904B785415749961E9F265F94EF3F /* Build configuration list for PBXNativeTarget "Pods-WeatherTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6D25671B555761CFBA3111A25D85FDDC /* Debug */,
-				3F4BB97B7D33F5DFA7367708405390BE /* Release */,
+				394726AAD23477246B8A0A07D663ACD3 /* Debug */,
+				65A7FB2AFABB6E56375B05F46F217F1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9570EE850D5E04079F9F6EB5A526D768 /* Build configuration list for PBXNativeTarget "Pods-Weather" */ = {
+		872FFB571FE49B7F0083365724383CA9 /* Build configuration list for PBXNativeTarget "PerseusDarkMode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8B4003ABF6138963D01F43614E7EF370 /* Debug */,
-				C32CF41872EA4170BE056D62701D3F25 /* Release */,
+				24F7C7AEE9769D357530672DF88D5736 /* Debug */,
+				10F29FE816F485E673829C67B2869E4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -861,6 +1280,15 @@
 			buildConfigurations = (
 				EADD1F50ABC8096A0D6CB18822BB4EE4 /* Debug */,
 				AD81E62ACCB0B7A923FC8AA288F9921E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FCCAC82623C5FA4601B6BAD3BA8F0286 /* Build configuration list for PBXNativeTarget "PerseusUISystemKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C02A414E05A9DA68A9A1955FE567996 /* Debug */,
+				31135CAABFC4859D1A639FBDEC5DB382 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
