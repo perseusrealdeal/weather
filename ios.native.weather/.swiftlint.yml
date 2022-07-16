@@ -9,9 +9,11 @@ disabled_rules: # rule identifiers turned on by default to exclude from running
   - orphaned_doc_comment
   - empty_parentheses_with_trailing_closure
   - unused_optional_binding
-  - type_name
   - class_delegate_protocol
   - function_body_length
+
+type_name:
+  max_length: 45
 
 identifier_name:
   allowed_symbols: "_"
