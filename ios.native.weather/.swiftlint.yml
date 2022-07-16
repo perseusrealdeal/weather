@@ -3,7 +3,6 @@ disabled_rules: # rule identifiers turned on by default to exclude from running
   - opening_brace
   - colon
   - line_length
-  - type_body_length
   - syntactic_sugar
   - statement_position
   - orphaned_doc_comment
@@ -11,6 +10,10 @@ disabled_rules: # rule identifiers turned on by default to exclude from running
   - unused_optional_binding
   - class_delegate_protocol
   - function_body_length
+
+type_body_length:
+  warning: 300
+  error: 500
 
 type_name:
   max_length: 45
