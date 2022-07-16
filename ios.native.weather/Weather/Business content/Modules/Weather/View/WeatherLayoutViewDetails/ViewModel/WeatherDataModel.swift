@@ -92,8 +92,7 @@ class WeatherDataModel
             weatherDataCountChanges += 1
 
             jsonData["current"] = json["current"]
-        }
-        else { fullUpdated = false; print("current not exists") }
+        } else { fullUpdated = false; print("current not exists") }
 
         if json["hourly"].exists()
         {
@@ -101,8 +100,7 @@ class WeatherDataModel
             weatherDataCountChanges += 1
 
             jsonData["hourly"] = json["hourly"]
-        }
-        else { fullUpdated = false; print("hourly not exists") }
+        } else { fullUpdated = false; print("hourly not exists") }
 
         if json["daily"].exists()
         {
@@ -110,8 +108,7 @@ class WeatherDataModel
             weatherDataCountChanges += 1
 
             jsonData["daily"] = json["daily"]
-        }
-        else { fullUpdated = false; print("daily not exists") }
+        } else { fullUpdated = false; print("daily not exists") }
 
         if json["alerts"].exists()
         {
@@ -119,9 +116,7 @@ class WeatherDataModel
             alertsChanged = true
 
             jsonData["alerts"] = json["alerts"]
-        }
-        else
-        {
+        } else {
             if !jsonData["alerts"].isEmpty
             {
                 weatherDataChanged = true
@@ -189,9 +184,7 @@ class WeatherDataModel
         {
             let time = jsonData["lastFullUpdate"].doubleValue
             print("fullUpdate   : \(Date(timeIntervalSince1970: time))")
-        }
-        else
-        {
+        } else {
             print("fullUpdate   : —")
         }
         #endif

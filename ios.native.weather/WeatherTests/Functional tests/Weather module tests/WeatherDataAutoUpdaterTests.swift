@@ -142,9 +142,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
                 target  : sut.self,
                 delay   : delay,
                 selector: #selector(sut.locationReceivedNotificationHandler))
-        }
-        else
-        {
+        } else {
             XCTFail("Delay should be calculated to set up timer.")
         }
 

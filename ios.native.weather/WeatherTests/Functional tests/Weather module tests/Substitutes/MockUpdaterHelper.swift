@@ -134,9 +134,7 @@ class MockUpdaterHelper: UpdaterHelperProtocol
             prepareTimerArgs_selectors.append(selector)
 
             return Timer()
-        }
-        else
-        {
+        } else {
             // produce a real one timer, configured timer stubbed one but in milliseconds
             guard let targetStubbed = timerTargetStubbed else { return Timer() }
 

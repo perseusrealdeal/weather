@@ -241,9 +241,7 @@ class WeatherDataAutoUpdater
             if let target = data.target
             {
                 isLocationChanged = locationReceived == target.location ? false : true
-            }
-            else
-            {
+            } else {
                 isLocationChanged = true
             }
         }
@@ -251,9 +249,7 @@ class WeatherDataAutoUpdater
         if let error = locationError
         {
             delegate?.failedToGetCurrentLocation(error)
-        }
-        else if let locationChanged = isLocationChanged, locationChanged
-        {
+        } else if let locationChanged = isLocationChanged, locationChanged {
             updateForcibly(for: locationReceived!)
             return
         }
@@ -275,9 +271,7 @@ class WeatherDataAutoUpdater
         if let error = dataDeliveryError
         {
             delegate?.failedToDeliverWeatherData(error)
-        }
-        else if let freshData = dataDeliveried
-        {
+        } else if let freshData = dataDeliveried {
             data.update(received: freshData)
             { isAlertsOnly in
                 isAlertsOnly ? delegate?.weatherAlertsUpdated() : delegate?.weatherDataUpdated()

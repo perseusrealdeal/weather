@@ -88,13 +88,9 @@ class OpenWeatherClient
             if let error = error
             {
                 answer_error = error.localizedDescription
-            }
-            else if let response = response as? HTTPURLResponse, response.statusCode != 200
-            {
+            } else if let response = response as? HTTPURLResponse, response.statusCode != 200 {
                 answer_error = HTTPURLResponse.localizedString(forStatusCode: response.statusCode)
-            }
-            else if let requested_data = weather
-            {
+            } else if let requested_data = weather {
                 answer_data = requested_data
             }
 
@@ -106,9 +102,7 @@ class OpenWeatherClient
                 if let requested_data = answer_data
                 {
                     self.givenData = requested_data
-                }
-                else if let error = answer_error
-                {
+                } else if let error = answer_error {
                     self.onResultDelivered(.failure(.failedRequest(error)))
                 }
 
