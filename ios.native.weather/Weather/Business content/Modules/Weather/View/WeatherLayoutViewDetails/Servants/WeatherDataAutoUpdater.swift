@@ -137,7 +137,7 @@ class WeatherDataAutoUpdater
 
         guard useCurrentLocation == true else { updateIfNeeded(); return }
 
-        geoLocationService.requestLocationUpdateOnce()
+        geoLocationService.requestLocationUpdateOnce
         { reason in // Called in case if location service not allowed
 
             // DONE: Let user know what becouse when location service not allowed

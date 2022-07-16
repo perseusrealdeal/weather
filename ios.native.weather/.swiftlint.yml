@@ -3,7 +3,6 @@ disabled_rules: # rule identifiers turned on by default to exclude from running
   - opening_brace
   - colon
   - statement_position
-  - unused_optional_binding
 
 function_body_length:
   warning: 60

@@ -58,7 +58,7 @@ class WeatherViewModel: WeatherDataAutoUpdaterDelegate
         print(">> [\(type(of: self))]." + #function)
         #endif
 
-        guard let _ = weatherView else { return }
+        guard weatherView != nil else { return }
 
         // Do the weaather view reload from here
     }
@@ -69,7 +69,7 @@ class WeatherViewModel: WeatherDataAutoUpdaterDelegate
         print(">> [\(type(of: self))]." + #function)
         #endif
 
-        guard let _ = weatherView else { return }
+        guard weatherView != nil else { return }
 
         // Do the weaather view reload from here
     }
@@ -81,14 +81,14 @@ class WeatherViewModel: WeatherDataAutoUpdaterDelegate
         print("reason  : \(reason)")
         #endif
 
-        guard let _ = weatherView else { return }
+        guard weatherView != nil else { return }
 
         // Do inform user about location service not allowed
     }
 
     func failedToGetCurrentLocation(_ error: LocationReceivedError)
     {
-        guard let _ = weatherView else { return }
+        guard weatherView != nil else { return }
 
         // Do inform user about something went wrong
 
@@ -100,7 +100,7 @@ class WeatherViewModel: WeatherDataAutoUpdaterDelegate
 
     func failedToDeliverWeatherData(_ error : WeatherDataDeliveryError)
     {
-        guard let _ = weatherView else { return }
+        guard weatherView != nil else { return }
 
         // Do inform user about something went wrong
 
