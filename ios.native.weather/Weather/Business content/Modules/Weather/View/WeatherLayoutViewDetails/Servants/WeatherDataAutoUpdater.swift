@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol WeatherDataAutoUpdaterDelegate
+protocol WeatherDataAutoUpdaterDelegate: AnyObject
 {
     /// Delegate view reloading activities
     func weatherDataUpdated()
