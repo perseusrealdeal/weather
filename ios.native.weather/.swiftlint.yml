@@ -2,7 +2,6 @@ disabled_rules: # rule identifiers turned on by default to exclude from running
   - force_cast
   - opening_brace
   - colon
-  - syntactic_sugar
   - statement_position
   - empty_parentheses_with_trailing_closure
   - unused_optional_binding

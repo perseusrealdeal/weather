@@ -28,7 +28,7 @@ extension String
         return preference[bundle_PreferenceDefaultValue] as? String
     }
 
-    var valuesFromSettings: Array<String>?
+    var valuesFromSettings: [String]?
     {
         let bundle_PreferenceKey           = Settings.bundleParams["PreferenceKey"]!
         let bundle_PreferenceValues        = Settings.bundleParams["PreferenceValues"]!
