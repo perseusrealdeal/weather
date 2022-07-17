@@ -7,7 +7,6 @@
 
 import XCTest
 
-class CommonFunctionalTests: XCTestCase
-{
+class CommonFunctionalTests: XCTestCase {
     // func test_zero() { XCTFail("Tests not yet implemented in \(type(of: self)).") }
 }

@@ -8,8 +8,7 @@
 import XCTest
 @testable import Weather
 
-class WeatherViewControllerTests: XCTestCase
-{
+class WeatherViewControllerTests: XCTestCase {
     // func test_zero() { XCTFail("Tests not yet implemented in \(type(of: self)).") }
 
     private var sut                   : WeatherViewController!
@@ -18,8 +17,7 @@ class WeatherViewControllerTests: XCTestCase
     private var mockLocationReceiver  : MockGeoLocationReceiver!
     private var mockNotificationCenter: MockNotificationCenter!
 
-    override func setUp()
-    {
+    override func setUp() {
         super.setUp()
 
         mockLocationReceiver = MockGeoLocationReceiver()
@@ -29,8 +27,7 @@ class WeatherViewControllerTests: XCTestCase
         sut = WeatherViewController(mockNotificationCenter, mockLocationReceiver)
     }
 
-    override func tearDown()
-    {
+    override func tearDown() {
         mockLocationReceiver = nil
         mockNotificationCenter = nil
         mockView = nil
@@ -42,8 +39,7 @@ class WeatherViewControllerTests: XCTestCase
 
     // MARK: - Testing With Focusing On WeatherLayoutView Dependency
 
-    func test_VC_should_load_WeatherLayoutView()
-    {
+    func test_VC_should_load_WeatherLayoutView() {
         // act
 
         sut.loadViewIfNeeded()
@@ -54,8 +50,7 @@ class WeatherViewControllerTests: XCTestCase
                       "The View Controller gets an unexpected type of View")
     }
 
-    func test_VC_should_call_updateLayoutOrientationIfNeeded_when_viewDidLayoutSubviews()
-    {
+    func test_VC_should_call_updateLayoutOrientationIfNeeded_when_viewDidLayoutSubviews() {
         // arrange
 
         let orientation: NSLayoutConstraint.Axis =
@@ -75,8 +70,7 @@ class WeatherViewControllerTests: XCTestCase
         mockView.verifyUpdateLayoutOrientationIfNeeded(with: orientation)
     }
 
-    func test_VC_should_call_startActivities_when_theAppDidBecomeActive()
-    {
+    func test_VC_should_call_startActivities_when_theAppDidBecomeActive() {
         // arrange
 
         sut.stubbedView = mockView
@@ -93,8 +87,7 @@ class WeatherViewControllerTests: XCTestCase
         mockView.verifyStartActivities()
     }
 
-    func test_VC_should_call_stopActivities_when_theAppDidEnterBackground()
-    {
+    func test_VC_should_call_stopActivities_when_theAppDidEnterBackground() {
         // arrange
 
         sut.stubbedView = mockView
@@ -113,8 +106,7 @@ class WeatherViewControllerTests: XCTestCase
 
     // MARK: - Testing With Focusing On GeoLocationReceiver Dependency
 
-    func test_VC_should_call_requestLocationDataAccess_when_theAppDidFinishLaunching()
-    {
+    func test_VC_should_call_requestLocationDataAccess_when_theAppDidFinishLaunching() {
         // arange
 
         sut.stubbedView = mockView
@@ -133,8 +125,7 @@ class WeatherViewControllerTests: XCTestCase
 
     // MARK: - Testing With Focusing On NotificationCenter Dependency
 
-    func test_VC_should_call_addObserver_theAppDidFinishLaunching_when_init()
-    {
+    func test_VC_should_call_addObserver_theAppDidFinishLaunching_when_init() {
         // assert
 
         mockNotificationCenter.verifyAddObserver(
@@ -144,8 +135,7 @@ class WeatherViewControllerTests: XCTestCase
             object  : nil)
     }
 
-    func test_VC_should_call_addObserver_three_times_when_viewWillAppear()
-    {
+    func test_VC_should_call_addObserver_three_times_when_viewWillAppear() {
         // arrange
 
         let observers = [sut, sut, sut]
@@ -179,8 +169,7 @@ class WeatherViewControllerTests: XCTestCase
                                                                         object  : objects)
     }
 
-    func test_VC_should_call_removeObserver_twice_when_viewWillDisappear()
-    {
+    func test_VC_should_call_removeObserver_twice_when_viewWillDisappear() {
         // arrange
 
         let observers = [sut, sut]

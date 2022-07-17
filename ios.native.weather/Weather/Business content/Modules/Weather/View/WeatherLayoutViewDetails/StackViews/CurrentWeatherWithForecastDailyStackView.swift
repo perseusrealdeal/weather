@@ -7,8 +7,8 @@
 
 import UIKit
 
-class CurrentWeatherWithForecastDailyStackView: UIStackView
-{
+class CurrentWeatherWithForecastDailyStackView: UIStackView {
+
     // MARK: - View Layout Related Properties
 
     private var constraintVerticalAxis1  : NSLayoutConstraint!
@@ -30,8 +30,8 @@ class CurrentWeatherWithForecastDailyStackView: UIStackView
 
     init(hourly : ForecastHourlyView,
          daily  : ForecastDailyView,
-         current: CurrentWeatherView)
-    {
+         current: CurrentWeatherView) {
+
         forecastDailyView = daily
         stackView = CurrentWeatherWithForecastHourlyStackView(hourly : hourly,
                                                               current: current)
@@ -45,8 +45,8 @@ class CurrentWeatherWithForecastDailyStackView: UIStackView
         initialize()
     }
 
-    private func initialize()
-    {
+    private func initialize() {
+
         constraintVerticalAxis1 = stackView.heightAnchor.constraint(
             equalTo: self.heightAnchor, multiplier: 0.6)
 
@@ -69,18 +69,15 @@ class CurrentWeatherWithForecastDailyStackView: UIStackView
         configuredForOrientation = currentOrientation
     }
 
-    private func changeLayout(for deviceOrientation: NSLayoutConstraint.Axis)
-    {
-        if deviceOrientation == .vertical
-        {
+    private func changeLayout(for deviceOrientation: NSLayoutConstraint.Axis) {
+        if deviceOrientation == .vertical {
             axis = .vertical
 
             NSLayoutConstraint.deactivate([constraintHorizontalAxis1, constraintHorizontalAxis2])
             NSLayoutConstraint.activate([constraintVerticalAxis1, constraintVerticalAxis2])
         }
 
-        if deviceOrientation == .horizontal
-        {
+        if deviceOrientation == .horizontal {
             axis = .horizontal
 
             NSLayoutConstraint.deactivate([constraintVerticalAxis1, constraintVerticalAxis2])
@@ -90,8 +87,7 @@ class CurrentWeatherWithForecastDailyStackView: UIStackView
 
     // MARK: - Business Logic Related Methods
 
-    public func updateLayoutOrientationIfNeeded(for currentOrientation: NSLayoutConstraint.Axis)
-    {
+    public func updateLayoutOrientationIfNeeded(for currentOrientation: NSLayoutConstraint.Axis) {
         if configuredForOrientation == currentOrientation { return }
 
         configuredForOrientation = currentOrientation

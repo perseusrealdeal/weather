@@ -7,14 +7,12 @@
 
 import UIKit
 
-class CurrentWeatherView: UIView
-{
+class CurrentWeatherView: UIView {
+
     // MARK: - Business Matter Data to View
 
-    var data: CurrentWeather?
-    {
-        didSet
-        {
+    var data: CurrentWeather? {
+        didSet {
             reloadData()
         }
     }
@@ -23,8 +21,7 @@ class CurrentWeatherView: UIView
 
     required init(coder aDecoder: NSCoder) { fatalError() }
 
-    init()
-    {
+    init() {
         super.init(frame: CGRect.zero)
 
         translatesAutoresizingMaskIntoConstraints = false
@@ -36,12 +33,10 @@ class CurrentWeatherView: UIView
 
     // MARK: - Business Logic Related Methods
 
-    private func reloadData()
-    {
+    private func reloadData() {
         print(">> \(type(of: self)) " + #function)
 
-        if let data = data
-        {
+        if let data = data {
             print(data)
         }
     }

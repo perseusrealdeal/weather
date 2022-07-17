@@ -9,8 +9,7 @@ import Foundation
 
 // MARK: - Helper abstracts used to make code testable
 
-protocol URLSessionProtocol
-{
+protocol URLSessionProtocol {
     func dataTask(with request: URLRequest, completionHandler:
                     @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
 }
@@ -19,8 +18,7 @@ extension URLSession: URLSessionProtocol { }
 
 // MARK: - Failure scenario details
 
-enum WeatherDataDeliveryError: Error
-{
+enum WeatherDataDeliveryError: Error {
     case invalidExclude
     case invalidUrl
     case failedRequest(String)
@@ -28,8 +26,7 @@ enum WeatherDataDeliveryError: Error
 
 // MARK: - Client for communicating with OpenWeather Service
 
-class OpenWeatherClient
-{
+class OpenWeatherClient {
     private var api_key  : String { "79eefe16f6e4714470502074369fc77b" }
     private var units    : String { "metric" }
 
@@ -39,24 +36,20 @@ class OpenWeatherClient
     var onResultDelivered: (Result<Data, WeatherDataDeliveryError>) -> Void = { print($0) }
     var weather          : Data { givenData }
 
-    private(set) var givenData: Data = Data()
-    {
-        didSet
-        {
+    private(set) var givenData: Data = Data() {
+        didSet {
             onResultDelivered(.success(givenData))
         }
     }
 
     // Constructor injection used to make URLSession isolated
-    init(session: URLSessionProtocol = URLSession.shared)
-    {
+    init(session: URLSessionProtocol = URLSession.shared) {
         self.session = session
     }
 
     func requestWeatherData(exclude  : String = "hourly,minutely,daily,alerts",
                             latitude : String = "55.662546456740564",
-                            longitude: String = "85.62138369331707")
-    {
+                            longitude: String = "85.62138369331707") {
         // Validate parameters
 
         guard let encodedExclude
@@ -77,16 +70,14 @@ class OpenWeatherClient
 
         // Send request
 
-        dataTask = session.dataTask(with: request)
-        { [self] (weather: Data?, response: URLResponse?, error: Error?) -> Void in
+        dataTask = session.dataTask(with: request) { [self] (weather: Data?, response: URLResponse?, error: Error?) -> Void in
 
             // Read answer
 
             var answer_data : Data?
             var answer_error: String?
 
-            if let error = error
-            {
+            if let error = error {
                 answer_error = error.localizedDescription
             } else if let response = response as? HTTPURLResponse, response.statusCode != 200 {
                 answer_error = HTTPURLResponse.localizedString(forStatusCode: response.statusCode)
@@ -96,11 +87,9 @@ class OpenWeatherClient
 
             // Communicate changes
 
-            DispatchQueue.main.async
-            { [weak self] in guard let self = self else { return }
+            DispatchQueue.main.async { [weak self] in guard let self = self else { return }
 
-                if let requested_data = answer_data
-                {
+                if let requested_data = answer_data {
                     self.givenData = requested_data
                 } else if let error = answer_error {
                     self.onResultDelivered(.failure(.failedRequest(error)))

@@ -7,13 +7,11 @@
 
 import UIKit
 
-enum WeatherLayoutVariation
-{
+enum WeatherLayoutVariation {
     case allDetails
 }
 
-class WeatherLayoutView: UIView
-{
+class WeatherLayoutView: UIView {
     // MARK: - View Layout Related Properties
 
     /// configuredForOrientation is initialized when updateLayoutOrientationIfNeeded method called
@@ -35,8 +33,7 @@ class WeatherLayoutView: UIView
 
     required init(coder aDecoder: NSCoder) { fatalError() }
 
-    init(with layoutNumber  : WeatherLayoutVariation = .allDetails)
-    {
+    init(with layoutNumber  : WeatherLayoutVariation = .allDetails) {
         viewModel = WeatherViewModel()
 
         alertsView = WeatherNationalAlertsView()
@@ -79,13 +76,11 @@ class WeatherLayoutView: UIView
         configuredForOrientation = currentOrientation
     }
 
-    func startActivities()
-    {
+    func startActivities() {
         viewModel.startAutoUpdatingWeatherData()
     }
 
-    func stopActivities()
-    {
+    func stopActivities() {
         viewModel.stopAutoUpdatingWeatherData()
     }
 }

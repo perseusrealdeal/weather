@@ -9,8 +9,7 @@ import UIKit
 
 // MARK: - WeatherViewController Class
 
-class WeatherViewController: UIViewController
-{
+class WeatherViewController: UIViewController {
     // MARK: - Difficult Dependencies
 
     private let notificationCenter: NotificationCenterProtocol
@@ -25,8 +24,7 @@ class WeatherViewController: UIViewController
     required init?(coder aDecoder: NSCoder) { fatalError() }
 
     init(_ notificationCenter: NotificationCenterProtocol = Settings.notificationCenter,
-         _ geoService        : GeoLocationServiceProtocol = GeoLocationReceiver.shared)
-    {
+         _ geoService        : GeoLocationServiceProtocol = GeoLocationReceiver.shared) {
         #if DEBUG
         print(">> [\(type(of: self))].init")
         #endif
@@ -134,8 +132,7 @@ class WeatherViewController: UIViewController
         view.startActivities()
     }
 
-    @objc func theAppDidEnterBackground()
-    {
+    @objc func theAppDidEnterBackground() {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif
@@ -145,8 +142,7 @@ class WeatherViewController: UIViewController
         view.stopActivities()
     }
 
-    @objc func theAppDidFinishLaunching()
-    {
+    @objc func theAppDidFinishLaunching() {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif

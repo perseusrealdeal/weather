@@ -16,8 +16,7 @@ let UPDATE_JOB_INTERVAL     : Double = UPDATE_INTERVALS[0] // Given in minutes
 // It works in the UPDATE_JOB_INTERVAL time circle and should be meant as <not early then>
 let FORCIBLY_UPDATE_INTERVAL: Double = UPDATE_INTERVALS[1] // Given in minutes
 
-protocol UpdaterHelperProtocol
-{
+protocol UpdaterHelperProtocol {
     func registerCurrentLocationObserver(observer: Any, selector: Selector)
     func removeCurrentLocationObserver(observer: Any)
 
@@ -27,10 +26,8 @@ protocol UpdaterHelperProtocol
     func prepareTimer(target: Any, delay: TimeInterval, selector: Selector) -> Timer
 }
 
-class UpdaterHelper: UpdaterHelperProtocol
-{
-    func registerCurrentLocationObserver(observer: Any, selector: Selector)
-    {
+class UpdaterHelper: UpdaterHelperProtocol {
+    func registerCurrentLocationObserver(observer: Any, selector: Selector) {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif
@@ -90,7 +87,7 @@ class UpdaterHelper: UpdaterHelperProtocol
 
         if data.isForecastHourlyUpToDate { exclude.append(",hourly") }
         if data.isForecastDailyUpToDate { exclude.append(",daily") }
-        if data.isForecastCurrentUpToDate{ exclude.append(",current") }
+        if data.isForecastCurrentUpToDate { exclude.append(",current") }
 
         #if DEBUG
         print("calculated   : \(exclude)")

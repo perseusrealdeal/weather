@@ -10,12 +10,10 @@ import XCTest
 
 @testable import Weather
 
-class MockUpdaterHelper: UpdaterHelperProtocol
-{
+class MockUpdaterHelper: UpdaterHelperProtocol {
     private let helperNotMock: UpdaterHelper
 
-    init(helper: UpdaterHelper)
-    {
+    init(helper: UpdaterHelper) {
         helperNotMock = helper
     }
 
@@ -25,8 +23,7 @@ class MockUpdaterHelper: UpdaterHelperProtocol
     var registerCurrentLocationObserverArgs_obsevers : [WeatherDataAutoUpdater] = []
     var registerCurrentLocationObserverArgs_selectors: [Selector] = []
 
-    func registerCurrentLocationObserver(observer: Any, selector: Selector)
-    {
+    func registerCurrentLocationObserver(observer: Any, selector: Selector) {
         registerCurrentLocationObserverCallCount += 1
 
         registerCurrentLocationObserverArgs_obsevers.append(observer as! WeatherDataAutoUpdater)
@@ -36,8 +33,7 @@ class MockUpdaterHelper: UpdaterHelperProtocol
     func verifyRegisterCurrentLocationObserver(observer: WeatherDataAutoUpdater,
                                                selector: Selector,
                                                file    : StaticString = #file,
-                                               line    : UInt = #line)
-    {
+                                               line    : UInt = #line) {
         guard registerCurrentLocationObserverWasCalledOnce(file: file, line: line) else { return }
 
         XCTAssertTrue(registerCurrentLocationObserverArgs_obsevers.first! === observer,
@@ -48,8 +44,7 @@ class MockUpdaterHelper: UpdaterHelperProtocol
     }
 
     private func registerCurrentLocationObserverWasCalledOnce(file: StaticString = #file,
-                                                              line: UInt = #line) -> Bool
-    {
+                                                              line: UInt = #line) -> Bool {
         verifyMethodCalledOnce(
             methodName       : "registerCurrentLocationObserver(observer:, selector:)",
             callCount        : registerCurrentLocationObserverCallCount,
@@ -63,8 +58,7 @@ class MockUpdaterHelper: UpdaterHelperProtocol
     var removeCurrentLocationObserverCallCount = 0
     var removeCurrentLocationObserverArgs_obsevers: [WeatherDataAutoUpdater] = []
 
-    func removeCurrentLocationObserver(observer: Any)
-    {
+    func removeCurrentLocationObserver(observer: Any) {
         removeCurrentLocationObserverCallCount += 1
 
         removeCurrentLocationObserverArgs_obsevers.append(observer as! WeatherDataAutoUpdater)
@@ -72,8 +66,7 @@ class MockUpdaterHelper: UpdaterHelperProtocol
 
     func verifyRemoveCurrentLocationObserver(observer: WeatherDataAutoUpdater,
                                              file    : StaticString = #file,
-                                             line    : UInt = #line)
-    {
+                                             line    : UInt = #line) {
         guard removeCurrentLocationObserverWasCalledOnce(file: file, line: line) else { return }
 
         XCTAssertTrue(removeCurrentLocationObserverArgs_obsevers.first! === observer,
@@ -81,8 +74,7 @@ class MockUpdaterHelper: UpdaterHelperProtocol
     }
 
     private func removeCurrentLocationObserverWasCalledOnce(file: StaticString = #file,
-                                                            line: UInt = #line) -> Bool
-    {
+                                                            line: UInt = #line) -> Bool {
         verifyMethodCalledOnce(
             methodName       : "removeCurrentLocationObserver(observer:)",
             callCount        : removeCurrentLocationObserverCallCount,
@@ -92,23 +84,19 @@ class MockUpdaterHelper: UpdaterHelperProtocol
     }
 
     var delay: TimeInterval?
-    func calculateDelay() -> TimeInterval
-    {
+    func calculateDelay() -> TimeInterval {
         guard let delay = delay
-        else
-        {
+        else {
             return helperNotMock.calculateDelay() / 1000.0 // In milliseconds
         }
         return delay
     }
 
-    func calculateExclude(data: WeatherDataModel) -> String
-    {
+    func calculateExclude(data: WeatherDataModel) -> String {
         ""
     }
 
-    func calculateForciblyUpdateCondition(data: WeatherDataModel) -> Bool
-    {
+    func calculateForciblyUpdateCondition(data: WeatherDataModel) -> Bool {
         false
     }
 
@@ -123,10 +111,8 @@ class MockUpdaterHelper: UpdaterHelperProtocol
     var prepareTimerArgs_delays   : [TimeInterval] = []
     var prepareTimerArgs_selectors: [Selector] = []
 
-    func prepareTimer(target: Any, delay: TimeInterval, selector: Selector) -> Timer
-    {
-        if isTimerOnlyForCallCount
-        {
+    func prepareTimer(target: Any, delay: TimeInterval, selector: Selector) -> Timer {
+        if isTimerOnlyForCallCount {
             prepareTimerCallCount += 1
 
             prepareTimerArgs_targets.append(target as! WeatherDataAutoUpdater)
@@ -152,8 +138,7 @@ class MockUpdaterHelper: UpdaterHelperProtocol
                             delay   : TimeInterval,
                             selector: Selector,
                             file    : StaticString = #file,
-                            line    : UInt = #line)
-    {
+                            line    : UInt = #line) {
         guard prepareTimerWasCalledOnce(file: file, line: line) else { return }
 
         XCTAssertTrue(registerCurrentLocationObserverArgs_obsevers.first! === target,
@@ -167,8 +152,7 @@ class MockUpdaterHelper: UpdaterHelperProtocol
     }
 
     private func prepareTimerWasCalledOnce(file: StaticString = #file,
-                                           line: UInt = #line) -> Bool
-    {
+                                           line: UInt = #line) -> Bool {
         verifyMethodCalledOnce(
             methodName       : "prepareTimer(target:, delay:, selector:)",
             callCount        : prepareTimerCallCount,
@@ -181,16 +165,13 @@ class MockUpdaterHelper: UpdaterHelperProtocol
 private func verifyMethodCalledOnce(methodName       : String, callCount: Int,
                                     describeArguments: @autoclosure () -> String,
                                     file             : StaticString = #file,
-                                    line             : UInt = #line) -> Bool
-{
-    if callCount == 0
-    {
+                                    line             : UInt = #line) -> Bool {
+    if callCount == 0 {
         XCTFail("Wanted but not invoked: \(methodName)", file: file, line: line)
         return false
     }
 
-    if callCount > 1
-    {
+    if callCount > 1 {
         XCTFail("Wanted 1 time but was called \(callCount) times. " +
                     "\(methodName) with \(describeArguments())", file: file, line: line)
         return false

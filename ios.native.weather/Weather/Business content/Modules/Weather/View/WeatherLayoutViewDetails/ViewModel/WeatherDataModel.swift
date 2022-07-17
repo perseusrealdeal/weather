@@ -7,8 +7,7 @@
 
 import SwiftyJSON
 
-class WeatherDataModel
-{
+class WeatherDataModel {
     // MARK: - Business Matter Data
 
     var alerts          : [NationalAlert]? { parser() }
@@ -21,8 +20,7 @@ class WeatherDataModel
 
     // MARK: - Init
 
-    init(saver: LocalDataSaverProtocol = LocalDataSaver())
-    {
+    init(saver: LocalDataSaverProtocol = LocalDataSaver()) {
         #if DEBUG
         print(">> [\(type(of: self))].init")
         #endif
@@ -40,8 +38,7 @@ class WeatherDataModel
 
     var lastFullUpdateTime      : LastFullUpdateTime? { parser() }
 
-    var isForecastHourlyUpToDate: Bool
-    {
+    var isForecastHourlyUpToDate: Bool {
         guard let timeToUpdate = forecastHourly?[1].dt else { return false }
 
         let timeNow = Date().timeIntervalSince1970
@@ -50,20 +47,16 @@ class WeatherDataModel
         return result
     }
 
-    var isForecastDailyUpToDate  : Bool
-    {
-        if let today = forecastDaily?.first?.dt
-        {
+    var isForecastDailyUpToDate  : Bool {
+        if let today = forecastDaily?.first?.dt {
             return isDayUpToDate(from: today)
         }
 
         return false
     }
 
-    var isForecastCurrentUpToDate: Bool
-    {
-        if let today = currentWeather?.dt
-        {
+    var isForecastCurrentUpToDate: Bool {
+        if let today = currentWeather?.dt {
             return isDayUpToDate(from: today)
         }
 
@@ -72,8 +65,7 @@ class WeatherDataModel
 
     // MARK: - Business matter operations
 
-    func update(received data: Data, _ completed:((_ onlyAlerts: Bool) -> Void))
-    {
+    func update(received data: Data, _ completed:((_ onlyAlerts: Bool) -> Void)) {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif
@@ -86,39 +78,34 @@ class WeatherDataModel
         var weatherDataCountChanges = 0
         var alertsChanged = false
 
-        if json["current"].exists()
-        {
+        if json["current"].exists() {
             weatherDataChanged = true
             weatherDataCountChanges += 1
 
             jsonData["current"] = json["current"]
         } else { fullUpdated = false; print("current not exists") }
 
-        if json["hourly"].exists()
-        {
+        if json["hourly"].exists() {
             weatherDataChanged = true
             weatherDataCountChanges += 1
 
             jsonData["hourly"] = json["hourly"]
         } else { fullUpdated = false; print("hourly not exists") }
 
-        if json["daily"].exists()
-        {
+        if json["daily"].exists() {
             weatherDataChanged = true
             weatherDataCountChanges += 1
 
             jsonData["daily"] = json["daily"]
         } else { fullUpdated = false; print("daily not exists") }
 
-        if json["alerts"].exists()
-        {
+        if json["alerts"].exists() {
             weatherDataChanged = true
             alertsChanged = true
 
             jsonData["alerts"] = json["alerts"]
         } else {
-            if !jsonData["alerts"].isEmpty
-            {
+            if !jsonData["alerts"].isEmpty {
                 weatherDataChanged = true
                 alertsChanged = true
 
@@ -211,10 +198,8 @@ class WeatherDataModel
 
 // MARK: - Parser Produces Weather Data
 
-extension WeatherDataModel
-{
-    private func parser() -> CurrentLocationDescription?
-    {
+extension WeatherDataModel {
+    private func parser() -> CurrentLocationDescription? {
         guard
             let json = self.jsonData, !json.isEmpty, json["lat"].exists(),
             json["lon"].exists(), json["timezone_offset"].exists()
@@ -225,8 +210,7 @@ extension WeatherDataModel
                                           timezone_offset: json["timezone_offset"].doubleValue)
     }
 
-    private func parser() -> LastFullUpdateTime?
-    {
+    private func parser() -> LastFullUpdateTime? {
         guard
             let json = self.jsonData, !json.isEmpty,
             json["lastFullUpdate"].exists()
@@ -235,8 +219,7 @@ extension WeatherDataModel
         return LastFullUpdateTime(dt: json["lastFullUpdate"].doubleValue)
     }
 
-    private func parser() -> CurrentWeather?
-    {
+    private func parser() -> CurrentWeather? {
         guard
             let json = self.jsonData, !json.isEmpty,
             json["current"].exists(), json["current"]["dt"].exists()
@@ -245,8 +228,7 @@ extension WeatherDataModel
         return CurrentWeather(dt: json["current"]["dt"].doubleValue)
     }
 
-    private func parser() -> [ForecastHour]?
-    {
+    private func parser() -> [ForecastHour]? {
         guard
             let json = self.jsonData, !json.isEmpty,
             json["hourly"].exists(), !json["hourly"].isEmpty
@@ -254,8 +236,7 @@ extension WeatherDataModel
 
         var result : [ForecastHour] = []
 
-        for (_, subJson):(String, JSON) in jsonData["hourly"]
-        {
+        for (_, subJson):(String, JSON) in jsonData["hourly"] {
             let item = ForecastHour(dt: subJson["dt"].doubleValue)
 
             result.append(item)
@@ -264,8 +245,7 @@ extension WeatherDataModel
         return result
     }
 
-    private func parser() -> [ForecastDay]?
-    {
+    private func parser() -> [ForecastDay]? {
         guard
             let json = self.jsonData, !json.isEmpty,
             json["daily"].exists(), !json["daily"].isEmpty
@@ -273,8 +253,7 @@ extension WeatherDataModel
 
         var result : [ForecastDay] = []
 
-        for (_, subJson):(String, JSON) in jsonData["daily"]
-        {
+        for (_, subJson):(String, JSON) in jsonData["daily"] {
             let item = ForecastDay(dt: subJson["dt"].doubleValue)
 
             result.append(item)
@@ -283,22 +262,18 @@ extension WeatherDataModel
         return result
     }
 
-    private func parser() -> [NationalAlert]?
-    {
+    private func parser() -> [NationalAlert]? {
         return nil
     }
 }
 
 // MARK: - Service Matter Helper Methods
 
-extension WeatherDataModel
-{
-    private func printAlerts()
-    {
+extension WeatherDataModel {
+    private func printAlerts() {
         print("alerts       : begin")
 
-        for (index, subJson):(String, JSON) in jsonData["alerts"]
-        {
+        for (index, subJson):(String, JSON) in jsonData["alerts"] {
             print("index        : \(index)")
             print("name         : \(subJson["event"])")
 
@@ -312,13 +287,11 @@ extension WeatherDataModel
         print("alerts       : end")
     }
 
-    func printHourly()
-    {
+    func printHourly() {
         print("hourly       : begin")
         print("time now     : \(Date())")
 
-        for (index, subJson):(String, JSON) in jsonData["hourly"]
-        {
+        for (index, subJson):(String, JSON) in jsonData["hourly"] {
             print("index        : \(index)")
 
             let time = Date(timeIntervalSince1970: subJson["dt"].doubleValue)

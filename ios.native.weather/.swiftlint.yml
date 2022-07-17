@@ -1,6 +1,5 @@
 disabled_rules: # rule identifiers turned on by default to exclude from running
   - force_cast
-  - opening_brace
   - colon
 
 function_body_length:

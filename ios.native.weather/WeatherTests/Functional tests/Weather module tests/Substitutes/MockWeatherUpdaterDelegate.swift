@@ -10,19 +10,16 @@ import XCTest
 
 @testable import Weather
 
-class MockWeatherUpdaterDelegate: WeatherDataAutoUpdaterDelegate
-{
+class MockWeatherUpdaterDelegate: WeatherDataAutoUpdaterDelegate {
     // MARK: - Verifing weatherDataUpdated method
 
     var weatherDataUpdatedCallCount = 0
 
-    func weatherDataUpdated()
-    {
+    func weatherDataUpdated() {
         weatherDataUpdatedCallCount += 1
     }
 
-    func verifyWeatherDataUpdated(file: StaticString = #file, line: UInt = #line)
-    {
+    func verifyWeatherDataUpdated(file: StaticString = #file, line: UInt = #line) {
         let verified = verifyMethodCalledOnce(methodName       : "weatherDataUpdated()",
                                               callCount        : weatherDataUpdatedCallCount,
                                               describeArguments: "[]",
@@ -36,13 +33,11 @@ class MockWeatherUpdaterDelegate: WeatherDataAutoUpdaterDelegate
 
     var weatherAlertsUpdatedCallCount = 0
 
-    func weatherAlertsUpdated()
-    {
+    func weatherAlertsUpdated() {
         weatherAlertsUpdatedCallCount += 1
     }
 
-    func verifyWeatherAlertsUpdated(file: StaticString = #file, line: UInt = #line)
-    {
+    func verifyWeatherAlertsUpdated(file: StaticString = #file, line: UInt = #line) {
         let verified = verifyMethodCalledOnce(methodName       : "weatherAlertsUpdated()",
                                               callCount        : weatherAlertsUpdatedCallCount,
                                               describeArguments: "[]",
@@ -57,16 +52,14 @@ class MockWeatherUpdaterDelegate: WeatherDataAutoUpdaterDelegate
     var locationServiceNotAllowedCallCount = 0
     var locationServiceNotAllowedArgs  : [LocationServiceNotAllowed] = []
 
-    func locationServiceNotAllowed(_ reason: LocationServiceNotAllowed)
-    {
+    func locationServiceNotAllowed(_ reason: LocationServiceNotAllowed) {
         locationServiceNotAllowedCallCount += 1
         locationServiceNotAllowedArgs.append(reason)
     }
 
     func verifyLocationServiceNotAllowed(reason: LocationServiceNotAllowed,
                                          file  : StaticString = #file,
-                                         line  : UInt = #line)
-    {
+                                         line  : UInt = #line) {
         guard locationServiceNotAllowedWasCalledOnce(file: file, line: line) else { return }
 
         XCTAssertEqual(locationServiceNotAllowedArgs.first, reason, "reason",
@@ -74,8 +67,7 @@ class MockWeatherUpdaterDelegate: WeatherDataAutoUpdaterDelegate
     }
 
     private func locationServiceNotAllowedWasCalledOnce(file: StaticString = #file,
-                                                        line: UInt = #line) -> Bool
-    {
+                                                        line: UInt = #line) -> Bool {
         verifyMethodCalledOnce(
             methodName       : "requestWeatherData(exclude:, latitude:, longitude:)",
             callCount        : locationServiceNotAllowedCallCount,
@@ -88,13 +80,11 @@ class MockWeatherUpdaterDelegate: WeatherDataAutoUpdaterDelegate
 
     var failedToGetCurrentLocationCallCount = 0
 
-    func failedToGetCurrentLocation(_ error: LocationReceivedError)
-    {
+    func failedToGetCurrentLocation(_ error: LocationReceivedError) {
         failedToGetCurrentLocationCallCount += 1
     }
 
-    func verifyFailedToGetCurrentLocation(file: StaticString = #file, line: UInt = #line)
-    {
+    func verifyFailedToGetCurrentLocation(file: StaticString = #file, line: UInt = #line) {
         let verified = verifyMethodCalledOnce(methodName       : "verifyFailedToGetCurrentLocation()",
                                               callCount        : failedToGetCurrentLocationCallCount,
                                               describeArguments: "[]",
@@ -108,13 +98,11 @@ class MockWeatherUpdaterDelegate: WeatherDataAutoUpdaterDelegate
 
     var failedToDeliverWeatherDataCallCount = 0
 
-    func failedToDeliverWeatherData(_ error: WeatherDataDeliveryError)
-    {
+    func failedToDeliverWeatherData(_ error: WeatherDataDeliveryError) {
         failedToDeliverWeatherDataCallCount += 1
     }
 
-    func verifyFailedToDeliverWeatherData(file: StaticString = #file, line: UInt = #line)
-    {
+    func verifyFailedToDeliverWeatherData(file: StaticString = #file, line: UInt = #line) {
         let verified = verifyMethodCalledOnce(methodName       : "verifyFailedToDeliverWeatherData()",
                                               callCount        : failedToDeliverWeatherDataCallCount,
                                               describeArguments: "[]",
@@ -128,16 +116,13 @@ class MockWeatherUpdaterDelegate: WeatherDataAutoUpdaterDelegate
 private func verifyMethodCalledOnce(methodName       : String, callCount: Int,
                                     describeArguments: @autoclosure () -> String,
                                     file             : StaticString = #file,
-                                    line             : UInt = #line) -> Bool
-{
-    if callCount == 0
-    {
+                                    line             : UInt = #line) -> Bool {
+    if callCount == 0 {
         XCTFail("Wanted but not invoked: \(methodName)", file: file, line: line)
         return false
     }
 
-    if callCount > 1
-    {
+    if callCount > 1 {
         XCTFail("Wanted 1 time but was called \(callCount) times. " +
                     "\(methodName) with \(describeArguments())", file: file, line: line)
         return false

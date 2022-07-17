@@ -10,8 +10,7 @@ import SwiftyJSON
 
 // MARK: - Abstracts used to make code testable
 
-protocol NotificationCenterProtocol
-{
+protocol NotificationCenterProtocol {
     func addObserver(_ observer        : Any,
                      selector aSelector: Selector,
                      name aName        : NSNotification.Name?,
@@ -22,22 +21,19 @@ protocol NotificationCenterProtocol
                         object anObject: Any?)
 }
 
-protocol GeoLocationServiceProtocol
-{
+protocol GeoLocationServiceProtocol {
     func requestLocationDataAccess()
     func requestLocationUpdateOnce(_ actionIfNotAllowed: ((_ case: LocationServiceNotAllowed)
                                                           -> Void)?)
 }
 
-protocol WeatherLayoutViewProtocol
-{
+protocol WeatherLayoutViewProtocol {
     func updateLayoutOrientationIfNeeded(for currentOrientation: NSLayoutConstraint.Axis)
     func startActivities()
     func stopActivities()
 }
 
-protocol WeatherDataModelProtocol
-{
+protocol WeatherDataModelProtocol {
     var target                   : CurrentLocationDescription? { get }
     var lastFullUpdateTime       : LastFullUpdateTime? { get }
 
@@ -48,15 +44,13 @@ protocol WeatherDataModelProtocol
     func update(received data: Data, _ completed:((_ onlyAlerts: Bool) -> Void))
 }
 
-protocol WeatherClientProtocol
-{
+protocol WeatherClientProtocol {
     var onResultDelivered: (Result<Data, WeatherDataDeliveryError>) -> Void { get set }
 
     func requestWeatherData(exclude: String, latitude: String, longitude: String)
 }
 
-protocol LocalDataSaverProtocol
-{
+protocol LocalDataSaverProtocol {
     func loadData() -> JSON
     func save(_ jsonData: JSON?)
 }

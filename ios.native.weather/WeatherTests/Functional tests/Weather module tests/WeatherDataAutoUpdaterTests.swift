@@ -8,8 +8,7 @@
 import XCTest
 @testable import Weather
 
-class WeatherDataAutoUpdaterTests: XCTestCase
-{
+class WeatherDataAutoUpdaterTests: XCTestCase {
     private var sut                   : WeatherDataAutoUpdater!
     private var dataModel             : WeatherDataModel!
 
@@ -20,8 +19,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
     private var mockWeatherDataService: MockWeatherClientService!
     private var mockWeatherDelegate   : MockWeatherUpdaterDelegate!
 
-    override func setUp()
-    {
+    override func setUp() {
         super.setUp()
 
         mockLocalDataSaver = LocalDataSaverStubbed()
@@ -43,8 +41,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
         sut.delegate = mockWeatherDelegate
     }
 
-    override func tearDown()
-    {
+    override func tearDown() {
         sut = nil
         dataModel = nil
         mockGeoLocationService = nil
@@ -59,8 +56,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
 
     // MARK: - Testing Updater Start Configuration
 
-    func test_updater_is_congigured_right()
-    {
+    func test_updater_is_congigured_right() {
         // Arrange
 
         let dataModel = WeatherDataModel()
@@ -82,8 +78,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
 
     // MARK: - Testing Updater Test Configuration
 
-    func test_updater_is_congigured_right_for_testing()
-    {
+    func test_updater_is_congigured_right_for_testing() {
         // Assert
 
         XCTAssertNil(sut.timer)
@@ -100,8 +95,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
 
     // MARK: - Testing Updater Activation
 
-    func test_updater_should_be_activated_only_once()
-    {
+    func test_updater_should_be_activated_only_once() {
         // Act
 
         sut.activateAutoUpdating()
@@ -115,8 +109,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
             selector: #selector(sut.locationReceivedNotificationHandler(_:)))
     }
 
-    func test_updater_should_call_registerCurrentLocationObserver_when_activated()
-    {
+    func test_updater_should_call_registerCurrentLocationObserver_when_activated() {
         // Act
 
         sut.activateAutoUpdating()
@@ -128,16 +121,14 @@ class WeatherDataAutoUpdaterTests: XCTestCase
             selector: #selector(sut.locationReceivedNotificationHandler(_:)))
     }
 
-    func test_updater_should_call_prepareTimer_when_activated()
-    {
+    func test_updater_should_call_prepareTimer_when_activated() {
         // Act
 
         sut.activateAutoUpdating()
 
         // Assert
 
-        if let delay = mockUpdaterHelper.prepareTimerArgs_delays.first
-        {
+        if let delay = mockUpdaterHelper.prepareTimerArgs_delays.first {
             mockUpdaterHelper.verifyPrepareTimer(
                 target  : sut.self,
                 delay   : delay,
@@ -148,8 +139,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
 
     }
 
-    func test_updater_should_mark_flag_in_true_when_activated()
-    {
+    func test_updater_should_mark_flag_in_true_when_activated() {
         // Act
 
         sut.activateAutoUpdating()
@@ -161,8 +151,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
 
     // MARK: - Testing Updater Disactivation
 
-    func test_updater_should_call_removeCurrentLocationObserver_when_disactivated()
-    {
+    func test_updater_should_call_removeCurrentLocationObserver_when_disactivated() {
         // Act
 
         sut.disactivateAutoUpdating()
@@ -172,8 +161,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
         mockUpdaterHelper.verifyRemoveCurrentLocationObserver(observer: sut.self)
     }
 
-    func test_updater_should_cancel_timer_when_disactivated()
-    {
+    func test_updater_should_cancel_timer_when_disactivated() {
         // Act
 
         sut.disactivateAutoUpdating()
@@ -183,8 +171,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
         XCTAssertNil(sut.timer)
     }
 
-    func test_updater_should_mark_flag_in_false_when_disactivated()
-    {
+    func test_updater_should_mark_flag_in_false_when_disactivated() {
         // Act
 
         sut.disactivateAutoUpdating()
@@ -196,16 +183,14 @@ class WeatherDataAutoUpdaterTests: XCTestCase
 
     // MARK: - PART II: Testing Internal Timer's Behaviour (engine)
 
-    func test_timer_should_tick_immediately_if_no_delay()
-    {
+    func test_timer_should_tick_immediately_if_no_delay() {
         // arrange
 
         let onTickCallCountExpected = 1
 
         weak var promiseToCallBack = expectation(description: "Spinning a wheel manually [0]")
 
-        let targetStubbed = TimerTargetStubbed
-        {
+        let targetStubbed = TimerTargetStubbed {
             print(">> [\(type(of: self))].promiseCompleted")
 
             self.sut.disactivateAutoUpdating()
@@ -234,16 +219,14 @@ class WeatherDataAutoUpdaterTests: XCTestCase
         "\(targetStubbed.onTickCallCount) == \(onTickCallCountExpected)")
     }
 
-    func test_timer_should_tick_with_delay()
-    {
+    func test_timer_should_tick_with_delay() {
         // arrange
 
         let onTickCallCountExpected = 1
 
         weak var promiseToCallBack = expectation(description: "Spinning a wheel manually [1]")
 
-        let targetStubbed = TimerTargetStubbed
-        {
+        let targetStubbed = TimerTargetStubbed {
             print(">> [\(type(of: self))].promiseCompleted")
 
             self.sut.disactivateAutoUpdating()
@@ -273,8 +256,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
         "\(targetStubbed.onTickCallCount) == \(onTickCallCountExpected)")
     }
 
-    func test_timer_should_tick_in_period_with_no_delay()
-    {
+    func test_timer_should_tick_in_period_with_no_delay() {
         // arrange
 
         let onTickCallCountExpected = 2
@@ -282,12 +264,10 @@ class WeatherDataAutoUpdaterTests: XCTestCase
 
         weak var promiseToCallBack = expectation(description: "Spinning a wheel manually [2]")
 
-        let targetStubbed = TimerTargetStubbed
-        {
+        let targetStubbed = TimerTargetStubbed {
             onTickCallCountHere += 1
 
-            if onTickCallCountHere == onTickCallCountExpected
-            {
+            if onTickCallCountHere == onTickCallCountExpected {
                 print(">> [\(type(of: self))].promiseCompleted")
 
                 self.sut.disactivateAutoUpdating()
@@ -318,8 +298,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
         "\(targetStubbed.onTickCallCount) == \(onTickCallCountExpected)")
     }
 
-    func test_timer_should_tick_in_period_with_delay()
-    {
+    func test_timer_should_tick_in_period_with_delay() {
         // arrange
 
         let onTickCallCountExpected = 2
@@ -327,12 +306,10 @@ class WeatherDataAutoUpdaterTests: XCTestCase
 
         weak var promiseToCallBack = expectation(description: "Spinning a wheel manually [3]")
 
-        let targetStubbed = TimerTargetStubbed
-        {
+        let targetStubbed = TimerTargetStubbed {
             onTickCallCountHere += 1
 
-            if onTickCallCountHere == onTickCallCountExpected
-            {
+            if onTickCallCountHere == onTickCallCountExpected {
                 print(">> [\(type(of: self))].promiseCompleted")
 
                 self.sut.disactivateAutoUpdating()
@@ -368,8 +345,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
 
     /// 1
     /// 1.1
-    func test_updateWeatherDataIfNeeded_should_succeeded_toRequest_if_DefaultLocation()
-    {
+    func test_updateWeatherDataIfNeeded_should_succeeded_toRequest_if_DefaultLocation() {
         // arrange
 
         sut.useCurrentLocation = false
@@ -393,8 +369,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
     }
 
     /// 1.2
-    func test_updateWeatherDataIfNeeded_should_succeeded_if_NotDefaultLocation()
-    {
+    func test_updateWeatherDataIfNeeded_should_succeeded_if_NotDefaultLocation() {
         // arrange
 
         sut.useCurrentLocation = false
@@ -420,8 +395,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
     }
 
     /// 2
-    func test_updateWeatherDataIfNeeded_should_call_requestLocationUpdateOnce()
-    {
+    func test_updateWeatherDataIfNeeded_should_call_requestLocationUpdateOnce() {
         // arrange
 
         sut.useCurrentLocation = true
@@ -436,8 +410,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
     }
 
     /// 3
-    func test_updateWeatherDataIfNeeded_should_succeeded_if_geoServiceNotAllowed()
-    {
+    func test_updateWeatherDataIfNeeded_should_succeeded_if_geoServiceNotAllowed() {
         // arrange
 
         sut.useCurrentLocation = true
@@ -465,8 +438,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
 
     /// 4
     /// 4.1
-    func test_locationReceivedNotificationHandler_should_succeeded_if_failedToGetCurrentLocation()
-    {
+    func test_locationReceivedNotificationHandler_should_succeeded_if_failedToGetCurrentLocation() {
         // arrange
 
         let result: Result<Сoordinate, LocationReceivedError> = .failure(.failedRequest("error"))
@@ -495,8 +467,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
     }
 
     /// 4.2
-    func test_locationReceivedNotificationHandler_should_succeeded_if_locationNotChanged()
-    {
+    func test_locationReceivedNotificationHandler_should_succeeded_if_locationNotChanged() {
         // arrange
 
         let coordinate = Сoordinate(latitude: 55.659999999999997, longitude: 85.620000000000005)
@@ -532,8 +503,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
     }
 
     /// 5
-    func test_locationReceivedNotificationHandler_should_succeeded_if_locationChanged()
-    {
+    func test_locationReceivedNotificationHandler_should_succeeded_if_locationChanged() {
         // arrange
 
         let coordinate = Сoordinate(latitude: 45.659999999999997, longitude: 85.620000000000005)
@@ -570,8 +540,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
 
     /// 6
     /// 6.1
-    func test_weatherDataDeliveredHandler_should_call_delegateWeatherDataUpdated()
-    {
+    func test_weatherDataDeliveredHandler_should_call_delegateWeatherDataUpdated() {
         // arrange
 
         let data_arranged = loadDataFromFile("defaultLocationRU", "json")
@@ -587,8 +556,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
     }
 
     /// 6.2
-    func test_weatherDataDeliveredHandler_should_call_delegateWeatherAlertsUpdated()
-    {
+    func test_weatherDataDeliveredHandler_should_call_delegateWeatherAlertsUpdated() {
         // arrange
 
         let data_arranged = loadDataFromFile("alertsOnly", "json")
@@ -604,8 +572,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
     }
 
     /// 7
-    func test_weatherDataDeliveredHandler_should_call_delegateFailedToDeliverWeatherData()
-    {
+    func test_weatherDataDeliveredHandler_should_call_delegateFailedToDeliverWeatherData() {
         // arrange
 
         let result_arranged: Result<Data, WeatherDataDeliveryError> =
@@ -621,8 +588,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase
     }
 }
 
-private func loadDataFromFile(_ fileName: String, _ fileExtension: String) -> Data
-{
+private func loadDataFromFile(_ fileName: String, _ fileExtension: String) -> Data {
     guard let url = Bundle(for: LocalDataSaverStubbed.self).url(forResource  : fileName,
                                                                 withExtension: fileExtension),
           let data = try? Data(contentsOf: url)

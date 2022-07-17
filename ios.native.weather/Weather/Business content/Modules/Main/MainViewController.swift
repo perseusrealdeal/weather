@@ -7,12 +7,10 @@
 
 import UIKit
 
-class MainViewController: UIViewController
-{
+class MainViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
 
-    deinit
-    {
+    deinit {
         #if DEBUG
         print("\(type(of: self)).deinit")
         #endif
@@ -31,8 +29,7 @@ class MainViewController: UIViewController
         return screen
     }
 
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.

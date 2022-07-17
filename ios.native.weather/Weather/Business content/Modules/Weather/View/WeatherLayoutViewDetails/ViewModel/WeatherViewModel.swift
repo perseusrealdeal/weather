@@ -7,8 +7,7 @@
 
 import Foundation
 
-class WeatherViewModel: WeatherDataAutoUpdaterDelegate
-{
+class WeatherViewModel: WeatherDataAutoUpdaterDelegate {
     // MARK: - Servants
 
     /// It's responsible for keeping weather data in actual state
@@ -26,8 +25,7 @@ class WeatherViewModel: WeatherDataAutoUpdaterDelegate
 
     // MARK: - Init
 
-    init()
-    {
+    init() {
         #if DEBUG
         print(">> [\(type(of: self))].init")
         #endif
@@ -45,15 +43,13 @@ class WeatherViewModel: WeatherDataAutoUpdaterDelegate
         if !dataKeeper.activated { dataKeeper.activateAutoUpdating() }
     }
 
-    func stopAutoUpdatingWeatherData()
-    {
+    func stopAutoUpdatingWeatherData() {
         dataKeeper.disactivateAutoUpdating()
     }
 
     // MARK: - WeatherActualDataKeeperDelegate
 
-    func weatherDataUpdated()
-    {
+    func weatherDataUpdated() {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif
@@ -63,8 +59,7 @@ class WeatherViewModel: WeatherDataAutoUpdaterDelegate
         // Do the weaather view reload from here
     }
 
-    func weatherAlertsUpdated()
-    {
+    func weatherAlertsUpdated() {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif
@@ -74,8 +69,7 @@ class WeatherViewModel: WeatherDataAutoUpdaterDelegate
         // Do the weaather view reload from here
     }
 
-    func locationServiceNotAllowed(_ reason: LocationServiceNotAllowed)
-    {
+    func locationServiceNotAllowed(_ reason: LocationServiceNotAllowed) {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         print("reason  : \(reason)")
@@ -86,8 +80,7 @@ class WeatherViewModel: WeatherDataAutoUpdaterDelegate
         // Do inform user about location service not allowed
     }
 
-    func failedToGetCurrentLocation(_ error: LocationReceivedError)
-    {
+    func failedToGetCurrentLocation(_ error: LocationReceivedError) {
         guard weatherView != nil else { return }
 
         // Do inform user about something went wrong

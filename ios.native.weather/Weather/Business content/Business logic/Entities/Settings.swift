@@ -8,8 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-public struct Settings
-{
+public struct Settings {
     static let bundleParams         : [String: String] =
         [
             "Name"                  : "Settings",
@@ -21,8 +20,7 @@ public struct Settings
             "PreferenceDefaultValue": "DefaultValue"
         ]
 
-    static var defaultLocation: Сoordinate
-    {
+    static var defaultLocation: Сoordinate {
         let json = JSON(parseJSON: "defaultLocation".localized_value)
 
         let lat = json["lat"].doubleValue
@@ -38,10 +36,8 @@ public struct Settings
     static let geoService = GeoLocationReceiver.shared
 }
 
-extension UserDefaults
-{
-    func valueExists(forKey key: String) -> Bool
-    {
+extension UserDefaults {
+    func valueExists(forKey key: String) -> Bool {
         return object(forKey: key) != nil
     }
 }

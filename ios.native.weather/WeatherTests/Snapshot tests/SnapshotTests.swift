@@ -7,8 +7,7 @@
 
 import XCTest
 
-class SnapshotTests: XCTestCase
-{
+class SnapshotTests: XCTestCase {
     func test_zero() { XCTFail("Tests not yet implemented in \(type(of: self)).") }
 }
 

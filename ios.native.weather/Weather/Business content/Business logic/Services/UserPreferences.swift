@@ -7,10 +7,8 @@
 
 import Foundation
 
-class UserPreferences
-{
-    static func registerSettingsBundle(with attributes: [String: String])
-    {
+class UserPreferences {
+    static func registerSettingsBundle(with attributes: [String: String]) {
         let bundle_name                    = attributes["Name"]
         let bundle_extension               = attributes["Extension"]
         let bundle_RootPlist               = attributes["RootPlist"]!
@@ -35,11 +33,9 @@ class UserPreferences
 
         var defaultsToRegister = [String: Any]()
 
-        settingsPreferences.forEach
-        { preference in
+        settingsPreferences.forEach { preference in
 
-            if let key = preference[bundle_PreferenceKey] as? String
-            {
+            if let key = preference[bundle_PreferenceKey] as? String {
                 defaultsToRegister[key] = preference[bundle_PreferenceDefaultValue]
             }
         }
@@ -48,8 +44,7 @@ class UserPreferences
 
     }
 
-    static func setVersionAndBuildNumberUp()
-    {
+    static func setVersionAndBuildNumberUp() {
         let version = Bundle.main.object(forInfoDictionaryKey:
                                             "CFBundleShortVersionString") as! String
 
