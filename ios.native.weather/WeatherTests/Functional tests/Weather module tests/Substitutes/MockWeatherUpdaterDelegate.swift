@@ -20,11 +20,11 @@ class MockWeatherUpdaterDelegate: WeatherDataAutoUpdaterDelegate {
     }
 
     func verifyWeatherDataUpdated(file: StaticString = #file, line: UInt = #line) {
-        let verified = verifyMethodCalledOnce(methodName       : "weatherDataUpdated()",
-                                              callCount        : weatherDataUpdatedCallCount,
+        let verified = verifyMethodCalledOnce(methodName: "weatherDataUpdated()",
+                                              callCount: weatherDataUpdatedCallCount,
                                               describeArguments: "[]",
-                                              file             : file,
-                                              line             : line)
+                                              file: file,
+                                              line: line)
 
         XCTAssertTrue(verified, "Method should be called once only.", file: file, line: line)
     }
@@ -38,11 +38,11 @@ class MockWeatherUpdaterDelegate: WeatherDataAutoUpdaterDelegate {
     }
 
     func verifyWeatherAlertsUpdated(file: StaticString = #file, line: UInt = #line) {
-        let verified = verifyMethodCalledOnce(methodName       : "weatherAlertsUpdated()",
-                                              callCount        : weatherAlertsUpdatedCallCount,
+        let verified = verifyMethodCalledOnce(methodName: "weatherAlertsUpdated()",
+                                              callCount: weatherAlertsUpdatedCallCount,
                                               describeArguments: "[]",
-                                              file             : file,
-                                              line             : line)
+                                              file: file,
+                                              line: line)
 
         XCTAssertTrue(verified, "Method should be called once only.", file: file, line: line)
     }
@@ -50,7 +50,7 @@ class MockWeatherUpdaterDelegate: WeatherDataAutoUpdaterDelegate {
     // MARK: - Verifing locationServiceNotAllowed method
 
     var locationServiceNotAllowedCallCount = 0
-    var locationServiceNotAllowedArgs  : [LocationServiceNotAllowed] = []
+    var locationServiceNotAllowedArgs: [LocationServiceNotAllowed] = []
 
     func locationServiceNotAllowed(_ reason: LocationServiceNotAllowed) {
         locationServiceNotAllowedCallCount += 1
@@ -58,8 +58,8 @@ class MockWeatherUpdaterDelegate: WeatherDataAutoUpdaterDelegate {
     }
 
     func verifyLocationServiceNotAllowed(reason: LocationServiceNotAllowed,
-                                         file  : StaticString = #file,
-                                         line  : UInt = #line) {
+                                         file: StaticString = #file,
+                                         line: UInt = #line) {
         guard locationServiceNotAllowedWasCalledOnce(file: file, line: line) else { return }
 
         XCTAssertEqual(locationServiceNotAllowedArgs.first, reason, "reason",
@@ -69,11 +69,11 @@ class MockWeatherUpdaterDelegate: WeatherDataAutoUpdaterDelegate {
     private func locationServiceNotAllowedWasCalledOnce(file: StaticString = #file,
                                                         line: UInt = #line) -> Bool {
         verifyMethodCalledOnce(
-            methodName       : "requestWeatherData(exclude:, latitude:, longitude:)",
-            callCount        : locationServiceNotAllowedCallCount,
+            methodName: "requestWeatherData(exclude:, latitude:, longitude:)",
+            callCount: locationServiceNotAllowedCallCount,
             describeArguments: "reason: \(locationServiceNotAllowedArgs)",
-            file             : file,
-            line             : line)
+            file: file,
+            line: line)
     }
 
     // MARK: - Verifing failedToGetCurrentLocation method
@@ -85,11 +85,11 @@ class MockWeatherUpdaterDelegate: WeatherDataAutoUpdaterDelegate {
     }
 
     func verifyFailedToGetCurrentLocation(file: StaticString = #file, line: UInt = #line) {
-        let verified = verifyMethodCalledOnce(methodName       : "verifyFailedToGetCurrentLocation()",
-                                              callCount        : failedToGetCurrentLocationCallCount,
+        let verified = verifyMethodCalledOnce(methodName: "verifyFailedToGetCurrentLocation()",
+                                              callCount: failedToGetCurrentLocationCallCount,
                                               describeArguments: "[]",
-                                              file             : file,
-                                              line             : line)
+                                              file: file,
+                                              line: line)
 
         XCTAssertTrue(verified, "Method should be called once only.", file: file, line: line)
     }
@@ -103,20 +103,20 @@ class MockWeatherUpdaterDelegate: WeatherDataAutoUpdaterDelegate {
     }
 
     func verifyFailedToDeliverWeatherData(file: StaticString = #file, line: UInt = #line) {
-        let verified = verifyMethodCalledOnce(methodName       : "verifyFailedToDeliverWeatherData()",
-                                              callCount        : failedToDeliverWeatherDataCallCount,
+        let verified = verifyMethodCalledOnce(methodName: "verifyFailedToDeliverWeatherData()",
+                                              callCount: failedToDeliverWeatherDataCallCount,
                                               describeArguments: "[]",
-                                              file             : file,
-                                              line             : line)
+                                              file: file,
+                                              line: line)
 
         XCTAssertTrue(verified, "Method should be called once only.", file: file, line: line)
     }
 }
 
-private func verifyMethodCalledOnce(methodName       : String, callCount: Int,
+private func verifyMethodCalledOnce(methodName: String, callCount: Int,
                                     describeArguments: @autoclosure () -> String,
-                                    file             : StaticString = #file,
-                                    line             : UInt = #line) -> Bool {
+                                    file: StaticString = #file,
+                                    line: UInt = #line) -> Bool {
     if callCount == 0 {
         XCTFail("Wanted but not invoked: \(methodName)", file: file, line: line)
         return false

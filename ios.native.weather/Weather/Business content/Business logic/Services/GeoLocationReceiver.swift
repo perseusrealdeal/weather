@@ -39,12 +39,12 @@ func == (lhs: LocationReceivedError, rhs: LocationReceivedError) -> Bool {
 
 struct Сoordinate: CustomStringConvertible {
     // Neither rounding nor cutting off, just as is from core location
-    let _latitude : Double
+    let _latitude: Double
     let _longitude: Double
 
     // Cutting off to hundredths (2 decimal places)
-    var latitude  : Double { (_latitude * 100.0).rounded(_latitude > 0 ? .down : .up) / 100.0 }
-    var longitude : Double { (_longitude * 100.0).rounded(_longitude > 0 ? .down : .up) / 100.0 }
+    var latitude: Double { (_latitude * 100.0).rounded(_latitude > 0 ? .down : .up) / 100.0 }
+    var longitude: Double { (_longitude * 100.0).rounded(_longitude > 0 ? .down : .up) / 100.0 }
 
     init(latitude: Double, longitude: Double) {
         _latitude = latitude
@@ -100,7 +100,7 @@ enum LocationServiceNotAllowed: CustomStringConvertible {
 // MARK: - Helper abstracts used to make code testable
 
 protocol LocationManagerProtocol {
-    var delegate       : CLLocationManagerDelegate? { get set }
+    var delegate: CLLocationManagerDelegate? { get set }
     var desiredAccuracy: CLLocationAccuracy { get set }
 
     func requestWhenInUseAuthorization()
@@ -119,7 +119,7 @@ class GeoLocationReceiver: NSObject {
     private let APPROPRIATE_ACCURACY = kCLLocationAccuracyThreeKilometers
 
     #if DEBUG // locationManager is a difficutlt dependency so that it should be isolated
-    var locationManager        : LocationManagerProtocol // Isolated for unit testing
+    var locationManager: LocationManagerProtocol // Isolated for unit testing
     #else
     private var locationManager: CLLocationManager
     #endif
@@ -160,7 +160,7 @@ class GeoLocationReceiver: NSObject {
         let status = type(of: locationManager).authorizationStatus()
         let isLocationServiceEnabled = type(of: locationManager).locationServicesEnabled()
 
-        var locationServiceNotAllowed : LocationServiceNotAllowed?
+        var locationServiceNotAllowed: LocationServiceNotAllowed?
 
         if status == .notDetermined
         {

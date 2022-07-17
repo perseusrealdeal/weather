@@ -9,15 +9,15 @@ import XCTest
 @testable import Weather
 
 class WeatherDataAutoUpdaterTests: XCTestCase {
-    private var sut                   : WeatherDataAutoUpdater!
-    private var dataModel             : WeatherDataModel!
+    private var sut: WeatherDataAutoUpdater!
+    private var dataModel: WeatherDataModel!
 
-    private var mockLocalDataSaver    : LocalDataSaverStubbed!
+    private var mockLocalDataSaver: LocalDataSaverStubbed!
     private var mockGeoLocationService: MockGeoLocationService!
-    private var mockUpdaterHelper     : MockUpdaterHelper!
+    private var mockUpdaterHelper: MockUpdaterHelper!
 
     private var mockWeatherDataService: MockWeatherClientService!
-    private var mockWeatherDelegate   : MockWeatherUpdaterDelegate!
+    private var mockWeatherDelegate: MockWeatherUpdaterDelegate!
 
     override func setUp() {
         super.setUp()
@@ -30,8 +30,8 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
 
         mockWeatherDataService = MockWeatherClientService()
 
-        sut = WeatherDataAutoUpdater(data              : dataModel,
-                                     helper            : mockUpdaterHelper,
+        sut = WeatherDataAutoUpdater(data: dataModel,
+                                     helper: mockUpdaterHelper,
                                      weatherDataService: mockWeatherDataService,
                                      geoLocationService: mockGeoLocationService)
 
@@ -130,8 +130,8 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
 
         if let delay = mockUpdaterHelper.prepareTimerArgs_delays.first {
             mockUpdaterHelper.verifyPrepareTimer(
-                target  : sut.self,
-                delay   : delay,
+                target: sut.self,
+                delay: delay,
                 selector: #selector(sut.locationReceivedNotificationHandler))
         } else {
             XCTFail("Delay should be calculated to set up timer.")
@@ -363,8 +363,8 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
 
         // assert
 
-        mockWeatherDataService.verifyRequestWeatherData(exclude  : exclude_expected,
-                                                        latitude : lat_expected,
+        mockWeatherDataService.verifyRequestWeatherData(exclude: exclude_expected,
+                                                        latitude: lat_expected,
                                                         longitude: lon_expected)
     }
 
@@ -389,8 +389,8 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
 
         // assert
 
-        mockWeatherDataService.verifyRequestWeatherData(exclude  : exclude_expected,
-                                                        latitude : lat_expected,
+        mockWeatherDataService.verifyRequestWeatherData(exclude: exclude_expected,
+                                                        latitude: lat_expected,
                                                         longitude: lon_expected)
     }
 
@@ -430,8 +430,8 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
 
         mockGeoLocationService.verifyRequestLocationUpdateOnce()
         mockWeatherDelegate.verifyLocationServiceNotAllowed(reason: reason)
-        mockWeatherDataService.verifyRequestWeatherData(exclude  : exclude_expected,
-                                                        latitude : lat_expected,
+        mockWeatherDataService.verifyRequestWeatherData(exclude: exclude_expected,
+                                                        latitude: lat_expected,
                                                         longitude: lon_expected)
 
     }
@@ -443,8 +443,8 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
 
         let result: Result<Сoordinate, LocationReceivedError> = .failure(.failedRequest("error"))
 
-        let result_arranged = Notification(name    : .locationReceivedNotification,
-                                           object  : result,
+        let result_arranged = Notification(name: .locationReceivedNotification,
+                                           object: result,
                                            userInfo: nil)
 
         sut.useCurrentLocation = true
@@ -459,8 +459,8 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
 
         // assert
 
-        mockWeatherDataService.verifyRequestWeatherData(exclude  : exclude_expected,
-                                                        latitude : lat_expected,
+        mockWeatherDataService.verifyRequestWeatherData(exclude: exclude_expected,
+                                                        latitude: lat_expected,
                                                         longitude: lon_expected)
 
         mockWeatherDelegate.verifyFailedToGetCurrentLocation()
@@ -474,8 +474,8 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
 
         let result: Result<Сoordinate, LocationReceivedError> = .success(coordinate)
 
-        let result_arranged = Notification(name    : .locationReceivedNotification,
-                                           object  : result,
+        let result_arranged = Notification(name: .locationReceivedNotification,
+                                           object: result,
                                            userInfo: nil)
 
         mockLocalDataSaver.isDataEmpty = false
@@ -495,8 +495,8 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
 
         // assert
 
-        mockWeatherDataService.verifyRequestWeatherData(exclude  : exclude_expected,
-                                                        latitude : lat_expected,
+        mockWeatherDataService.verifyRequestWeatherData(exclude: exclude_expected,
+                                                        latitude: lat_expected,
                                                         longitude: lon_expected)
 
         XCTAssertFalse(isLocationChanged, "Location should not be different.")
@@ -510,8 +510,8 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
 
         let result: Result<Сoordinate, LocationReceivedError> = .success(coordinate)
 
-        let result_arranged = Notification(name    : .locationReceivedNotification,
-                                           object  : result,
+        let result_arranged = Notification(name: .locationReceivedNotification,
+                                           object: result,
                                            userInfo: nil)
 
         mockLocalDataSaver.isDataEmpty = false
@@ -531,8 +531,8 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
 
         // assert
 
-        mockWeatherDataService.verifyRequestWeatherData(exclude  : exclude_expected,
-                                                        latitude : lat_expected,
+        mockWeatherDataService.verifyRequestWeatherData(exclude: exclude_expected,
+                                                        latitude: lat_expected,
                                                         longitude: lon_expected)
 
         XCTAssertTrue(isLocationChanged, "Location should be different.")
@@ -589,7 +589,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
 }
 
 private func loadDataFromFile(_ fileName: String, _ fileExtension: String) -> Data {
-    guard let url = Bundle(for: LocalDataSaverStubbed.self).url(forResource  : fileName,
+    guard let url = Bundle(for: LocalDataSaverStubbed.self).url(forResource: fileName,
                                                                 withExtension: fileExtension),
           let data = try? Data(contentsOf: url)
     else { return Data() }

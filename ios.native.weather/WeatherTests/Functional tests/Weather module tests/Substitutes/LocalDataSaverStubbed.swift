@@ -22,7 +22,7 @@ class LocalDataSaverStubbed: LocalDataSaverProtocol {
 }
 
 private func loadDataFromFile(_ fileName: String, _ fileExtension: String) -> Data {
-    guard let url = Bundle(for: LocalDataSaverStubbed.self).url(forResource  : fileName,
+    guard let url = Bundle(for: LocalDataSaverStubbed.self).url(forResource: fileName,
                                                                 withExtension: fileExtension),
           let data = try? Data(contentsOf: url)
     else { return Data() }

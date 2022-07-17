@@ -37,7 +37,7 @@ extension String {
         guard let result = try? PropertyListSerialization.propertyList(from: data,
                                                                        options: [],
                                                                        format: nil)
-                as? [String:String]
+                as? [String: String]
         else { print("Not possible to serialize the property list."); return "?" }
 
         guard let value = result[self]

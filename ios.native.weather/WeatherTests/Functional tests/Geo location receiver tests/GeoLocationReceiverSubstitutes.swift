@@ -11,19 +11,19 @@ import CoreLocation
 @testable import Weather
 
 class MockLocationManager: LocationManagerProtocol {
-    var locationDataAccessCallCount    : Int = 0
-    var locationUpdateCallCount        : Int = 0
-    var stopUpdatingLocationCallCount  : Int = 0
+    var locationDataAccessCallCount: Int = 0
+    var locationUpdateCallCount: Int = 0
+    var stopUpdatingLocationCallCount: Int = 0
 
     // MARK: - LocationManagerProtocol
 
-    static var status                  : CLAuthorizationStatus = .notDetermined
+    static var status: CLAuthorizationStatus = .notDetermined
     static var isLocationServiceEnabled: Bool = true
 
     static func authorizationStatus() -> CLAuthorizationStatus { status }
     static func locationServicesEnabled() -> Bool { isLocationServiceEnabled }
 
-    var delegate       : CLLocationManagerDelegate?
+    var delegate: CLLocationManagerDelegate?
     var desiredAccuracy: CLLocationAccuracy = kCLLocationAccuracyThreeKilometers
 
     init() { }
@@ -76,7 +76,7 @@ class MockLocationManager: LocationManagerProtocol {
 
     // MARK: Subscribing to be notified with receiving location data
 
-    var givenLocationData     : Сoordinate?
+    var givenLocationData: Сoordinate?
     var givenLocationDataError: LocationReceivedError?
 
     func subscribeAndBeNotifiedWithLocationDataUpdate() {

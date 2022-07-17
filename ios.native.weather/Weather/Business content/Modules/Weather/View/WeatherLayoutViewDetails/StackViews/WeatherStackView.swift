@@ -10,30 +10,30 @@ import UIKit
 class WeatherStackView: UIStackView {
     // MARK: - View Layout Related Properties
 
-    private var constraintVerticalOrientation1  : NSLayoutConstraint!
-    private var constraintVerticalOrientation2  : NSLayoutConstraint!
+    private var constraintVerticalOrientation1: NSLayoutConstraint!
+    private var constraintVerticalOrientation2: NSLayoutConstraint!
 
     private var constraintHorizontalOrientation1: NSLayoutConstraint!
     private var constraintHorizontalOrientation2: NSLayoutConstraint!
 
-    private var configuredForOrientation        : NSLayoutConstraint.Axis!
-    private let stackView                       : CurrentWeatherWithForecastDailyStackView
+    private var configuredForOrientation: NSLayoutConstraint.Axis!
+    private let stackView: CurrentWeatherWithForecastDailyStackView
 
     // MARK: - Business Matter Data View Containers
 
-    private let weatherNationalAlertsView       : WeatherNationalAlertsView
+    private let weatherNationalAlertsView: WeatherNationalAlertsView
 
     // MARK: - Instance Initialization
 
     required init(coder aDecoder: NSCoder) { fatalError() }
 
-    init(alerts : WeatherNationalAlertsView,
-         hourly : ForecastHourlyView,
-         daily  : ForecastDailyView,
+    init(alerts: WeatherNationalAlertsView,
+         hourly: ForecastHourlyView,
+         daily: ForecastDailyView,
          current: CurrentWeatherView) {
         weatherNationalAlertsView = alerts
-        stackView = CurrentWeatherWithForecastDailyStackView(hourly : hourly,
-                                                             daily  : daily,
+        stackView = CurrentWeatherWithForecastDailyStackView(hourly: hourly,
+                                                             daily: daily,
                                                              current: current)
 
         super.init(frame: CGRect.zero)
@@ -60,7 +60,7 @@ class WeatherStackView: UIStackView {
         addArrangedSubview(weatherNationalAlertsView)
         addArrangedSubview(stackView)
 
-        let currentOrientation : NSLayoutConstraint.Axis =
+        let currentOrientation: NSLayoutConstraint.Axis =
             UIDevice.current.orientation.isLandscape ? .horizontal : .vertical
 
         changeLayout(for: currentOrientation)

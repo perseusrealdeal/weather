@@ -16,8 +16,8 @@ class UserPreferences {
         let bundle_PreferenceKey           = attributes["PreferenceKey"]!
         let bundle_PreferenceDefaultValue  = attributes["PreferenceDefaultValue"]!
 
-        guard let settingsBundleURL = Bundle.main.url(forResource  : bundle_name,
-                                                    withExtension  : bundle_extension)
+        guard let settingsBundleURL = Bundle.main.url(forResource: bundle_name,
+                                                    withExtension: bundle_extension)
         else { return }
 
         guard let settingsData = try? Data(contentsOf:
@@ -25,9 +25,9 @@ class UserPreferences {
         else { return }
 
         guard let settingsPlist = try? PropertyListSerialization.propertyList(
-                from   : settingsData,
+                from: settingsData,
                 options: [],
-                format : nil) as? [String: Any],
+                format: nil) as? [String: Any],
               let settingsPreferences = settingsPlist[bundle_PreferencesItems] as? [[String: Any]]
         else { return }
 

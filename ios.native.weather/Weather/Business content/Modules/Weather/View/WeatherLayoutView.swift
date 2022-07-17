@@ -16,24 +16,24 @@ class WeatherLayoutView: UIView {
 
     /// configuredForOrientation is initialized when updateLayoutOrientationIfNeeded method called
     private var configuredForOrientation: NSLayoutConstraint.Axis?
-    private let stackView               : WeatherStackView
+    private let stackView: WeatherStackView
 
     // MARK: - Business Matter Data Container
 
-    private let viewModel               : WeatherViewModel
+    private let viewModel: WeatherViewModel
 
     // MARK: - Business Matter Data View Containers
 
-    private let alertsView              : WeatherNationalAlertsView
-    private let forecastHourlyView      : ForecastHourlyView
-    private let forecastDailyView       : ForecastDailyView
-    private let currentWeatherView      : CurrentWeatherView
+    private let alertsView: WeatherNationalAlertsView
+    private let forecastHourlyView: ForecastHourlyView
+    private let forecastDailyView: ForecastDailyView
+    private let currentWeatherView: CurrentWeatherView
 
     // MARK: - Instance Initialization
 
     required init(coder aDecoder: NSCoder) { fatalError() }
 
-    init(with layoutNumber  : WeatherLayoutVariation = .allDetails) {
+    init(with layoutNumber: WeatherLayoutVariation = .allDetails) {
         viewModel = WeatherViewModel()
 
         alertsView = WeatherNationalAlertsView()
@@ -41,9 +41,9 @@ class WeatherLayoutView: UIView {
         forecastDailyView = ForecastDailyView()
         currentWeatherView = CurrentWeatherView()
 
-        stackView = WeatherStackView(alerts : alertsView,
-                                     hourly : forecastHourlyView,
-                                     daily  : forecastDailyView,
+        stackView = WeatherStackView(alerts: alertsView,
+                                     hourly: forecastHourlyView,
+                                     daily: forecastDailyView,
                                      current: currentWeatherView)
 
         super.init(frame: CGRect.zero)

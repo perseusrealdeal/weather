@@ -17,8 +17,8 @@ class MockWeatherClientService: WeatherClientProtocol {
 
     var requestWeatherDataCallCount = 0
 
-    var requestWeatherDataArgs_exclude  : [String] = []
-    var requestWeatherDataArgs_latitude : [String] = []
+    var requestWeatherDataArgs_exclude: [String] = []
+    var requestWeatherDataArgs_latitude: [String] = []
     var requestWeatherDataArgs_longitude: [String] = []
 
     func requestWeatherData(exclude: String, latitude: String, longitude: String) {
@@ -31,11 +31,11 @@ class MockWeatherClientService: WeatherClientProtocol {
         print(#function)
     }
 
-    func verifyRequestWeatherData(exclude  : String,
-                                  latitude : String,
+    func verifyRequestWeatherData(exclude: String,
+                                  latitude: String,
                                   longitude: String,
-                                  file     : StaticString = #file,
-                                  line     : UInt = #line) {
+                                  file: StaticString = #file,
+                                  line: UInt = #line) {
         guard requestWeatherDataWasCalledOnce(file: file, line: line) else { return }
 
         XCTAssertEqual(requestWeatherDataArgs_exclude.first, exclude,
@@ -51,18 +51,18 @@ class MockWeatherClientService: WeatherClientProtocol {
     private func requestWeatherDataWasCalledOnce(file: StaticString = #file,
                                                  line: UInt = #line) -> Bool {
         verifyMethodCalledOnce(
-            methodName       : "requestWeatherData(exclude:, latitude:, longitude:)",
-            callCount        : requestWeatherDataCallCount,
+            methodName: "requestWeatherData(exclude:, latitude:, longitude:)",
+            callCount: requestWeatherDataCallCount,
             describeArguments: "latitude: \(requestWeatherDataArgs_latitude)",
-            file             : file,
-            line             : line)
+            file: file,
+            line: line)
     }
 }
 
-private func verifyMethodCalledOnce(methodName       : String, callCount: Int,
+private func verifyMethodCalledOnce(methodName: String, callCount: Int,
                                     describeArguments: @autoclosure () -> String,
-                                    file             : StaticString = #file,
-                                    line             : UInt = #line) -> Bool {
+                                    file: StaticString = #file,
+                                    line: UInt = #line) -> Bool {
     if callCount == 0 {
         XCTFail("Wanted but not invoked: \(methodName)", file: file, line: line)
         return false

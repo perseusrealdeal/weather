@@ -231,8 +231,8 @@ extension OpenWeatherCommunicationTests {
             }
 
         /// "current,hourly,minutely,daily,alerts"
-        let exclude  : String = "current,hourly,minutely,daily"
-        let latitude : String = "55.662546456740564"
+        let exclude: String = "current,hourly,minutely,daily"
+        let latitude: String = "55.662546456740564"
         let longitude: String = "85.62138369331707"
 
         // act
@@ -255,13 +255,13 @@ private class DummyURLSessionDataTask: URLSessionDataTask { override func resume
 /// Used instead of URLSession.shared to make it isolated via constructor injection in OpenWeatherClient.
 private class MockURLSession: URLSessionProtocol {
     /// for network request testing
-    var dataTaskCallCount            : Int = 0
-    var dataTaskArgsRequest          : [URLRequest] = []
+    var dataTaskCallCount: Int = 0
+    var dataTaskArgsRequest: [URLRequest] = []
 
     /// for network response testing
     var dataTaskArgsCompletionHandler: [(Data?, URLResponse?, Error?) -> Void] = []
 
-    func dataTask(with request     : URLRequest,
+    func dataTask(with request: URLRequest,
                   completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void)
     -> URLSessionDataTask {
         dataTaskCallCount += 1
@@ -274,27 +274,27 @@ private class MockURLSession: URLSessionProtocol {
     }
 
     fileprivate func verifyDataTask(with request: URLRequest,
-                                    file        : StaticString = #file,
-                                    line        : UInt = #line) {
+                                    file: StaticString = #file,
+                                    line: UInt = #line) {
         guard dataTaskWasCalledOnce(file: file, line: line) else { return }
 
         XCTAssertEqual(dataTaskArgsRequest.first, request, "request", file: file, line: line)
     }
 
     private func dataTaskWasCalledOnce(file: StaticString = #file, line: UInt = #line) -> Bool {
-        verifyMethodCalledOnce(methodName       : "dataTask(with:completionHandler:)",
-                               callCount        : dataTaskCallCount,
+        verifyMethodCalledOnce(methodName: "dataTask(with:completionHandler:)",
+                               callCount: dataTaskCallCount,
                                describeArguments: "request: \(dataTaskArgsRequest)",
-                               file             : file,
-                               line             : line)
+                               file: file,
+                               line: line)
     }
 }
 
-private func verifyMethodCalledOnce(methodName       : String,
-                                    callCount        : Int,
+private func verifyMethodCalledOnce(methodName: String,
+                                    callCount: Int,
                                     describeArguments: @autoclosure () -> String,
-                                    file             : StaticString = #file,
-                                    line             : UInt = #line) -> Bool {
+                                    file: StaticString = #file,
+                                    line: UInt = #line) -> Bool {
     if callCount == 0 {
         XCTFail("Wanted but not invoked: \(methodName)", file: file, line: line)
         return false
@@ -309,7 +309,7 @@ private func verifyMethodCalledOnce(methodName       : String,
 }
 
 struct TestError: LocalizedError {
-    let message         : String
+    let message: String
     var errorDescription: String? { message }
 }
 
@@ -325,8 +325,8 @@ private func loadDataFromFile(_ fileName: String, _ fileExtension: String) -> Da
 }
 
 private func response(statusCode: Int) -> HTTPURLResponse? {
-    HTTPURLResponse(url         : URL(string: "http://DUMMY")!,
-                    statusCode  : statusCode,
-                    httpVersion : nil,
+    HTTPURLResponse(url: URL(string: "http://DUMMY")!,
+                    statusCode: statusCode,
+                    httpVersion: nil,
                     headerFields: nil)
 }

@@ -25,16 +25,16 @@ class WeatherDataAutoUpdater {
 
     // emgine
 
-    private(set) var timer             : Timer!
-    private(set) var data              : WeatherDataModel
+    private(set) var timer: Timer!
+    private(set) var data: WeatherDataModel
 
     // flags
 
-    private var _activated             : Bool = false
-    var activated                      : Bool { _activated }
+    private var _activated: Bool = false
+    var activated: Bool { _activated }
 
     /// True — CoreLocation for updating, otherwise what's given explicitly
-    var useCurrentLocation             : Bool = false
+    var useCurrentLocation: Bool = false
 
     // services
 
@@ -43,16 +43,16 @@ class WeatherDataAutoUpdater {
 
     // helpers
 
-    private(set) var helper            : UpdaterHelperProtocol
+    private(set) var helper: UpdaterHelperProtocol
 
     // notifiers
 
-    var delegate                       : WeatherDataAutoUpdaterDelegate?
+    var delegate: WeatherDataAutoUpdaterDelegate?
 
     // MARK: - Initializer
 
-    init(data              : WeatherDataModel,
-         helper            : UpdaterHelperProtocol = UpdaterHelper(),
+    init(data: WeatherDataModel,
+         helper: UpdaterHelperProtocol = UpdaterHelper(),
          weatherDataService: WeatherClientProtocol = OpenWeatherClient(),
          geoLocationService: GeoLocationServiceProtocol = GeoLocationReceiver.shared) {
         #if DEBUG
@@ -95,8 +95,8 @@ class WeatherDataAutoUpdater {
 
         let delay = helper.calculateDelay()
 
-        timer = helper.prepareTimer(target  : self,
-                                    delay   : delay,
+        timer = helper.prepareTimer(target: self,
+                                    delay: delay,
                                     selector: #selector(onTick))
 
         // Update weather data right now if needed
@@ -213,10 +213,10 @@ class WeatherDataAutoUpdater {
         // The current location should be taken into account,
         // so there's a few things to take care of
 
-        var locationReceived : Сoordinate?
+        var locationReceived: Сoordinate?
         var isLocationChanged: Bool?
 
-        var locationError    : LocationReceivedError?
+        var locationError: LocationReceivedError?
 
         switch result {
         // Here we are, whatta happy case?
@@ -247,7 +247,7 @@ class WeatherDataAutoUpdater {
     }
 
     func weatherDataDeliveredHandler(_ result: Result<Data, WeatherDataDeliveryError>) {
-        var dataDeliveried   : Data?
+        var dataDeliveried: Data?
         var dataDeliveryError: WeatherDataDeliveryError?
 
         switch result {
@@ -276,8 +276,8 @@ class WeatherDataAutoUpdater {
 
         // Request weather data
 
-        weatherDataService.requestWeatherData(exclude  : exclude,
-                                              latitude : String(location.latitude),
+        weatherDataService.requestWeatherData(exclude: exclude,
+                                              latitude: String(location.latitude),
                                               longitude: String(location.longitude))
     }
 }

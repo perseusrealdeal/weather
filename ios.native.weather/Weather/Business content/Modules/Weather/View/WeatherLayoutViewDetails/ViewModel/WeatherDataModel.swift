@@ -10,11 +10,11 @@ import SwiftyJSON
 class WeatherDataModel {
     // MARK: - Business Matter Data
 
-    var alerts          : [NationalAlert]? { parser() }
+    var alerts: [NationalAlert]? { parser() }
 
-    var forecastHourly  : [ForecastHour]? { parser() }
-    var forecastDaily   : [ForecastDay]? { parser() }
-    var currentWeather  : CurrentWeather? { parser() }
+    var forecastHourly: [ForecastHour]? { parser() }
+    var forecastDaily: [ForecastDay]? { parser() }
+    var currentWeather: CurrentWeather? { parser() }
 
     private var jsonData: JSON!
 
@@ -32,11 +32,11 @@ class WeatherDataModel {
 
     // MARK: - Service Matter Data
 
-    var saver                   : LocalDataSaverProtocol
+    var saver: LocalDataSaverProtocol
 
-    var target                  : CurrentLocationDescription? { parser() }
+    var target: CurrentLocationDescription? { parser() }
 
-    var lastFullUpdateTime      : LastFullUpdateTime? { parser() }
+    var lastFullUpdateTime: LastFullUpdateTime? { parser() }
 
     var isForecastHourlyUpToDate: Bool {
         guard let timeToUpdate = forecastHourly?[1].dt else { return false }
@@ -47,7 +47,7 @@ class WeatherDataModel {
         return result
     }
 
-    var isForecastDailyUpToDate  : Bool {
+    var isForecastDailyUpToDate: Bool {
         if let today = forecastDaily?.first?.dt {
             return isDayUpToDate(from: today)
         }
@@ -205,8 +205,8 @@ extension WeatherDataModel {
             json["lon"].exists(), json["timezone_offset"].exists()
         else { return nil }
 
-        return CurrentLocationDescription(latitude       : json["lat"].doubleValue,
-                                          longitude      : json["lon"].doubleValue,
+        return CurrentLocationDescription(latitude: json["lat"].doubleValue,
+                                          longitude: json["lon"].doubleValue,
                                           timezone_offset: json["timezone_offset"].doubleValue)
     }
 
@@ -234,7 +234,7 @@ extension WeatherDataModel {
             json["hourly"].exists(), !json["hourly"].isEmpty
         else { return nil }
 
-        var result : [ForecastHour] = []
+        var result: [ForecastHour] = []
 
         for (_, subJson):(String, JSON) in jsonData["hourly"] {
             let item = ForecastHour(dt: subJson["dt"].doubleValue)
@@ -251,7 +251,7 @@ extension WeatherDataModel {
             json["daily"].exists(), !json["daily"].isEmpty
         else { return nil }
 
-        var result : [ForecastDay] = []
+        var result: [ForecastDay] = []
 
         for (_, subJson):(String, JSON) in jsonData["daily"] {
             let item = ForecastDay(dt: subJson["dt"].doubleValue)

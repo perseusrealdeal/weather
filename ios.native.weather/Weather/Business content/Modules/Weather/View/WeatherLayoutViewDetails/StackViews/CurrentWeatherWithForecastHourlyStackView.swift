@@ -11,18 +11,18 @@ class CurrentWeatherWithForecastHourlyStackView: UIStackView {
 
     // MARK: - View Layout Related Properties
 
-    private var constraintVerticalAxis1  : NSLayoutConstraint!
-    private var constraintVerticalAxis2  : NSLayoutConstraint!
+    private var constraintVerticalAxis1: NSLayoutConstraint!
+    private var constraintVerticalAxis2: NSLayoutConstraint!
 
     private var constraintHorizontalAxis1: NSLayoutConstraint!
     private var constraintHorizontalAxis2: NSLayoutConstraint!
 
-    private var configuredForOrientation : NSLayoutConstraint.Axis!
+    private var configuredForOrientation: NSLayoutConstraint.Axis!
 
     // MARK: - Business Matter Data View Containers
 
-    private let forecastHourlyView       : ForecastHourlyView
-    private let currentWeatherView       : CurrentWeatherView
+    private let forecastHourlyView: ForecastHourlyView
+    private let currentWeatherView: CurrentWeatherView
 
     // MARK: - Instance Initialization
 
@@ -57,7 +57,7 @@ class CurrentWeatherWithForecastHourlyStackView: UIStackView {
         addArrangedSubview(forecastHourlyView)
         addArrangedSubview(currentWeatherView)
 
-        let currentOrientation : NSLayoutConstraint.Axis =
+        let currentOrientation: NSLayoutConstraint.Axis =
             UIDevice.current.orientation.isLandscape ? .horizontal : .vertical
 
         changeLayout(for: currentOrientation)

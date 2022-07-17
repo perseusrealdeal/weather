@@ -11,10 +11,10 @@ import XCTest
 class WeatherViewControllerTests: XCTestCase {
     // func test_zero() { XCTFail("Tests not yet implemented in \(type(of: self)).") }
 
-    private var sut                   : WeatherViewController!
+    private var sut: WeatherViewController!
 
-    private var mockView              : MockWeatherLayoutView!
-    private var mockLocationReceiver  : MockGeoLocationReceiver!
+    private var mockView: MockWeatherLayoutView!
+    private var mockLocationReceiver: MockGeoLocationReceiver!
     private var mockNotificationCenter: MockNotificationCenter!
 
     override func setUp() {
@@ -131,8 +131,8 @@ class WeatherViewControllerTests: XCTestCase {
         mockNotificationCenter.verifyAddObserver(
             sut,
             selector: #selector(sut.theAppDidFinishLaunching),
-            name    : UIApplication.didFinishLaunchingNotification,
-            object  : nil)
+            name: UIApplication.didFinishLaunchingNotification,
+            object: nil)
     }
 
     func test_VC_should_call_addObserver_three_times_when_viewWillAppear() {
@@ -165,8 +165,8 @@ class WeatherViewControllerTests: XCTestCase {
 
         mockNotificationCenter.verifyAddObserversShouldCalledThreeTimes(observers,
                                                                         selector: selectors,
-                                                                        name    : names,
-                                                                        object  : objects)
+                                                                        name: names,
+                                                                        object: objects)
     }
 
     func test_VC_should_call_removeObserver_twice_when_viewWillDisappear() {
@@ -188,7 +188,7 @@ class WeatherViewControllerTests: XCTestCase {
         // assert
 
         mockNotificationCenter.verifyRemoveObserverCalledTwice(observers,
-                                                               name  : names,
+                                                               name: names,
                                                                object: objects)
     }
 }

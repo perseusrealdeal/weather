@@ -13,7 +13,7 @@ import CoreLocation
 class GeoLocationReceiverTests: XCTestCase {
     // func test_zero() { XCTFail("Tests not yet implemented in \(type(of: self)).") }
 
-    private var sut : GeoLocationReceiver!
+    private var sut: GeoLocationReceiver!
     private var mock: MockLocationManager!
 
     override func setUp() {

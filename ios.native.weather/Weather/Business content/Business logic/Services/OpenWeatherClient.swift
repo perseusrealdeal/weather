@@ -27,14 +27,14 @@ enum WeatherDataDeliveryError: Error {
 // MARK: - Client for communicating with OpenWeather Service
 
 class OpenWeatherClient {
-    private var api_key  : String { "79eefe16f6e4714470502074369fc77b" }
-    private var units    : String { "metric" }
+    private var api_key: String { "79eefe16f6e4714470502074369fc77b" }
+    private var units: String { "metric" }
 
-    private var dataTask : URLSessionDataTask?
-    private let session  : URLSessionProtocol // Isolated for unit testing
+    private var dataTask: URLSessionDataTask?
+    private let session: URLSessionProtocol // Isolated for unit testing
 
     var onResultDelivered: (Result<Data, WeatherDataDeliveryError>) -> Void = { print($0) }
-    var weather          : Data { givenData }
+    var weather: Data { givenData }
 
     private(set) var givenData: Data = Data() {
         didSet {
@@ -47,8 +47,8 @@ class OpenWeatherClient {
         self.session = session
     }
 
-    func requestWeatherData(exclude  : String = "hourly,minutely,daily,alerts",
-                            latitude : String = "55.662546456740564",
+    func requestWeatherData(exclude: String = "hourly,minutely,daily,alerts",
+                            latitude: String = "55.662546456740564",
                             longitude: String = "85.62138369331707") {
         // Validate parameters
 
@@ -75,7 +75,7 @@ class OpenWeatherClient {
 
             // Read answer
 
-            var answer_data : Data?
+            var answer_data: Data?
             var answer_error: String?
 
             if let error = error {

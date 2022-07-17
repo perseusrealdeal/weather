@@ -9,14 +9,14 @@ import Foundation
 import SwiftyJSON
 
 public struct Settings {
-    static let bundleParams         : [String: String] =
+    static let bundleParams: [String: String] =
         [
-            "Name"                  : "Settings",
-            "Extension"             : "bundle",
-            "RootPlist"             : "Root.plist",
-            "PreferencesItems"      : "PreferenceSpecifiers",
-            "PreferenceKey"         : "Key",
-            "PreferenceValues"      : "Values",
+            "Name": "Settings",
+            "Extension": "bundle",
+            "RootPlist": "Root.plist",
+            "PreferencesItems": "PreferenceSpecifiers",
+            "PreferenceKey": "Key",
+            "PreferenceValues": "Values",
             "PreferenceDefaultValue": "DefaultValue"
         ]
 

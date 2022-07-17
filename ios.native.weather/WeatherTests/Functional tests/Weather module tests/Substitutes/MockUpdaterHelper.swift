@@ -20,7 +20,7 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
     // MARK: - Verifing registerCurrentLocationObserver method
 
     var registerCurrentLocationObserverCallCount = 0
-    var registerCurrentLocationObserverArgs_obsevers : [WeatherDataAutoUpdater] = []
+    var registerCurrentLocationObserverArgs_obsevers: [WeatherDataAutoUpdater] = []
     var registerCurrentLocationObserverArgs_selectors: [Selector] = []
 
     func registerCurrentLocationObserver(observer: Any, selector: Selector) {
@@ -32,8 +32,8 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
 
     func verifyRegisterCurrentLocationObserver(observer: WeatherDataAutoUpdater,
                                                selector: Selector,
-                                               file    : StaticString = #file,
-                                               line    : UInt = #line) {
+                                               file: StaticString = #file,
+                                               line: UInt = #line) {
         guard registerCurrentLocationObserverWasCalledOnce(file: file, line: line) else { return }
 
         XCTAssertTrue(registerCurrentLocationObserverArgs_obsevers.first! === observer,
@@ -46,11 +46,11 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
     private func registerCurrentLocationObserverWasCalledOnce(file: StaticString = #file,
                                                               line: UInt = #line) -> Bool {
         verifyMethodCalledOnce(
-            methodName       : "registerCurrentLocationObserver(observer:, selector:)",
-            callCount        : registerCurrentLocationObserverCallCount,
+            methodName: "registerCurrentLocationObserver(observer:, selector:)",
+            callCount: registerCurrentLocationObserverCallCount,
             describeArguments: "name: \(registerCurrentLocationObserverArgs_selectors)",
-            file             : file,
-            line             : line)
+            file: file,
+            line: line)
     }
 
     // MARK: - Verifing removeCurrentLocationObserver method
@@ -65,8 +65,8 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
     }
 
     func verifyRemoveCurrentLocationObserver(observer: WeatherDataAutoUpdater,
-                                             file    : StaticString = #file,
-                                             line    : UInt = #line) {
+                                             file: StaticString = #file,
+                                             line: UInt = #line) {
         guard removeCurrentLocationObserverWasCalledOnce(file: file, line: line) else { return }
 
         XCTAssertTrue(removeCurrentLocationObserverArgs_obsevers.first! === observer,
@@ -76,11 +76,11 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
     private func removeCurrentLocationObserverWasCalledOnce(file: StaticString = #file,
                                                             line: UInt = #line) -> Bool {
         verifyMethodCalledOnce(
-            methodName       : "removeCurrentLocationObserver(observer:)",
-            callCount        : removeCurrentLocationObserverCallCount,
+            methodName: "removeCurrentLocationObserver(observer:)",
+            callCount: removeCurrentLocationObserverCallCount,
             describeArguments: "name: \(removeCurrentLocationObserverArgs_obsevers)",
-            file             : file,
-            line             : line)
+            file: file,
+            line: line)
     }
 
     var delay: TimeInterval?
@@ -103,12 +103,12 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
     // MARK: - Verifing prepareTimer method
 
     var isTimerOnlyForCallCount = true
-    var timerTargetStubbed        : TimerTargetStubbed?
+    var timerTargetStubbed: TimerTargetStubbed?
 
     var prepareTimerCallCount = 0
 
-    var prepareTimerArgs_targets  : [WeatherDataAutoUpdater] = []
-    var prepareTimerArgs_delays   : [TimeInterval] = []
+    var prepareTimerArgs_targets: [WeatherDataAutoUpdater] = []
+    var prepareTimerArgs_delays: [TimeInterval] = []
     var prepareTimerArgs_selectors: [Selector] = []
 
     func prepareTimer(target: Any, delay: TimeInterval, selector: Selector) -> Timer {
@@ -126,19 +126,19 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
 
             helperNotMock.useTimeIntervalForUnitTest = true
 
-            let timer = helperNotMock.prepareTimer(target  : targetStubbed,
-                                                   delay   : delay,
+            let timer = helperNotMock.prepareTimer(target: targetStubbed,
+                                                   delay: delay,
                                                    selector: #selector(targetStubbed.onTick))
 
             return timer
         }
     }
 
-    func verifyPrepareTimer(target  : WeatherDataAutoUpdater,
-                            delay   : TimeInterval,
+    func verifyPrepareTimer(target: WeatherDataAutoUpdater,
+                            delay: TimeInterval,
                             selector: Selector,
-                            file    : StaticString = #file,
-                            line    : UInt = #line) {
+                            file: StaticString = #file,
+                            line: UInt = #line) {
         guard prepareTimerWasCalledOnce(file: file, line: line) else { return }
 
         XCTAssertTrue(registerCurrentLocationObserverArgs_obsevers.first! === target,
@@ -154,18 +154,18 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
     private func prepareTimerWasCalledOnce(file: StaticString = #file,
                                            line: UInt = #line) -> Bool {
         verifyMethodCalledOnce(
-            methodName       : "prepareTimer(target:, delay:, selector:)",
-            callCount        : prepareTimerCallCount,
+            methodName: "prepareTimer(target:, delay:, selector:)",
+            callCount: prepareTimerCallCount,
             describeArguments: "delay: \(prepareTimerArgs_delays)",
-            file             : file,
-            line             : line)
+            file: file,
+            line: line)
     }
 }
 
-private func verifyMethodCalledOnce(methodName       : String, callCount: Int,
+private func verifyMethodCalledOnce(methodName: String, callCount: Int,
                                     describeArguments: @autoclosure () -> String,
-                                    file             : StaticString = #file,
-                                    line             : UInt = #line) -> Bool {
+                                    file: StaticString = #file,
+                                    line: UInt = #line) -> Bool {
     if callCount == 0 {
         XCTFail("Wanted but not invoked: \(methodName)", file: file, line: line)
         return false

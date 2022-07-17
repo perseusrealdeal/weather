@@ -11,13 +11,13 @@ import SwiftyJSON
 // MARK: - Abstracts used to make code testable
 
 protocol NotificationCenterProtocol {
-    func addObserver(_ observer        : Any,
+    func addObserver(_ observer: Any,
                      selector aSelector: Selector,
-                     name aName        : NSNotification.Name?,
-                     object anObject   : Any?)
+                     name aName: NSNotification.Name?,
+                     object anObject: Any?)
 
-    func removeObserver(_ observer     : Any,
-                        name aName     : NSNotification.Name?,
+    func removeObserver(_ observer: Any,
+                        name aName: NSNotification.Name?,
                         object anObject: Any?)
 }
 
@@ -34,11 +34,11 @@ protocol WeatherLayoutViewProtocol {
 }
 
 protocol WeatherDataModelProtocol {
-    var target                   : CurrentLocationDescription? { get }
-    var lastFullUpdateTime       : LastFullUpdateTime? { get }
+    var target: CurrentLocationDescription? { get }
+    var lastFullUpdateTime: LastFullUpdateTime? { get }
 
-    var isForecastHourlyUpToDate : Bool { get }
-    var isForecastDailyUpToDate  : Bool { get }
+    var isForecastHourlyUpToDate: Bool { get }
+    var isForecastDailyUpToDate: Bool { get }
     var isForecastCurrentUpToDate: Bool { get }
 
     func update(received data: Data, _ completed:((_ onlyAlerts: Bool) -> Void))
@@ -55,9 +55,9 @@ protocol LocalDataSaverProtocol {
     func save(_ jsonData: JSON?)
 }
 
-extension LocalDataSaver     : LocalDataSaverProtocol { }
-extension NotificationCenter : NotificationCenterProtocol { }
+extension LocalDataSaver: LocalDataSaverProtocol { }
+extension NotificationCenter: NotificationCenterProtocol { }
 extension GeoLocationReceiver: GeoLocationServiceProtocol { }
-extension WeatherLayoutView  : WeatherLayoutViewProtocol { }
-extension OpenWeatherClient  : WeatherClientProtocol { }
-extension WeatherDataModel   : WeatherDataModelProtocol { }
+extension WeatherLayoutView: WeatherLayoutViewProtocol { }
+extension OpenWeatherClient: WeatherClientProtocol { }
+extension WeatherDataModel: WeatherDataModelProtocol { }

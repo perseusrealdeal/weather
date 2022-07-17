@@ -16,12 +16,12 @@ class WeatherViewModel: WeatherDataAutoUpdaterDelegate {
     // MARK: - Operational Data
 
     /// The reference to the data
-    private let dataModel : WeatherDataModel
+    private let dataModel: WeatherDataModel
 
     // MARK: - Host View
 
     /// The reference to the view representing the actual data
-    var weatherView       : WeatherLayoutView?
+    var weatherView: WeatherLayoutView?
 
     // MARK: - Init
 
@@ -91,7 +91,7 @@ class WeatherViewModel: WeatherDataAutoUpdaterDelegate {
         #endif
     }
 
-    func failedToDeliverWeatherData(_ error : WeatherDataDeliveryError)
+    func failedToDeliverWeatherData(_ error: WeatherDataDeliveryError)
     {
         guard weatherView != nil else { return }
 

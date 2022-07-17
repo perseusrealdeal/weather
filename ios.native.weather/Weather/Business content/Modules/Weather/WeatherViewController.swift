@@ -13,10 +13,10 @@ class WeatherViewController: UIViewController {
     // MARK: - Difficult Dependencies
 
     private let notificationCenter: NotificationCenterProtocol
-    private let geoService        : GeoLocationServiceProtocol
+    private let geoService: GeoLocationServiceProtocol
 
     #if DEBUG
-    var stubbedView               : WeatherLayoutViewProtocol
+    var stubbedView: WeatherLayoutViewProtocol
     #endif
 
     // MARK: - View Controller Life Circle Methods
@@ -24,7 +24,7 @@ class WeatherViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) { fatalError() }
 
     init(_ notificationCenter: NotificationCenterProtocol = Settings.notificationCenter,
-         _ geoService        : GeoLocationServiceProtocol = GeoLocationReceiver.shared) {
+         _ geoService: GeoLocationServiceProtocol = GeoLocationReceiver.shared) {
         #if DEBUG
         print(">> [\(type(of: self))].init")
         #endif
@@ -40,8 +40,8 @@ class WeatherViewController: UIViewController {
 
         self.notificationCenter.addObserver(self,
                                             selector: #selector(theAppDidFinishLaunching),
-                                            name    : UIApplication.didFinishLaunchingNotification,
-                                            object  : nil)
+                                            name: UIApplication.didFinishLaunchingNotification,
+                                            object: nil)
     }
 
     override func loadView()
@@ -70,7 +70,7 @@ class WeatherViewController: UIViewController {
 
     override func viewDidLayoutSubviews()
     {
-        let currentOrientation : NSLayoutConstraint.Axis =
+        let currentOrientation: NSLayoutConstraint.Axis =
             UIDevice.current.orientation.isLandscape ? .horizontal : .vertical
 
         guard let view = view as? WeatherLayoutViewProtocol else { return }
@@ -92,13 +92,13 @@ class WeatherViewController: UIViewController {
 
         notificationCenter.addObserver(self,
                                        selector: #selector(theAppDidBecomeActive),
-                                       name    : UIApplication.didBecomeActiveNotification,
-                                       object  : nil)
+                                       name: UIApplication.didBecomeActiveNotification,
+                                       object: nil)
 
         notificationCenter.addObserver(self,
                                        selector: #selector(theAppDidEnterBackground),
-                                       name    : UIApplication.didEnterBackgroundNotification,
-                                       object  : nil)
+                                       name: UIApplication.didEnterBackgroundNotification,
+                                       object: nil)
     }
 
     override func viewWillDisappear(_ animated: Bool)
@@ -110,11 +110,11 @@ class WeatherViewController: UIViewController {
         super.viewWillDisappear(animated)
 
         notificationCenter.removeObserver(self,
-                                          name  : UIApplication.didBecomeActiveNotification,
+                                          name: UIApplication.didBecomeActiveNotification,
                                           object: nil)
 
         notificationCenter.removeObserver(self,
-                                          name  : UIApplication.didEnterBackgroundNotification,
+                                          name: UIApplication.didEnterBackgroundNotification,
                                           object: nil)
     }
 
