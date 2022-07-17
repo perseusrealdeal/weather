@@ -70,7 +70,8 @@ class OpenWeatherClient {
 
         // Send request
 
-        dataTask = session.dataTask(with: request) { [self] (weather: Data?, response: URLResponse?, error: Error?) -> Void in
+        dataTask =
+        session.dataTask(with: request) { [self] (weather: Data?, response: URLResponse?, error: Error?) -> Void in
 
             // Read answer
 
