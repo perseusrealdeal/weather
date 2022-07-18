@@ -19,19 +19,19 @@ class MainViewController: UIViewController {
     class func storyboardInstance() -> MainViewController
     {
         let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
-        let screen = storyboard.instantiateInitialViewController() as! MainViewController
+        let screen = storyboard.instantiateInitialViewController() as? MainViewController
 
         // Do default setup; don't set any parameter causing loadView up, breaks unit tests
 
-        screen.modalTransitionStyle = UIModalTransitionStyle.partialCurl
-        screen.view.backgroundColor = UIColor.yellow
+        screen?.modalTransitionStyle = UIModalTransitionStyle.partialCurl
+        screen?.view.backgroundColor = UIColor.yellow
 
-        return screen
+        return screen ?? MainViewController()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        guard value(forKey: "storyboardIdentifier") != nil else { return }
         // Do any additional setup after loading the view.
 
         label.text = "greetings".localized_value

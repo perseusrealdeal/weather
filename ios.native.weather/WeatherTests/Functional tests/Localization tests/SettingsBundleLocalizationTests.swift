@@ -206,70 +206,70 @@ class SettingsBundleLocalizationTests: XCTestCase {
     func test_temperature_default_value_should_be_localized() {
         UserPreferences.registerSettingsBundle(with: Settings.bundleParams)
 
-        let actual = defaults.value(forKey: "temperature_preference") as! String
+        let actual = defaults.value(forKey: "temperature_preference") as? String
         let requirement = "celsius".localizedFromRequirements
 
-        XCTAssertEqual(requirement, actual.localizedFromSettings,
+        XCTAssertEqual(requirement, actual?.localizedFromSettings,
         "\"default temperature\" is not correct with the actual value.")
     }
 
     func test_wind_speed_default_value_should_be_localized() {
         UserPreferences.registerSettingsBundle(with: Settings.bundleParams)
 
-        let actual = defaults.value(forKey: "wind_speed_preference") as! String
+        let actual = defaults.value(forKey: "wind_speed_preference") as? String
         let requirement = "m/s".localizedFromRequirements
 
-        XCTAssertEqual(requirement, actual.localizedFromSettings,
+        XCTAssertEqual(requirement, actual?.localizedFromSettings,
         "\"default wind speed\" is not correct with the actual value.")
     }
 
     func test_pressure_default_value_should_be_localized() {
         UserPreferences.registerSettingsBundle(with: Settings.bundleParams)
 
-        let actual = defaults.value(forKey: "pressure_preference") as! String
+        let actual = defaults.value(forKey: "pressure_preference") as? String
         let requirement = "mmHg".localizedFromRequirements
 
-        XCTAssertEqual(requirement, actual.localizedFromSettings,
+        XCTAssertEqual(requirement, actual?.localizedFromSettings,
         "\"default pressure\" is not correct with the actual value.")
     }
 
     func test_precipitation_default_value_should_be_localized() {
         UserPreferences.registerSettingsBundle(with: Settings.bundleParams)
 
-        let actual = defaults.value(forKey: "precipitation_preference") as! String
+        let actual = defaults.value(forKey: "precipitation_preference") as? String
         let requirement = "mm".localizedFromRequirements
 
-        XCTAssertEqual(requirement, actual.localizedFromSettings,
+        XCTAssertEqual(requirement, actual?.localizedFromSettings,
         "\"default precipitation\" is not correct with the actual value.")
     }
 
     func test_distance_default_value_should_be_localized() {
         UserPreferences.registerSettingsBundle(with: Settings.bundleParams)
 
-        let actual = defaults.value(forKey: "distance_preference") as! String
+        let actual = defaults.value(forKey: "distance_preference") as? String
         let requirement = "km".localizedFromRequirements
 
-        XCTAssertEqual(requirement, actual.localizedFromSettings,
+        XCTAssertEqual(requirement, actual?.localizedFromSettings,
         "\"default distance\" is not correct with the actual value.")
     }
 
     func test_time_format_default_value_should_be_localized() {
         UserPreferences.registerSettingsBundle(with: Settings.bundleParams)
 
-        let actual = defaults.value(forKey: "time_format_preference") as! String
+        let actual = defaults.value(forKey: "time_format_preference") as? String
         let requirement = "24-hour".localizedFromRequirements
 
-        XCTAssertEqual(requirement, actual.localizedFromSettings,
+        XCTAssertEqual(requirement, actual?.localizedFromSettings,
         "\"default time format\" is not correct with the actual value.")
     }
 
     func test_focus_on_default_value_should_be_localized() {
         UserPreferences.registerSettingsBundle(with: Settings.bundleParams)
 
-        let actual = defaults.value(forKey: "focus_on_preference") as! String
+        let actual = defaults.value(forKey: "focus_on_preference") as? String
         let requirement = "night".localizedFromRequirements
 
-        XCTAssertEqual(requirement, actual.localizedFromSettings,
+        XCTAssertEqual(requirement, actual?.localizedFromSettings,
         "\"default focus on\" is not correct with the actual value.")
     }
 

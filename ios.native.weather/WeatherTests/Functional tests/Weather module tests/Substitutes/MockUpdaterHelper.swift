@@ -24,9 +24,10 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
     var registerCurrentLocationObserverArgs_selectors: [Selector] = []
 
     func registerCurrentLocationObserver(observer: Any, selector: Selector) {
+        guard let observer = observer as? WeatherDataAutoUpdater else { return }
         registerCurrentLocationObserverCallCount += 1
 
-        registerCurrentLocationObserverArgs_obsevers.append(observer as! WeatherDataAutoUpdater)
+        registerCurrentLocationObserverArgs_obsevers.append(observer)
         registerCurrentLocationObserverArgs_selectors.append(selector)
     }
 
@@ -59,9 +60,10 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
     var removeCurrentLocationObserverArgs_obsevers: [WeatherDataAutoUpdater] = []
 
     func removeCurrentLocationObserver(observer: Any) {
+        guard let observer = observer as? WeatherDataAutoUpdater else { return }
         removeCurrentLocationObserverCallCount += 1
 
-        removeCurrentLocationObserverArgs_obsevers.append(observer as! WeatherDataAutoUpdater)
+        removeCurrentLocationObserverArgs_obsevers.append(observer)
     }
 
     func verifyRemoveCurrentLocationObserver(observer: WeatherDataAutoUpdater,
@@ -112,10 +114,11 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
     var prepareTimerArgs_selectors: [Selector] = []
 
     func prepareTimer(target: Any, delay: TimeInterval, selector: Selector) -> Timer {
+        guard let target = target as? WeatherDataAutoUpdater else { return Timer() }
         if isTimerOnlyForCallCount {
             prepareTimerCallCount += 1
 
-            prepareTimerArgs_targets.append(target as! WeatherDataAutoUpdater)
+            prepareTimerArgs_targets.append(target)
             prepareTimerArgs_delays.append(delay)
             prepareTimerArgs_selectors.append(selector)
 

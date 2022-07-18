@@ -45,13 +45,14 @@ class UserPreferences {
     }
 
     static func setVersionAndBuildNumberUp() {
-        let version = Bundle.main.object(forInfoDictionaryKey:
-                                            "CFBundleShortVersionString") as! String
+        if let version = Bundle.main.object(forInfoDictionaryKey:
+                                            "CFBundleShortVersionString") as? String {
+            Settings.userDefaults.setValue(version, forKey: "version_preference")
+        }
 
-        let build = Bundle.main.object(forInfoDictionaryKey:
-                                            "CFBundleVersion") as! String
-
-        Settings.userDefaults.setValue(version, forKey: "version_preference")
-        Settings.userDefaults.setValue(build, forKey: "build_preference")
+        if let build = Bundle.main.object(forInfoDictionaryKey:
+                                            "CFBundleVersion") as? String {
+            Settings.userDefaults.setValue(build, forKey: "build_preference")
+        }
     }
 }

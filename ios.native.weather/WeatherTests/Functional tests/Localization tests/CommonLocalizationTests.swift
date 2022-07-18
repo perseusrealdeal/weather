@@ -17,7 +17,7 @@ class CommonLocalizationTests: XCTestCase {
 
         // arrange
 
-        let actual = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String
+        let actual = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
         let expected = "CFBundleDisplayName".localizedFromInfoPlist
         let requirement = "CFBundleDisplayName".localizedFromRequirements
 
@@ -32,7 +32,7 @@ class CommonLocalizationTests: XCTestCase {
 
         // arrange
 
-        let actual = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as! String
+        let actual = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String
         let expected = "CFBundleName".localizedFromInfoPlist
         let requirement = "CFBundleName".localizedFromRequirements
 
@@ -48,7 +48,7 @@ class CommonLocalizationTests: XCTestCase {
         // arrange
 
         let actual = Bundle.main.object(forInfoDictionaryKey:
-                                            "NSLocationWhenInUseUsageDescription") as! String
+                                            "NSLocationWhenInUseUsageDescription") as? String
         let expected = "NSLocationWhenInUseUsageDescription".localizedFromInfoPlist
         let requirement = "NSLocationWhenInUseUsageDescription".localizedFromRequirements
 
