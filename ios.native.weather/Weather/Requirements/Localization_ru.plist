@@ -70,13 +70,13 @@
 	<string>дневной</string>
 	<key>night</key>
 	<string>ночной</string>
-	<key>dark mode</key>
+	<key>Dark Mode</key>
 	<string>тёмный режим</string>
-	<key>dark mode auto</key>
-	<string>автоматически</string>
-	<key>dark mode on</key>
-	<string>тёмный постоянно</string>
-	<key>dark mode off</key>
+	<key>Dark Mode AUTO</key>
+	<string>системный</string>
+	<key>Dark Mode ON</key>
+	<string>включен</string>
+	<key>Dark Mode OFF</key>
 	<string>отключен</string>
 	<key>optionsButtonInMainScreen</key>
 	<string>Опции</string>

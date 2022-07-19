@@ -7,33 +7,33 @@
 
 import UIKit
 
-class CurrentWeatherWithForecastDailyStackView: UIStackView
-{
+class CurrentWeatherWithForecastDailyStackView: UIStackView {
+
     // MARK: - View Layout Related Properties
 
-    private var constraintVerticalAxis1  : NSLayoutConstraint!
-    private var constraintVerticalAxis2  : NSLayoutConstraint!
+    private var constraintVerticalAxis1: NSLayoutConstraint!
+    private var constraintVerticalAxis2: NSLayoutConstraint!
 
     private var constraintHorizontalAxis1: NSLayoutConstraint!
     private var constraintHorizontalAxis2: NSLayoutConstraint!
 
-    private var configuredForOrientation : NSLayoutConstraint.Axis!
-    private let stackView                : CurrentWeatherWithForecastHourlyStackView
+    private var configuredForOrientation: NSLayoutConstraint.Axis!
+    private let stackView: CurrentWeatherWithForecastHourlyStackView
 
     // MARK: - Business Matter Data View Containers
 
-    private let forecastDailyView        : ForecastDailyView
+    private let forecastDailyView: ForecastDailyView
 
     // MARK: - Instance Initialization
 
     required init(coder aDecoder: NSCoder) { fatalError() }
 
-    init(hourly : ForecastHourlyView,
-         daily  : ForecastDailyView,
-         current: CurrentWeatherView)
-    {
+    init(hourly: ForecastHourlyView,
+         daily: ForecastDailyView,
+         current: CurrentWeatherView) {
+
         forecastDailyView = daily
-        stackView = CurrentWeatherWithForecastHourlyStackView(hourly : hourly,
+        stackView = CurrentWeatherWithForecastHourlyStackView(hourly: hourly,
                                                               current: current)
 
         super.init(frame: CGRect.zero)
@@ -45,8 +45,8 @@ class CurrentWeatherWithForecastDailyStackView: UIStackView
         initialize()
     }
 
-    private func initialize()
-    {
+    private func initialize() {
+
         constraintVerticalAxis1 = stackView.heightAnchor.constraint(
             equalTo: self.heightAnchor, multiplier: 0.6)
 
@@ -62,25 +62,22 @@ class CurrentWeatherWithForecastDailyStackView: UIStackView
         addArrangedSubview(stackView)
         addArrangedSubview(forecastDailyView)
 
-        let currentOrientation : NSLayoutConstraint.Axis =
+        let currentOrientation: NSLayoutConstraint.Axis =
             UIDevice.current.orientation.isLandscape ? .horizontal : .vertical
 
         changeLayout(for: currentOrientation)
         configuredForOrientation = currentOrientation
     }
 
-    private func changeLayout(for deviceOrientation: NSLayoutConstraint.Axis)
-    {
-        if deviceOrientation == .vertical
-        {
+    private func changeLayout(for deviceOrientation: NSLayoutConstraint.Axis) {
+        if deviceOrientation == .vertical {
             axis = .vertical
 
             NSLayoutConstraint.deactivate([constraintHorizontalAxis1, constraintHorizontalAxis2])
             NSLayoutConstraint.activate([constraintVerticalAxis1, constraintVerticalAxis2])
         }
 
-        if deviceOrientation == .horizontal
-        {
+        if deviceOrientation == .horizontal {
             axis = .horizontal
 
             NSLayoutConstraint.deactivate([constraintVerticalAxis1, constraintVerticalAxis2])
@@ -90,8 +87,7 @@ class CurrentWeatherWithForecastDailyStackView: UIStackView
 
     // MARK: - Business Logic Related Methods
 
-    public func updateLayoutOrientationIfNeeded(for currentOrientation: NSLayoutConstraint.Axis)
-    {
+    public func updateLayoutOrientationIfNeeded(for currentOrientation: NSLayoutConstraint.Axis) {
         if configuredForOrientation == currentOrientation { return }
 
         configuredForOrientation = currentOrientation

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PerseusDarkMode
 
 // MARK: - The Application Object Initiation
 
@@ -17,11 +18,9 @@ UIApplicationMain(CommandLine.argc, CommandLine.unsafeArgv, nil, NSStringFromCla
 
 class AppDelegate: UIResponder { var window: UIWindow? }
 
-extension AppDelegate: UIApplicationDelegate
-{
+extension AppDelegate: UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions
-                        launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
-    {
+                        launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         #if DEBUG
         print(">> Launching with real app delegate")
         print(">> [\(type(of: self))]." + #function)
@@ -39,6 +38,8 @@ extension AppDelegate: UIApplicationDelegate
         #endif
 
         window!.makeKeyAndVisible()
+
+        AppearanceService.makeUp()
 
         return true
     }

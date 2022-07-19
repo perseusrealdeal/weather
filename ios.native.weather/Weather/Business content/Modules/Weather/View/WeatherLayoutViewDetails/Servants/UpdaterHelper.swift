@@ -7,17 +7,16 @@
 
 import Foundation
 
-let UPDATE_INTERVALS        : [Double] = [1, 5, 10, 20, 30] // Per 1 minute, per 5...
+let UPDATE_INTERVALS: [Double] = [1, 5, 10, 20, 30] // Per 1 minute, per 5...
 
 // Used for reloading alerts and conditional updating current, forecasts hourly, and daily
-let UPDATE_JOB_INTERVAL     : Double = UPDATE_INTERVALS[0] // Given in minutes
+let UPDATE_JOB_INTERVAL: Double = UPDATE_INTERVALS[0] // Given in minutes
 
 // Used for forcibly updating all weather data parts.
 // It works in the UPDATE_JOB_INTERVAL time circle and should be meant as <not early then>
 let FORCIBLY_UPDATE_INTERVAL: Double = UPDATE_INTERVALS[1] // Given in minutes
 
-protocol UpdaterHelperProtocol
-{
+protocol UpdaterHelperProtocol {
     func registerCurrentLocationObserver(observer: Any, selector: Selector)
     func removeCurrentLocationObserver(observer: Any)
 
@@ -27,10 +26,8 @@ protocol UpdaterHelperProtocol
     func prepareTimer(target: Any, delay: TimeInterval, selector: Selector) -> Timer
 }
 
-class UpdaterHelper: UpdaterHelperProtocol
-{
-    func registerCurrentLocationObserver(observer: Any, selector: Selector)
-    {
+class UpdaterHelper: UpdaterHelperProtocol {
+    func registerCurrentLocationObserver(observer: Any, selector: Selector) {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif
@@ -39,8 +36,8 @@ class UpdaterHelper: UpdaterHelperProtocol
 
         nCenter.addObserver(observer,
                             selector: selector,
-                            name    : .locationReceivedNotification,
-                            object  : nil)
+                            name: .locationReceivedNotification,
+                            object: nil)
     }
 
     func removeCurrentLocationObserver(observer: Any)
@@ -66,16 +63,16 @@ class UpdaterHelper: UpdaterHelperProtocol
 
         // Calculate the closest interval
 
-        let minuts         : Double = Double(Calendar.current.component(.minute, from: Date()))
-        let seconds        : Double = Double(Calendar.current.component(.second, from: Date()))
+        let minuts: Double = Double(Calendar.current.component(.minute, from: Date()))
+        let seconds: Double = Double(Calendar.current.component(.second, from: Date()))
 
         let intervalsPassed: Double = (minuts / interval).rounded(.down)
         let closestInterval: Double = intervalsPassed + 1
 
         // Calculate the delay
 
-        let period         : Double = interval * 60 // now in seconds
-        let delay          : Double = closestInterval * period - (minuts * 60 + seconds)
+        let period: Double = interval * 60 // now in seconds
+        let delay: Double = closestInterval * period - (minuts * 60 + seconds)
 
         return delay // in seconds
     }
@@ -86,17 +83,17 @@ class UpdaterHelper: UpdaterHelperProtocol
         print(">> [\(type(of: self))]." + #function)
         #endif
 
-        var exclude : String = "minutely"
+        var exclude: String = "minutely"
 
         if data.isForecastHourlyUpToDate { exclude.append(",hourly") }
         if data.isForecastDailyUpToDate { exclude.append(",daily") }
-        if data.isForecastCurrentUpToDate{ exclude.append(",current") }
+        if data.isForecastCurrentUpToDate { exclude.append(",current") }
 
         #if DEBUG
         print("calculated   : \(exclude)")
         #endif
 
-        /// Alerts should be reloaded anyway, so alerts not in exclude
+        // Alerts should be reloaded anyway, so alerts not in exclude
         return exclude
     }
 
@@ -108,10 +105,10 @@ class UpdaterHelper: UpdaterHelperProtocol
 
         guard let lastUpdate = data.lastFullUpdateTime else { return false }
 
-        let now         : Double = Date().timeIntervalSince1970
+        let now: Double = Date().timeIntervalSince1970
         let timeToUpdate: Double = lastUpdate.dt + FORCIBLY_UPDATE_INTERVAL * 60
 
-        let result      : Bool = now >= timeToUpdate
+        let result: Bool = now >= timeToUpdate
 
         return result
     }
@@ -122,7 +119,7 @@ class UpdaterHelper: UpdaterHelperProtocol
 
     func prepareTimer(target: Any, delay: TimeInterval, selector: Selector) -> Timer
     {
-        let nextFireTime     : Date = Date().addingTimeInterval(delay)
+        let nextFireTime: Date = Date().addingTimeInterval(delay)
         let intervalInSeconds: Double = UPDATE_JOB_INTERVAL * 60
 
         print("nextFireTime : \(nextFireTime)")
@@ -136,12 +133,12 @@ class UpdaterHelper: UpdaterHelperProtocol
         let interval = intervalInSeconds
         #endif
 
-        let timer = Timer(fireAt  : nextFireTime,
+        let timer = Timer(fireAt: nextFireTime,
                           interval: interval,
-                          target  : target,
+                          target: target,
                           selector: selector,
                           userInfo: nil,
-                          repeats : true)
+                          repeats: true)
 
         timer.tolerance = 0.2
 

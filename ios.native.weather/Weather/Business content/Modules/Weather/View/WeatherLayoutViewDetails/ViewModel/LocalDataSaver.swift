@@ -9,10 +9,8 @@ import SwiftyJSON
 
 private let WEATHER_CURRENT_LOCATION_KEY = "weather_forecast_for_current_location"
 
-class LocalDataSaver
-{
-    func loadData() -> JSON
-    {
+class LocalDataSaver {
+    func loadData() -> JSON {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif
@@ -26,8 +24,7 @@ class LocalDataSaver
         return result
     }
 
-    func save(_ jsonData: JSON?)
-    {
+    func save(_ jsonData: JSON?) {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif

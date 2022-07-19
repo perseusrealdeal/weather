@@ -70,14 +70,14 @@
 	<string>Day</string>
 	<key>night</key>
 	<string>Night</string>
-	<key>dark mode</key>
-	<string>Dark Mode</string>
-	<key>dark mode auto</key>
-	<string>Auto</string>
-	<key>dark mode on</key>
-	<string>On</string>
-	<key>dark mode off</key>
-	<string>Off</string>
+	<key>Dark Mode</key>
+	<string>Appearance Mode</string>
+	<key>Dark Mode AUTO</key>
+	<string>System</string>
+	<key>Dark Mode ON</key>
+	<string>Dark</string>
+	<key>Dark Mode OFF</key>
+	<string>Light</string>
 	<key>optionsButtonInMainScreen</key>
 	<string>Options</string>
 	<key>locationsListButtonInMainScreen</key>

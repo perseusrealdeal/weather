@@ -6,18 +6,18 @@
 //
 
 import UIKit
+import PerseusDarkMode
 
 // MARK: - WeatherViewController Class
 
-class WeatherViewController: UIViewController
-{
+class WeatherViewController: UIViewController {
     // MARK: - Difficult Dependencies
 
     private let notificationCenter: NotificationCenterProtocol
-    private let geoService        : GeoLocationServiceProtocol
+    private let geoService: GeoLocationServiceProtocol
 
     #if DEBUG
-    var stubbedView               : WeatherLayoutViewProtocol
+    var stubbedView: WeatherLayoutViewProtocol
     #endif
 
     // MARK: - View Controller Life Circle Methods
@@ -25,8 +25,7 @@ class WeatherViewController: UIViewController
     required init?(coder aDecoder: NSCoder) { fatalError() }
 
     init(_ notificationCenter: NotificationCenterProtocol = Settings.notificationCenter,
-         _ geoService        : GeoLocationServiceProtocol = GeoLocationReceiver.shared)
-    {
+         _ geoService: GeoLocationServiceProtocol = GeoLocationReceiver.shared) {
         #if DEBUG
         print(">> [\(type(of: self))].init")
         #endif
@@ -42,8 +41,8 @@ class WeatherViewController: UIViewController
 
         self.notificationCenter.addObserver(self,
                                             selector: #selector(theAppDidFinishLaunching),
-                                            name    : UIApplication.didFinishLaunchingNotification,
-                                            object  : nil)
+                                            name: UIApplication.didFinishLaunchingNotification,
+                                            object: nil)
     }
 
     override func loadView()
@@ -67,12 +66,21 @@ class WeatherViewController: UIViewController
 
         // Do any additional setup after loading the view.
 
-        print("greetings".localized_value)
+        // Dark Mode setup
+        AppearanceService.register(stakeholder: self, selector: #selector(makeUp))
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if #available(iOS 13.0, *) {
+            AppearanceService.processTraitCollectionDidChange(previousTraitCollection)
+        }
     }
 
     override func viewDidLayoutSubviews()
     {
-        let currentOrientation : NSLayoutConstraint.Axis =
+        let currentOrientation: NSLayoutConstraint.Axis =
             UIDevice.current.orientation.isLandscape ? .horizontal : .vertical
 
         guard let view = view as? WeatherLayoutViewProtocol else { return }
@@ -94,13 +102,13 @@ class WeatherViewController: UIViewController
 
         notificationCenter.addObserver(self,
                                        selector: #selector(theAppDidBecomeActive),
-                                       name    : UIApplication.didBecomeActiveNotification,
-                                       object  : nil)
+                                       name: UIApplication.didBecomeActiveNotification,
+                                       object: nil)
 
         notificationCenter.addObserver(self,
                                        selector: #selector(theAppDidEnterBackground),
-                                       name    : UIApplication.didEnterBackgroundNotification,
-                                       object  : nil)
+                                       name: UIApplication.didEnterBackgroundNotification,
+                                       object: nil)
     }
 
     override func viewWillDisappear(_ animated: Bool)
@@ -112,11 +120,11 @@ class WeatherViewController: UIViewController
         super.viewWillDisappear(animated)
 
         notificationCenter.removeObserver(self,
-                                          name  : UIApplication.didBecomeActiveNotification,
+                                          name: UIApplication.didBecomeActiveNotification,
                                           object: nil)
 
         notificationCenter.removeObserver(self,
-                                          name  : UIApplication.didEnterBackgroundNotification,
+                                          name: UIApplication.didEnterBackgroundNotification,
                                           object: nil)
     }
 
@@ -129,13 +137,19 @@ class WeatherViewController: UIViewController
         print(">> [\(type(of: self))]." + #function)
         #endif
 
+        // Update Dark Mode from Settings
+        if let choice = isDarkModeSettingsChanged() {
+            changeDarkModeManually(choice)
+        }
+        print("greetings".localized_value + " ^_^ it's " + DarkMode.Style.description)
+        
+        // Start activites
         guard let view = view as? WeatherLayoutViewProtocol else { return }
 
         view.startActivities()
     }
 
-    @objc func theAppDidEnterBackground()
-    {
+    @objc func theAppDidEnterBackground() {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif
@@ -145,8 +159,7 @@ class WeatherViewController: UIViewController
         view.stopActivities()
     }
 
-    @objc func theAppDidFinishLaunching()
-    {
+    @objc func theAppDidFinishLaunching() {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif
@@ -154,6 +167,11 @@ class WeatherViewController: UIViewController
         geoService.requestLocationDataAccess()
     }
 
+
+    @objc private func makeUp() {
+        self.view.backgroundColor = .systemYellow_Adapted
+    }
+    
     // MARK: - Other Methods (Not Business Logic Related)
 
     deinit

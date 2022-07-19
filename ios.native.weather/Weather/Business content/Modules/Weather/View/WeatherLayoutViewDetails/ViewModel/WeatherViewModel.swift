@@ -7,8 +7,7 @@
 
 import Foundation
 
-class WeatherViewModel: WeatherDataAutoUpdaterDelegate
-{
+class WeatherViewModel: WeatherDataAutoUpdaterDelegate {
     // MARK: - Servants
 
     /// It's responsible for keeping weather data in actual state
@@ -17,17 +16,16 @@ class WeatherViewModel: WeatherDataAutoUpdaterDelegate
     // MARK: - Operational Data
 
     /// The reference to the data
-    private let dataModel : WeatherDataModel
+    private let dataModel: WeatherDataModel
 
     // MARK: - Host View
 
     /// The reference to the view representing the actual data
-    var weatherView       : WeatherLayoutView?
+    var weatherView: WeatherLayoutView?
 
     // MARK: - Init
 
-    init()
-    {
+    init() {
         #if DEBUG
         print(">> [\(type(of: self))].init")
         #endif
@@ -45,50 +43,45 @@ class WeatherViewModel: WeatherDataAutoUpdaterDelegate
         if !dataKeeper.activated { dataKeeper.activateAutoUpdating() }
     }
 
-    func stopAutoUpdatingWeatherData()
-    {
+    func stopAutoUpdatingWeatherData() {
         dataKeeper.disactivateAutoUpdating()
     }
 
     // MARK: - WeatherActualDataKeeperDelegate
 
-    func weatherDataUpdated()
-    {
+    func weatherDataUpdated() {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif
 
-        guard let _ = weatherView else { return }
+        guard weatherView != nil else { return }
 
         // Do the weaather view reload from here
     }
 
-    func weatherAlertsUpdated()
-    {
+    func weatherAlertsUpdated() {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif
 
-        guard let _ = weatherView else { return }
+        guard weatherView != nil else { return }
 
         // Do the weaather view reload from here
     }
 
-    func locationServiceNotAllowed(_ reason: LocationServiceNotAllowed)
-    {
+    func locationServiceNotAllowed(_ reason: LocationServiceNotAllowed) {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         print("reason  : \(reason)")
         #endif
 
-        guard let _ = weatherView else { return }
+        guard weatherView != nil else { return }
 
         // Do inform user about location service not allowed
     }
 
-    func failedToGetCurrentLocation(_ error: LocationReceivedError)
-    {
-        guard let _ = weatherView else { return }
+    func failedToGetCurrentLocation(_ error: LocationReceivedError) {
+        guard weatherView != nil else { return }
 
         // Do inform user about something went wrong
 
@@ -98,9 +91,9 @@ class WeatherViewModel: WeatherDataAutoUpdaterDelegate
         #endif
     }
 
-    func failedToDeliverWeatherData(_ error : WeatherDataDeliveryError)
+    func failedToDeliverWeatherData(_ error: WeatherDataDeliveryError)
     {
-        guard let _ = weatherView else { return }
+        guard weatherView != nil else { return }
 
         // Do inform user about something went wrong
 

@@ -7,7 +7,6 @@
 
 import XCTest
 
-class PerformanceTests: XCTestCase
-{
+class PerformanceTests: XCTestCase {
     func test_zero() { XCTFail("Tests not yet implemented in \(type(of: self)).") }
 }

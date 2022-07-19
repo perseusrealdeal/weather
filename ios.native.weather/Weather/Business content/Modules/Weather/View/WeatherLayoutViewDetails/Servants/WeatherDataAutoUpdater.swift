@@ -7,8 +7,7 @@
 
 import Foundation
 
-protocol WeatherDataAutoUpdaterDelegate
-{
+protocol WeatherDataAutoUpdaterDelegate: AnyObject {
     /// Delegate view reloading activities
     func weatherDataUpdated()
     func weatherAlertsUpdated()
@@ -21,22 +20,21 @@ protocol WeatherDataAutoUpdaterDelegate
     func failedToDeliverWeatherData(_ error: WeatherDataDeliveryError)
 }
 
-class WeatherDataAutoUpdater
-{
+class WeatherDataAutoUpdater {
     // MARK: - Business properties
 
     // emgine
 
-    private(set) var timer             : Timer!
-    private(set) var data              : WeatherDataModel
+    private(set) var timer: Timer!
+    private(set) var data: WeatherDataModel
 
     // flags
 
-    private var _activated             : Bool = false
-    var activated                      : Bool { _activated }
+    private var _activated: Bool = false
+    var activated: Bool { _activated }
 
     /// True — CoreLocation for updating, otherwise what's given explicitly
-    var useCurrentLocation             : Bool = false
+    var useCurrentLocation: Bool = false
 
     // services
 
@@ -45,19 +43,18 @@ class WeatherDataAutoUpdater
 
     // helpers
 
-    private(set) var helper            : UpdaterHelperProtocol
+    private(set) var helper: UpdaterHelperProtocol
 
     // notifiers
 
-    var delegate                       : WeatherDataAutoUpdaterDelegate?
+    var delegate: WeatherDataAutoUpdaterDelegate?
 
     // MARK: - Initializer
 
-    init(data              : WeatherDataModel,
-         helper            : UpdaterHelperProtocol = UpdaterHelper(),
+    init(data: WeatherDataModel,
+         helper: UpdaterHelperProtocol = UpdaterHelper(),
          weatherDataService: WeatherClientProtocol = OpenWeatherClient(),
-         geoLocationService: GeoLocationServiceProtocol = GeoLocationReceiver.shared)
-    {
+         geoLocationService: GeoLocationServiceProtocol = GeoLocationReceiver.shared) {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif
@@ -98,8 +95,8 @@ class WeatherDataAutoUpdater
 
         let delay = helper.calculateDelay()
 
-        timer = helper.prepareTimer(target  : self,
-                                    delay   : delay,
+        timer = helper.prepareTimer(target: self,
+                                    delay: delay,
                                     selector: #selector(onTick))
 
         // Update weather data right now if needed
@@ -111,8 +108,7 @@ class WeatherDataAutoUpdater
         _activated = true
     }
 
-    func disactivateAutoUpdating()
-    {
+    func disactivateAutoUpdating() {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif
@@ -137,8 +133,7 @@ class WeatherDataAutoUpdater
 
         guard useCurrentLocation == true else { updateIfNeeded(); return }
 
-        geoLocationService.requestLocationUpdateOnce()
-        { reason in // Called in case if location service not allowed
+        geoLocationService.requestLocationUpdateOnce { reason in // Called in case if location service not allowed
 
             // DONE: Let user know what becouse when location service not allowed
 
@@ -152,8 +147,7 @@ class WeatherDataAutoUpdater
 
     // MARK: - Timer's onTick method
 
-    @objc private func onTick()
-    {
+    @objc private func onTick() {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif
@@ -197,8 +191,7 @@ class WeatherDataAutoUpdater
     }
 
     /// Non-conditional update
-    private func updateForcibly(for location: Сoordinate)
-    {
+    private func updateForcibly(for location: Сoordinate) {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif
@@ -220,13 +213,12 @@ class WeatherDataAutoUpdater
         // The current location should be taken into account,
         // so there's a few things to take care of
 
-        var locationReceived : Сoordinate?
+        var locationReceived: Сoordinate?
         var isLocationChanged: Bool?
 
-        var locationError    : LocationReceivedError?
+        var locationError: LocationReceivedError?
 
-        switch result
-        {
+        switch result {
         // Here we are, whatta happy case?
         case .success(let location):
             locationReceived = location
@@ -236,24 +228,17 @@ class WeatherDataAutoUpdater
             locationError = error
         }
 
-        if let locationReceived = locationReceived
-        {
-            if let target = data.target
-            {
+        if let locationReceived = locationReceived {
+            if let target = data.target {
                 isLocationChanged = locationReceived == target.location ? false : true
-            }
-            else
-            {
+            } else {
                 isLocationChanged = true
             }
         }
 
-        if let error = locationError
-        {
+        if let error = locationError {
             delegate?.failedToGetCurrentLocation(error)
-        }
-        else if let locationChanged = isLocationChanged, locationChanged
-        {
+        } else if let locationChanged = isLocationChanged, locationChanged {
             updateForcibly(for: locationReceived!)
             return
         }
@@ -261,25 +246,19 @@ class WeatherDataAutoUpdater
         updateIfNeeded()
     }
 
-    func weatherDataDeliveredHandler(_ result: Result<Data, WeatherDataDeliveryError>)
-    {
-        var dataDeliveried   : Data?
+    func weatherDataDeliveredHandler(_ result: Result<Data, WeatherDataDeliveryError>) {
+        var dataDeliveried: Data?
         var dataDeliveryError: WeatherDataDeliveryError?
 
-        switch result
-        {
+        switch result {
         case .success(let data): dataDeliveried = data
         case .failure(let error): dataDeliveryError = error
         }
 
-        if let error = dataDeliveryError
-        {
+        if let error = dataDeliveryError {
             delegate?.failedToDeliverWeatherData(error)
-        }
-        else if let freshData = dataDeliveried
-        {
-            data.update(received: freshData)
-            { isAlertsOnly in
+        } else if let freshData = dataDeliveried {
+            data.update(received: freshData) { isAlertsOnly in
                 isAlertsOnly ? delegate?.weatherAlertsUpdated() : delegate?.weatherDataUpdated()
             }
         }
@@ -287,8 +266,7 @@ class WeatherDataAutoUpdater
 
     // MARK: - Business contruct business operations
 
-    private func updateWeatherData(exclude: String, _ location: Сoordinate)
-    {
+    private func updateWeatherData(exclude: String, _ location: Сoordinate) {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
 
@@ -298,8 +276,8 @@ class WeatherDataAutoUpdater
 
         // Request weather data
 
-        weatherDataService.requestWeatherData(exclude  : exclude,
-                                              latitude : String(location.latitude),
+        weatherDataService.requestWeatherData(exclude: exclude,
+                                              latitude: String(location.latitude),
                                               longitude: String(location.longitude))
     }
 }

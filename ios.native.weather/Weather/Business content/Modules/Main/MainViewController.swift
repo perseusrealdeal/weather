@@ -6,13 +6,13 @@
 //
 
 import UIKit
+import PerseusDarkMode
+import PerseusUISystemKit
 
-class MainViewController: UIViewController
-{
+class MainViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
 
-    deinit
-    {
+    deinit {
         #if DEBUG
         print("\(type(of: self)).deinit")
         #endif
@@ -21,22 +21,60 @@ class MainViewController: UIViewController
     class func storyboardInstance() -> MainViewController
     {
         let storyboard = UIStoryboard(name: String(describing: self), bundle: nil)
-        let screen = storyboard.instantiateInitialViewController() as! MainViewController
+        let screen = storyboard.instantiateInitialViewController() as? MainViewController
 
-        /// Do default setup; don't set any parameter causing loadView up, breaks unit tests
+        // Do default setup; don't set any parameter causing loadView up, breaks unit tests
 
-        screen.modalTransitionStyle = UIModalTransitionStyle.partialCurl
-        screen.view.backgroundColor = UIColor.yellow
+        screen?.modalTransitionStyle = UIModalTransitionStyle.partialCurl
+        // screen?.view.backgroundColor = UIColor.yellow
 
-        return screen
+        return screen ?? MainViewController()
     }
 
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
+        guard value(forKey: "storyboardIdentifier") != nil else { return }
 
-        // Do any additional setup after loading the view.
+        // Dark Mode setup
+        AppearanceService.register(stakeholder: self, selector: #selector(makeUp))
+    }
 
-        label.text = "greetings".localized_value
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if #available(iOS 13.0, *) {
+            AppearanceService.processTraitCollectionDidChange(previousTraitCollection)
+        }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(theAppDidBecomeActive),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        NotificationCenter.default.removeObserver(self,
+                                          name: UIApplication.didBecomeActiveNotification,
+                                          object: nil)
+    }
+
+    @objc func theAppDidBecomeActive() {
+
+        // Update Dark Mode from Settings
+        if let choice = isDarkModeSettingsChanged() {
+            changeDarkModeManually(choice)
+        }
+
+        label.text = "greetings".localized_value + " ^_^ it's " + DarkMode.Style.description
+    }
+
+    @objc private func makeUp() {
+        self.view.backgroundColor = .systemYellow_Adapted
     }
 }

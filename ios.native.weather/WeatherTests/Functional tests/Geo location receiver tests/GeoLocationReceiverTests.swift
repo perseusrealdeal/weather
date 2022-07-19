@@ -10,15 +10,13 @@ import CoreLocation
 
 @testable import Weather
 
-class GeoLocationReceiverTests: XCTestCase
-{
+class GeoLocationReceiverTests: XCTestCase {
     // func test_zero() { XCTFail("Tests not yet implemented in \(type(of: self)).") }
 
-    private var sut : GeoLocationReceiver!
+    private var sut: GeoLocationReceiver!
     private var mock: MockLocationManager!
 
-    override func setUp()
-    {
+    override func setUp() {
         super.setUp()
 
         sut = GeoLocationReceiver.shared
@@ -31,8 +29,7 @@ class GeoLocationReceiverTests: XCTestCase
     // MARK: Testing doubles CLLocationManager methods
 
     /// Test method: requestLocationDataAccess()
-    func test_requestWhenInUseAuthorization_should_be_called_once()
-    {
+    func test_requestWhenInUseAuthorization_should_be_called_once() {
         // arrange
 
         MockLocationManager.status = .notDetermined
@@ -48,8 +45,7 @@ class GeoLocationReceiverTests: XCTestCase
     }
 
     /// Test method: requestLocationUpdateOnce(_ actionIfNotAllowed:)
-    func test_requestLocation_withNoCallbackAndStatusNotDeniedOrNotRestricted_shouldBeCalled()
-    {
+    func test_requestLocation_withNoCallbackAndStatusNotDeniedOrNotRestricted_shouldBeCalled() {
         // arrange
 
         MockLocationManager.status = .authorizedWhenInUse
@@ -66,8 +62,7 @@ class GeoLocationReceiverTests: XCTestCase
     }
 
     /// Test method: requestLocationUpdateOnce(_ actionIfNotAllowed:)
-    func test_requestLocation_withCallbackAndStatusNotDeniedOrNotRestricted_shouldBeCalled()
-    {
+    func test_requestLocation_withCallbackAndStatusNotDeniedOrNotRestricted_shouldBeCalled() {
         // arrange
 
         var isCallbackInvoked = false
@@ -77,7 +72,7 @@ class GeoLocationReceiverTests: XCTestCase
 
         // act
 
-        sut.requestLocationUpdateOnce() { _ in isCallbackInvoked = true }
+        sut.requestLocationUpdateOnce { _ in isCallbackInvoked = true }
 
         // assert
 
@@ -87,8 +82,7 @@ class GeoLocationReceiverTests: XCTestCase
     }
 
     /// Test method: requestLocationUpdateOnce(_ actionIfNotAllowed:)
-    func test_requestLocation_withStatusDeniedAndLocationServiceEnabled_shouldCallbackCalled()
-    {
+    func test_requestLocation_withStatusDeniedAndLocationServiceEnabled_shouldCallbackCalled() {
         // arrange
 
         var callback: LocationServiceNotAllowed?
@@ -98,7 +92,7 @@ class GeoLocationReceiverTests: XCTestCase
 
         // act
 
-        sut.requestLocationUpdateOnce() { explanation in callback = explanation }
+        sut.requestLocationUpdateOnce { explanation in callback = explanation }
 
         // assert
 
@@ -110,8 +104,7 @@ class GeoLocationReceiverTests: XCTestCase
     }
 
     /// Test method: requestLocationUpdateOnce(_ actionIfNotAllowed:)
-    func test_requestLocation_withStatusDeniedAndLocationServiceNotEnabled_shouldCallbackCalled()
-    {
+    func test_requestLocation_withStatusDeniedAndLocationServiceNotEnabled_shouldCallbackCalled() {
         // arrange
 
         var callback: LocationServiceNotAllowed?
@@ -121,7 +114,7 @@ class GeoLocationReceiverTests: XCTestCase
 
         // act
 
-        sut.requestLocationUpdateOnce() { explanation in callback = explanation }
+        sut.requestLocationUpdateOnce { explanation in callback = explanation }
 
         // assert
 
@@ -133,8 +126,7 @@ class GeoLocationReceiverTests: XCTestCase
     }
 
     /// Test method: requestLocationUpdateOnce(_ actionIfNotAllowed:)
-    func test_requestLocation_withStatusRestrictedAndLocationServiceEnabled_shouldCallbackCalled()
-    {
+    func test_requestLocation_withStatusRestrictedAndLocationServiceEnabled_shouldCallbackCalled() {
         // arrange
 
         var callback: LocationServiceNotAllowed?
@@ -144,7 +136,7 @@ class GeoLocationReceiverTests: XCTestCase
 
         // act
 
-        sut.requestLocationUpdateOnce() { explanation in callback = explanation }
+        sut.requestLocationUpdateOnce { explanation in callback = explanation }
 
         // assert
 
@@ -156,8 +148,7 @@ class GeoLocationReceiverTests: XCTestCase
     }
 
     /// Test method: requestLocationUpdateOnce(_ actionIfNotAllowed:)
-    func test_requestLocation_withStatusRestrictedAndLocationServiceNotEnabled_shouldCallbackCalled()
-    {
+    func test_requestLocation_withStatusRestrictedAndLocationServiceNotEnabled_shouldCallbackCalled() {
         // arrange
 
         var callback: LocationServiceNotAllowed?
@@ -167,7 +158,7 @@ class GeoLocationReceiverTests: XCTestCase
 
         // act
 
-        sut.requestLocationUpdateOnce() { explanation in callback = explanation }
+        sut.requestLocationUpdateOnce { explanation in callback = explanation }
 
         // assert
 
@@ -181,8 +172,7 @@ class GeoLocationReceiverTests: XCTestCase
     // MARK: Testing CLLocationManagerDelegate methods
 
     /// Test method: locationManager(_ manager: , didUpdateLocations locations: )
-    func test_didUpdateLocations_should_send_notification_with_locationData()
-    {
+    func test_didUpdateLocations_should_send_notification_with_locationData() {
         // arrange
 
         let expected = Сoordinate(latitude: 87.90, longitude: 34.83)
@@ -207,8 +197,7 @@ class GeoLocationReceiverTests: XCTestCase
     }
 
     /// Test method: locationManager(_ manager: , didUpdateLocations locations: )
-    func test_didUpdateLocations_should_send_notification_with_locationDataError()
-    {
+    func test_didUpdateLocations_should_send_notification_with_locationDataError() {
         // arrange
 
         let expected = LocationReceivedError.receivedEmptyLocationData
@@ -229,8 +218,7 @@ class GeoLocationReceiverTests: XCTestCase
     }
 
     /// Test method: locationManager(_ manager: , didFailWithError error: )
-    func test_didFailWithError_should_report_locationDataError()
-    {
+    func test_didFailWithError_should_report_locationDataError() {
         // arrange
 
         let defaultMessage = LocationReceivedError.failedRequest("")
@@ -251,8 +239,7 @@ class GeoLocationReceiverTests: XCTestCase
     }
 
     /// Test method: locationManager(_ manager: , didChangeAuthorization status: )
-    func test_didChangeAuthorization_with_status_authorizedWhenInUse_should_call_requestLocation()
-    {
+    func test_didChangeAuthorization_with_status_authorizedWhenInUse_should_call_requestLocation() {
         // act
 
         mock.delegate?.locationManager?(CLLocationManager(),
@@ -265,8 +252,7 @@ class GeoLocationReceiverTests: XCTestCase
     }
 
     /// Test method: locationManager(_ manager: , didChangeAuthorization status: )
-    func test_didChangeAuthorization_with_status_denied_should_not_call_requestLocation()
-    {
+    func test_didChangeAuthorization_with_status_denied_should_not_call_requestLocation() {
         // act
 
         mock.delegate?.locationManager?(CLLocationManager(), didChangeAuthorization: .denied)

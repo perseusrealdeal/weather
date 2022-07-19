@@ -7,10 +7,8 @@
 
 import Foundation
 
-extension String
-{
-    var localizedFromSettings: String
-    {
+extension String {
+    var localizedFromSettings: String {
         guard let path = Bundle.main.path(forResource: "Settings", ofType: "bundle")
         else { print("Path to Settings.bundle hasn't been found."); return "?" }
 
@@ -20,13 +18,11 @@ extension String
         return NSLocalizedString(self, tableName: "Root", bundle: settingBundle, value: "Not found", comment: "")
     }
 
-    var localizedFromInfoPlist: String
-    {
+    var localizedFromInfoPlist: String {
         return NSLocalizedString(self, tableName: "InfoPlist", bundle: Bundle.main, value: "Not found", comment: "")
     }
 
-    var localizedFromRequirements: String
-    {
+    var localizedFromRequirements: String {
         guard let currentLang = LocalizationTestHelper.currentLanguage?.langCode
         else { print("Something wrong with getting current language."); return "?" }
 
@@ -38,7 +34,10 @@ extension String
         guard let data = try? Data(contentsOf: path)
         else { print("Not possible to exctract data from property list."); return "?" }
 
-        guard let result = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [String:String]
+        guard let result = try? PropertyListSerialization.propertyList(from: data,
+                                                                       options: [],
+                                                                       format: nil)
+                as? [String: String]
         else { print("Not possible to serialize the property list."); return "?" }
 
         guard let value = result[self]
@@ -48,10 +47,8 @@ extension String
     }
 }
 
-fileprivate final class LocalizationTestHelper
-{
-    static var currentLanguage: (langCode: String, localeCode: String)?
-    {
+fileprivate final class LocalizationTestHelper {
+    static var currentLanguage: (langCode: String, localeCode: String)? {
         let currentLocale = Locale(identifier: Locale.preferredLanguages.first!)
         guard let langCode = currentLocale.languageCode else { return nil }
 

@@ -10,15 +10,14 @@ import SwiftyJSON
 
 @testable import Weather
 
-class CommonLocalizationTests: XCTestCase
-{
+class CommonLocalizationTests: XCTestCase {
     // func test_zero() { XCTFail("Tests not yet implemented in \(type(of: self)).") }
 
-    func test_CFBundleDisplayName_should_be_localized()
-    {
+    func test_CFBundleDisplayName_should_be_localized() {
+
         // arrange
 
-        let actual = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String
+        let actual = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
         let expected = "CFBundleDisplayName".localizedFromInfoPlist
         let requirement = "CFBundleDisplayName".localizedFromRequirements
 
@@ -29,11 +28,11 @@ class CommonLocalizationTests: XCTestCase
         XCTAssertEqual(requirement, expected, "Value isn't correct with the expected value.")
     }
 
-    func test_CFBundleName_should_be_localized()
-    {
+    func test_CFBundleName_should_be_localized() {
+
         // arrange
 
-        let actual = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as! String
+        let actual = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String
         let expected = "CFBundleName".localizedFromInfoPlist
         let requirement = "CFBundleName".localizedFromRequirements
 
@@ -44,12 +43,12 @@ class CommonLocalizationTests: XCTestCase
         XCTAssertEqual(requirement, expected, "Value isn't correct with the expected value.")
     }
 
-    func test_NSLocationWhenInUseUsageDescription_should_be_localized()
-    {
+    func test_NSLocationWhenInUseUsageDescription_should_be_localized() {
+
         // arrange
 
         let actual = Bundle.main.object(forInfoDictionaryKey:
-                                            "NSLocationWhenInUseUsageDescription") as! String
+                                            "NSLocationWhenInUseUsageDescription") as? String
         let expected = "NSLocationWhenInUseUsageDescription".localizedFromInfoPlist
         let requirement = "NSLocationWhenInUseUsageDescription".localizedFromRequirements
 
@@ -60,8 +59,8 @@ class CommonLocalizationTests: XCTestCase
         XCTAssertEqual(requirement, expected, "Value isn't correct with the expected value.")
     }
 
-    func test_DefaultLocation_should_be_localized()
-    {
+    func test_DefaultLocation_should_be_localized() {
+
         // arrange
 
         let expected = JSON("defaultLocation".localized_value)

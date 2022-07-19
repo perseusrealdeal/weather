@@ -7,30 +7,28 @@
 
 import UIKit
 
-class CurrentWeatherWithForecastHourlyStackView: UIStackView
-{
+class CurrentWeatherWithForecastHourlyStackView: UIStackView {
+
     // MARK: - View Layout Related Properties
 
-    private var constraintVerticalAxis1  : NSLayoutConstraint!
-    private var constraintVerticalAxis2  : NSLayoutConstraint!
+    private var constraintVerticalAxis1: NSLayoutConstraint!
+    private var constraintVerticalAxis2: NSLayoutConstraint!
 
     private var constraintHorizontalAxis1: NSLayoutConstraint!
     private var constraintHorizontalAxis2: NSLayoutConstraint!
 
-    private var configuredForOrientation : NSLayoutConstraint.Axis!
+    private var configuredForOrientation: NSLayoutConstraint.Axis!
 
     // MARK: - Business Matter Data View Containers
 
-    private let forecastHourlyView       : ForecastHourlyView
-    private let currentWeatherView       : CurrentWeatherView
+    private let forecastHourlyView: ForecastHourlyView
+    private let currentWeatherView: CurrentWeatherView
 
     // MARK: - Instance Initialization
 
     required init(coder aDecoder: NSCoder) { fatalError() }
 
-    init(hourly : ForecastHourlyView,
-         current: CurrentWeatherView)
-    {
+    init(hourly: ForecastHourlyView, current: CurrentWeatherView) {
         forecastHourlyView = hourly
         currentWeatherView = current
 
@@ -43,8 +41,7 @@ class CurrentWeatherWithForecastHourlyStackView: UIStackView
         initialize()
     }
 
-    private func initialize()
-    {
+    private func initialize() {
         constraintVerticalAxis1 = forecastHourlyView.heightAnchor.constraint(
             equalTo: self.heightAnchor, multiplier: 0.3)
 
@@ -60,17 +57,15 @@ class CurrentWeatherWithForecastHourlyStackView: UIStackView
         addArrangedSubview(forecastHourlyView)
         addArrangedSubview(currentWeatherView)
 
-        let currentOrientation : NSLayoutConstraint.Axis =
+        let currentOrientation: NSLayoutConstraint.Axis =
             UIDevice.current.orientation.isLandscape ? .horizontal : .vertical
 
         changeLayout(for: currentOrientation)
         configuredForOrientation = currentOrientation
     }
 
-    private func changeLayout(for deviceOrientation: NSLayoutConstraint.Axis)
-    {
-        if deviceOrientation == .vertical
-        {
+    private func changeLayout(for deviceOrientation: NSLayoutConstraint.Axis) {
+        if deviceOrientation == .vertical {
             axis = .horizontal
 
             removeArrangedSubview(forecastHourlyView)
@@ -83,8 +78,7 @@ class CurrentWeatherWithForecastHourlyStackView: UIStackView
             NSLayoutConstraint.deactivate([constraintVerticalAxis1, constraintVerticalAxis2])
         }
 
-        if deviceOrientation == .horizontal
-        {
+        if deviceOrientation == .horizontal {
             axis = .vertical
 
             removeArrangedSubview(forecastHourlyView)
@@ -100,8 +94,7 @@ class CurrentWeatherWithForecastHourlyStackView: UIStackView
 
     // MARK: - Business Logic Related Methods
 
-    public func updateLayoutOrientationIfNeeded(for currentOrientation: NSLayoutConstraint.Axis)
-    {
+    public func updateLayoutOrientationIfNeeded(for currentOrientation: NSLayoutConstraint.Axis) {
         if configuredForOrientation == currentOrientation { return }
 
         configuredForOrientation = currentOrientation

@@ -7,18 +7,15 @@
 
 import Foundation
 
-class TimerTargetStubbed
-{
+class TimerTargetStubbed {
     var onTickCallCount = 0
     var onTickCallClosure: () -> Void
 
-    init(onTickCallClosure: @escaping () -> Void)
-    {
+    init(onTickCallClosure: @escaping () -> Void) {
         self.onTickCallClosure = onTickCallClosure
     }
 
-    @objc func onTick()
-    {
+    @objc func onTick() {
         onTickCallCount += 1
 
         #if DEBUG

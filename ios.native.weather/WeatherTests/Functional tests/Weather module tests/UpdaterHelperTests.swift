@@ -7,8 +7,7 @@
 
 import XCTest
 
-class UpdaterHelperTests: XCTestCase
-{
+class UpdaterHelperTests: XCTestCase {
 
 }
 

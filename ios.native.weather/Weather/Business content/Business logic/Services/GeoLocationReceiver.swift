@@ -9,25 +9,21 @@ import CoreLocation
 
 // MARK: - Subscribe to be notified about location data as soon as received
 
-extension Notification.Name
-{
+extension Notification.Name {
     static let locationReceivedNotification = Notification.Name("locationReceivedNotification")
 }
 
 // MARK: - Failure scenario details
 
-enum LocationReceivedError: Error
-{
+enum LocationReceivedError: Error {
     case receivedEmptyLocationData
     case failedRequest(String)
 }
 
 extension LocationReceivedError: Equatable {}
 
-func == (lhs: LocationReceivedError, rhs: LocationReceivedError) -> Bool
-{
-    switch (lhs, rhs)
-    {
+func == (lhs: LocationReceivedError, rhs: LocationReceivedError) -> Bool {
+    switch (lhs, rhs) {
     case (.receivedEmptyLocationData, .receivedEmptyLocationData):
         return true
 
@@ -41,24 +37,21 @@ func == (lhs: LocationReceivedError, rhs: LocationReceivedError) -> Bool
 
 // MARK: - Success scenario details
 
-struct Сoordinate: CustomStringConvertible
-{
+struct Сoordinate: CustomStringConvertible {
     // Neither rounding nor cutting off, just as is from core location
-    let _latitude : Double
+    let _latitude: Double
     let _longitude: Double
 
     // Cutting off to hundredths (2 decimal places)
-    var latitude  : Double { (_latitude * 100.0).rounded(_latitude > 0 ? .down : .up) / 100.0 }
-    var longitude : Double { (_longitude * 100.0).rounded(_longitude > 0 ? .down : .up) / 100.0 }
+    var latitude: Double { (_latitude * 100.0).rounded(_latitude > 0 ? .down : .up) / 100.0 }
+    var longitude: Double { (_longitude * 100.0).rounded(_longitude > 0 ? .down : .up) / 100.0 }
 
-    init(latitude: Double, longitude: Double)
-    {
+    init(latitude: Double, longitude: Double) {
         _latitude = latitude
         _longitude = longitude
     }
 
-    var description: String
-    {
+    var description: String {
         let latitude = (_latitude * 10000.0).rounded(_latitude > 0 ? .down : .up) / 10000.0
         let longitude = (_longitude * 10000.0).rounded(_longitude > 0 ? .down : .up) / 10000.0
 
@@ -68,15 +61,13 @@ struct Сoordinate: CustomStringConvertible
 
 extension Сoordinate: Equatable {}
 
-func == (lhs: Сoordinate, rhs: Сoordinate) -> Bool
-{
+func == (lhs: Сoordinate, rhs: Сoordinate) -> Bool {
     lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
 }
 
 // MARK: - Details about why Location service isn't allowed
 
-enum LocationServiceNotAllowed: CustomStringConvertible
-{
+enum LocationServiceNotAllowed: CustomStringConvertible {
     /// Location service is neither restricted nor the app denided
     case notDetermined
 
@@ -90,10 +81,8 @@ enum LocationServiceNotAllowed: CustomStringConvertible
     /// provide instructions for enabling services for the app in Settings > The App
     case deniedForTheApp /// in case if location services turned on but not restricted
 
-    var description: String
-    {
-        switch self
-        {
+    var description: String {
+        switch self {
         case .notDetermined:
             return "notDetermined"
         case .deniedForAllAndRestricted:
@@ -110,9 +99,8 @@ enum LocationServiceNotAllowed: CustomStringConvertible
 
 // MARK: - Helper abstracts used to make code testable
 
-protocol LocationManagerProtocol
-{
-    var delegate       : CLLocationManagerDelegate? { get set }
+protocol LocationManagerProtocol {
+    var delegate: CLLocationManagerDelegate? { get set }
     var desiredAccuracy: CLLocationAccuracy { get set }
 
     func requestWhenInUseAuthorization()
@@ -127,20 +115,18 @@ extension CLLocationManager: LocationManagerProtocol { }
 
 // MARK: - GeoLocationReceiver used via Singletone
 
-class GeoLocationReceiver: NSObject
-{
+class GeoLocationReceiver: NSObject {
     private let APPROPRIATE_ACCURACY = kCLLocationAccuracyThreeKilometers
 
     #if DEBUG // locationManager is a difficutlt dependency so that it should be isolated
-    var locationManager        : LocationManagerProtocol // Isolated for unit testing
+    var locationManager: LocationManagerProtocol // Isolated for unit testing
     #else
     private var locationManager: CLLocationManager
     #endif
 
     // MARK: - Singletone access and constructor
 
-    static let shared: GeoLocationReceiver =
-    {
+    static let shared: GeoLocationReceiver = {
         let instance = GeoLocationReceiver()
 
         // Do any additional setup if needed.
@@ -148,8 +134,7 @@ class GeoLocationReceiver: NSObject
         return instance
     }()
 
-    private override init()
-    {
+    private override init() {
         self.locationManager = CLLocationManager()
 
         super.init()
@@ -162,14 +147,12 @@ class GeoLocationReceiver: NSObject
 
     // MARK: - Public communication interface
 
-    func requestLocationDataAccess()
-    {
+    func requestLocationDataAccess() {
         locationManager.requestWhenInUseAuthorization()
     }
 
     func requestLocationUpdateOnce(_ actionIfNotAllowed:
-                                    ((_ case: LocationServiceNotAllowed) -> Void)? = nil)
-    {
+                                    ((_ case: LocationServiceNotAllowed) -> Void)? = nil) {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif
@@ -177,21 +160,19 @@ class GeoLocationReceiver: NSObject
         let status = type(of: locationManager).authorizationStatus()
         let isLocationServiceEnabled = type(of: locationManager).locationServicesEnabled()
 
-        var locationServiceNotAllowed : LocationServiceNotAllowed?
+        var locationServiceNotAllowed: LocationServiceNotAllowed?
 
         if status == .notDetermined
         {
             locationServiceNotAllowed = .notDetermined
         }
 
-        if status == .denied
-        {
+        if status == .denied {
             locationServiceNotAllowed = isLocationServiceEnabled ?
                 .deniedForTheApp : .deniedForAll
         }
 
-        if status == .restricted
-        {
+        if status == .restricted {
             locationServiceNotAllowed = isLocationServiceEnabled ?
                 .restricted : .deniedForAllAndRestricted
         }
@@ -205,13 +186,10 @@ class GeoLocationReceiver: NSObject
 
 // MARK: - CLLocationManagerDelegate methods
 
-extension GeoLocationReceiver: CLLocationManagerDelegate
-{
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
-    {
+extension GeoLocationReceiver: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let value = locations.first?.coordinate
-        else
-        {
+        else {
             let result: Result<Сoordinate, LocationReceivedError> =
                 .failure(.receivedEmptyLocationData)
 
@@ -240,10 +218,8 @@ extension GeoLocationReceiver: CLLocationManagerDelegate
     }
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization
-                            status: CLAuthorizationStatus)
-    {
-        if status == .authorizedWhenInUse
-        {
+                            status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
             locationManager.requestLocation()
         }
     }

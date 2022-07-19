@@ -1,22 +1,29 @@
-disabled_rules: # rule identifiers turned on by default to exclude from running
-  - force_cast
-  - identifier_name
-  - opening_brace
-  - colon
-  - line_length
-  - file_length
-  - type_body_length
-  - syntactic_sugar
-  - statement_position
-  - orphaned_doc_comment
-  - empty_parentheses_with_trailing_closure
-  - unused_optional_binding
-  - type_name
-  - class_delegate_protocol
-  - function_body_length
+function_body_length:
+  warning: 60
+  error: 80
+
+type_body_length:
+  warning: 300
+  error: 500
+
+type_name:
+  max_length: 45
+
+identifier_name:
+  allowed_symbols: "_"
+  min_length: 2
+  max_length: 45
+  validates_start_with_lowercase: false
+
+file_length:
+  warning: 1100
+  error: 2000
 
 large_tuple:
-  warning: 5
+  warning: 4
+  error: 5
 
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Pods
+
+reporter: "xcode" # reporter type
