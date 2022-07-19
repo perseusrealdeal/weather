@@ -160,16 +160,16 @@
 			<key>Type</key>
 			<string>PSMultiValueSpecifier</string>
 			<key>Title</key>
-			<string>dark mode</string>
+			<string>Dark Mode</string>
 			<key>Key</key>
 			<string>dark_mode_preference</string>
 			<key>DefaultValue</key>
-			<string>Auto</string>
+			<string>0</string>
 			<key>Titles</key>
 			<array>
-				<string>Light</string>
-				<string>Dark</string>
-				<string>Auto</string>
+				<string>Dark Mode OFF</string>
+				<string>Dark Mode ON</string>
+				<string>Dark Mode AUTO</string>
 			</array>
 			<key>Values</key>
 			<array>

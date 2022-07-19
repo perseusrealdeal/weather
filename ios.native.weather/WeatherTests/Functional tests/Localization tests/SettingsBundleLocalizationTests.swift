@@ -310,35 +310,35 @@ class SettingsBundleLocalizationTests: XCTestCase {
     // MARK: - Specials, Dark Mode Option
 
     func test_dark_mode_should_be_localized() {
-        let expected = "dark mode".localizedFromSettings
-        let requirement = "dark mode".localizedFromRequirements
+        let expected = "Dark Mode".localizedFromSettings
+        let requirement = "Dark Mode".localizedFromRequirements
 
         XCTAssertEqual(requirement, expected,
         "\"dark mode\" is not correct with the expected value.")
     }
 
     func test_dark_mode_auto_should_be_localized() {
-        let expected = "dark mode auto".localizedFromSettings
-        let requirement = "dark mode auto".localizedFromRequirements
+        let expected = "Dark Mode AUTO".localizedFromSettings
+        let requirement = "Dark Mode AUTO".localizedFromRequirements
 
         XCTAssertEqual(requirement, expected,
-        "\"dark mode auto\" is not correct with the expected value.")
+        "\"Dark Mode AUTO\" is not correct with the expected value.")
     }
 
     func test_dark_mode_on_should_be_localized() {
-        let expected = "dark mode on".localizedFromSettings
-        let requirement = "dark mode on".localizedFromRequirements
+        let expected = "Dark Mode ON".localizedFromSettings
+        let requirement = "Dark Mode ON".localizedFromRequirements
 
         XCTAssertEqual(requirement, expected,
-        "\"dark mode on\" is not correct with the expected value.")
+        "\"Dark Mode ON\" is not correct with the expected value.")
     }
 
     func test_dark_mode_off_should_be_localized() {
-        let expected = "dark mode off".localizedFromSettings
-        let requirement = "dark mode off".localizedFromRequirements
+        let expected = "Dark Mode OFF".localizedFromSettings
+        let requirement = "Dark Mode OFF".localizedFromRequirements
 
         XCTAssertEqual(requirement, expected,
-        "\"dark mode off\" is not correct with the expected value.")
+        "\"Dark Mode OFF\" is not correct with the expected value.")
     }
 
     // MARK: - Version and Build Titles

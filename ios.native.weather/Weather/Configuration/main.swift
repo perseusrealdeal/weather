@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PerseusDarkMode
 
 // MARK: - The Application Object Initiation
 
@@ -30,13 +31,15 @@ extension AppDelegate: UIApplicationDelegate {
 
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        #if true
+        #if false
         window!.rootViewController = WeatherViewController()
         #else
         window!.rootViewController = MainViewController.storyboardInstance()
         #endif
 
         window!.makeKeyAndVisible()
+
+        AppearanceService.makeUp()
 
         return true
     }
