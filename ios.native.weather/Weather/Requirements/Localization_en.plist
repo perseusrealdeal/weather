@@ -71,13 +71,13 @@
 	<key>night</key>
 	<string>Night</string>
 	<key>dark mode</key>
-	<string>Dark Mode</string>
+	<string>Appearance Mode</string>
 	<key>dark mode auto</key>
-	<string>Auto</string>
+	<string>System</string>
 	<key>dark mode on</key>
-	<string>On</string>
+	<string>Dark</string>
 	<key>dark mode off</key>
-	<string>Off</string>
+	<string>Light</string>
 	<key>optionsButtonInMainScreen</key>
 	<string>Options</string>
 	<key>locationsListButtonInMainScreen</key>

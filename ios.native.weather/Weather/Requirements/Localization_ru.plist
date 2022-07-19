@@ -73,9 +73,9 @@
 	<key>dark mode</key>
 	<string>тёмный режим</string>
 	<key>dark mode auto</key>
-	<string>автоматически</string>
+	<string>системный</string>
 	<key>dark mode on</key>
-	<string>тёмный постоянно</string>
+	<string>включен</string>
 	<key>dark mode off</key>
 	<string>отключен</string>
 	<key>optionsButtonInMainScreen</key>

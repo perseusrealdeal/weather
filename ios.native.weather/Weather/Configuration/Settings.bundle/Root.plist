@@ -165,17 +165,17 @@
 			<string>dark_mode_preference</string>
 			<key>DefaultValue</key>
 			<string>Auto</string>
-			<key>Values</key>
-			<array>
-				<string>Auto</string>
-				<string>On</string>
-				<string>Off</string>
-			</array>
 			<key>Titles</key>
 			<array>
+				<string>Light</string>
+				<string>Dark</string>
 				<string>Auto</string>
-				<string>On</string>
-				<string>Off</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<string>2</string>
+				<string>1</string>
+				<string>0</string>
 			</array>
 		</dict>
 		<dict>
