@@ -66,7 +66,7 @@ class MainViewController: UIViewController {
 
     @objc func theAppDidBecomeActive() {
 
-        // Check Dark Mode in Settings
+        // Update Dark Mode from Settings
         if let choice = isDarkModeSettingsChanged() {
             changeDarkModeManually(choice)
         }

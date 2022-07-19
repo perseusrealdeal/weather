@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PerseusDarkMode
 
 // MARK: - WeatherViewController Class
 
@@ -65,7 +66,16 @@ class WeatherViewController: UIViewController {
 
         // Do any additional setup after loading the view.
 
-        print("greetings".localized_value)
+        // Dark Mode setup
+        AppearanceService.register(stakeholder: self, selector: #selector(makeUp))
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if #available(iOS 13.0, *) {
+            AppearanceService.processTraitCollectionDidChange(previousTraitCollection)
+        }
     }
 
     override func viewDidLayoutSubviews()
@@ -127,6 +137,13 @@ class WeatherViewController: UIViewController {
         print(">> [\(type(of: self))]." + #function)
         #endif
 
+        // Update Dark Mode from Settings
+        if let choice = isDarkModeSettingsChanged() {
+            changeDarkModeManually(choice)
+        }
+        print("greetings".localized_value + " ^_^ it's " + DarkMode.Style.description)
+        
+        // Start activites
         guard let view = view as? WeatherLayoutViewProtocol else { return }
 
         view.startActivities()
@@ -150,6 +167,11 @@ class WeatherViewController: UIViewController {
         geoService.requestLocationDataAccess()
     }
 
+
+    @objc private func makeUp() {
+        self.view.backgroundColor = .systemYellow_Adapted
+    }
+    
     // MARK: - Other Methods (Not Business Logic Related)
 
     deinit

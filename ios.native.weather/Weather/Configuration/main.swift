@@ -31,7 +31,7 @@ extension AppDelegate: UIApplicationDelegate {
 
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        #if false
+        #if true
         window!.rootViewController = WeatherViewController()
         #else
         window!.rootViewController = MainViewController.storyboardInstance()
