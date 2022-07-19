@@ -45,8 +45,7 @@ class WeatherViewController: UIViewController {
                                             object: nil)
     }
 
-    override func loadView()
-    {
+    override func loadView() {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif
@@ -58,8 +57,7 @@ class WeatherViewController: UIViewController {
         #endif
     }
 
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif
@@ -78,8 +76,7 @@ class WeatherViewController: UIViewController {
         }
     }
 
-    override func viewDidLayoutSubviews()
-    {
+    override func viewDidLayoutSubviews() {
         let currentOrientation: NSLayoutConstraint.Axis =
             UIDevice.current.orientation.isLandscape ? .horizontal : .vertical
 
@@ -92,8 +89,7 @@ class WeatherViewController: UIViewController {
         #endif
     }
 
-    override func viewWillAppear(_ animated: Bool)
-    {
+    override func viewWillAppear(_ animated: Bool) {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif
@@ -111,8 +107,7 @@ class WeatherViewController: UIViewController {
                                        object: nil)
     }
 
-    override func viewWillDisappear(_ animated: Bool)
-    {
+    override func viewWillDisappear(_ animated: Bool) {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif
@@ -130,8 +125,7 @@ class WeatherViewController: UIViewController {
 
     // MARK: - The App's Major Life Time Events
 
-    @objc func theAppDidBecomeActive()
-    {
+    @objc func theAppDidBecomeActive() {
         #if DEBUG
         print("-----------------------------------")
         print(">> [\(type(of: self))]." + #function)
@@ -142,7 +136,7 @@ class WeatherViewController: UIViewController {
             changeDarkModeManually(choice)
         }
         print("greetings".localized_value + " ^_^ it's " + DarkMode.Style.description)
-        
+
         // Start activites
         guard let view = view as? WeatherLayoutViewProtocol else { return }
 
@@ -167,15 +161,13 @@ class WeatherViewController: UIViewController {
         geoService.requestLocationDataAccess()
     }
 
-
     @objc private func makeUp() {
         self.view.backgroundColor = .systemYellow_Adapted
     }
-    
+
     // MARK: - Other Methods (Not Business Logic Related)
 
-    deinit
-    {
+    deinit {
         #if DEBUG
         print(">> [\(type(of: self))].deinit")
         #endif
