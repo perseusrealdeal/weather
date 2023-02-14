@@ -117,8 +117,6 @@
 		E0AAF5DA2755049800093229 /* SnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
 		E0AAF5DC2755050000093229 /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
 		E0AAF5DE2755051900093229 /* SettingsBundleLocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleLocalizationTests.swift; sourceTree = "<group>"; };
-		E0AAF5E52755061600093229 /* PerformanceTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = PerformanceTests.xctestplan; sourceTree = "<group>"; };
-		E0AAF5E62755065800093229 /* SnapshotTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SnapshotTests.xctestplan; sourceTree = "<group>"; };
 		E0AAF5E92757C49500093229 /* OpenWeatherClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherClient.swift; sourceTree = "<group>"; };
 		E0AAF5EB2757C4B000093229 /* OpenWeatherCommunicationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherCommunicationTests.swift; sourceTree = "<group>"; };
 		E0AAF5EF275B987500093229 /* currentWeatherData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = currentWeatherData.json; sourceTree = "<group>"; };
@@ -126,8 +124,6 @@
 		E0B8B63F2767898C00CF5D09 /* GeoLocationReceiverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoLocationReceiverTests.swift; sourceTree = "<group>"; };
 		E0B8B6412768E5E600CF5D09 /* CommonLocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonLocalizationTests.swift; sourceTree = "<group>"; };
 		E0B8B643276A504A00CF5D09 /* CommonFunctionalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunctionalTests.swift; sourceTree = "<group>"; };
-		E0B8B645276A515700CF5D09 /* FunctionalTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = FunctionalTests.xctestplan; sourceTree = "<group>"; };
-		E0B8B646276A518600CF5D09 /* LocalizationTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = LocalizationTests.xctestplan; sourceTree = "<group>"; };
 		E0BD36862790B669004C5E7B /* UnitTestingProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestingProtocols.swift; sourceTree = "<group>"; };
 		E0BD368B27948AF3004C5E7B /* UpdaterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdaterHelper.swift; sourceTree = "<group>"; };
 		E0BD368D2795D2C2004C5E7B /* UpdaterHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdaterHelperTests.swift; sourceTree = "<group>"; };
@@ -153,7 +149,6 @@
 		E0C841B027612A750034E7F2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E0CCE0852764093500E14D26 /* SettingsBundleFunctionalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleFunctionalTests.swift; sourceTree = "<group>"; };
 		E0CCE08727640B3A00E14D26 /* SettingsBundleTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleTestHelpers.swift; sourceTree = "<group>"; };
-		E0D8253727A4179600C710F8 /* SomeTestsJustForNow.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SomeTestsJustForNow.xctestplan; sourceTree = "<group>"; };
 		E0D8253827A5A63400C710F8 /* LocalDataSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSaver.swift; sourceTree = "<group>"; };
 		E0D8253A27A5AA6700C710F8 /* LocalDataSaverStubbed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSaverStubbed.swift; sourceTree = "<group>"; };
 		E0D8253C27A5B3BF00C710F8 /* MockWeatherClientService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWeatherClientService.swift; sourceTree = "<group>"; };
@@ -447,7 +442,6 @@
 				E0C428D827535D8800E65DFD /* Requirements */,
 				E04A129A2859F16500F6F679 /* Configuration */,
 				E04A129B2859F17400F6F679 /* Business content */,
-				E0C428E127535E1300E65DFD /* Test plans */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -516,18 +510,6 @@
 				E0C841AF27612A700034E7F2 /* Localizable.strings */,
 			);
 			path = Localization;
-			sourceTree = "<group>";
-		};
-		E0C428E127535E1300E65DFD /* Test plans */ = {
-			isa = PBXGroup;
-			children = (
-				E0B8B645276A515700CF5D09 /* FunctionalTests.xctestplan */,
-				E0B8B646276A518600CF5D09 /* LocalizationTests.xctestplan */,
-				E0AAF5E52755061600093229 /* PerformanceTests.xctestplan */,
-				E0AAF5E62755065800093229 /* SnapshotTests.xctestplan */,
-				E0D8253727A4179600C710F8 /* SomeTestsJustForNow.xctestplan */,
-			);
-			path = "Test plans";
 			sourceTree = "<group>";
 		};
 		E0C428E927535E7E00E65DFD /* Entities */ = {
