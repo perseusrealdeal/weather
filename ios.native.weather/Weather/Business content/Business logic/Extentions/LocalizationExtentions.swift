@@ -7,4 +7,8 @@
 
 import Foundation
 
-extension String { var localized_value: String { NSLocalizedString(self, comment: "") } }
+extension String {
+    var localized_value: String {
+        return NSLocalizedString(self, comment: "")
+    }
+}

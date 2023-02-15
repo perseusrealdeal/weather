@@ -47,7 +47,7 @@ class WeatherDataAutoUpdater {
 
     // notifiers
 
-    var delegate: WeatherDataAutoUpdaterDelegate?
+    weak var delegate: WeatherDataAutoUpdaterDelegate?
 
     // MARK: - Initializer
 
@@ -207,7 +207,8 @@ class WeatherDataAutoUpdater {
         print(">> [\(type(of: self))]." + #function)
         #endif
 
-        guard let result = notification.object as? Result<Сoordinate, LocationReceivedError>
+        guard let result = notification.object
+            as? Result<Сoordinate, LocationReceivedError>
         else { return }
 
         // The current location should be taken into account,

@@ -57,6 +57,6 @@ struct LastFullUpdateTime {
 
 extension CurrentLocationDescription {
     var location: Сoordinate {
-        Сoordinate(latitude: latitude, longitude: longitude)
+        return Сoordinate(latitude: latitude, longitude: longitude)
     }
 }

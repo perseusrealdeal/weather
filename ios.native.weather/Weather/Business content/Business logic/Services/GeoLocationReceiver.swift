@@ -43,8 +43,13 @@ struct Сoordinate: CustomStringConvertible {
     let _longitude: Double
 
     // Cutting off to hundredths (2 decimal places)
-    var latitude: Double { (_latitude * 100.0).rounded(_latitude > 0 ? .down : .up) / 100.0 }
-    var longitude: Double { (_longitude * 100.0).rounded(_longitude > 0 ? .down : .up) / 100.0 }
+    var latitude: Double {
+        return (_latitude * 100.0).rounded(_latitude > 0 ? .down : .up) / 100.0
+    }
+
+    var longitude: Double {
+        return (_longitude * 100.0).rounded(_longitude > 0 ? .down : .up) / 100.0
+    }
 
     init(latitude: Double, longitude: Double) {
         _latitude = latitude
@@ -62,7 +67,7 @@ struct Сoordinate: CustomStringConvertible {
 extension Сoordinate: Equatable {}
 
 func == (lhs: Сoordinate, rhs: Сoordinate) -> Bool {
-    lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
+    return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
 }
 
 // MARK: - Details about why Location service isn't allowed

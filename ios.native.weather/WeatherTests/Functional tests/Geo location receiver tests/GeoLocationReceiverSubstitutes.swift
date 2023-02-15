@@ -20,10 +20,10 @@ class MockLocationManager: LocationManagerProtocol {
     static var status: CLAuthorizationStatus = .notDetermined
     static var isLocationServiceEnabled: Bool = true
 
-    static func authorizationStatus() -> CLAuthorizationStatus { status }
-    static func locationServicesEnabled() -> Bool { isLocationServiceEnabled }
+    static func authorizationStatus() -> CLAuthorizationStatus { return status }
+    static func locationServicesEnabled() -> Bool { return isLocationServiceEnabled }
 
-    var delegate: CLLocationManagerDelegate?
+    weak var delegate: CLLocationManagerDelegate?
     var desiredAccuracy: CLLocationAccuracy = kCLLocationAccuracyThreeKilometers
 
     init() { }

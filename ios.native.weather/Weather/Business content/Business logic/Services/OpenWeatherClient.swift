@@ -27,8 +27,8 @@ enum WeatherDataDeliveryError: Error {
 // MARK: - Client for communicating with OpenWeather Service
 
 class OpenWeatherClient {
-    private var api_key: String { "79eefe16f6e4714470502074369fc77b" }
-    private var units: String { "metric" }
+    private var api_key: String { return "79eefe16f6e4714470502074369fc77b" }
+    private var units: String { return "metric" }
 
     private var dataTask: URLSessionDataTask?
     private let session: URLSessionProtocol // Isolated for unit testing
