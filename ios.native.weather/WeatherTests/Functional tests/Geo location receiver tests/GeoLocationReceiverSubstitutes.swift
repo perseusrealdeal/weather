@@ -2,7 +2,12 @@
 //  GeoLocationReceiverSubstitutes.swift
 //  WeatherTests
 //
-//  Created by Mikhail Zhigulin on 13.01.2022.
+//  Created by Mikhail Zhigulin in 7530.
+//
+//  Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
+//  Copyright © 7531 PerseusRealDeal.
+//
+//  See LICENSE for details. All rights reserved.
 //
 
 import XCTest
@@ -20,10 +25,10 @@ class MockLocationManager: LocationManagerProtocol {
     static var status: CLAuthorizationStatus = .notDetermined
     static var isLocationServiceEnabled: Bool = true
 
-    static func authorizationStatus() -> CLAuthorizationStatus { status }
-    static func locationServicesEnabled() -> Bool { isLocationServiceEnabled }
+    static func authorizationStatus() -> CLAuthorizationStatus { return status }
+    static func locationServicesEnabled() -> Bool { return isLocationServiceEnabled }
 
-    var delegate: CLLocationManagerDelegate?
+    weak var delegate: CLLocationManagerDelegate?
     var desiredAccuracy: CLLocationAccuracy = kCLLocationAccuracyThreeKilometers
 
     init() { }

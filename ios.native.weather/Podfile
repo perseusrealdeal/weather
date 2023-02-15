@@ -1,11 +1,11 @@
-# Uncomment the next line to define a global platform for your project
-platform :ios, '9.0'
+
+platform :ios, '9.3'
 use_frameworks! :linkage => :static
 
 def shared_pods
-  pod 'SwiftyJSON'
-  pod 'SwiftLint'
-  pod 'PerseusUISystemKit'
+  pod 'SwiftyJSON', '4.2.0'
+  pod 'SwiftLint', '0.31.0'
+  pod 'PerseusUISystemKit', '1.1.2'
 end
 
 target 'Weather' do

@@ -2,7 +2,12 @@
 //  OpenWeatherClient.swift
 //  Weather
 //
-//  Created by Mikhail Zhigulin on 01.12.2021.
+//  Created by Mikhail Zhigulin in 7530.
+//
+//  Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
+//  Copyright © 7531 PerseusRealDeal.
+//
+//  See LICENSE for details. All rights reserved.
 //
 
 import Foundation
@@ -27,14 +32,14 @@ enum WeatherDataDeliveryError: Error {
 // MARK: - Client for communicating with OpenWeather Service
 
 class OpenWeatherClient {
-    private var api_key: String { "79eefe16f6e4714470502074369fc77b" }
-    private var units: String { "metric" }
+    private var api_key: String { return "79eefe16f6e4714470502074369fc77b" }
+    private var units: String { return "metric" }
 
     private var dataTask: URLSessionDataTask?
     private let session: URLSessionProtocol // Isolated for unit testing
 
     var onResultDelivered: (Result<Data, WeatherDataDeliveryError>) -> Void = { print($0) }
-    var weather: Data { givenData }
+    var weather: Data { return givenData }
 
     private(set) var givenData: Data = Data() {
         didSet {

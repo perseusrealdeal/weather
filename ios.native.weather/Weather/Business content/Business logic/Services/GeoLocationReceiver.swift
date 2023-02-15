@@ -2,7 +2,12 @@
 //  GeoLocationReceiver.swift
 //  Weather
 //
-//  Created by Mikhail Zhigulin on 13.12.2021.
+//  Created by Mikhail Zhigulin in 7530.
+//
+//  Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
+//  Copyright © 7531 PerseusRealDeal.
+//
+//  See LICENSE for details. All rights reserved.
 //
 
 import CoreLocation
@@ -43,8 +48,13 @@ struct Сoordinate: CustomStringConvertible {
     let _longitude: Double
 
     // Cutting off to hundredths (2 decimal places)
-    var latitude: Double { (_latitude * 100.0).rounded(_latitude > 0 ? .down : .up) / 100.0 }
-    var longitude: Double { (_longitude * 100.0).rounded(_longitude > 0 ? .down : .up) / 100.0 }
+    var latitude: Double {
+        return (_latitude * 100.0).rounded(_latitude > 0 ? .down : .up) / 100.0
+    }
+
+    var longitude: Double {
+        return (_longitude * 100.0).rounded(_longitude > 0 ? .down : .up) / 100.0
+    }
 
     init(latitude: Double, longitude: Double) {
         _latitude = latitude
@@ -62,7 +72,7 @@ struct Сoordinate: CustomStringConvertible {
 extension Сoordinate: Equatable {}
 
 func == (lhs: Сoordinate, rhs: Сoordinate) -> Bool {
-    lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
+    return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
 }
 
 // MARK: - Details about why Location service isn't allowed

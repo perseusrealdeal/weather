@@ -1,3 +1,16 @@
+<!--
+ //
+ //  Root.plist
+ //  Weather
+ //
+ //  Created by Mikhail Zhigulin in 7530.
+ //
+ //  Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
+ //  Copyright © 7531 PerseusRealDeal.
+ //
+ //  See LICENSE for details. All rights reserved.
+ //
+ -->
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">

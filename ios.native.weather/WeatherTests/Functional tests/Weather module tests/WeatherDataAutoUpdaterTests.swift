@@ -2,7 +2,12 @@
 //  WeatherDataAutoUpdaterTests.swift
 //  WeatherTests
 //
-//  Created by Mikhail Zhigulin on 13.01.2022.
+//  Created by Mikhail Zhigulin in 7530.
+//
+//  Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
+//  Copyright © 7531 PerseusRealDeal.
+//
+//  See LICENSE for details. All rights reserved.
 //
 
 import XCTest
@@ -17,7 +22,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
     private var mockUpdaterHelper: MockUpdaterHelper!
 
     private var mockWeatherDataService: MockWeatherClientService!
-    private var mockWeatherDelegate: MockWeatherUpdaterDelegate!
+    private var mockWeatherUpdater: MockWeatherUpdaterDelegate!
 
     override func setUp() {
         super.setUp()
@@ -37,8 +42,8 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
 
         sut.useCurrentLocation = true
 
-        mockWeatherDelegate = MockWeatherUpdaterDelegate()
-        sut.delegate = mockWeatherDelegate
+        mockWeatherUpdater = MockWeatherUpdaterDelegate()
+        sut.delegate = mockWeatherUpdater
     }
 
     override func tearDown() {
@@ -47,7 +52,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
         mockGeoLocationService = nil
         mockUpdaterHelper.timerTargetStubbed = nil
         mockUpdaterHelper = nil
-        mockWeatherDelegate = nil
+        mockWeatherUpdater = nil
 
         super.tearDown()
     }
@@ -429,7 +434,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
         // assert
 
         mockGeoLocationService.verifyRequestLocationUpdateOnce()
-        mockWeatherDelegate.verifyLocationServiceNotAllowed(reason: reason)
+        mockWeatherUpdater.verifyLocationServiceNotAllowed(reason: reason)
         mockWeatherDataService.verifyRequestWeatherData(exclude: exclude_expected,
                                                         latitude: lat_expected,
                                                         longitude: lon_expected)
@@ -463,7 +468,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
                                                         latitude: lat_expected,
                                                         longitude: lon_expected)
 
-        mockWeatherDelegate.verifyFailedToGetCurrentLocation()
+        mockWeatherUpdater.verifyFailedToGetCurrentLocation()
     }
 
     /// 4.2
@@ -552,7 +557,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
 
         // assert
 
-        mockWeatherDelegate.verifyWeatherDataUpdated()
+        mockWeatherUpdater.verifyWeatherDataUpdated()
     }
 
     /// 6.2
@@ -568,7 +573,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
 
         // assert
 
-        mockWeatherDelegate.verifyWeatherAlertsUpdated()
+        mockWeatherUpdater.verifyWeatherAlertsUpdated()
     }
 
     /// 7
@@ -584,7 +589,7 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
 
         // assert
 
-        mockWeatherDelegate.verifyFailedToDeliverWeatherData()
+        mockWeatherUpdater.verifyFailedToDeliverWeatherData()
     }
 }
 

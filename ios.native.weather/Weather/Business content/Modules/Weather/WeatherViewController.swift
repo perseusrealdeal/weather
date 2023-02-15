@@ -2,7 +2,12 @@
 //  WeatherViewController.swift
 //  Weather
 //
-//  Created by Mikhail Zhigulin on 06.12.2021.
+//  Created by Mikhail Zhigulin in 7530.
+//
+//  Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
+//  Copyright © 7531 PerseusRealDeal.
+//
+//  See LICENSE for details. All rights reserved.
 //
 
 import UIKit
@@ -135,7 +140,7 @@ class WeatherViewController: UIViewController {
         if let choice = isDarkModeSettingsChanged() {
             changeDarkModeManually(choice)
         }
-        print("greetings".localized_value + " ^_^ it's " + DarkMode.Style.description)
+        print("greetings".localized_value + " ^_^ it's " + DarkMode.style.description)
 
         // Start activites
         guard let view = view as? WeatherLayoutViewProtocol else { return }
@@ -162,7 +167,7 @@ class WeatherViewController: UIViewController {
     }
 
     @objc private func makeUp() {
-        self.view.backgroundColor = .systemYellow_Adapted
+        self.view.backgroundColor = .perseusYellow
     }
 
     // MARK: - Other Methods (Not Business Logic Related)

@@ -1,14 +1,8 @@
 # SwiftyJSON
 
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) ![CocoaPods](https://img.shields.io/cocoapods/v/SwiftyJSON.svg) ![Platform](https://img.shields.io/badge/platforms-iOS%208.0%20%7C%20macOS%2010.10%20%7C%20tvOS%209.0%20%7C%20watchOS%203.0-F28D00.svg) [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
+[![Travis CI](https://travis-ci.org/SwiftyJSON/SwiftyJSON.svg?branch=master)](https://travis-ci.org/SwiftyJSON/SwiftyJSON) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) ![CocoaPods](https://img.shields.io/cocoapods/v/SwiftyJSON.svg) ![Platform](https://img.shields.io/badge/platforms-iOS%208.0+%20%7C%20macOS%2010.10+%20%7C%20tvOS%209.0+%20%7C%20watchOS%202.0+-333333.svg)
 
 SwiftyJSON makes it easy to deal with JSON data in Swift.
-
-Platform | Build Status
----------| --------------| 
-*OS      | [![Travis CI](https://travis-ci.org/SwiftyJSON/SwiftyJSON.svg?branch=master)](https://travis-ci.org/SwiftyJSON/SwiftyJSON)    | 
-[Linux](https://github.com/IBM-Swift/SwiftyJSON)      | [![Build Status](https://travis-ci.org/IBM-Swift/SwiftyJSON.svg?branch=master)](https://travis-ci.org/IBM-Swift/SwiftyJSON)     | 
-
 
 1. [Why is the typical JSON handling in Swift NOT good](#why-is-the-typical-json-handling-in-swift-not-good)
 2. [Requirements](#requirements)
@@ -26,7 +20,8 @@ Platform | Build Status
    - [Merging](#merging)
 5. [Work with Alamofire](#work-with-alamofire)
 6. [Work with Moya](#work-with-moya)
-7. [SwiftyJSON Model Generator](#swiftyjson-model-generator)
+
+> [中文介绍](http://tangplin.github.io/swiftyjson/)
 
 
 ## Why is the typical JSON handling in Swift NOT good?
@@ -71,12 +66,11 @@ And don't worry about the Optional Wrapping thing. It's done for you automatical
 
 ```swift
 let json = JSON(data: dataFromNetworking)
-let result = json[999999]["wrong_key"]["wrong_name"]
-if let userName = result.string {
+if let userName = json[999999]["wrong_key"]["wrong_name"].string {
     //Calm down, take it easy, the ".string" property still produces the correct Optional String type with safety
 } else {
     //Print the error
-    print(result.error)
+    print(json[999999]["wrong_key"]["wrong_name"])
 }
 ```
 
@@ -167,7 +161,7 @@ let name = json[0].double
 
 ```swift
 // Getting an array of string from a JSON Array
-let arrayNames =  json["users"].arrayValue.map {$0["name"].stringValue}
+let arrayNames =  json["users"].arrayValue.map({$0["name"].stringValue})
 ```
 
 ```swift
@@ -464,7 +458,7 @@ If both JSONs contain a value for the same key, _mostly_ this value gets overwri
 - In case of both values being a `JSON.Type.array` the values form the array found in the `other` JSON getting appended to the original JSON's array value.
 - In case of both values being a `JSON.Type.dictionary` both JSON-values are getting merged the same way the encapsulating JSON is merged.
 
-In a case where two fields in a JSON have different types, the value will get always overwritten.
+In case, where two fields in a JSON have a different types, the value will get always overwritten.
 
 There are two different fashions for merging: `merge` modifies the original JSON, whereas `merged` works non-destructively on a copy.
 
@@ -553,8 +547,3 @@ provider.request(.showProducts) { result in
 }
 
 ```
-
-## SwiftyJSON Model Generator
-Tools to generate SwiftyJSON Models
-* [JSON Cafe](http://www.jsoncafe.com/)
-* [JSON Export](https://github.com/Ahmed-Ali/JSONExport)
