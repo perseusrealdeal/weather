@@ -1,17 +1,19 @@
 //
-//  DarkModeFunctions.swift
+//  DarkModeSwitching.swift
 //  DarkModeDiscovery
 //
 //  Created by Mikhail Zhigulin in 7530.
 //
-//  Copyright © 7530 Mikhail Zhigulin of Novosibirsk.
+//  Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
 //  All rights reserved.
 //
 //
 //  MIT License
 //
-//  Copyright © 7530 Mikhail Zhigulin of Novosibirsk, where 7530 is
-//  the year from the creation of the world according to a Slavic calendar.
+//  Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk
+//
+//  The year starts from the creation of the world according to a Slavic calendar.
+//  September, the 1st of Slavic year.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -32,18 +34,18 @@
 //  SOFTWARE.
 //
 
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(Cocoa)
+import Cocoa
+#endif
+
+// Uncomment the instruction if added Perseus Dark Mode via package manager.
 import PerseusDarkMode
 
-/// Dark Mode option key used in Settings bundle.
+// Dark Mode option key used in Settings bundle.
 let DARK_MODE_SETTINGS_KEY = "dark_mode_preference"
 
-/// Changes Dark Mode with the value required
-///
-/// Changes AppearanceService.DarkModeUserChoice value.
-/// Also, changes Dark Mode option value in settings bundle.
-///
-/// - Parameter userChoice: The Dark Mode value required to be setted.
 func changeDarkModeManually(_ userChoice: DarkModeOption) {
     // Change Dark Mode value in settings bundle
     UserDefaults.standard.setValue(userChoice.rawValue, forKey: DARK_MODE_SETTINGS_KEY)
@@ -55,24 +57,15 @@ func changeDarkModeManually(_ userChoice: DarkModeOption) {
     AppearanceService.makeUp()
 }
 
-/// Checks whether the Dark Mode option in Settings app has changed.
-///
-/// Report DarkModeOption value if the difference between the app's Dark Mode in Settings app
-/// and AppearanceService.DarkModeUserChoice takes place.
-///
-/// - Returns: Nil if no changes or Dark Mode value that is different to AppearanceService.DarkModeUserChoice.
 func isDarkModeSettingsChanged() -> DarkModeOption? {
     // Load enum int value from settings
-
     let option = UserDefaults.standard.valueExists(forKey: DARK_MODE_SETTINGS_KEY) ?
         UserDefaults.standard.integer(forKey: DARK_MODE_SETTINGS_KEY) : -1
 
     // Try to cast int value to enum
-
     guard option != -1, let settingsDarkMode = DarkModeOption.init(rawValue: option)
-    else { return nil } // Should throw exception if init gives nil
+        else { return nil } // Should throw exception if init gives nil
 
     // Report change
-
     return settingsDarkMode != AppearanceService.DarkModeUserChoice ? settingsDarkMode : nil
 }

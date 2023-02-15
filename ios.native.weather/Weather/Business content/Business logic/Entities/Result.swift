@@ -2,8 +2,12 @@
 //  Result.swift
 //  Weather
 //
-//  Created by Mikhail Zhigulin on 15/02/2023.
-//  Copyright © 2023 Perseusrealdeal. All rights reserved.
+//  Created by Mikhail Zhigulin in 7531.
+//
+//  Copyright © 7531 Mikhail Zhigulin of Novosibirsk.
+//  Copyright © 7531 PerseusRealDeal.
+//
+//  See LICENSE for details. All rights reserved.
 //
 
 import Foundation

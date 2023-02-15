@@ -208,23 +208,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E00F83002886769D000D0A01 /* ThirdPartyCode */ = {
+		E00F83002886769D000D0A01 /* FirstPartyCode */ = {
 			isa = PBXGroup;
 			children = (
 				E00F8301288676B3000D0A01 /* DarkModeFunctions.swift */,
 			);
-			path = ThirdPartyCode;
+			path = FirstPartyCode;
 			sourceTree = "<group>";
 		};
 		E04A129A2859F16500F6F679 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				4BF0F73C299BA3FB00C62924 /* AppDelegate.swift */,
-				E0C428CD27535BDD00E65DFD /* Assets.xcassets */,
-				E0C428D227535BDD00E65DFD /* Info.plist */,
+				E00F83002886769D000D0A01 /* FirstPartyCode */,
 				E0C428E027535E0500E65DFD /* Localization */,
 				E09284D3275FD9E20090E267 /* Settings.bundle */,
-				E00F83002886769D000D0A01 /* ThirdPartyCode */,
+				E0C428CD27535BDD00E65DFD /* Assets.xcassets */,
+				E0C428D227535BDD00E65DFD /* Info.plist */,
+				4BF0F73C299BA3FB00C62924 /* AppDelegate.swift */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
