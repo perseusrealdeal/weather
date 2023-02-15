@@ -34,7 +34,7 @@ class OpenWeatherClient {
     private let session: URLSessionProtocol // Isolated for unit testing
 
     var onResultDelivered: (Result<Data, WeatherDataDeliveryError>) -> Void = { print($0) }
-    var weather: Data { givenData }
+    var weather: Data { return givenData }
 
     private(set) var givenData: Data = Data() {
         didSet {

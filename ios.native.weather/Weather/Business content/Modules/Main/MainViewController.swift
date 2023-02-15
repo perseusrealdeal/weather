@@ -71,10 +71,10 @@ class MainViewController: UIViewController {
             changeDarkModeManually(choice)
         }
 
-        label.text = "greetings".localized_value + " ^_^ it's " + DarkMode.Style.description
+        label.text = "greetings".localized_value + " ^_^ it's " + DarkMode.style.description
     }
 
     @objc private func makeUp() {
-        self.view.backgroundColor = .systemYellow_Adapted
+        self.view.backgroundColor = .perseusYellow
     }
 }

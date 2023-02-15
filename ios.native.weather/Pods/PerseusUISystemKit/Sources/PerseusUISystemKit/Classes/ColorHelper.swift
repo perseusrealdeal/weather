@@ -2,15 +2,28 @@
 //  ColorHelper.swift
 //  PerseusUISystemKit
 //
-//  Created by Mikhail Zhigulin in 2022.
+//  Created by Mikhail Zhigulin in 7530.
 //
-//  Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk.
+//  Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
+//
 //  Licensed under the MIT license. See LICENSE file.
 //  All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(Cocoa)
+import Cocoa
+#endif
+
 import PerseusDarkMode
+
+#if os(iOS)
+public typealias Color = UIColor
+#elseif os(macOS)
+public typealias Color = NSColor
+#endif
+
 /// Creates the instance of UIColor using RGBA color model.
 ///
 /// ```swift
@@ -28,20 +41,15 @@ import PerseusDarkMode
 ///   - blue: From 0 to 255.
 ///   - alpha: From 0 to 1.0.
 /// - Returns: The instance of UIColor type.
-public func rgba255(_ red: CGFloat,
-                    _ green: CGFloat,
-                    _ blue: CGFloat,
-                    _ alpha: CGFloat = 1.0) -> UIColor {
-    UIColor(red: red/255, green: green/255, blue: blue/255, alpha: alpha)
-}
+public func rgba255(_ red: CGFloat, _ green: CGFloat, _ blue: CGFloat, _ alpha: CGFloat = 1.0)
+    -> Color { return Color(red: red/255, green: green/255, blue: blue/255, alpha: alpha) }
 
 /// Used to exctruct RGBA of the UIColor instance
-public extension UIColor {
+public extension Color {
     /// Returns red, green, and blue from 0 to 255, and alpha from 0.0 to 1.0.
     ///
     /// ```swift
     /// let rgba = UIColor.red.RGBA255
-    /// print("red: \(rgba.red), green: \(rgba.green), blue: \(rgba.blue), alpha: \(rgba.alpha)")
     /// ```
     var RGBA255: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         var red: CGFloat = 0
@@ -53,8 +61,4 @@ public extension UIColor {
 
         return (red*255, green*255, blue*255, alpha)
     }
-}
-
-extension UIColor {
-    internal static var _iOS13InUseAndHigherOnly: Bool = true
 }

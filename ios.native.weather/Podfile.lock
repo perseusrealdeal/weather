@@ -1,14 +1,14 @@
 PODS:
-  - PerseusDarkMode (1.0.4)
-  - PerseusUISystemKit (1.0.0):
-    - PerseusDarkMode (= 1.0.4)
-  - SwiftLint (0.47.1)
-  - SwiftyJSON (5.0.1)
+  - PerseusDarkMode (1.1.3)
+  - PerseusUISystemKit (1.1.2):
+    - PerseusDarkMode (= 1.1.3)
+  - SwiftLint (0.31.0)
+  - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
-  - PerseusUISystemKit
-  - SwiftLint
-  - SwiftyJSON
+  - PerseusUISystemKit (= 1.1.2)
+  - SwiftLint (= 0.31.0)
+  - SwiftyJSON (= 4.2.0)
 
 SPEC REPOS:
   trunk:
@@ -18,11 +18,11 @@ SPEC REPOS:
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  PerseusDarkMode: 9df3a41cd59fa2b7a6b63bb094643d669ce034ef
-  PerseusUISystemKit: a4eeb08defff1af8a36d5cb6d590d8aa94a5274e
-  SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
-  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+  PerseusDarkMode: ae9270161d3f0e4f056df55029b3289f8086c56b
+  PerseusUISystemKit: deb15e37f60bf75aecd62e1a3f49f85c03e1b502
+  SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 3fd69a6d4e4fbdfe7790dee4ae04e18e504fcf00
+PODFILE CHECKSUM: 5fe02e39fb12c7a683b349a303524d7f39d9192f
 
 COCOAPODS: 1.11.3

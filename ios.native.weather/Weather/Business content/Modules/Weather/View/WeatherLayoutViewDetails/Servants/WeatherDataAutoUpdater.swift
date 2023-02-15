@@ -31,7 +31,7 @@ class WeatherDataAutoUpdater {
     // flags
 
     private var _activated: Bool = false
-    var activated: Bool { _activated }
+    var activated: Bool { return _activated }
 
     /// True — CoreLocation for updating, otherwise what's given explicitly
     var useCurrentLocation: Bool = false

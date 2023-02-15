@@ -10,11 +10,11 @@ import SwiftyJSON
 class WeatherDataModel {
     // MARK: - Business Matter Data
 
-    var alerts: [NationalAlert]? { parser() }
+    var alerts: [NationalAlert]? { return parser() }
 
-    var forecastHourly: [ForecastHour]? { parser() }
-    var forecastDaily: [ForecastDay]? { parser() }
-    var currentWeather: CurrentWeather? { parser() }
+    var forecastHourly: [ForecastHour]? { return parser() }
+    var forecastDaily: [ForecastDay]? { return parser() }
+    var currentWeather: CurrentWeather? { return parser() }
 
     private var jsonData: JSON!
 
@@ -34,9 +34,9 @@ class WeatherDataModel {
 
     var saver: LocalDataSaverProtocol
 
-    var target: CurrentLocationDescription? { parser() }
+    var target: CurrentLocationDescription? { return parser() }
 
-    var lastFullUpdateTime: LastFullUpdateTime? { parser() }
+    var lastFullUpdateTime: LastFullUpdateTime? { return parser() }
 
     var isForecastHourlyUpToDate: Bool {
         guard let timeToUpdate = forecastHourly?[1].dt else { return false }

@@ -2,47 +2,48 @@
 //  DarkModeImageView.swift
 //  PerseusUISystemKit
 //
-//  Created by Mikhail Zhigulin in 2022.
+//  Created by Mikhail Zhigulin in 7530.
 //
-//  Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk.
+//  Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk.
+//
 //  Licensed under the MIT license. See LICENSE file.
 //  All rights reserved.
 //
+// swiftlint:disable file_length
+//
 
-#if !os(macOS)
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(Cocoa)
+import Cocoa
 #endif
 
 import PerseusDarkMode
 
-/// Represents a quite light implementation of a dynamic image idea that depends on the app's appearance style.
-///
-/// Use Interface Builder to set images up for both light and dark styles.
+#if os(iOS)
+
+@IBDesignable
 public class DarkModeImageView: UIImageView {
-    /// The way to set image up for light style via Interface Builder.
+
     @IBInspectable
     var imageLight: UIImage? {
         didSet {
             light = imageLight
-            image = AppearanceService.shared.Style == .light ? light : dark
+            image = DarkMode.style == .light ? light : dark
         }
     }
 
-    /// The way to set image up for dark style via Interface Builder.
     @IBInspectable
     var imageDark: UIImage? {
         didSet {
             dark = imageDark
-            image = AppearanceService.shared.Style == .light ? light : dark
+            image = DarkMode.style == .light ? light : dark
         }
     }
 
-    /// Observer for the app's appearance style changes.
     private(set) var darkModeObserver: DarkModeObserver?
 
-    /// When the app's appearance style is Light.
     private(set) var light: UIImage?
-    /// When the app's appearance style is Dark.
     private(set) var dark: UIImage?
 
     override init(frame: CGRect) {
@@ -55,17 +56,14 @@ public class DarkModeImageView: UIImageView {
         configure()
     }
 
-    /// Configures the view.
     private func configure() {
         darkModeObserver = DarkModeObserver { style in
             self.image = style == .light ? self.light : self.dark
         }
+
+        image = DarkMode.style == .light ? self.light : self.dark
     }
 
-    /// Sets images for both light and dark styles.
-    /// - Parameters:
-    ///   - light: Image for light style.
-    ///   - dark: Image for dark style.
     public func configure(_ light: UIImage?, _ dark: UIImage?) {
         self.light = light
         self.dark = dark
@@ -74,6 +72,151 @@ public class DarkModeImageView: UIImageView {
             self.image = style == .light ? self.light : self.dark
         }
 
-        image = AppearanceService.shared.Style == .light ? self.light : self.dark
+        image = DarkMode.style == .light ? self.light : self.dark
     }
 }
+
+#elseif os(macOS)
+
+public enum ScaleImageViewMacOS: Int, CustomStringConvertible {
+
+    case scaleNone                  = 0 // No scale at all
+    case axesIndependently          = 1 // Aspect Fill
+    case proportionallyUpOrDown     = 2 // Aspect Fit
+    case proportionallyDown         = 3 // Center Top
+    case proportionallyClipToBounds = 4 // Aspect Fill with cliping to ImageView bounds
+
+    public var description: String {
+        switch self {
+        case .scaleNone:
+            return "As is, no scaling."
+        case .axesIndependently:
+            return "Aspect Fill."
+        case .proportionallyUpOrDown:
+            return "Aspect Fit."
+        case .proportionallyDown:
+            return "Center Top."
+        case .proportionallyClipToBounds:
+            return "Aspect Fill cliped to bounds."
+        }
+    }
+
+    public var value: NSImageScaling {
+        switch self {
+        case .scaleNone:
+            return .scaleNone
+        case .axesIndependently:
+            return .scaleAxesIndependently
+        case .proportionallyUpOrDown:
+            return .scaleProportionallyUpOrDown
+        case .proportionallyDown:
+            return .scaleProportionallyDown
+        case .proportionallyClipToBounds:
+            return .scaleNone
+        }
+    }
+}
+
+@IBDesignable
+public class DarkModeImageView: NSImageView {
+
+    @IBInspectable
+    var imageLight: NSImage? {
+        didSet {
+            image = DarkMode.style == .light ? imageLight : imageDark
+        }
+    }
+
+    @IBInspectable
+    var imageDark: NSImage? {
+        didSet {
+            image = DarkMode.style == .light ? imageLight : imageDark
+        }
+    }
+
+    @IBInspectable
+    var aspectFillClipToBounds: Bool = false
+
+    var customScale: ScaleImageViewMacOS = .scaleNone {
+        didSet {
+            guard customScale != .proportionallyClipToBounds else {
+
+                self.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+                self.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+
+                self.aspectFillClipToBounds = true
+                self.imageScaling = .scaleNone
+
+                return
+            }
+
+            self.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+            self.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
+
+            self.aspectFillClipToBounds = false
+            self.imageScaling = customScale.value
+        }
+    }
+
+    private(set) var darkModeObserver: DarkModeObserver?
+
+    override public func awakeFromNib() {
+        guard aspectFillClipToBounds else { return }
+
+        self.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        self.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+
+        self.imageScaling = .scaleNone
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configure()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        configure()
+    }
+
+    public func configure(_ light: NSImage?, _ dark: NSImage?) {
+        configure()
+
+        self.imageLight = light
+        self.imageDark = dark
+    }
+
+    private func configure() {
+        darkModeObserver = DarkModeObserver { style in
+            self.image = style == .light ? self.imageLight : self.imageDark
+        }
+    }
+
+    override public func draw(_ dirtyRect: NSRect) {
+        guard aspectFillClipToBounds, let image = self.image else {
+            super.draw(dirtyRect)
+            return
+        }
+
+        // Get variables
+
+        let viewWidth = self.bounds.size.width
+        let viewHeight = self.bounds.size.height
+
+        let width = image.size.width
+        let height = image.size.height
+
+        // https://study.com/learn/lesson/what-is-aspect-ratio.html
+        let imageViewRatio = viewWidth / viewHeight
+        let imageRatio = width / height
+
+        // Scale image of the ImageView with clipping to bounds
+
+        image.size.width = imageRatio < imageViewRatio ? viewWidth : viewHeight * imageRatio
+        image.size.height = imageRatio < imageViewRatio ? viewWidth / imageRatio : viewHeight
+
+        super.draw(dirtyRect)
+    }
+}
+
+#endif

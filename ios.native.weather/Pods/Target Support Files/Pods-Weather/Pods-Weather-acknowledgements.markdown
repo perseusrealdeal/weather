@@ -5,7 +5,10 @@ This application makes use of the following third party libraries:
 
 MIT License
 
-Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk
+Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk
+
+The year starts from the creation of the world according to a Slavic calendar.
+September, the 1st of Slavic year.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +33,10 @@ SOFTWARE.
 
 MIT License
 
-Copyright (c) 2022 Mikhail Zhigulin of Novosibirsk
+Copyright © 7530 - 7531 Mikhail Zhigulin of Novosibirsk
+
+The year starts from the creation of the world according to a Slavic calendar.
+September, the 1st of Slavic year.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -55,7 +61,7 @@ SOFTWARE.
 
 The MIT License (MIT)
 
-Copyright (c) 2020 Realm Inc.
+Copyright (c) 2015 Realm Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
