@@ -1,5 +1,6 @@
 //
-//  Requirements.txt
+//  Requirements.txt, DataModels.txt, Localization_en.plist, Localization_ru.plist,
+//  activity_diagram.png, navigation_prototype.png
 //  Weather
 //
 //  Created by Mikhail Zhigulin in 7530.
