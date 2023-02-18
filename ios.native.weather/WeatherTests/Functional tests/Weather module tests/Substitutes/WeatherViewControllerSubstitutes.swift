@@ -113,7 +113,7 @@ class MockGeoLocationReceiver: GeoLocationServiceProtocol {
     }
 }
 
-class MockNotificationCenter: NotificationCenterProtocol {
+class MockNotificationCenter: NotificationCenterTestProtocol {
     // MARK: - Verifing addObserver method
 
     var addObserverCallCount = 0

@@ -11,11 +11,10 @@
 //
 
 import UIKit
-import SwiftyJSON
 
 // MARK: - Abstracts used to make code testable
 
-protocol NotificationCenterProtocol {
+protocol NotificationCenterTestProtocol {
     func addObserver(_ observer: Any,
                      selector aSelector: Selector,
                      name aName: NSNotification.Name?,
@@ -61,7 +60,7 @@ protocol LocalDataSaverProtocol {
 }
 
 extension LocalDataSaver: LocalDataSaverProtocol { }
-extension NotificationCenter: NotificationCenterProtocol { }
+extension NotificationCenter: NotificationCenterTestProtocol { }
 extension GeoLocationReceiver: GeoLocationServiceProtocol { }
 extension WeatherLayoutView: WeatherLayoutViewProtocol { }
 extension OpenWeatherClient: WeatherClientProtocol { }

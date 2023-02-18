@@ -1,6 +1,0 @@
-framework module PerseusDarkMode {
-  umbrella header "PerseusDarkMode-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -5,7 +5,7 @@
 //  Created by Mikhail Zhigulin on 24.12.2021.
 //
 
-import SwiftyJSON
+import Foundation
 
 class WeatherDataModel {
     // MARK: - Business Matter Data
