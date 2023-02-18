@@ -91,7 +91,9 @@ class WeatherStackView: UIStackView {
 
     // MARK: - Business Logic Related Methods
 
-    public func updateLayoutOrientationIfNeeded(for currentOrientation: NSLayoutConstraint.Axis) {
+    public func updateLayoutOrientationIfNeeded(
+        for currentOrientation: NSLayoutConstraint.Axis) {
+
         if configuredForOrientation == currentOrientation { return }
 
         configuredForOrientation = currentOrientation

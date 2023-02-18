@@ -9,9 +9,10 @@
 //
 //  See LICENSE for details. All rights reserved.
 //
+// swiftlint:disable file_length
+//
 
 import XCTest
-import SwiftyJSON
 
 @testable import Weather
 
@@ -107,10 +108,11 @@ class OpenWeatherCommunicationTests: XCTestCase {
 
         // assert
 
-        XCTAssertEqual(String(describing: actual_failure), String(describing: expected_failure))
+        XCTAssertEqual(String(describing: actual_failure),
+                       String(describing: expected_failure))
     }
 
-    func test_updateWeatherNetworkCall_withResponse_withStatusCodeNot200_shouldReportFailure() {
+    func test_updateWeatherNetworkCall_withResponse_StatusCodeNot200_shouldReportFailure() {
         // arrange
 
         let mock = MockURLSession()
@@ -140,14 +142,16 @@ class OpenWeatherCommunicationTests: XCTestCase {
         sut.requestWeatherData()
 
         /// simulate response
-        mock.dataTaskArgsCompletionHandler.first?(happiness, response(statusCode: status_code), nil)
+        mock.dataTaskArgsCompletionHandler.first?(happiness,
+                                                  response(statusCode: status_code), nil)
 
         waitForExpectations(timeout: 0.01)
 
         // assert
 
         XCTAssertEqual(sut.weather, Data(), "Causing data update with failure status code!")
-        XCTAssertEqual(String(describing: actual_failure), String(describing: expected_failure))
+        XCTAssertEqual(String(describing: actual_failure),
+                       String(describing: expected_failure))
     }
 
     func test_updateWeatherNetworkCall_withSuccessBeforeAsync_shouldNotSaveDataByClient() {
@@ -247,7 +251,8 @@ extension OpenWeatherCommunicationTests {
 
         // assert
 
-        XCTAssertTrue(sut.givenData != Data(), "There is no data has been given by OpenWeather!")
+        XCTAssertTrue(sut.givenData != Data(),
+                      "There is no data has been given by OpenWeather!")
     }
 }
 
@@ -257,7 +262,8 @@ extension OpenWeatherCommunicationTests {
 /// dataTask(with:completionHandler:) can't return just URLSessionDataTask instance.
 private class DummyURLSessionDataTask: URLSessionDataTask { override func resume() { } }
 
-/// Used instead of URLSession.shared to make it isolated via constructor injection in OpenWeatherClient.
+/// Used instead of URLSession.shared
+/// to make it isolated via constructor injection in OpenWeatherClient.
 private class MockURLSession: URLSessionProtocol {
     /// for network request testing
     var dataTaskCallCount: Int = 0
@@ -286,7 +292,8 @@ private class MockURLSession: URLSessionProtocol {
         XCTAssertEqual(dataTaskArgsRequest.first, request, "request", file: file, line: line)
     }
 
-    private func dataTaskWasCalledOnce(file: StaticString = #file, line: UInt = #line) -> Bool {
+    private func dataTaskWasCalledOnce(file: StaticString = #file,
+                                       line: UInt = #line) -> Bool {
         return verifyMethodCalledOnce(
             methodName: "dataTask(with:completionHandler:)",
             callCount: dataTaskCallCount,

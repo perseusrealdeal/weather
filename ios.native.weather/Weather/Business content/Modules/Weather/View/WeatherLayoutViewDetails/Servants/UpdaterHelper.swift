@@ -128,7 +128,8 @@ class UpdaterHelper: UpdaterHelperProtocol {
         // DONE: Start timer
 
         #if DEBUG
-        let interval = useTimeIntervalForUnitTest ? intervalInSeconds / 1000.0 : intervalInSeconds
+        let interval = useTimeIntervalForUnitTest ?
+            intervalInSeconds / 1000.0 : intervalInSeconds
         #else
         let interval = intervalInSeconds
         #endif

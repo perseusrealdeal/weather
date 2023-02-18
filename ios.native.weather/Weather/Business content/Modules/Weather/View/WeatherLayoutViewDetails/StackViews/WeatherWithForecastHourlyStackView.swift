@@ -1,5 +1,5 @@
 //
-//  CurrentWeatherWithForecastHourlyStackView.swift
+//  WeatherWithForecastHourlyStackView.swift
 //  Weather
 //
 //  Created by Mikhail Zhigulin on 23.12.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CurrentWeatherWithForecastHourlyStackView: UIStackView {
+class WeatherWithForecastHourlyStackView: UIStackView {
 
     // MARK: - View Layout Related Properties
 
@@ -88,13 +88,16 @@ class CurrentWeatherWithForecastHourlyStackView: UIStackView {
             addArrangedSubview(forecastHourlyView)
 
             NSLayoutConstraint.activate([constraintVerticalAxis1, constraintVerticalAxis2])
-            NSLayoutConstraint.deactivate([constraintHorizontalAxis1, constraintHorizontalAxis2])
+            NSLayoutConstraint.deactivate([constraintHorizontalAxis1,
+                                           constraintHorizontalAxis2])
         }
     }
 
     // MARK: - Business Logic Related Methods
 
-    public func updateLayoutOrientationIfNeeded(for currentOrientation: NSLayoutConstraint.Axis) {
+    public func updateLayoutOrientationIfNeeded(
+        for currentOrientation: NSLayoutConstraint.Axis) {
+
         if configuredForOrientation == currentOrientation { return }
 
         configuredForOrientation = currentOrientation

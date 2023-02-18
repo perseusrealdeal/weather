@@ -33,7 +33,8 @@ class UserPreferences {
                 from: settingsData,
                 options: [],
                 format: nil) as? [String: Any],
-            let settingsPreferences = settingsPlist?[bundle_PreferencesItems] as? [[String: Any]]
+            let settingsPreferences = settingsPlist?[bundle_PreferencesItems]
+                as? [[String: Any]]
         else { return }
 
         var defaultsToRegister = [String: Any]()

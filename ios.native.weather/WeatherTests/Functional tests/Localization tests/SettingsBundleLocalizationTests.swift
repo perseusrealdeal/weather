@@ -9,6 +9,8 @@
 //
 //  See LICENSE for details. All rights reserved.
 //
+// swiftlint:disable file_length
+//
 
 import XCTest
 @testable import Weather

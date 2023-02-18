@@ -14,7 +14,8 @@ enum WeatherLayoutVariation {
 class WeatherLayoutView: UIView {
     // MARK: - View Layout Related Properties
 
-    /// configuredForOrientation is initialized when updateLayoutOrientationIfNeeded method called
+    /// configuredForOrientation is initialized
+    /// when updateLayoutOrientationIfNeeded method called
     private var configuredForOrientation: NSLayoutConstraint.Axis?
     private let stackView: WeatherStackView
 

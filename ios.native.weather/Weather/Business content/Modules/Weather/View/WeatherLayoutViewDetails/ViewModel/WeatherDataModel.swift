@@ -4,6 +4,8 @@
 //
 //  Created by Mikhail Zhigulin on 24.12.2021.
 //
+// swiftlint:disable file_length
+//
 
 import Foundation
 
@@ -185,7 +187,7 @@ class WeatherDataModel {
 
         let timeOfDay = Date(timeIntervalSince1970: from).addingTimeInterval(offset)
 
-        let startOfDay =  Calendar.current.startOfDay(for: timeOfDay).addingTimeInterval(offset)
+        let startOfDay = Calendar.current.startOfDay(for: timeOfDay).addingTimeInterval(offset)
 
         let components = DateComponents(hour: 23, minute: 59, second: 59)
         let endOfDay = Calendar.current.date(byAdding: components, to: startOfDay)!

@@ -27,7 +27,9 @@ class MockGeoLocationService: GeoLocationServiceProtocol {
 
     var requestLocationUpdateOnceCallCount = 0
 
-    func requestLocationUpdateOnce(_ actionIfNotAllowed: ((LocationServiceNotAllowed) -> Void)?) {
+    func requestLocationUpdateOnce(
+        _ actionIfNotAllowed: ((LocationServiceNotAllowed) -> Void)?) {
+
         requestLocationUpdateOnceCallCount += 1
 
         if useCallBack { actionIfNotAllowed?(reasonInCallBack) }

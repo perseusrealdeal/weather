@@ -9,6 +9,8 @@
 //
 //  See LICENSE for details. All rights reserved.
 //
+// swiftlint:disable file_length
+//
 
 import UIKit
 import XCTest
@@ -32,7 +34,9 @@ class MockWeatherLayoutView: UIView, WeatherLayoutViewProtocol {
     func verifyUpdateLayoutOrientationIfNeeded(with orientation: NSLayoutConstraint.Axis,
                                                file: StaticString = #file,
                                                line: UInt = #line) {
-        guard updateLayoutOrientationIfNeededWasCalledOnce(file: file, line: line) else { return }
+        guard updateLayoutOrientationIfNeededWasCalledOnce(file: file, line: line)
+        else { return }
+
         XCTAssertEqual(updateLayoutOrientationIfNeededArgs.first,
                        orientation, "orientation", file: file, line: line)
     }

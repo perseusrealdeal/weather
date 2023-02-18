@@ -9,6 +9,8 @@
 //
 //  See LICENSE for details. All rights reserved.
 //
+// swiftlint:disable file_length
+//
 
 import CoreLocation
 
@@ -44,26 +46,28 @@ func == (lhs: LocationReceivedError, rhs: LocationReceivedError) -> Bool {
 
 struct Сoordinate: CustomStringConvertible {
     // Neither rounding nor cutting off, just as is from core location
-    let _latitude: Double
-    let _longitude: Double
+    let latitudeHidden: Double
+    let longitudeHidden: Double
 
     // Cutting off to hundredths (2 decimal places)
     var latitude: Double {
-        return (_latitude * 100.0).rounded(_latitude > 0 ? .down : .up) / 100.0
+        return (latitudeHidden * 100.0).rounded(latitudeHidden > 0 ? .down : .up) / 100.0
     }
 
     var longitude: Double {
-        return (_longitude * 100.0).rounded(_longitude > 0 ? .down : .up) / 100.0
+        return (longitudeHidden * 100.0).rounded(longitudeHidden > 0 ? .down : .up) / 100.0
     }
 
     init(latitude: Double, longitude: Double) {
-        _latitude = latitude
-        _longitude = longitude
+        latitudeHidden = latitude
+        longitudeHidden = longitude
     }
 
     var description: String {
-        let latitude = (_latitude * 10000.0).rounded(_latitude > 0 ? .down : .up) / 10000.0
-        let longitude = (_longitude * 10000.0).rounded(_longitude > 0 ? .down : .up) / 10000.0
+        let latitude =
+            (latitudeHidden * 10000.0).rounded(latitudeHidden > 0 ? .down : .up) / 10000.0
+        let longitude =
+            (longitudeHidden * 10000.0).rounded(longitudeHidden > 0 ? .down : .up) / 10000.0
 
         return "[\(latitude), \(longitude)]: latitude = \(latitude), longitude = \(longitude)"
     }
@@ -81,7 +85,8 @@ enum LocationServiceNotAllowed: CustomStringConvertible {
     /// Location service is neither restricted nor the app denided
     case notDetermined
 
-    /// provide instructions for changing restrictions options in Settings > General > Restrictions
+    /// provide instructions for changing restrictions options in
+    /// Settings > General > Restrictions
     case deniedForAllAndRestricted /// in case if location services turned off
     case restricted  /// in case if location services turned on
 
@@ -187,7 +192,9 @@ class GeoLocationReceiver: NSObject {
                 .restricted : .deniedForAllAndRestricted
         }
 
-        guard let caseNotAllowed = locationServiceNotAllowed, let takeAction = actionIfNotAllowed
+        guard
+            let caseNotAllowed = locationServiceNotAllowed,
+            let takeAction = actionIfNotAllowed
         else { locationManager.requestLocation(); return }
 
         takeAction(caseNotAllowed)
@@ -197,13 +204,17 @@ class GeoLocationReceiver: NSObject {
 // MARK: - CLLocationManagerDelegate methods
 
 extension GeoLocationReceiver: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+
+    func locationManager(_ manager: CLLocationManager,
+                         didUpdateLocations locations: [CLLocation]) {
+
         guard let value = locations.first?.coordinate
         else {
             let result: Result<Сoordinate, LocationReceivedError> =
                 .failure(.receivedEmptyLocationData)
 
-            Settings.notificationCenter.post(name: .locationReceivedNotification, object: result)
+            Settings.notificationCenter.post(name: .locationReceivedNotification,
+                                             object: result)
             return
         }
 

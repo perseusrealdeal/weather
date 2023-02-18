@@ -9,6 +9,8 @@
 //
 //  See LICENSE for details. All rights reserved.
 //
+// swiftlint:disable file_length
+//
 
 import XCTest
 @testable import Weather
@@ -443,10 +445,11 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
 
     /// 4
     /// 4.1
-    func test_locationReceivedNotificationHandler_should_succeeded_if_failedToGetCurrentLocation() {
+    func test_locationReceivedNotificationHandler_succeeded_if_failedToGetCurrentLocation() {
         // arrange
 
-        let result: Result<Сoordinate, LocationReceivedError> = .failure(.failedRequest("error"))
+        let result: Result<Сoordinate, LocationReceivedError> =
+            .failure(.failedRequest("error"))
 
         let result_arranged = Notification(name: .locationReceivedNotification,
                                            object: result,
@@ -475,7 +478,8 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
     func test_locationReceivedNotificationHandler_should_succeeded_if_locationNotChanged() {
         // arrange
 
-        let coordinate = Сoordinate(latitude: 55.659999999999997, longitude: 85.620000000000005)
+        let coordinate = Сoordinate(latitude: 55.659999999999997,
+                                     longitude: 85.620000000000005)
 
         let result: Result<Сoordinate, LocationReceivedError> = .success(coordinate)
 
@@ -511,7 +515,8 @@ class WeatherDataAutoUpdaterTests: XCTestCase {
     func test_locationReceivedNotificationHandler_should_succeeded_if_locationChanged() {
         // arrange
 
-        let coordinate = Сoordinate(latitude: 45.659999999999997, longitude: 85.620000000000005)
+        let coordinate = Сoordinate(latitude: 45.659999999999997,
+                                     longitude: 85.620000000000005)
 
         let result: Result<Сoordinate, LocationReceivedError> = .success(coordinate)
 
