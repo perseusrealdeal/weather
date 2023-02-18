@@ -11,7 +11,7 @@
 		4B6D0D03299EA77F00CD22AB /* main.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4B6D0D02299EA77F00CD22AB /* main.yml */; };
 		4B6D0D0829A0979800CD22AB /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6D0D0729A0979800CD22AB /* SwiftyJSON.swift */; };
 		4B6D0D0A29A098C800CD22AB /* PerseusUISystemKitSingle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6D0D0929A098C800CD22AB /* PerseusUISystemKitSingle.swift */; };
-		4B6D0D0C29A0997B00CD22AB /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4B6D0D0B29A0997B00CD22AB /* .swiftlint.yml */; };
+		4B6D0D0E29A09E7B00CD22AB /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4B6D0D0D29A09E7B00CD22AB /* .swiftlint.yml */; };
 		4BF0F73D299BA3FB00C62924 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF0F73C299BA3FB00C62924 /* AppDelegate.swift */; };
 		E00F8302288676B3000D0A01 /* DarkModeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00F8301288676B3000D0A01 /* DarkModeFunctions.swift */; };
 		E04A129D2859F20800F6F679 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E04A129C2859F20800F6F679 /* README.md */; };
@@ -93,7 +93,7 @@
 		4B6D0D02299EA77F00CD22AB /* main.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = main.yml; path = ../.github/workflows/main.yml; sourceTree = "<group>"; };
 		4B6D0D0729A0979800CD22AB /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		4B6D0D0929A098C800CD22AB /* PerseusUISystemKitSingle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerseusUISystemKitSingle.swift; sourceTree = "<group>"; };
-		4B6D0D0B29A0997B00CD22AB /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .swiftlint.yml; path = ../.swiftlint.yml; sourceTree = "<group>"; };
+		4B6D0D0D29A09E7B00CD22AB /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		4BF0F73C299BA3FB00C62924 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E00F8301288676B3000D0A01 /* DarkModeFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeFunctions.swift; sourceTree = "<group>"; };
 		E04A129C2859F20800F6F679 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -408,7 +408,7 @@
 			isa = PBXGroup;
 			children = (
 				4B6D0D02299EA77F00CD22AB /* main.yml */,
-				4B6D0D0B29A0997B00CD22AB /* .swiftlint.yml */,
+				4B6D0D0D29A09E7B00CD22AB /* .swiftlint.yml */,
 				E04A129C2859F20800F6F679 /* README.md */,
 				E0C428C327535BD800E65DFD /* Weather */,
 				E0AAF5CD2755041600093229 /* WeatherTests */,
@@ -653,7 +653,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B6D0D0C29A0997B00CD22AB /* .swiftlint.yml in Resources */,
+				4B6D0D0E29A09E7B00CD22AB /* .swiftlint.yml in Resources */,
 				E0C428D127535BDD00E65DFD /* LaunchScreen.storyboard in Resources */,
 				E0C428F52753636400E65DFD /* activity_diagram.png in Resources */,
 				E0C428CE27535BDD00E65DFD /* Assets.xcassets in Resources */,
@@ -712,7 +712,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# SwiftLint works.\n\n#if [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n#if which swiftlint >/dev/null; then\n#swiftlint --config \"../.swiftlint.yml\"\n#else\n#echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi\n#fi\n\n";
+			shellScript = "# SwiftLint works.\n\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\nif which swiftlint >/dev/null; then\nswiftlint --config \"../ios.native.weather/.swiftlint.yml\"\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\nfi\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
