@@ -45,7 +45,7 @@ extension String {
                 as? [String: String]
         else { print("Not possible to serialize the property list."); return "?" }
 
-        guard let value = result[self]
+        guard let value = result?[self]
         else { print("No such value according to the key: \(self)."); return "?" }
 
         return value
