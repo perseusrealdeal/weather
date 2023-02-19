@@ -73,7 +73,7 @@ class MockWeatherUpdaterDelegate: WeatherDataAutoUpdaterDelegate {
 
     private func locationServiceNotAllowedWasCalledOnce(file: StaticString = #file,
                                                         line: UInt = #line) -> Bool {
-        verifyMethodCalledOnce(
+        return verifyMethodCalledOnce(
             methodName: "requestWeatherData(exclude:, latitude:, longitude:)",
             callCount: locationServiceNotAllowedCallCount,
             describeArguments: "reason: \(locationServiceNotAllowedArgs)",

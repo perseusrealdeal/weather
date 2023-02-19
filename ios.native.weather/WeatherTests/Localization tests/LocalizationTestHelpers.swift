@@ -13,6 +13,7 @@
 import Foundation
 
 extension String {
+
     var localizedFromSettings: String {
         guard let path = Bundle.main.path(forResource: "Settings", ofType: "bundle")
         else { print("Path to Settings.bundle hasn't been found."); return "?" }
@@ -62,6 +63,7 @@ extension String {
 }
 
 fileprivate final class LocalizationTestHelper {
+
     static var currentLanguage: (langCode: String, localeCode: String)? {
         let currentLocale = Locale(identifier: Locale.preferredLanguages.first!)
         guard let langCode = currentLocale.languageCode else { return nil }

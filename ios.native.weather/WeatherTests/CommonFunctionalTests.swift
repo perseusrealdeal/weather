@@ -12,6 +12,20 @@
 
 import XCTest
 
+// Preparing Error Messages
+
+extension String {
+
+    func notEqual(actual: String, with expected: String?) -> String {
+        return "\(self) is \(actual), but not equal to \(String(describing: expected))."
+    }
+}
+
+// First things first...
+
 class CommonFunctionalTests: XCTestCase {
+
     // func test_zero() { XCTFail("Tests not yet implemented in \(type(of: self)).") }
+
+    func test_the_first_success() { XCTAssertTrue(true, "It's done!") }
 }

@@ -56,7 +56,7 @@ protocol WeatherClientProtocol {
 
 protocol LocalDataSaverProtocol {
     func loadData() -> JSON
-    func save(_ jsonData: JSON?)
+    func save(_ data: JSON?)
 }
 
 extension LocalDataSaver: LocalDataSaverProtocol { }

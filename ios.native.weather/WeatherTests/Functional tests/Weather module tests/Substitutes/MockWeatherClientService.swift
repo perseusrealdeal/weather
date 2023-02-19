@@ -55,7 +55,7 @@ class MockWeatherClientService: WeatherClientProtocol {
 
     private func requestWeatherDataWasCalledOnce(file: StaticString = #file,
                                                  line: UInt = #line) -> Bool {
-        verifyMethodCalledOnce(
+        return verifyMethodCalledOnce(
             methodName: "requestWeatherData(exclude:, latitude:, longitude:)",
             callCount: requestWeatherDataCallCount,
             describeArguments: "latitude: \(requestWeatherDataArgs_latitude)",

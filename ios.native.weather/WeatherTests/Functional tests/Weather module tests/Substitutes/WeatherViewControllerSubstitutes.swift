@@ -178,7 +178,7 @@ class MockNotificationCenter: NotificationCenterTestProtocol {
     }
     private func addObserverWasCalledThreeTimes(file: StaticString = #file,
                                                 line: UInt = #line) -> Bool {
-        verifyMethodCalledThreeTimes(
+        return verifyMethodCalledThreeTimes(
             methodName: "addObserver(_:,selector:,name:,object:)",
             callCount: addObserverCallCount,
             describeArguments: "name: \(addObserverArgs_name)",
@@ -188,7 +188,7 @@ class MockNotificationCenter: NotificationCenterTestProtocol {
 
     private func addObserverWasCalledOnce(file: StaticString = #file,
                                           line: UInt = #line) -> Bool {
-        verifyMethodCalledOnce(
+        return verifyMethodCalledOnce(
             methodName: "addObserver(_:,selector:,name:,object:)",
             callCount: addObserverCallCount,
             describeArguments: "name: \(addObserverArgs_name)",
@@ -230,7 +230,7 @@ class MockNotificationCenter: NotificationCenterTestProtocol {
 
     private func removeObserverWasCalledTwice(file: StaticString = #file,
                                               line: UInt = #line) -> Bool {
-        verifyMethodCalledTwice(
+        return verifyMethodCalledTwice(
             methodName: "removeObserver(_:,name:,object:)",
             callCount: removeObserverCallCount,
             describeArguments: "name: \(removeObserverArgs_name)",

@@ -11,12 +11,10 @@
 //
 
 import XCTest
-import SwiftyJSON
 
 @testable import Weather
 
 class CommonLocalizationTests: XCTestCase {
-    // func test_zero() { XCTFail("Tests not yet implemented in \(type(of: self)).") }
 
     func test_CFBundleDisplayName_should_be_localized() {
 
@@ -43,9 +41,9 @@ class CommonLocalizationTests: XCTestCase {
 
         // assert
 
-        XCTAssertEqual(actual, expected, "Value isn't correct.")
-        XCTAssertEqual(requirement, actual, "Value isn't correct with the actual value.")
-        XCTAssertEqual(requirement, expected, "Value isn't correct with the expected value.")
+        XCTAssertEqual(actual, expected, "Actual not equal to expected.")
+        XCTAssertEqual(requirement, actual, "Requirement not equal to actual.")
+        XCTAssertEqual(requirement, expected, "Requirement not equal to expected.")
     }
 
     func test_NSLocationWhenInUseUsageDescription_should_be_localized() {
@@ -59,9 +57,9 @@ class CommonLocalizationTests: XCTestCase {
 
         // assert
 
-        XCTAssertEqual(actual, expected, "Value isn't correct.")
-        XCTAssertEqual(requirement, actual, "Value isn't correct with the actual value.")
-        XCTAssertEqual(requirement, expected, "Value isn't correct with the expected value.")
+        XCTAssertEqual(actual, expected, "Actual not equal to expected.")
+        XCTAssertEqual(requirement, actual, "Requirement not equal to actual.")
+        XCTAssertEqual(requirement, expected, "Requirement not equal to expected.")
     }
 
     func test_DefaultLocation_should_be_localized() {

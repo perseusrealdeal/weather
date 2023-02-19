@@ -323,7 +323,7 @@ private func verifyMethodCalledOnce(methodName: String,
 
 struct TestError: LocalizedError {
     let message: String
-    var errorDescription: String? { message }
+    var errorDescription: String? { return message }
 }
 
 // MARK: - Generating test data for network response testing
@@ -338,7 +338,7 @@ private func loadDataFromFile(_ fileName: String, _ fileExtension: String) -> Da
 }
 
 private func response(statusCode: Int) -> HTTPURLResponse? {
-    HTTPURLResponse(url: URL(string: "http://DUMMY")!,
+    return HTTPURLResponse(url: URL(string: "http://DUMMY")!,
                     statusCode: statusCode,
                     httpVersion: nil,
                     headerFields: nil)

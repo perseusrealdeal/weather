@@ -52,7 +52,7 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
 
     private func registerCurrentLocationObserverWasCalledOnce(file: StaticString = #file,
                                                               line: UInt = #line) -> Bool {
-        verifyMethodCalledOnce(
+        return verifyMethodCalledOnce(
             methodName: "registerCurrentLocationObserver(observer:, selector:)",
             callCount: registerCurrentLocationObserverCallCount,
             describeArguments: "name: \(registerCurrentLocationSelectors)",
@@ -69,7 +69,7 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
         guard let observer = observer as? WeatherDataAutoUpdater else { return }
         removeCurrentLocationObserverCallCount += 1
 
-        removeCurrentLocationObserverArgs_obsevers.append(observer)
+        removeCurrentLocationObsevers.append(observer)
     }
 
     func verifyRemoveCurrentLocationObserver(observer: WeatherDataAutoUpdater,
@@ -84,7 +84,7 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
 
     private func removeCurrentLocationObserverWasCalledOnce(file: StaticString = #file,
                                                             line: UInt = #line) -> Bool {
-        verifyMethodCalledOnce(
+        return verifyMethodCalledOnce(
             methodName: "removeCurrentLocationObserver(observer:)",
             callCount: removeCurrentLocationObserverCallCount,
             describeArguments: "name: \(removeCurrentLocationObsevers)",
@@ -102,11 +102,11 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
     }
 
     func calculateExclude(data: WeatherDataModel) -> String {
-        ""
+        return ""
     }
 
     func calculateForciblyUpdateCondition(data: WeatherDataModel) -> Bool {
-        false
+        return false
     }
 
     // MARK: - Verifing prepareTimer method
@@ -163,7 +163,7 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
 
     private func prepareTimerWasCalledOnce(file: StaticString = #file,
                                            line: UInt = #line) -> Bool {
-        verifyMethodCalledOnce(
+        return verifyMethodCalledOnce(
             methodName: "prepareTimer(target:, delay:, selector:)",
             callCount: prepareTimerCallCount,
             describeArguments: "delay: \(prepareTimerArgs_delays)",

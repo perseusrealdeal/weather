@@ -17,8 +17,10 @@ import UIKit
 class AppDelegate: UIResponder { var window: UIWindow? }
 
 extension AppDelegate: UIApplicationDelegate {
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions
         launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
         #if DEBUG
         print(">> Launching with real app delegate")
         print(">> [\(type(of: self))]." + #function)
