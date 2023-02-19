@@ -53,7 +53,7 @@ jobs:
         working-directory: ./ios.native.weather
         verbosity: xcpretty
         upload-logs: always
-        configuration: Release
+        configuration: Debug
 
   test_RU:
     runs-on: macos-latest
@@ -75,4 +75,4 @@ jobs:
         working-directory: ./ios.native.weather
         verbosity: xcpretty
         upload-logs: always
-        configuration: Release
+        configuration: Debug
