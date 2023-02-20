@@ -1,5 +1,6 @@
 # Weather App
 
+[![Actions Status](https://github.com/perseusrealdeal/apple.weather/actions/workflows/main.yml/badge.svg)](https://github.com/perseusrealdeal/apple.weather/actions)
 ![Version](https://img.shields.io/badge/App_Version-1.0-green.svg)
 [![Platforms iOS 9](https://img.shields.io/badge/Platform-iOS%209.3+-orange.svg)](https://en.wikipedia.org/wiki/IOS_9)
 [![SDK UIKit](https://img.shields.io/badge/SDK-UIKit%20-blueviolet.svg)](https://developer.apple.com/documentation/uikit)
@@ -11,7 +12,7 @@
 
 [![PerseusDarkMode](http://img.shields.io/:PerseusDarkMode-1.1.3-green.svg)](https://github.com/perseusrealdeal/PerseusDarkMode/tree/1.1.3)
 [![PerseusUISystemKit](http://img.shields.io/:PerseusUISystemKit-1.1.2-green.svg)](https://github.com/perseusrealdeal/PerseusUISystemKit/tree/1.1.2)
-[![SwiftJSON](http://img.shields.io/:SwiftJSON-4.2.0-green.svg)](https://github.com/SwiftyJSON/SwiftyJSON/tree/4.2.0)
+[![SwiftyJSON](http://img.shields.io/:SwiftyJSON-4.2.0-green.svg)](https://github.com/SwiftyJSON/SwiftyJSON/tree/4.2.0)
 
 # In brief
 
@@ -38,7 +39,7 @@
 
 This app with source code goes under conditions with no exceptions: 
 
-- non–commercial
+- Non–commercial
 - For a Git user only
 
 Copyright conditions:
