@@ -91,7 +91,7 @@ jobs:
     - uses: mxcl/xcodebuild@v1.9.2
       with:
         platform: iOS
-        scheme: 'FuncsTests'
+        scheme: 'FuncTests'
         action: test
         code-coverage: true
         working-directory: ./ios.native.weather
