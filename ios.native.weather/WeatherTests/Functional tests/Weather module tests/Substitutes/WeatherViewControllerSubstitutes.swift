@@ -9,6 +9,8 @@
 //
 //  See LICENSE for details. All rights reserved.
 //
+// swiftlint:disable file_length
+//
 
 import UIKit
 import XCTest
@@ -16,6 +18,7 @@ import XCTest
 @testable import Weather
 
 class MockWeatherLayoutView: UIView, WeatherLayoutViewProtocol {
+
     var startActivitiesCallCount = 0
     var stopActivitiesCallCount = 0
 
@@ -32,13 +35,17 @@ class MockWeatherLayoutView: UIView, WeatherLayoutViewProtocol {
     func verifyUpdateLayoutOrientationIfNeeded(with orientation: NSLayoutConstraint.Axis,
                                                file: StaticString = #file,
                                                line: UInt = #line) {
-        guard updateLayoutOrientationIfNeededWasCalledOnce(file: file, line: line) else { return }
+
+        guard updateLayoutOrientationIfNeededWasCalledOnce(file: file, line: line)
+        else { return }
+
         XCTAssertEqual(updateLayoutOrientationIfNeededArgs.first,
                        orientation, "orientation", file: file, line: line)
     }
 
     private func updateLayoutOrientationIfNeededWasCalledOnce(file: StaticString = #file,
                                                               line: UInt = #line) -> Bool {
+
         return verifyMethodCalledOnce(
             methodName: "updateLayoutOrientationIfNeeded(for:)",
             callCount: updateLayoutOrientationIfNeededCallCount,
@@ -74,6 +81,7 @@ class MockWeatherLayoutView: UIView, WeatherLayoutViewProtocol {
 
     func verifyStopActivities(file: StaticString = #file,
                               line: UInt = #line) {
+
         let verified = verifyMethodCalledOnce(methodName: "stopActivities()",
                                               callCount: stopActivitiesCallCount,
                                               describeArguments: "[]",
@@ -86,6 +94,7 @@ class MockWeatherLayoutView: UIView, WeatherLayoutViewProtocol {
 }
 
 class MockGeoLocationReceiver: GeoLocationServiceProtocol {
+
     // MARK: - Verifing requestLocationDataAccess method
 
     var requestLocationDataAccessCallCount = 0
@@ -101,6 +110,7 @@ class MockGeoLocationReceiver: GeoLocationServiceProtocol {
 
     func verifyRequestLocationDataAccess(file: StaticString = #file,
                                          line: UInt = #line) {
+
         let verified = verifyMethodCalledOnce(
             methodName: "requestLocationDataAccess()",
             callCount: requestLocationDataAccessCallCount,
@@ -113,7 +123,8 @@ class MockGeoLocationReceiver: GeoLocationServiceProtocol {
     }
 }
 
-class MockNotificationCenter: NotificationCenterProtocol {
+class MockNotificationCenter: NotificationCenterTestProtocol {
+
     // MARK: - Verifing addObserver method
 
     var addObserverCallCount = 0
@@ -159,6 +170,7 @@ class MockNotificationCenter: NotificationCenterProtocol {
                                                   object anObject: [Any?],
                                                   file: StaticString = #file,
                                                   line: UInt = #line) {
+
         guard addObserverWasCalledThreeTimes(file: file, line: line) else { return }
 
         XCTAssertEqual(addObserverArgs_observer,
@@ -172,9 +184,11 @@ class MockNotificationCenter: NotificationCenterProtocol {
 
         anObject.forEach { XCTAssertNil($0, file: file, line: line) }
     }
+
     private func addObserverWasCalledThreeTimes(file: StaticString = #file,
                                                 line: UInt = #line) -> Bool {
-        verifyMethodCalledThreeTimes(
+
+        return verifyMethodCalledThreeTimes(
             methodName: "addObserver(_:,selector:,name:,object:)",
             callCount: addObserverCallCount,
             describeArguments: "name: \(addObserverArgs_name)",
@@ -184,7 +198,8 @@ class MockNotificationCenter: NotificationCenterProtocol {
 
     private func addObserverWasCalledOnce(file: StaticString = #file,
                                           line: UInt = #line) -> Bool {
-        verifyMethodCalledOnce(
+
+        return verifyMethodCalledOnce(
             methodName: "addObserver(_:,selector:,name:,object:)",
             callCount: addObserverCallCount,
             describeArguments: "name: \(addObserverArgs_name)",
@@ -202,6 +217,7 @@ class MockNotificationCenter: NotificationCenterProtocol {
     func removeObserver(_ observer: Any,
                         name aName: NSNotification.Name?,
                         object anObject: Any?) {
+
         removeObserverCallCount += 1
 
         removeObserverArgs_observer.append(observer as? WeatherViewController)
@@ -213,6 +229,7 @@ class MockNotificationCenter: NotificationCenterProtocol {
                                          object anObject: [Any?],
                                          file: StaticString = #file,
                                          line: UInt = #line) {
+
         guard removeObserverWasCalledTwice(file: file, line: line) else { return }
 
         XCTAssertEqual(removeObserverArgs_observer,
@@ -226,7 +243,8 @@ class MockNotificationCenter: NotificationCenterProtocol {
 
     private func removeObserverWasCalledTwice(file: StaticString = #file,
                                               line: UInt = #line) -> Bool {
-        verifyMethodCalledTwice(
+
+        return verifyMethodCalledTwice(
             methodName: "removeObserver(_:,name:,object:)",
             callCount: removeObserverCallCount,
             describeArguments: "name: \(removeObserverArgs_name)",
@@ -239,6 +257,7 @@ private func verifyMethodCalledOnce(methodName: String, callCount: Int,
                                     describeArguments: @autoclosure () -> String,
                                     file: StaticString = #file,
                                     line: UInt = #line) -> Bool {
+
     if callCount == 0 {
         XCTFail("Wanted but not invoked: \(methodName)", file: file, line: line)
         return false
@@ -257,6 +276,7 @@ private func verifyMethodCalledTwice(methodName: String, callCount: Int,
                                      describeArguments: @autoclosure () -> String,
                                      file: StaticString = #file,
                                      line: UInt = #line) -> Bool {
+
     if callCount == 0 {
         XCTFail("Wanted but not invoked: \(methodName)", file: file, line: line)
         return false
@@ -281,6 +301,7 @@ private func verifyMethodCalledThreeTimes(methodName: String, callCount: Int,
                                           describeArguments: @autoclosure () -> String,
                                           file: StaticString = #file,
                                           line: UInt = #line) -> Bool {
+
     if callCount == 0 {
         XCTFail("Wanted but not invoked: \(methodName)", file: file, line: line)
         return false

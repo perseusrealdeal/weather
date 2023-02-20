@@ -11,8 +11,6 @@
 //
 
 import UIKit
-import PerseusDarkMode
-import PerseusUISystemKit
 
 class MainViewController: UIViewController {
     @IBOutlet weak var label: UILabel!

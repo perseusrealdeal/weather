@@ -11,7 +11,6 @@
 //
 
 import Foundation
-import SwiftyJSON
 
 public struct Settings {
     static let bundleParams: [String: String] =
@@ -39,10 +38,4 @@ public struct Settings {
     static let notificationCenter = NotificationCenter.default
 
     static let geoService = GeoLocationReceiver.shared
-}
-
-extension UserDefaults {
-    func valueExists(forKey key: String) -> Bool {
-        return object(forKey: key) != nil
-    }
 }

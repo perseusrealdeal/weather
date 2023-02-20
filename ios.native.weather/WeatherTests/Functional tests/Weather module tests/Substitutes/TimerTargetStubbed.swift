@@ -13,6 +13,7 @@
 import Foundation
 
 class TimerTargetStubbed {
+
     var onTickCallCount = 0
     var onTickCallClosure: () -> Void
 

@@ -11,14 +11,13 @@
 //
 
 import UIKit
-import PerseusDarkMode
 
 // MARK: - WeatherViewController Class
 
 class WeatherViewController: UIViewController {
     // MARK: - Difficult Dependencies
 
-    private let notificationCenter: NotificationCenterProtocol
+    private let notificationCenter: NotificationCenterTestProtocol
     private let geoService: GeoLocationServiceProtocol
 
     #if DEBUG
@@ -29,7 +28,7 @@ class WeatherViewController: UIViewController {
 
     required init?(coder aDecoder: NSCoder) { fatalError() }
 
-    init(_ notificationCenter: NotificationCenterProtocol = Settings.notificationCenter,
+    init(_ notificationCenter: NotificationCenterTestProtocol = Settings.notificationCenter,
          _ geoService: GeoLocationServiceProtocol = GeoLocationReceiver.shared) {
         #if DEBUG
         print(">> [\(type(of: self))].init")

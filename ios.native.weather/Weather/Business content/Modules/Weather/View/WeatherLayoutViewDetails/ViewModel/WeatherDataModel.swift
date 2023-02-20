@@ -4,8 +4,10 @@
 //
 //  Created by Mikhail Zhigulin on 24.12.2021.
 //
+// swiftlint:disable file_length
+//
 
-import SwiftyJSON
+import Foundation
 
 class WeatherDataModel {
     // MARK: - Business Matter Data
@@ -122,8 +124,7 @@ class WeatherDataModel {
             #endif
         }
 
-        if fullUpdated
-        {
+        if fullUpdated {
             jsonData["lastFullUpdate"].double = Date().timeIntervalSince1970
 
             #if DEBUG
@@ -132,8 +133,7 @@ class WeatherDataModel {
             #endif
         }
 
-        if weatherDataChanged
-        {
+        if weatherDataChanged {
             self.jsonData["lat"] = json["lat"]
             self.jsonData["lon"] = json["lon"]
             self.jsonData["timezone"] = json["timezone"]
@@ -154,13 +154,12 @@ class WeatherDataModel {
 
     // MARK: - Service matter operations
 
-    func loadFromLocal()
-    {
+    func loadFromLocal() {
         #if DEBUG
         print(">> [\(type(of: self))]." + #function)
         #endif
 
-        jsonData = saver.loadData()
+        jsonData = JSON(saver.loadData() as Any)
 
         #if DEBUG
         print("loaded       : \(target == nil ? "nothing" : target!.location.description)")
@@ -179,13 +178,13 @@ class WeatherDataModel {
 
     // MARK: - Other calculations
 
-    private func isDayUpToDate(from: Double) -> Bool
-    {
+    private func isDayUpToDate(from: Double) -> Bool {
+
         guard let offset = target?.timezone_offset else { return false }
 
         let timeOfDay = Date(timeIntervalSince1970: from).addingTimeInterval(offset)
 
-        let startOfDay =  Calendar.current.startOfDay(for: timeOfDay).addingTimeInterval(offset)
+        let startOfDay = Calendar.current.startOfDay(for: timeOfDay).addingTimeInterval(offset)
 
         let components = DateComponents(hour: 23, minute: 59, second: 59)
         let endOfDay = Calendar.current.date(byAdding: components, to: startOfDay)!
@@ -199,6 +198,7 @@ class WeatherDataModel {
 // MARK: - Parser Produces Weather Data
 
 extension WeatherDataModel {
+
     private func parser() -> CurrentLocationDescription? {
         guard
             let json = self.jsonData, !json.isEmpty, json["lat"].exists(),

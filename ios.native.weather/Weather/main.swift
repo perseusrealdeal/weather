@@ -11,7 +11,6 @@
 //
 
 import UIKit
-import PerseusDarkMode
 
 // MARK: - The Application Object Initiation
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1400"
+   LastUpgradeVersion = "1010"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -42,19 +42,13 @@
                   Identifier = "CommonLocalizationTests">
                </Test>
                <Test
-                  Identifier = "GeoLocationReceiverTests">
-               </Test>
-               <Test
                   Identifier = "MainModuleFunctionalTests">
                </Test>
                <Test
-                  Identifier = "OpenWeatherCommunicationTests">
+                  Identifier = "OpenWeatherCommunicationTests/test_OpenWeather_should_provideNotEmptyData_withHavingNetworkConnection()">
                </Test>
                <Test
                   Identifier = "PerformanceTests">
-               </Test>
-               <Test
-                  Identifier = "SettingsBundleFunctionalTests">
                </Test>
                <Test
                   Identifier = "SettingsBundleLocalizationTests">
@@ -65,15 +59,18 @@
                <Test
                   Identifier = "UpdaterHelperTests">
                </Test>
-               <Test
-                  Identifier = "WeatherDataAutoUpdaterTests">
-               </Test>
-               <Test
-                  Identifier = "WeatherViewControllerTests">
-               </Test>
             </SkippedTests>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E0C428C027535BD800E65DFD"
+            BuildableName = "Weather.app"
+            BlueprintName = "Weather"
+            ReferencedContainer = "container:Weather.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -97,13 +94,6 @@
             ReferencedContainer = "container:Weather.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "OS_ACTIVITY_MODE"
-            value = "disable"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

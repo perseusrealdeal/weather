@@ -4,6 +4,8 @@
 //
 //  Created by Mikhail Zhigulin on 26.12.2021.
 //
+// swiftlint:disable file_length
+//
 
 import Foundation
 
@@ -133,7 +135,8 @@ class WeatherDataAutoUpdater {
 
         guard useCurrentLocation == true else { updateIfNeeded(); return }
 
-        geoLocationService.requestLocationUpdateOnce { reason in // Called in case if location service not allowed
+        geoLocationService.requestLocationUpdateOnce { reason in
+            // Called in case if location service not allowed
 
             // DONE: Let user know what becouse when location service not allowed
 
@@ -260,7 +263,8 @@ class WeatherDataAutoUpdater {
             delegate?.failedToDeliverWeatherData(error)
         } else if let freshData = dataDeliveried {
             data.update(received: freshData) { isAlertsOnly in
-                isAlertsOnly ? delegate?.weatherAlertsUpdated() : delegate?.weatherDataUpdated()
+                isAlertsOnly ? delegate?.weatherAlertsUpdated() :
+                    delegate?.weatherDataUpdated()
             }
         }
     }

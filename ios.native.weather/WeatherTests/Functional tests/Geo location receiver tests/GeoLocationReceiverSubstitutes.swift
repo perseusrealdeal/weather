@@ -16,6 +16,7 @@ import CoreLocation
 @testable import Weather
 
 class MockLocationManager: LocationManagerProtocol {
+
     var locationDataAccessCallCount: Int = 0
     var locationUpdateCallCount: Int = 0
     var stopUpdatingLocationCallCount: Int = 0

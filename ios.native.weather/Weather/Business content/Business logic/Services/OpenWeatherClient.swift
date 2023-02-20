@@ -9,6 +9,8 @@
 //
 //  See LICENSE for details. All rights reserved.
 //
+// swiftlint:disable closure_parameter_position
+//
 
 import Foundation
 
@@ -75,8 +77,8 @@ class OpenWeatherClient {
 
         // Send request
 
-        dataTask =
-        session.dataTask(with: request) { [self] (weather: Data?, response: URLResponse?, error: Error?) -> Void in
+        dataTask = session.dataTask(with: request) {
+            [self] (weather: Data?, response: URLResponse?, error: Error?) -> Void in
 
             // Read answer
 
@@ -86,7 +88,8 @@ class OpenWeatherClient {
             if let error = error {
                 answer_error = error.localizedDescription
             } else if let response = response as? HTTPURLResponse, response.statusCode != 200 {
-                answer_error = HTTPURLResponse.localizedString(forStatusCode: response.statusCode)
+                answer_error =
+                    HTTPURLResponse.localizedString(forStatusCode: response.statusCode)
             } else if let requested_data = weather {
                 answer_data = requested_data
             }

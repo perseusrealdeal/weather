@@ -16,6 +16,7 @@ import XCTest
 @testable import Weather
 
 class MockWeatherClientService: WeatherClientProtocol {
+
     var onResultDelivered: (Result<Data, WeatherDataDeliveryError>) -> Void = { print($0) }
 
     // MARK: - Verifing requestWeatherData method
@@ -41,6 +42,7 @@ class MockWeatherClientService: WeatherClientProtocol {
                                   longitude: String,
                                   file: StaticString = #file,
                                   line: UInt = #line) {
+
         guard requestWeatherDataWasCalledOnce(file: file, line: line) else { return }
 
         XCTAssertEqual(requestWeatherDataArgs_exclude.first, exclude,
@@ -55,7 +57,8 @@ class MockWeatherClientService: WeatherClientProtocol {
 
     private func requestWeatherDataWasCalledOnce(file: StaticString = #file,
                                                  line: UInt = #line) -> Bool {
-        verifyMethodCalledOnce(
+
+        return verifyMethodCalledOnce(
             methodName: "requestWeatherData(exclude:, latitude:, longitude:)",
             callCount: requestWeatherDataCallCount,
             describeArguments: "latitude: \(requestWeatherDataArgs_latitude)",
@@ -68,6 +71,7 @@ private func verifyMethodCalledOnce(methodName: String, callCount: Int,
                                     describeArguments: @autoclosure () -> String,
                                     file: StaticString = #file,
                                     line: UInt = #line) -> Bool {
+
     if callCount == 0 {
         XCTFail("Wanted but not invoked: \(methodName)", file: file, line: line)
         return false

@@ -5,7 +5,7 @@
 //  Created by Mikhail Zhigulin on 29.01.2022.
 //
 
-import SwiftyJSON
+import Foundation
 
 private let WEATHER_CURRENT_LOCATION_KEY = "weather_forecast_for_current_location"
 

@@ -1,1 +1,100 @@
 # beginning of the CI declaration
+
+name: Build & Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+#  schedule:
+#    - cron: '30 5 * * 5'
+
+jobs:
+
+  build:
+    runs-on: macos-latest
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v2
+    - name: Show xcodebuild version
+      run: xcodebuild -version
+    - name: Show xcode embedded SDKs
+      run: xcodebuild -showsdks
+    - name: Show buildable schemes
+      run: xcodebuild -list -project ./ios.native.weather/Weather.xcodeproj
+    - uses: mxcl/xcodebuild@v1.9.2
+      with:
+        platform: iOS
+        scheme: 'Weather'
+        action: build
+        working-directory: ./ios.native.weather
+        verbosity: xcpretty
+        upload-logs: always
+        configuration: Release
+
+  test_EN:
+    runs-on: macos-latest
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v2
+    - name: Show xcodebuild version
+      run: xcodebuild -version
+    - name: Show xcode embedded SDKs
+      run: xcodebuild -showsdks
+    - name: Show buildable schemes
+      run: xcodebuild -list -project ./ios.native.weather/Weather.xcodeproj
+    - uses: mxcl/xcodebuild@v1.9.2
+      with:
+        platform: iOS
+        scheme: 'Localization_EN'
+        action: test
+        code-coverage: true
+        working-directory: ./ios.native.weather
+        verbosity: xcpretty
+        upload-logs: always
+        configuration: Debug
+
+  test_RU:
+    runs-on: macos-latest
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v2
+    - name: Show xcodebuild version
+      run: xcodebuild -version
+    - name: Show xcode embedded SDKs
+      run: xcodebuild -showsdks
+    - name: Show buildable schemes
+      run: xcodebuild -list -project ./ios.native.weather/Weather.xcodeproj
+    - uses: mxcl/xcodebuild@v1.9.2
+      with:
+        platform: iOS
+        scheme: 'Localization_RU'
+        action: test
+        code-coverage: true
+        working-directory: ./ios.native.weather
+        verbosity: xcpretty
+        upload-logs: always
+        configuration: Debug
+
+  Funcs:
+    runs-on: macos-latest
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v2
+    - name: Show xcodebuild version
+      run: xcodebuild -version
+    - name: Show xcode embedded SDKs
+      run: xcodebuild -showsdks
+    - name: Show buildable schemes
+      run: xcodebuild -list -project ./ios.native.weather/Weather.xcodeproj
+    - uses: mxcl/xcodebuild@v1.9.2
+      with:
+        platform: iOS
+        scheme: 'FuncTests'
+        action: test
+        code-coverage: true
+        working-directory: ./ios.native.weather
+        verbosity: xcpretty
+        upload-logs: always
+        configuration: Debug
