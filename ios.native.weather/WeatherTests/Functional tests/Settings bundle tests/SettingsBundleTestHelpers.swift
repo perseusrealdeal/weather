@@ -14,7 +14,9 @@ import Foundation
 @testable import Weather
 
 extension String {
+
     var defaultValueFromSettings: String? {
+
         let bundle_PreferenceKey           = Settings.bundleParams["PreferenceKey"]!
         let bundle_PreferenceDefaultValue  = Settings.bundleParams["PreferenceDefaultValue"]!
 
@@ -33,6 +35,7 @@ extension String {
     }
 
     var valuesFromSettings: [String]? {
+
         let bundle_PreferenceKey           = Settings.bundleParams["PreferenceKey"]!
         let bundle_PreferenceValues        = Settings.bundleParams["PreferenceValues"]!
 
@@ -52,6 +55,7 @@ extension String {
 }
 
 private func getPreferencesFromSettingsBundle() -> [[String: Any]]? {
+
     let bundle_name                    = Settings.bundleParams["Name"]
     let bundle_extension               = Settings.bundleParams["Extension"]
     let bundle_RootPlist               = Settings.bundleParams["RootPlist"]!

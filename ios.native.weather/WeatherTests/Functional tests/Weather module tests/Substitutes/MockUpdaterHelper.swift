@@ -9,6 +9,8 @@
 //
 //  See LICENSE for details. All rights reserved.
 //
+// swiftlint:disable file_length
+//
 
 import Foundation
 import XCTest
@@ -16,6 +18,7 @@ import XCTest
 @testable import Weather
 
 class MockUpdaterHelper: UpdaterHelperProtocol {
+
     private let helperNotMock: UpdaterHelper
 
     init(helper: UpdaterHelper) {
@@ -29,7 +32,9 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
     var registerCurrentLocationSelectors: [Selector] = []
 
     func registerCurrentLocationObserver(observer: Any, selector: Selector) {
+
         guard let observer = observer as? WeatherDataAutoUpdater else { return }
+
         registerCurrentLocationObserverCallCount += 1
 
         registerCurrentLocationObsevers.append(observer)
@@ -40,6 +45,7 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
                                                selector: Selector,
                                                file: StaticString = #file,
                                                line: UInt = #line) {
+
         guard registerCurrentLocationObserverWasCalledOnce(file: file, line: line)
         else { return }
 
@@ -52,6 +58,7 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
 
     private func registerCurrentLocationObserverWasCalledOnce(file: StaticString = #file,
                                                               line: UInt = #line) -> Bool {
+
         return verifyMethodCalledOnce(
             methodName: "registerCurrentLocationObserver(observer:, selector:)",
             callCount: registerCurrentLocationObserverCallCount,
@@ -66,15 +73,17 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
     var removeCurrentLocationObsevers: [WeatherDataAutoUpdater] = []
 
     func removeCurrentLocationObserver(observer: Any) {
-        guard let observer = observer as? WeatherDataAutoUpdater else { return }
-        removeCurrentLocationObserverCallCount += 1
 
+        guard let observer = observer as? WeatherDataAutoUpdater else { return }
+
+        removeCurrentLocationObserverCallCount += 1
         removeCurrentLocationObsevers.append(observer)
     }
 
     func verifyRemoveCurrentLocationObserver(observer: WeatherDataAutoUpdater,
                                              file: StaticString = #file,
                                              line: UInt = #line) {
+
         guard removeCurrentLocationObserverWasCalledOnce(file: file, line: line)
         else { return }
 
@@ -84,6 +93,7 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
 
     private func removeCurrentLocationObserverWasCalledOnce(file: StaticString = #file,
                                                             line: UInt = #line) -> Bool {
+
         return verifyMethodCalledOnce(
             methodName: "removeCurrentLocationObserver(observer:)",
             callCount: removeCurrentLocationObserverCallCount,
@@ -121,7 +131,9 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
     var prepareTimerArgs_selectors: [Selector] = []
 
     func prepareTimer(target: Any, delay: TimeInterval, selector: Selector) -> Timer {
+
         guard let target = target as? WeatherDataAutoUpdater else { return Timer() }
+
         if isTimerOnlyForCallCount {
             prepareTimerCallCount += 1
 
@@ -149,6 +161,7 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
                             selector: Selector,
                             file: StaticString = #file,
                             line: UInt = #line) {
+
         guard prepareTimerWasCalledOnce(file: file, line: line) else { return }
 
         XCTAssertTrue(registerCurrentLocationObsevers.first! === target,
@@ -163,6 +176,7 @@ class MockUpdaterHelper: UpdaterHelperProtocol {
 
     private func prepareTimerWasCalledOnce(file: StaticString = #file,
                                            line: UInt = #line) -> Bool {
+
         return verifyMethodCalledOnce(
             methodName: "prepareTimer(target:, delay:, selector:)",
             callCount: prepareTimerCallCount,
@@ -176,6 +190,7 @@ private func verifyMethodCalledOnce(methodName: String, callCount: Int,
                                     describeArguments: @autoclosure () -> String,
                                     file: StaticString = #file,
                                     line: UInt = #line) -> Bool {
+
     if callCount == 0 {
         XCTFail("Wanted but not invoked: \(methodName)", file: file, line: line)
         return false

@@ -16,6 +16,7 @@ import XCTest
 @testable import Weather
 
 class MockGeoLocationService: GeoLocationServiceProtocol {
+
     func requestLocationDataAccess() {
         print(#function)
     }
@@ -35,8 +36,8 @@ class MockGeoLocationService: GeoLocationServiceProtocol {
         if useCallBack { actionIfNotAllowed?(reasonInCallBack) }
     }
 
-    func verifyRequestLocationUpdateOnce(file: StaticString = #file,
-                                         line: UInt = #line) {
+    func verifyRequestLocationUpdateOnce(file: StaticString = #file, line: UInt = #line) {
+
         let verified = verifyMethodCalledOnce(methodName: "verifyRequestLocationUpdateOnce()",
                                               callCount: requestLocationUpdateOnceCallCount,
                                               describeArguments: "[]",
@@ -52,6 +53,7 @@ private func verifyMethodCalledOnce(methodName: String, callCount: Int,
                                     describeArguments: @autoclosure () -> String,
                                     file: StaticString = #file,
                                     line: UInt = #line) -> Bool {
+
     if callCount == 0 {
         XCTFail("Wanted but not invoked: \(methodName)", file: file, line: line)
         return false

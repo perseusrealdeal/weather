@@ -16,6 +16,7 @@ import XCTest
 @testable import Weather
 
 class SettingsBundleFunctionalTests: XCTestCase {
+
     // func test_zero() { XCTFail("Tests not yet implemented in \(type(of: self)).") }
 
     private let defaults = Settings.userDefaults
@@ -26,19 +27,27 @@ class SettingsBundleFunctionalTests: XCTestCase {
         UserPreferences.registerSettingsBundle(with: Settings.bundleParams)
     }
 
-    // MARK: - Functional testing temperature parameter setup
+    // MARK: - TEMPERATURE
 
     func test_temperature_should_be_registered() {
+
+        // arrange
+
         let actual = defaults.string(forKey: "temperature_preference")
         let expected_values = "temperature_preference".valuesFromSettings
         let expected_default_value = "temperature_preference".defaultValueFromSettings
 
-        XCTAssertNotNil(actual, "Temperature preference not registered.")
-        XCTAssertNotNil(expected_values, "Temperature values not registered.")
-        XCTAssertNotNil(expected_default_value, "Temperature default not registered.")
+        // assert
+
+        XCTAssertNotNil(actual, "TEMPERATURE".notNil)
+        XCTAssertNotNil(expected_values, "TEMPERATURE values".notNil)
+        XCTAssertNotNil(expected_default_value, "TEMPERATURE default value".notNil)
     }
 
     func test_temperature_should_be_configured() {
+
+        // arrange
+
         let requirement_values = ["celsius", "fahrenheit"]
         let requirement_default_value = "celsius"
 
@@ -47,33 +56,45 @@ class SettingsBundleFunctionalTests: XCTestCase {
             let expected_values = "temperature_preference".valuesFromSettings,
             let expected_default_value = "temperature_preference".defaultValueFromSettings
         else {
-            XCTFail("There is a problem with extracting values from Settings.bundle.")
+            XCTFail("There is a problem with extracting values from the source.")
             return
         }
 
+        // assert
+
         XCTAssertEqual(requirement_default_value, actual_default_value,
-                       "Actual default value doesn't meet requirements.")
+                       "TEMPERATURE".notEqual(actual: actual_default_value,
+                                              with: requirement_default_value))
 
         XCTAssertTrue(NSArray(array: requirement_values).isEqual(to: expected_values),
-                      "Temperature option values do not meet requirements.")
+                      "TEMPERATURE values do not meet requirement.")
 
         XCTAssertEqual(requirement_default_value, expected_default_value,
-                       "Expected default value doesn't meet requirement.")
+                       "TEMPERATURE".notEqual(actual: expected_default_value,
+                                              with: requirement_default_value))
     }
 
-    // MARK: - Functional testing wind speed parameter setup
+    // MARK: - WIND SPEED
 
     func test_wind_speed_should_be_registered() {
+
+        // arrange
+
         let actual = defaults.string(forKey: "wind_speed_preference")
         let expected_values = "wind_speed_preference".valuesFromSettings
         let expected_default_value = "wind_speed_preference".defaultValueFromSettings
 
-        XCTAssertNotNil(actual, "Wind preference not registered.")
-        XCTAssertNotNil(expected_values, "Wind values not registered.")
-        XCTAssertNotNil(expected_default_value, "Wind default value not registered.")
+        // assert
+
+        XCTAssertNotNil(actual, "WIND SPEED".notNil)
+        XCTAssertNotNil(expected_values, "WIND SPEED values".notNil)
+        XCTAssertNotNil(expected_default_value, "WIND SPEED default value".notNil)
     }
 
     func test_wind_speed_should_be_configured() {
+
+        // arrange
+
         let requirement_values = ["m/s", "km/h", "mph"]
         let requirement_default_value = "m/s"
 
@@ -82,33 +103,43 @@ class SettingsBundleFunctionalTests: XCTestCase {
             let expected_values = "wind_speed_preference".valuesFromSettings,
             let expected_default_value = "wind_speed_preference".defaultValueFromSettings
         else {
-            XCTFail("There is a problem with extracting values from Settings.bundle.")
+            XCTFail("There is a problem with extracting values from the source.")
             return
         }
 
+        // assert
+
         XCTAssertEqual(requirement_default_value, actual_default_value,
-                       "Actual default value doesn't meet requirements.")
+                       "WIND SPEED default value doesn't meet requirement.")
 
         XCTAssertTrue(NSArray(array: requirement_values).isEqual(to: expected_values),
-                      "Temperature option values do not meet requirements.")
+                      "WIND SPEED values do not meet requirement.")
 
         XCTAssertEqual(requirement_default_value, expected_default_value,
-                       "Expected default value doesn't meet requirement.")
+                       "WIND SPEED expected default value doesn't meet requirement.")
     }
 
-    // MARK: - Functional testing pressure parameter setup
+    // MARK: - PRESSURE
 
     func test_pressure_should_be_registered() {
+
+        // arrange
+
         let actual = defaults.string(forKey: "pressure_preference")
         let expected_values = "pressure_preference".valuesFromSettings
         let expected_default_value = "pressure_preference".defaultValueFromSettings
 
-        XCTAssertNotNil(actual, "Pressure preference not registered.")
-        XCTAssertNotNil(expected_values, "Pressure values not registered.")
-        XCTAssertNotNil(expected_default_value, "Pressure default not registered.")
+        // assert
+
+        XCTAssertNotNil(actual, "PRESSURE".notNil)
+        XCTAssertNotNil(expected_values, "PRESSURE values".notNil)
+        XCTAssertNotNil(expected_default_value, "PRESSURE default value".notNil)
     }
 
     func test_pressure_should_be_configured() {
+
+        // arrange
+
         let requirement_values = ["hPa", "mmHg", "inHg"]
         let requirement_default_value = "mmHg"
 
@@ -117,33 +148,43 @@ class SettingsBundleFunctionalTests: XCTestCase {
             let expected_values = "pressure_preference".valuesFromSettings,
             let expected_default_value = "pressure_preference".defaultValueFromSettings
         else {
-            XCTFail("There is a problem with extracting values from Settings.bundle.")
+            XCTFail("There is a problem with extracting values from the source.")
             return
         }
 
+        // assert
+
         XCTAssertEqual(requirement_default_value, actual_default_value,
-                       "Actual default value doesn't meet requirements.")
+                       "PRESSURE actual default value doesn't meet requirement.")
 
         XCTAssertTrue(NSArray(array: requirement_values).isEqual(to: expected_values),
-                      "Temperature option values do not meet requirements.")
+                      "PRESSURE values do not meet requirement.")
 
         XCTAssertEqual(requirement_default_value, expected_default_value,
-                       "Expected default value doesn't meet requirement.")
+                       "PRESSURE expected default value doesn't meet requirement.")
     }
 
-    // MARK: - Functional testing precipitation parameter setup
+    // MARK: - PRECIPITATION
 
     func test_precipitation_should_be_registered() {
+
+        // arrange
+
         let actual = defaults.string(forKey: "precipitation_preference")
         let expected_values = "precipitation_preference".valuesFromSettings
         let expected_default_value = "precipitation_preference".defaultValueFromSettings
 
-        XCTAssertNotNil(actual, "Precipitation preference not registered.")
-        XCTAssertNotNil(expected_values, "Precipitation values not registered.")
-        XCTAssertNotNil(expected_default_value, "Precipitation default not registered.")
+        // assert
+
+        XCTAssertNotNil(actual, "PRECIPITATION".notNil)
+        XCTAssertNotNil(expected_values, "PRECIPITATION values".notNil)
+        XCTAssertNotNil(expected_default_value, "PRECIPITATION default value".notNil)
     }
 
     func test_precipitation_should_be_configured() {
+
+        // arrange
+
         let requirement_values = ["mm", "in"]
         let requirement_default_value = "mm"
 
@@ -152,33 +193,43 @@ class SettingsBundleFunctionalTests: XCTestCase {
             let expected_values = "precipitation_preference".valuesFromSettings,
             let expected_default_value = "precipitation_preference".defaultValueFromSettings
         else {
-            XCTFail("There is a problem with extracting values from Settings.bundle.")
+            XCTFail("There is a problem with extracting values from the source.")
             return
         }
 
+        // assert
+
         XCTAssertEqual(requirement_default_value, actual_default_value,
-                       "Actual default value doesn't meet requirements.")
+                       "PRECIPITATION actual default value doesn't meet requirement.")
 
         XCTAssertTrue(NSArray(array: requirement_values).isEqual(to: expected_values),
-                      "Temperature option values do not meet requirements.")
+                      "PRECIPITATION values do not meet requirement.")
 
         XCTAssertEqual(requirement_default_value, expected_default_value,
-                       "Expected default value doesn't meet requirement.")
+                       "PRECIPITATION expected default value doesn't meet requirement.")
     }
 
-    // MARK: - Functional testing distance parameter setup
+    // MARK: - DISTANCE
 
     func test_distance_should_be_registered() {
+
+        // arrange
+
         let actual = defaults.string(forKey: "distance_preference")
         let expected_values = "distance_preference".valuesFromSettings
         let expected_default_value = "distance_preference".defaultValueFromSettings
 
-        XCTAssertNotNil(actual, "Distance preference not registered.")
-        XCTAssertNotNil(expected_values, "Distance values not registered.")
-        XCTAssertNotNil(expected_default_value, "Distance default not registered.")
+        // assert
+
+        XCTAssertNotNil(actual, "DISTANCE".notNil)
+        XCTAssertNotNil(expected_values, "DISTANCE values".notNil)
+        XCTAssertNotNil(expected_default_value, "DISTANCE default".notNil)
     }
 
     func test_distance_should_be_configured() {
+
+        // arrange
+
         let requirement_values = ["km", "mi"]
         let requirement_default_value = "km"
 
@@ -187,33 +238,43 @@ class SettingsBundleFunctionalTests: XCTestCase {
             let expected_values = "distance_preference".valuesFromSettings,
             let expected_default_value = "distance_preference".defaultValueFromSettings
         else {
-            XCTFail("There is a problem with extracting values from Settings.bundle.")
+            XCTFail("There is a problem with extracting values from the source.")
             return
         }
 
+        // assert
+
         XCTAssertEqual(requirement_default_value, actual_default_value,
-                       "Actual default value doesn't meet requirements.")
+                       "DISTANCE actual default value doesn't meet requirement.")
 
         XCTAssertTrue(NSArray(array: requirement_values).isEqual(to: expected_values),
-                      "Temperature option values do not meet requirements.")
+                      "DISTANCE values do not meet requirement.")
 
         XCTAssertEqual(requirement_default_value, expected_default_value,
-                       "Expected default value doesn't meet requirement.")
+                       "DISTANCE expected default value doesn't meet requirement.")
     }
 
-    // MARK: - Functional testing time format parameter setup
+    // MARK: - TIME FORMAT
 
     func test_time_format_should_be_registered() {
+
+        // arrange
+
         let actual = defaults.string(forKey: "time_format_preference")
         let expected_values = "time_format_preference".valuesFromSettings
         let expected_default_value = "time_format_preference".defaultValueFromSettings
 
-        XCTAssertNotNil(actual, "Distance preference not registered.")
-        XCTAssertNotNil(expected_values, "Distance values not registered.")
-        XCTAssertNotNil(expected_default_value, "Distance default not registered.")
+        // assert
+
+        XCTAssertNotNil(actual, "TIME FORMAT".notNil)
+        XCTAssertNotNil(expected_values, "TIME FORMAT values".notNil)
+        XCTAssertNotNil(expected_default_value, "TIME FORMAT default value".notNil)
     }
 
     func test_time_format_should_be_configured() {
+
+        // arrange
+
         let requirement_values = ["24-hour", "12-hour"]
         let requirement_default_value = "24-hour"
 
@@ -222,33 +283,43 @@ class SettingsBundleFunctionalTests: XCTestCase {
             let expected_values = "time_format_preference".valuesFromSettings,
             let expected_default_value = "time_format_preference".defaultValueFromSettings
         else {
-            XCTFail("There is a problem with extracting values from Settings.bundle.")
+            XCTFail("There is a problem with extracting values from the source.")
             return
         }
 
+        // assert
+
         XCTAssertEqual(requirement_default_value, actual_default_value,
-                       "Actual default value doesn't meet requirements.")
+                       "TIME FORMAT actual default value doesn't meet requirement.")
 
         XCTAssertTrue(NSArray(array: requirement_values).isEqual(to: expected_values),
-                      "Temperature option values do not meet requirements.")
+                      "TIME FORMAT values do not meet requirement.")
 
         XCTAssertEqual(requirement_default_value, expected_default_value,
-                       "Expected default value doesn't meet requirement.")
+                       "TIME FORMAT expected default value doesn't meet requirement.")
     }
 
-    // MARK: - Functional testing focus on parameter setup
+    // MARK: - FOCUS ON
 
     func test_focus_on_should_be_registered() {
+
+        // arrange
+
         let actual = defaults.string(forKey: "focus_on_preference")
         let expected_values = "focus_on_preference".valuesFromSettings
         let expected_default_value = "focus_on_preference".defaultValueFromSettings
 
-        XCTAssertNotNil(actual, "Distance preference not registered.")
-        XCTAssertNotNil(expected_values, "Distance values not registered.")
-        XCTAssertNotNil(expected_default_value, "Distance default not registered.")
+        // assert
+
+        XCTAssertNotNil(actual, "FOCUS ON".notNil)
+        XCTAssertNotNil(expected_values, "FOCUS ON values".notNil)
+        XCTAssertNotNil(expected_default_value, "FOCUS ON default value".notNil)
     }
 
     func test_focus_on_should_be_configured() {
+
+        // arrange
+
         let requirement_values = ["day", "night"]
         let requirement_default_value = "night"
 
@@ -257,17 +328,19 @@ class SettingsBundleFunctionalTests: XCTestCase {
             let expected_values = "focus_on_preference".valuesFromSettings,
             let expected_default_value = "focus_on_preference".defaultValueFromSettings
         else {
-            XCTFail("There is a problem with extracting values from Settings.bundle.")
+            XCTFail("There is a problem with extracting values from the source.")
             return
         }
 
+        // assert
+
         XCTAssertEqual(requirement_default_value, actual_default_value,
-                       "Actual default value doesn't meet requirements.")
+                       "FOCUS ON actual default value doesn't meet requirement.")
 
         XCTAssertTrue(NSArray(array: requirement_values).isEqual(to: expected_values),
-                      "Temperature option values do not meet requirements.")
+                      "FOCUS ON values do not meet requirement.")
 
         XCTAssertEqual(requirement_default_value, expected_default_value,
-                       "Expected default value doesn't meet requirement.")
+                       "FOCUS ON expected default value doesn't meet requirement.")
     }
 }

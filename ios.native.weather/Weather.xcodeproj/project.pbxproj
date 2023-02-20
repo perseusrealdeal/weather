@@ -217,8 +217,8 @@
 		4B01D1D829A28B4900FAFFE4 /* Functional tests */ = {
 			isa = PBXGroup;
 			children = (
-				4B01D1D929A28B4900FAFFE4 /* Network communication tests */,
 				4B01D1DD29A28B4900FAFFE4 /* Settings bundle tests */,
+				4B01D1D929A28B4900FAFFE4 /* Network communication tests */,
 				4B01D1E029A28B4900FAFFE4 /* Weather module tests */,
 				4B01D1EF29A28B4900FAFFE4 /* Main module tests */,
 				4B01D1F129A28B4900FAFFE4 /* Geo location receiver tests */,
@@ -229,8 +229,8 @@
 		4B01D1D929A28B4900FAFFE4 /* Network communication tests */ = {
 			isa = PBXGroup;
 			children = (
-				4B01D1DA29A28B4900FAFFE4 /* Test data */,
 				4B01D1DC29A28B4900FAFFE4 /* OpenWeatherCommunicationTests.swift */,
+				4B01D1DA29A28B4900FAFFE4 /* Test data */,
 			);
 			path = "Network communication tests";
 			sourceTree = "<group>";

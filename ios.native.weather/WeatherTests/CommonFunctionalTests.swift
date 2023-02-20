@@ -16,6 +16,8 @@ import XCTest
 
 extension String {
 
+    var notNil: String { return "\(self) is Nil." }
+
     func notEqual(actual: String, with expected: String?) -> String {
         return "\(self) is \(actual), but not equal to \(String(describing: expected))."
     }
